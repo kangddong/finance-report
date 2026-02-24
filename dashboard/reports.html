@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market Insights | Premium Finance</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .reports-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .report-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            backdrop-filter: blur(15px);
+            height: 100%;
+        }
+
+        .report-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .report-thumbnail {
+            height: 180px;
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            position: relative;
+        }
+
+        .report-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .report-date {
+            font-size: 0.85rem;
+            color: var(--accent-blue);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .report-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+            color: var(--text-primary);
+        }
+
+        .report-summary {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .report-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+
+        .tag {
+            font-size: 0.75rem;
+            padding: 0.25rem 0.75rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            color: #94a3b8;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .read-more-btn {
+            display: inline-block;
+            text-align: center;
+            padding: 0.8rem;
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent-blue);
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+        }
+
+        .read-more-btn:hover {
+            background: var(--accent-blue);
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header style="margin-bottom: 3rem;">
+            <div class="header-top">
+                <a href="index.html" class="user-badge" style="text-decoration: none; cursor: pointer;">← Dashboard</a>
+            </div>
+            <h1>Market Insights</h1>
+            <p>심층 분석 리포트 및 투자 시나리오 모음</p>
+        </header>
+
+        <div id="reports-container" class="reports-grid">
+            <!-- Reports will be loaded here via JS -->
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('reports-container');
+
+            // Check if ANALYSIS_REPORTS exists, if not use empty array
+            const reports = (typeof ANALYSIS_REPORTS !== 'undefined') ? ANALYSIS_REPORTS : [];
+
+            if (reports.length === 0) {
+                container.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: var(--text-secondary); font-size: 1.2rem; padding: 3rem;">등록된 분석 리포트가 없습니다.</p>';
+                return;
+            }
+
+            // Sort by date descending
+            reports.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+            reports.forEach(report => {
+                const card = document.createElement('div');
+                card.className = 'report-card';
+
+                // Random gradient or specific image for thumbnail
+                let thumbnailContent = `<span style="font-size:3rem;">📄</span>`;
+                if (report.thumbnail) {
+                    thumbnailContent = `<img src="${report.thumbnail}" alt="${report.title}" style="width:100%; height:100%; object-fit:cover;">`;
+                } else if (report.tags && report.tags.includes('전기차')) {
+                    thumbnailContent = `<span style="font-size:3rem;">⚡️</span>`;
+                } else if (report.tags && report.tags.includes('반도체')) {
+                    thumbnailContent = `<span style="font-size:3rem;">💾</span>`;
+                }
+
+                const tagsHtml = report.tags ? report.tags.map(tag => `<span class="tag">#${tag}</span>`).join('') : '';
+
+                card.innerHTML = `
+                    <div class="report-thumbnail">
+                        ${thumbnailContent}
+                    </div>
+                    <div class="report-content">
+                        <div class="report-date">${report.date}</div>
+                        <h3 class="report-title">${report.title}</h3>
+                        <p class="report-summary">${report.summary}</p>
+                        <div class="report-tags">
+                            ${tagsHtml}
+                        </div>
+                        <a href="${report.link}" class="read-more-btn" style="text-align: center; display: block;">Read Analysis →</a>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        });
+    </script>
+</body>
+
+</html>

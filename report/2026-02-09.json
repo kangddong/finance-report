@@ -1,0 +1,142 @@
+{
+    "date": "2026-02-09",
+    "overview": "국내 증시는 AI 반도체 섹터의 강세가 지속되며 긍정적인 흐름을 보이고 있습니다. 삼성전자가 시총 1,000조 시대를 열며 시장을 주도하고 있고, SK하이닉스 또한 견고한 상승세를 유지 중입니다. 환율은 소폭 하락하여 안정세를 찾고 있으며, 공포 심리는 중립 수준으로 완화되었습니다.",
+    "indicators": {
+        "fearAndGreed": {
+            "label": "Fear & Greed",
+            "value": "45",
+            "status": "Neutral"
+        },
+        "cpiKorea": {
+            "label": "한국 CPI",
+            "value": "2.8%",
+            "status": "YoY"
+        },
+        "cpiUS": {
+            "label": "미국 CPI",
+            "value": "3.4%",
+            "status": "YoY"
+        },
+        "exchangeRate": {
+            "label": "원/달러 환율",
+            "value": "1,460.00",
+            "status": "▼ 2.50"
+        },
+        "dollarIndex": {
+            "label": "달러 인덱스",
+            "value": "97.33",
+            "status": "▼ 0.17"
+        },
+        "goldSiverRatio": {
+            "label": "금/은 비율",
+            "value": "63.83",
+            "status": "▲ 7.73"
+        }
+    },
+    "holdings": [
+        {
+            "name": "삼성전자",
+            "avgPrice": "141,675원",
+            "currentPrice": "166,400원",
+            "return": "+17.45%",
+            "advice": "BUY",
+            "reason": "1. **주간 리뷰**: AI 반도체 수요 폭발과 주주환원 정책에 힘입어 시총 1,000조원 돌파하며 시장 주도.\n2. **기술적 분석**: 5일선 위에서 강한 상승 추세 유지. 외국인과 기관의 동반 매수세가 긍정적.\n3. **대응 전략**: 상승 피로감이 있을 수 있으나, 5일선 지지 시 매수 관점 유효. 장기 보유 권장.",
+            "image": null
+        },
+        {
+            "name": "SK하이닉스",
+            "avgPrice": "592,800원",
+            "currentPrice": "870,000원",
+            "return": "+46.76%",
+            "advice": "HOLD",
+            "reason": "1. **주간 리뷰**: AI 서버 수요 증가와 HBM 시장 리더십 유지로 역대급 실적 기대감 반영.\n2. **기술적 분석**: 5일선 상회하며 정배열 상승 흐름. 단기 급등에 따른 이격도 부담은 존재.\n3. **대응 전략**: 추세가 꺾이지 않았으므로 보유 지속. 신규 진입은 조정 시 고려.",
+            "image": null
+        },
+        {
+            "name": "PLUS K 방산",
+            "avgPrice": "60,264원",
+            "currentPrice": "65,515원",
+            "return": "+8.71%",
+            "advice": "HOLD",
+            "reason": "1. **주간 리뷰**: 외국인 매도세로 인한 단기 조정 있었으나, 펀더멘털은 여전히 견고함.\n2. **대응 전략**: 글로벌 지정학적 리스크 지속으로 방산 섹터 관심 필요. 현 구간 보유 유효.",
+            "image": null
+        },
+        {
+            "name": "KODEX AI 전력핵심설비",
+            "avgPrice": "26,472원",
+            "currentPrice": "27,210원",
+            "return": "+2.79%",
+            "advice": "BUY",
+            "reason": "1. **주간 리뷰**: 단기 하락 조정 있었으나, AI 데이터센터 전력 수요라는 메가 트렌드는 변함 없음.\n2. **대응 전략**: 개인 투자자 중심의 저가 매수세 유입. 중장기적 관점에서 분할 매수 접근 유효.",
+            "image": null
+        },
+        {
+            "name": "사이퍼 마이닝",
+            "avgPrice": "20.8410달러",
+            "currentPrice": "13.50달러",
+            "return": "-35.22%",
+            "advice": "HOLD",
+            "reason": "1. **시장 동향**: (지난 리포트 기준 유지) 비트코인 지지선 테스트 중.\n2. **대응 전략**: 크립토 시장 변동성 주시 필요.",
+            "image": null
+        },
+        {
+            "name": "엔비디아",
+            "avgPrice": "189.0620달러",
+            "currentPrice": "176.50달러",
+            "return": "-6.64%",
+            "advice": "BUY",
+            "reason": "1. **시장 동향**: (지난 리포트 기준 유지) 저가 매수세 유입 확인.\n2. **매수 관점**: AI 대장주로서의 매력 여전.",
+            "image": null
+        },
+        {
+            "name": "팔란티어 테크",
+            "avgPrice": "180.1010달러",
+            "currentPrice": "138.20달러",
+            "return": "-23.27%",
+            "advice": "BUY",
+            "reason": "1. **시장 동향**: (지난 리포트 기준 유지) 낙폭 과대에 따른 반발 매수 기대.\n2. **대응 전략**: 실적 기반의 반등 모색 구간.",
+            "image": null
+        }
+    ],
+    "watchlist": [
+        {
+            "name": "테슬라",
+            "currentPrice": "182.00달러",
+            "outlook": "긍정적",
+            "advice": "BUY",
+            "reason": "기술주 반등 기대감 유효.",
+            "image": null,
+            "reportPath": "analysis/ev-market-tesla-hyundai.html"
+        },
+        {
+            "name": "현대차",
+            "currentPrice": "245,000원",
+            "outlook": "긍정적",
+            "advice": "BUY",
+            "reason": "밸류에이션 매력 지속.",
+            "image": null,
+            "reportPath": "analysis/ev-market-tesla-hyundai.html"
+        },
+        {
+            "name": "금/은",
+            "currentPrice": "Gold Trend",
+            "outlook": "긍정적",
+            "advice": "BUY",
+            "reason": "안전 자산 선호 심리.",
+            "image": null
+        },
+        {
+            "name": "달러 인덱스",
+            "currentPrice": "97.33",
+            "outlook": "중립",
+            "advice": "WATCH",
+            "reason": "소폭 하락 안정세.",
+            "image": null
+        }
+    ],
+    "strategy": {
+        "buy": "삼성전자, KODEX AI 전력핵심설비",
+        "sellConsider": "없음",
+        "summary": "국내 시장은 삼성전자와 SK하이닉스 등 반도체 투톱이 이끄는 강세장이 연출되고 있습니다. 특히 삼성전자의 상승세가 두드러지며, 관련 밸류체인 및 전력 인프라(AI 전력설비)에도 긍정적인 낙수 효과가 기대됩니다. 미국장은 혼조세이나 국내 반도체 섹터의 독립적인 강세 흐름에 주목하여 비중을 조절하는 것이 좋습니다."
+    }
+}

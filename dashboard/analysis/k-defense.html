@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K-방산: 흔들려도 피는 꽃 | Premium Finance</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .analysis-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: var(--accent-blue);
+        }
+
+        .analysis-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid var(--glass-border);
+            border-radius: 32px;
+            padding: 3rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #fff 0%, #a5f3fc 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        h2 {
+            color: var(--accent-blue);
+            margin: 2.5rem 0 1.5rem;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        h2::before {
+            content: '';
+            display: block;
+            width: 4px;
+            height: 24px;
+            background: var(--accent-blue);
+            border-radius: 2px;
+        }
+
+        p {
+            line-height: 1.8;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .highlight-box {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .logic-flow {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .step {
+            flex: 1;
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+            padding: 1.5rem;
+            border-radius: 16px;
+            border: 1px solid var(--glass-border);
+            text-align: center;
+            min-width: 140px;
+            transition: transform 0.3s;
+        }
+
+        .step:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-blue);
+        }
+
+        .step-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .step-title {
+            color: var(--accent-blue);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .arrow {
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .conclusion {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(37, 99, 235, 0.1) 100%);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .conclusion h3 {
+            color: #60a5fa;
+            margin-top: 0;
+        }
+
+        @media (max-width: 768px) {
+            .logic-flow {
+                flex-direction: column;
+            }
+
+            .arrow {
+                transform: rotate(90deg);
+                margin: 0.5rem 0;
+            }
+
+            .analysis-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="analysis-container">
+        <a href="../index.html" class="back-link">← 대시보드로 돌아가기</a>
+
+        <main class="analysis-card">
+            <header>
+                <h1>K-방산: 멈추지 않는 구조적 성장</h1>
+                <p class="subtitle">지정학적 리스크와 K-방산만의 독보적 경쟁력 분석</p>
+            </header>
+
+            <div class="logic-flow">
+                <div class="step">
+                    <span class="step-icon">🌍</span>
+                    <span class="step-title">글로벌 불안</span>
+                    <small>신냉전 & 분쟁 지속</small>
+                </div>
+                <div class="arrow">→</div>
+                <div class="step">
+                    <span class="step-icon">💰</span>
+                    <span class="step-title">국방비 증액</span>
+                    <small>전 세계적 군비 확장</small>
+                </div>
+                <div class="arrow">→</div>
+                <div class="step">
+                    <span class="step-icon">🚀</span>
+                    <span class="step-title">K-방산 선택</span>
+                    <small>가성비 & 빠른 납기</small>
+                </div>
+                <div class="arrow">→</div>
+                <div class="step">
+                    <span class="step-icon">📈</span>
+                    <span class="step-title">실적 퀀텀점프</span>
+                    <small>수주 잔고 폭발</small>
+                </div>
+            </div>
+
+            <section>
+                <h2>1. 끝나지 않는 지정학적 리스크</h2>
+                <p>
+                    러시아-우크라이나 전쟁의 장기화, 중동 지역의 긴장 고조, 그리고 미-중 갈등까지.
+                    전 세계는 지금 <strong>'신냉전 시대'</strong>를 맞이하고 있습니다.
+                    이는 일시적인 테마가 아니라, 향후 10년 이상 지속될 <strong>거대한 구조적 변화(Megatrend)</strong>입니다.
+                    평화를 원한다면 전쟁을 준비해야 하듯, 각국은 앞다퉈 국방 예산을 증액하고 있습니다.
+                </p>
+            </section>
+
+            <section>
+                <h2>2. 왜 세계는 K-방산을 찾는가? (Key Advantage)</h2>
+                <p>
+                    무기를 사고 싶어도 살 곳이 마땅치 않습니다. 미국과 유럽의 방산 기업들은 생산 라인이 포화 상태라 주문하면 몇 년을 기다려야 합니다.
+                    이때 혜성처럼 등장한 대안이 바로 <strong>한국(South Korea)</strong>입니다.
+                </p>
+                <div class="highlight-box">
+                    <strong>K-방산의 핵심 경쟁력 3가지:</strong>
+                    <ul style="margin-top: 1rem; margin-bottom: 0;">
+                        <li><strong>⚡ 납기 준수 능력:</strong> 세계 최고 수준의 제조업 역량으로 '주문하면 바로 만든다'.</li>
+                        <li><strong>💲 압도적 가성비:</strong> 서방 무기 체계와 호환되면서도 가격은 합리적이다.</li>
+                        <li><strong>🛡️ 실전 검증 완료:</strong> 분단 국가 특성상 끊임없이 개량하며 성능이 입증되었다.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2>3. 수출 영토 확장: 폴란드를 넘어 세계로</h2>
+                <p>
+                    초기엔 폴란드 잭팟이 전부인 줄 알았지만, 이제는 루마니아 등 동유럽, 사우디 등 중동,
+                    심지어 방산의 본고장인 <strong>미국 시장(함정 MRO 등)</strong>까지 넘보고 있습니다.
+                    한화에어로스페이스, LIG넥스원, 현대로템 등 주요 기업들의 수주 잔고는 이미 수년 치 일감을 확보한 상태입니다.
+                </p>
+            </section>
+
+            <div class="conclusion">
+                <h3>4. 결론: 조정은 곧 기회다</h3>
+                <p>
+                    최근의 주가 하락은 단기간 급등에 따른 피로감과 시장 전체의 투심 악화일 뿐,
+                    <strong>산업의 펀더멘털(기초체력)은 오히려 더 강해지고 있습니다.</strong>
+                </p>
+                <p>
+                    방산은 이제 <strong>'경기 방어주'</strong>이자 <strong>'구조적 성장주'</strong>입니다.
+                    세계 정세가 불안할수록 K-방산의 가치는 빛납니다. 지금의 조정 구간을 두려워하지 말고,
+                    <strong>PLUS K 방산</strong>을 통해 섹터 전반에 투자하는 전략은 여전히 유효합니다.
+                </p>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

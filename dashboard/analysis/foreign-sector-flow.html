@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>외국인 수급 분석: Smart Money Flow | Premium Finance</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .analysis-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .analysis-content {
+            background: var(--card-bg);
+            backdrop-filter: blur(25px);
+            border-radius: 24px;
+            padding: 3rem;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .sector-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .sector-box {
+            padding: 1.5rem;
+            border-radius: 16px;
+            border: 1px solid var(--glass-border);
+        }
+
+        .sector-box.buy {
+            background: rgba(56, 189, 248, 0.1);
+            border-color: rgba(56, 189, 248, 0.3);
+        }
+
+        .sector-box.sell {
+            background: rgba(251, 113, 133, 0.1);
+            border-color: rgba(251, 113, 133, 0.3);
+        }
+
+        .sector-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .sector-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sector-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .sector-item:last-child {
+            border-bottom: none;
+        }
+
+        .trend-badge {
+            padding: 0.2rem 0.6rem;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .trend-up {
+            color: var(--accent-blue);
+            background: rgba(56, 189, 248, 0.2);
+        }
+
+        .trend-down {
+            color: #fb7185;
+            background: rgba(251, 113, 133, 0.2);
+        }
+
+        h2 {
+            color: var(--accent-blue);
+            margin-top: 2.5rem;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 0.5rem;
+        }
+
+        p {
+            line-height: 1.8;
+            color: #b0b0b0;
+        }
+
+        .key-takeaway {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+            border-radius: 16px;
+            border: 1px solid var(--glass-border);
+        }
+
+        @media (max-width: 600px) {
+            .sector-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="analysis-container">
+        <header style="margin-bottom: 3rem; text-align: center;">
+            <a href="../reports.html" class="back-link"
+                style="float: left; text-decoration: none; color: var(--text-secondary);">← Market Insights</a>
+            <div style="clear: both;"></div>
+            <h1
+                style="margin-top: 1rem; font-size: 2.2rem; background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                외국인 매매 동향:<br>자금의 흐름을 읽다</h1>
+            <p class="subtitle" style="margin-top: 1rem; color: var(--text-secondary);">
+                작성일: 2026-02-07 | 테마: <span style="color:#60a5fa">#수급분석</span> <span style="color:#60a5fa">#외국인</span>
+                <span style="color:#60a5fa">#섹터전략</span>
+            </p>
+        </header>
+
+        <main class="analysis-content">
+            <p>
+                최근 국내 증시는 외국인의 대규모 매도세로 인해 변동성이 확대되었습니다. 그러나 모든 섹터를 매도하는 것은 아닙니다.
+                <strong>'Smart Money'</strong>는 공포 속에서도 특정 섹터를 조용히 담고 있습니다. 외국인 수급의 옥석 가리기가 진행 중인 지금, 우리는 어디에 주목해야 할까요?
+            </p>
+
+            <div class="sector-grid">
+                <div class="sector-box buy">
+                    <div class="sector-title" style="color: var(--accent-blue);">
+                        <span>📥 Net Buying (순매수)</span>
+                    </div>
+                    <ul class="sector-list">
+                        <li class="sector-item">
+                            <span>방산 (Defense)</span>
+                            <span class="trend-badge trend-up">강력 매수</span>
+                        </li>
+                        <li class="sector-item">
+                            <span>전력/인프라</span>
+                            <span class="trend-badge trend-up">매수 지속</span>
+                        </li>
+                        <li class="sector-item">
+                            <span>바이오 (Bio)</span>
+                            <span class="trend-badge trend-up">비중 확대</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="sector-box sell">
+                    <div class="sector-title" style="color: #fb7185;">
+                        <span>📤 Net Selling (순매도)</span>
+                    </div>
+                    <ul class="sector-list">
+                        <li class="sector-item">
+                            <span>반도체 (Semi)</span>
+                            <span class="trend-badge trend-down">차익 실현</span>
+                        </li>
+                        <li class="sector-item">
+                            <span>2차전지 (Battery)</span>
+                            <span class="trend-badge trend-down">비중 축소</span>
+                        </li>
+                        <li class="sector-item">
+                            <span>인터넷/게임</span>
+                            <span class="trend-badge trend-down">매도 우위</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2>1. BUY: 왜 방산과 바이오인가?</h2>
+            <p>
+                <strong>방산 섹터</strong>는 지정학적 리스크 확대와 실질적인 수출 데이터가 뒷받침되며 외국인의 'Must-Have' 포트폴리오로 자리 잡았습니다. 단순 테마가 아닌
+                실적주로서의 재평가가 이루어지고 있습니다.
+                <br><br>
+                <strong>바이오 섹터</strong>는 금리 인하 기대감과 함께 경기 방어적인 성격이 부각되며, 변동성 장세에서의 피난처(Safe Haven) 역할을 하고 있습니다.
+            </p>
+
+            <h2>2. SELL: 반도체, 끝이 아닌 휴식</h2>
+            <p>
+                반도체 섹터의 매도세는 펀더멘털 훼손보다는 <strong>단기 급등에 따른 차익 실현</strong> 성격이 짙습니다. 특히 삼성전자와 SK하이닉스에 대한 매도가 집중되었으나, 이는 지수
+                전체 비중 조절의 일환으로 해석됩니다. AI 산업의 성장성은 여전히 유효하므로, 과매도 구간에서의 재진입을 노리는 외국인 수급이 포착되고 있습니다.
+            </p>
+
+            <div class="key-takeaway">
+                <h3 style="color: #fff; margin-bottom: 0.5rem;">💡 Action Plan</h3>
+                <p style="margin-bottom: 0;">
+                    시장의 주도권은 여전히 외국인에게 있습니다. 그들이 매집하는 <strong>방산/전력 인프라</strong> 조정 시 매수 관점을 유지하고, 매도 공세가 진정되는 시점에서
+                    <strong>반도체 대장주</strong>의 저가 매수를 준비하십시오.
+                </p>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

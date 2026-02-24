@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Finance Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="header-top">
+                <div class="date-selector-wrapper">
+                    <select id="date-selector" class="date-select">
+                        <option value="">데이터 로딩 중...</option>
+                    </select>
+                </div>
+                <div class="badge-container">
+                    <a href="reports.html" class="user-badge"
+                        style="text-decoration: none; cursor: pointer; background: rgba(56, 189, 248, 0.2); border-color: var(--accent-blue); color: #fff;">Market
+                        Insights</a>
+                    <div class="user-badge">주식 분석 리포트</div>
+                </div>
+            </div>
+            <h1>Premium Finance Report</h1>
+            <p id="report-overview">보고서 데이터를 불러오는 중입니다...</p>
+        </header>
+
+        <!-- Finance Wordbook Section -->
+        <div class="wordbook-section">
+            <div class="wordbook-header">
+                <span class="wordbook-icon">📚</span> Finance Wordbook
+            </div>
+            <div id="wordbook-container" class="wordbook-container">
+                <!-- Data loaded via JS -->
+            </div>
+            <div id="word-definition-modal" class="word-modal">
+                <div class="word-modal-content">
+                    <span class="close-modal">&times;</span>
+                    <h3 id="modal-term">Term</h3>
+                    <span id="modal-category" class="category-badge">Category</span>
+                    <p id="modal-definition">Definition goes here...</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="market-indicators" class="indicator-bar">
+            <!-- Dynamic Content -->
+        </div>
+
+        <div class="main-layout">
+            <!-- Left Sidebar: Tools & Widgets -->
+            <aside class="sidebar">
+                <!-- Target Price Calculator -->
+                <div class="card calculator-widget">
+                    <div class="section-label">Valuation Tool</div>
+                    <div class="card-title" style="font-size: 1.4rem;">Target Price Calculator</div>
+
+                    <div class="calc-input-group">
+                        <label for="calc-eps">EPS (주당순이익)</label>
+                        <input type="number" id="calc-eps" placeholder="예: 5000" class="calc-input">
+                    </div>
+
+                    <div class="calc-input-group">
+                        <label for="calc-per">Target PER (멀티플)</label>
+                        <input type="number" id="calc-per" placeholder="예: 10" class="calc-input">
+                    </div>
+
+                    <div class="calc-divider"></div>
+
+                    <div class="calc-result">
+                        <span class="calc-label">적정 주가 (Target Price)</span>
+                        <span id="calc-result-value" class="calc-value">0원</span>
+                    </div>
+                </div>
+
+                <!-- Additional Widgets can go here -->
+            </aside>
+
+            <!-- Main Content Area -->
+            <div class="dashboard-grid">
+                <!-- 보유 종목 -->
+                <div class="card" style="animation-delay: 0.1s;">
+                    <div class="section-label">Current Portfolio</div>
+                    <div class="card-title">보유 종목 현황</div>
+                    <div id="holdings-list" class="stock-list">
+                        <p style="color: var(--text-secondary);">데이터를 분석 중입니다...</p>
+                    </div>
+                </div>
+
+                <!-- 관심 종목 -->
+                <div class="card" style="animation-delay: 0.2s;">
+                    <div class="section-label">Market Watchlist</div>
+                    <div class="card-title">관심 종목 분석</div>
+                    <div id="watchlist-list" class="stock-list">
+                        <p style="color: var(--text-secondary);">데이터를 분석 중입니다...</p>
+                    </div>
+                </div>
+
+                <!-- 외국인 수급 분석 -->
+                <div class="card" style="animation-delay: 0.25s;">
+                    <div class="section-label">Smart Money Flow</div>
+                    <div class="card-title">외국인 수급 분석</div>
+                    <div id="foreign-trend-list" class="stock-list">
+                        <p style="color: var(--text-secondary);">데이터를 분석 중입니다...</p>
+                    </div>
+                    <div style="margin-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem;">
+                        <h4 style="margin-bottom: 0.8rem; color: var(--accent-purple);">🏆 외국인 순매수 Top 10</h4>
+                        <div id="foreign-top-list" class="tag-cloud">
+                            <!-- Tags will go here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 투자 조언 -->
+                <div class="card advice-section" style="animation-delay: 0.3s;">
+                    <div class="section-label">Strategy Advice</div>
+                    <div class="card-title">종합 투자 조언</div>
+                    <div class="advice-text">
+                        <p style="color: var(--text-secondary);">데이터를 분석 중입니다...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="data.js"></script>
+    <script src="finance_word_data.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

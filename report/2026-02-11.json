@@ -1,0 +1,98 @@
+{
+    "date": "2026-02-11",
+    "overview": "코스피가 외국인과 기관의 동반 매수세에 힘입어 1.00% 상승한 5,354.49포인트로 마감하며 3거래일 연속 상승세를 이어갔습니다. 특히 자동차와 금융, 로봇 섹터의 강세가 두드러졌으며, 삼성전자도 1.21% 상승하며 지수 상승을 견인했습니다. 환율은 안정적인 흐름을 보이고 있습니다.",
+    "indicators": {
+        "fearAndGreed": {
+            "label": "Fear & Greed",
+            "value": "58",
+            "status": "Greed"
+        },
+        "cpiKorea": {
+            "label": "한국 CPI",
+            "value": "2.8%",
+            "status": "YoY"
+        },
+        "cpiUS": {
+            "label": "미국 CPI",
+            "value": "3.4%",
+            "status": "YoY"
+        },
+        "exchangeRate": {
+            "label": "원/달러 환율",
+            "value": "1,455.00",
+            "status": "▼ 4.50"
+        },
+        "dollarIndex": {
+            "label": "달러 인덱스",
+            "value": "96.80",
+            "status": "▼ 0.10"
+        },
+        "goldSiverRatio": {
+            "label": "금/은 비율",
+            "value": "63.50",
+            "status": "-"
+        }
+    },
+    "holdings": [
+        {
+            "name": "삼성전자",
+            "avgPrice": "141,675원",
+            "currentPrice": "167,800원",
+            "return": "+18.44%",
+            "advice": "BUY",
+            "reason": "1. **주가 흐름**: 외국인의 매수세가 유입되며 1.21% 상승 마감. 5일선 위 안착.\n2. **대응 전략**: 반도체 업황 회복 기대감 유효. 추가 상승 시 비중 확대 고려.",
+            "image": null
+        },
+        {
+            "name": "SK하이닉스",
+            "avgPrice": "592,800원",
+            "currentPrice": "860,000원",
+            "return": "+45.07%",
+            "advice": "HOLD",
+            "reason": "1. **주가 흐름**: 외국인의 차익 실현 매물 출회로 소폭 조정 받았으나 상승 추세 유지.\n2. **대응 전략**: HBM 리더십 견고. 단기 조정은 매수 기회.",
+            "image": null
+        },
+        {
+            "name": "PLUS K 방산",
+            "avgPrice": "60,264원",
+            "currentPrice": "66,000원",
+            "return": "+9.51%",
+            "advice": "HOLD",
+            "reason": "1. **주가 흐름**: 지정학적 리스크 지속으로 방산 섹터 매수세 유입.\n2. **대응 전략**: 신고가 경신 기대감. 추세 추종 전략 유효.",
+            "image": null
+        },
+        {
+            "name": "KODEX AI 전력핵심설비",
+            "avgPrice": "26,472원",
+            "currentPrice": "27,500원",
+            "return": "+3.88%",
+            "advice": "BUY",
+            "reason": "1. **주가 흐름**: 전력 기기 수요 증가 전망에 상승세 지속.\n2. **대응 전략**: AI 데이터센터발 전력망 호황 수혜 지속 예상.",
+            "image": null
+        },
+        {
+            "name": "현대차",
+            "avgPrice": "498,500원",
+            "currentPrice": "485,000원",
+            "return": "-2.70%",
+            "advice": "BUY",
+            "reason": "1. **주가 흐름**: 외국인 매수세 유입으로 반등 성공. 자동차 섹터 전반적 강세.\n2. **대응 전략**: 밸류에이션 매력 부각. 49만원선 돌파 시 탄력 강화 예상.",
+            "image": null
+        },
+        {
+            "name": "두산에너빌리티",
+            "avgPrice": "92,700원",
+            "currentPrice": "97,000원",
+            "return": "+4.63%",
+            "advice": "HOLD",
+            "reason": "1. **주가 흐름**: 외국인 대량 매수(100만주) 유입으로 강세.\n2. **대응 전략**: 수급 개선 뚜렷. SMR 모멘텀 지속.",
+            "image": null
+        }
+    ],
+    "watchlist": [],
+    "strategy": {
+        "position": "Growth",
+        "title": "외국인 귀환과 코스피 반등",
+        "description": "외국인과 기관의 쌍끌이 매수로 코스피가 5350선에 안착했습니다. 반도체와 자동차 등 주도 섹터의 흐름이 양호하며, 환율 안정도 긍정적입니다. 주도주 중심의 포트폴리오 유지가 유리합니다."
+    }
+}
