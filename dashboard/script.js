@@ -96,6 +96,24 @@ document.addEventListener('DOMContentLoaded', () => {
         epsInput.addEventListener('input', calculateTargetPrice);
         perInput.addEventListener('input', calculateTargetPrice);
     }
+
+    // --- Section Navigation System ---
+    const navBtns = document.querySelectorAll('.nav-btn');
+    const sections = document.querySelectorAll('.nav-section');
+
+    navBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const sectionId = btn.getAttribute('data-section');
+
+            // Update buttons
+            navBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            // Update sections
+            sections.forEach(sec => sec.classList.remove('active'));
+            document.getElementById(`section-${sectionId}`).classList.add('active');
+        });
+    });
 });
 
 function renderDashboard(data) {

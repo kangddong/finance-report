@@ -184,10 +184,41 @@ header p {
     background: rgba(56, 189, 248, 0.1) !important;
 }
 
-.dashboard-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    gap: 2.5rem;
+/* Main Navigation */
+.main-nav {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+    animation: fadeInDown 1s ease-out;
+}
+
+.nav-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    padding: 0.8rem 1.8rem;
+    border-radius: 50px;
+    color: var(--text-secondary);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
+}
+
+.nav-btn:hover {
+    background: rgba(56, 189, 248, 0.1);
+    color: var(--accent-blue);
+    border-color: var(--accent-blue);
+    transform: translateY(-3px);
+}
+
+.nav-btn.active {
+    background: var(--accent-blue);
+    color: var(--primary-bg);
+    border-color: var(--accent-blue);
+    box-shadow: 0 10px 20px rgba(56, 189, 248, 0.3);
 }
 
 .card {
@@ -214,6 +245,26 @@ header p {
     margin-bottom: 2rem;
     border-left: 6px solid var(--accent-blue);
     padding-left: 1rem;
+}
+
+/* Content Management */
+.content-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.nav-section {
+    display: none;
+    width: 100%;
+}
+
+.nav-section.active {
+    display: block;
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.full-width {
+    width: 100%;
 }
 
 .section-label {
@@ -382,18 +433,30 @@ header p {
     }
 }
 
-/* Main Layout */
-.main-layout {
-    display: grid;
-    grid-template-columns: 320px 1fr;
-    gap: 2.5rem;
+/* Calculator Layout Refinement */
+.calculator-layout {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    padding: 1rem 0;
 }
 
-/* Sidebar */
-.sidebar {
-    display: flex;
-    flex-direction: column;
+.calc-inputs {
+    flex: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 2rem;
+}
+
+.calc-divider-v {
+    width: 1px;
+    height: 120px;
+    background: var(--glass-border);
+}
+
+.calc-result {
+    flex: 1;
+    text-align: center;
 }
 
 /* Calculator Widget */

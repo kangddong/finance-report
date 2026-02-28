@@ -51,79 +51,91 @@
             <!-- Dynamic Content -->
         </div>
 
-        <div class="main-layout">
-            <!-- Left Sidebar: Tools & Widgets -->
-            <aside class="sidebar">
-                <!-- Target Price Calculator -->
-                <div class="card calculator-widget">
+        <!-- Main Navigation Section -->
+        <nav class="main-nav">
+            <button class="nav-btn" data-section="valuation">📈 Valuation Tool</button>
+            <button class="nav-btn active" data-section="holdings">💼 보유 종목 현황</button>
+            <button class="nav-btn" data-section="watchlist">🔍 관심 종목 분석</button>
+            <button class="nav-btn" data-section="foreign">🌍 외국인 수급 분석</button>
+            <button class="nav-btn" data-section="strategy">💡 투자 조언</button>
+        </nav>
+
+        <div class="content-wrapper">
+            <!-- Valuation Tool Section -->
+            <section id="section-valuation" class="nav-section">
+                <div class="card full-width">
                     <div class="section-label">Valuation Tool</div>
-                    <div class="card-title" style="font-size: 1.4rem;">Target Price Calculator</div>
-
-                    <div class="calc-input-group">
-                        <label for="calc-eps">EPS (주당순이익)</label>
-                        <input type="number" id="calc-eps" placeholder="예: 5000" class="calc-input">
-                    </div>
-
-                    <div class="calc-input-group">
-                        <label for="calc-per">Target PER (멀티플)</label>
-                        <input type="number" id="calc-per" placeholder="예: 10" class="calc-input">
-                    </div>
-
-                    <div class="calc-divider"></div>
-
-                    <div class="calc-result">
-                        <span class="calc-label">적정 주가 (Target Price)</span>
-                        <span id="calc-result-value" class="calc-value">0원</span>
+                    <div class="card-title">Target Price Calculator</div>
+                    <div class="calculator-layout">
+                        <div class="calc-inputs">
+                            <div class="calc-input-group">
+                                <label for="calc-eps">EPS (주당순이익)</label>
+                                <input type="number" id="calc-eps" placeholder="예: 5000" class="calc-input">
+                            </div>
+                            <div class="calc-input-group">
+                                <label for="calc-per">Target PER (멀티플)</label>
+                                <input type="number" id="calc-per" placeholder="예: 10" class="calc-input">
+                            </div>
+                        </div>
+                        <div class="calc-divider-v"></div>
+                        <div class="calc-result">
+                            <span class="calc-label">적정 주가 (Target Price)</span>
+                            <span id="calc-result-value" class="calc-value">0원</span>
+                        </div>
                     </div>
                 </div>
+            </section>
 
-                <!-- Additional Widgets can go here -->
-            </aside>
-
-            <!-- Main Content Area -->
-            <div class="dashboard-grid">
-                <!-- 보유 종목 -->
-                <div class="card" style="animation-delay: 0.1s;">
+            <!-- Holdings Section -->
+            <section id="section-holdings" class="nav-section active">
+                <div class="card full-width">
                     <div class="section-label">Current Portfolio</div>
                     <div class="card-title">보유 종목 현황</div>
                     <div id="holdings-list" class="stock-list">
                         <p style="color: var(--text-secondary);">데이터를 분석 중입니다...</p>
                     </div>
                 </div>
+            </section>
 
-                <!-- 관심 종목 -->
-                <div class="card" style="animation-delay: 0.2s;">
+            <!-- Watchlist Section -->
+            <section id="section-watchlist" class="nav-section">
+                <div class="card full-width">
                     <div class="section-label">Market Watchlist</div>
                     <div class="card-title">관심 종목 분석</div>
                     <div id="watchlist-list" class="stock-list">
                         <p style="color: var(--text-secondary);">데이터를 분석 중입니다...</p>
                     </div>
                 </div>
+            </section>
 
-                <!-- 외국인 수급 분석 -->
-                <div class="card" style="animation-delay: 0.25s;">
+            <!-- Foreign Trend Section -->
+            <section id="section-foreign" class="nav-section">
+                <div class="card full-width">
                     <div class="section-label">Smart Money Flow</div>
                     <div class="card-title">외국인 수급 분석</div>
                     <div id="foreign-trend-list" class="stock-list">
                         <p style="color: var(--text-secondary);">데이터를 분석 중입니다...</p>
                     </div>
-                    <div style="margin-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem;">
-                        <h4 style="margin-bottom: 0.8rem; color: var(--accent-purple);">🏆 외국인 순매수 Top 10</h4>
+                    <div style="margin-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem;">
+                        <h4 style="margin-bottom: 1rem; color: var(--accent-purple); font-size: 1.2rem;">🏆 외국인 순매수 Top
+                            10</h4>
                         <div id="foreign-top-list" class="tag-cloud">
                             <!-- Tags will go here -->
                         </div>
                     </div>
                 </div>
+            </section>
 
-                <!-- 투자 조언 -->
-                <div class="card advice-section" style="animation-delay: 0.3s;">
+            <!-- Strategy Section -->
+            <section id="section-strategy" class="nav-section">
+                <div class="card full-width advice-section">
                     <div class="section-label">Strategy Advice</div>
                     <div class="card-title">종합 투자 조언</div>
                     <div class="advice-text">
                         <p style="color: var(--text-secondary);">데이터를 분석 중입니다...</p>
                     </div>
                 </div>
-            </div>
+            </section>
         </div>
     </div>
     <script src="data.js"></script>
