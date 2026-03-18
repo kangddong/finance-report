@@ -1,0 +1,4 @@
+interface:
+  display_name: "Company Analysis"
+  short_description: "Analyze listed companies with a structured investment framework."
+  default_prompt: "Use this skill to analyze a company across business model, financial performance, growth, valuation, competition, risks, and investment judgment."

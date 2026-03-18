@@ -1,0 +1,4 @@
+interface:
+  display_name: "External Shock Tracker"
+  short_description: "Collect and summarize market-moving external shock events."
+  default_prompt: "Use this skill to collect external shock events such as oil shocks, FX moves, war, policy, regulation, and political events, then summarize market impact by date."
