@@ -7,11 +7,11 @@ import sys
 
 # Path to data.js
 DATA_JS_PATH = os.path.join('dashboard', 'data.js')
-FETCH_SCRIPT_PATH = os.path.join('scripts', 'fetch_foreign_investor_trends.py')
+FETCH_SCRIPT_PATH = os.path.join('scripts', 'fetch_kospi_trading_trends.py')
 
 def get_foreign_data():
     """Runs the fetch script and returns JSON data."""
-    print("Fetching foreign investor data...")
+    print("Fetching KOSPI trading trend data...")
     try:
         # Run using the same python interpreter
         result = subprocess.run(
