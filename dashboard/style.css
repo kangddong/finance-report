@@ -433,6 +433,18 @@ header p {
     }
 }
 
+.tools-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+@media (max-width: 1024px) {
+    .tools-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* Calculator Layout Refinement */
 .calculator-layout {
     display: flex;

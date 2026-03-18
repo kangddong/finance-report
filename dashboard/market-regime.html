@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market Regime Analyzer | Premium Finance</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .regime-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .regime-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(25px);
+            border-radius: 32px;
+            padding: 2.5rem;
+            border: 1px solid var(--glass-border);
+            margin-bottom: 2rem;
+        }
+
+        .input-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .input-group label {
+            font-size: 0.85rem;
+            color: var(--accent-purple);
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .input-group input {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 1rem;
+            color: #fff;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .input-group input:focus {
+            border-color: var(--accent-blue);
+        }
+
+        .calc-button {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            border: none;
+            border-radius: 16px;
+            padding: 1.2rem;
+            color: #fff;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            transition: transform 0.2s;
+        }
+
+        .calc-button:hover {
+            transform: translateY(-2px);
+        }
+
+        .result-box {
+            display: none;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 24px;
+            padding: 2rem;
+            border: 1px solid var(--glass-border);
+        }
+
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .result-item {
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 16px;
+            text-align: center;
+        }
+
+        .result-label {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .result-value {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--accent-blue);
+        }
+
+        .judgment-box {
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-top: 1rem;
+        }
+
+        .judgment-trend {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid #10b981;
+            color: #10b981;
+        }
+
+        .judgment-unwind {
+            background: rgba(249, 115, 22, 0.1);
+            border: 1px solid #f97316;
+            color: #f97316;
+        }
+
+        .judgment-chop {
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid var(--accent-blue);
+            color: var(--accent-blue);
+        }
+
+        .guide-box {
+            margin-top: 3rem;
+        }
+
+        .guide-box h3 {
+            color: var(--accent-purple);
+            margin-bottom: 1.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="regime-container">
+        <header style="margin-bottom: 3rem; text-align: left;">
+            <a href="index.html" class="user-badge" style="text-decoration: none;">← Dashboard</a>
+            <h1 style="margin-top: 1.5rem; text-align: left; font-size: 3rem;">Market Regime <br>Analyzer</h1>
+            <p style="text-align: left;">선물과 정규장 사이의 괴리를 분석하여 오늘의 장세 성격을 규정합니다.</p>
+        </header>
+
+        <div class="regime-card">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                <h3 style="color: #fff; margin: 0;">📊 Microstructure Inputs</h3>
+                <div class="badge-container" style="display: flex; gap: 0.5rem;">
+                    <a href="https://www.tradingview.com/symbols/CME_MINI-NQ1!/" target="_blank" class="user-badge"
+                        style="font-size: 0.7rem; background: rgba(56, 189, 248, 0.1); border-color: var(--accent-blue);">NQ
+                        Live ↗</a>
+                    <a href="https://finance.yahoo.com/quote/QQQ" target="_blank" class="user-badge"
+                        style="font-size: 0.7rem; background: rgba(16, 185, 129, 0.1); border-color: #10b981;">QQQ Live
+                        ↗</a>
+                </div>
+            </div>
+
+            <div class="input-grid">
+                <div class="input-group">
+                    <label>NQ 선물 (%) (23:20)</label>
+                    <input type="number" id="futures-move" step="0.01" value="-1.50">
+                </div>
+                <div class="input-group">
+                    <label>QQQ 전일 종가 ($)</label>
+                    <input type="number" id="prev-close" step="0.01" value="607.29">
+                </div>
+                <div class="input-group">
+                    <label>QQQ 시가 ($) (23:30)</label>
+                    <input type="number" id="open-price" step="0.01" value="598.99">
+                </div>
+                <div class="input-group">
+                    <label>QQQ 현재가 ($) (00:30)</label>
+                    <input type="number" id="current-price" step="0.01" value="598.99">
+                </div>
+            </div>
+
+            <button class="calc-button" onclick="analyzeRegime()">분석 결과 보기 (오늘 데이터 기준)</button>
+
+            <div id="result-box" class="result-box">
+                <div class="result-grid">
+                    <div class="result-item">
+                        <span class="result-label">Gap (%)</span>
+                        <span id="res-gap" class="result-value">0%</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">Divergence</span>
+                        <span id="res-div" class="result-value">0%</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">Extension</span>
+                        <span id="res-ext" class="result-value">0%</span>
+                    </div>
+                </div>
+
+                <div id="judgment-output" class="judgment-box">
+                    판별 대기 중...
+                </div>
+                <p id="reason-output"
+                    style="text-align: center; margin-top: 1.5rem; color: var(--text-secondary); line-height: 1.6;">
+                    수치 입력 후 버튼을 눌러주세요.
+                </p>
+            </div>
+        </div>
+
+        <div class="guide-box">
+            <h3>📑 데이터 확인 방법</h3>
+            <div class="regime-card" style="padding: 1.5rem; background: rgba(255,255,255,0.02);">
+                <ul style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.8;">
+                    <li><strong>NQ 선물 (%)</strong>: <a href="https://www.tradingview.com/symbols/CME_MINI-NQ1!/"
+                            target="_blank" style="color: var(--accent-blue);">TradingView</a>에서 <code>NQ1!</code> 검색 후
+                        전일 정규장 종가 대비 변동률 확인.</li>
+                    <li><strong>QQQ 이전 종가</strong>: <a href="https://finance.yahoo.com/quote/QQQ" target="_blank"
+                            style="color: var(--accent-blue);">Yahoo Finance</a>의 <code>Previous Close</code> 값.</li>
+                    <li><strong>QQQ 시가/현재가</strong>: 개장 직전(23:30) Yahoo Finance의 <code>Pre-market</code> 또는 실시간 가격 확인.
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="guide-box">
+            <h3>📑 판정 기준 가이드</h3>
+            <div class="input-grid">
+                <div class="result-item" style="text-align: left; background: rgba(16, 185, 129, 0.05);">
+                    <h4 style="color: #10b981; margin-bottom: 0.5rem;">① Trend Confirm</h4>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary);">Gap과 Extension의 방향이 일치하며 수렴.
+                        |Divergence| < 0.3%.</p>
+                </div>
+                <div class="result-item" style="text-align: left; background: rgba(249, 115, 22, 0.05);">
+                    <h4 style="color: #f97316; margin-bottom: 0.5rem;">② Overreac. Unwind</h4>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary);">Gap 대비 반대 방향으로 Extension 진행. 갭 메우기 시도.
+                    </p>
+                </div>
+                <div class="result-item" style="text-align: left; background: rgba(56, 189, 248, 0.05);">
+                    <h4 style="color: var(--accent-blue); margin-bottom: 0.5rem;">③ Two-way Chop</h4>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary);">Extension이 ±0.2% 내에서 횡보. 방향성 부재.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function analyzeRegime() {
+            const fut = parseFloat(document.getElementById('futures-move').value) || 0;
+            const prev = parseFloat(document.getElementById('prev-close').value) || 0;
+            const open = parseFloat(document.getElementById('open-price').value) || 0;
+            const curr = parseFloat(document.getElementById('current-price').value) || 0;
+
+            if (!prev || !open) {
+                alert("종가와 시가를 입력해주세요.");
+                return;
+            }
+
+            const gap = ((open - prev) / prev * 100);
+            const div = gap - fut;
+            const ext = ((curr - open) / open * 100);
+
+            document.getElementById('res-gap').innerText = gap.toFixed(2) + "%";
+            document.getElementById('res-div').innerText = div.toFixed(2) + "%";
+            document.getElementById('res-ext').innerText = ext.toFixed(2) + "%";
+            document.getElementById('result-box').style.display = 'block';
+
+            const judgment = document.getElementById('judgment-output');
+            const reason = document.getElementById('reason-output');
+
+            judgment.className = 'judgment-box';
+
+            if (Math.abs(ext) < 0.2) {
+                judgment.innerText = "⚖️ Two-way Chop";
+                judgment.classList.add('judgment-chop');
+                reason.innerText = "시가 부근에서 방향성 없이 횡보 중입니다. 무리한 진입보다 관망이 유리합니다.";
+            } else if ((gap > 0 && ext > 0) || (gap < 0 && ext < 0)) {
+                judgment.innerText = "🚀 Trend Confirm";
+                judgment.classList.add('judgment-trend');
+                reason.innerText = "선물과 시가 갭의 방향이 유지되며 추세가 강화되고 있습니다. 강한 수급이 뒷받침되는 상태입니다.";
+            } else {
+                judgment.innerText = "↩️ Overreaction Unwind";
+                judgment.classList.add('judgment-unwind');
+                reason.innerText = "개장 초기의 갭 상승/하락을 메우려는 되돌림 흐름이 포착되었습니다. 과열 해소 과정을 경계하세요.";
+            }
+        }
+    </script>
+</body>
+
+</html>

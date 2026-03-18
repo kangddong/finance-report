@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!isNaN(eps) && !isNaN(per)) {
             const targetPrice = eps * per;
             resultValue.textContent = targetPrice.toLocaleString() + '원';
-            resultValue.style.color = '#fbbf24'; // Reset color
+            resultValue.style.color = '#fbbf24';
         } else {
             resultValue.textContent = '0원';
             resultValue.style.color = 'var(--text-secondary)';
@@ -95,6 +95,33 @@ document.addEventListener('DOMContentLoaded', () => {
     if (epsInput && perInput) {
         epsInput.addEventListener('input', calculateTargetPrice);
         perInput.addEventListener('input', calculateTargetPrice);
+    }
+
+    // --- Hedge Calculator Logic ---
+    const hedgePortfolio = document.getElementById('hedge-portfolio');
+    const hedgeRatio = document.getElementById('hedge-ratio');
+    const hedgeBeta = document.getElementById('hedge-beta');
+    const hedgeResult = document.getElementById('hedge-result-value');
+
+    function calculateHedge() {
+        const portfolio = parseFloat(hedgePortfolio.value);
+        const ratio = parseFloat(hedgeRatio.value) / 100;
+        const beta = Math.abs(parseFloat(hedgeBeta.value));
+
+        if (!isNaN(portfolio) && !isNaN(ratio) && !isNaN(beta) && beta !== 0) {
+            const requiredHedge = (portfolio * ratio) / beta;
+            hedgeResult.textContent = requiredHedge.toLocaleString(undefined, { maximumFractionDigits: 0 });
+            hedgeResult.style.color = '#fb7185'; // Hedge is defensive/protective red-ish
+        } else {
+            hedgeResult.textContent = '0';
+            hedgeResult.style.color = 'var(--text-secondary)';
+        }
+    }
+
+    if (hedgePortfolio && hedgeRatio && hedgeBeta) {
+        hedgePortfolio.addEventListener('input', calculateHedge);
+        hedgeRatio.addEventListener('input', calculateHedge);
+        hedgeBeta.addEventListener('input', calculateHedge);
     }
 
     // --- Section Navigation System ---

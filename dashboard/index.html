@@ -19,10 +19,15 @@
                     </select>
                 </div>
                 <div class="badge-container">
+                    <a href="macro-check.html" class="user-badge"
+                        style="text-decoration: none; cursor: pointer; background: rgba(249, 115, 22, 0.2); border-color: #f97316; color: #fff;">🌍
+                        Macro Check</a>
+                    <a href="market-regime.html" class="user-badge"
+                        style="text-decoration: none; cursor: pointer; background: rgba(16, 185, 129, 0.2); border-color: #10b981; color: #fff;">📊
+                        Market Regime</a>
                     <a href="reports.html" class="user-badge"
                         style="text-decoration: none; cursor: pointer; background: rgba(56, 189, 248, 0.2); border-color: var(--accent-blue); color: #fff;">Market
                         Insights</a>
-                    <div class="user-badge">주식 분석 리포트</div>
                 </div>
             </div>
             <h1>Premium Finance Report</h1>
@@ -53,7 +58,7 @@
 
         <!-- Main Navigation Section -->
         <nav class="main-nav">
-            <button class="nav-btn" data-section="valuation">📈 Valuation Tool</button>
+            <button class="nav-btn" data-section="tools">🛠 Financial Tools</button>
             <button class="nav-btn active" data-section="holdings">💼 보유 종목 현황</button>
             <button class="nav-btn" data-section="watchlist">🔍 관심 종목 분석</button>
             <button class="nav-btn" data-section="foreign">🌍 외국인 수급 분석</button>
@@ -61,13 +66,14 @@
         </nav>
 
         <div class="content-wrapper">
-            <!-- Valuation Tool Section -->
-            <section id="section-valuation" class="nav-section">
-                <div class="card full-width">
-                    <div class="section-label">Valuation Tool</div>
-                    <div class="card-title">Target Price Calculator</div>
-                    <div class="calculator-layout">
-                        <div class="calc-inputs">
+            <!-- Financial Tools Section -->
+            <section id="section-tools" class="nav-section">
+                <div class="tools-grid">
+                    <!-- Target Price Calculator -->
+                    <div class="card">
+                        <div class="section-label">Valuation Tool</div>
+                        <div class="card-title">Target Price Calculator</div>
+                        <div class="calc-inputs" style="grid-template-columns: 1fr;">
                             <div class="calc-input-group">
                                 <label for="calc-eps">EPS (주당순이익)</label>
                                 <input type="number" id="calc-eps" placeholder="예: 5000" class="calc-input">
@@ -77,10 +83,38 @@
                                 <input type="number" id="calc-per" placeholder="예: 10" class="calc-input">
                             </div>
                         </div>
-                        <div class="calc-divider-v"></div>
+                        <div class="calc-divider"></div>
                         <div class="calc-result">
                             <span class="calc-label">적정 주가 (Target Price)</span>
                             <span id="calc-result-value" class="calc-value">0원</span>
+                        </div>
+                    </div>
+
+                    <!-- Hedge Calculator -->
+                    <div class="card">
+                        <div class="section-label">Hedge Tool</div>
+                        <div class="card-title">Hedge Protection Calculator</div>
+                        <div class="calc-inputs" style="grid-template-columns: 1fr;">
+                            <div class="calc-input-group">
+                                <label for="hedge-portfolio">포트폴리오 총액 (원/달러)</label>
+                                <input type="number" id="hedge-portfolio" placeholder="예: 100,000,000"
+                                    class="calc-input">
+                            </div>
+                            <div class="calc-input-group">
+                                <label for="hedge-ratio">목표 헤지 비중 (%)</label>
+                                <input type="number" id="hedge-ratio" placeholder="예: 100" value="100"
+                                    class="calc-input">
+                            </div>
+                            <div class="calc-input-group">
+                                <label for="hedge-beta">헤지 자산 배수 (Beta)</label>
+                                <input type="number" id="hedge-beta" placeholder="예: -1 (Inverse), -3 (SQQQ)" value="-1"
+                                    class="calc-input">
+                            </div>
+                        </div>
+                        <div class="calc-divider"></div>
+                        <div class="calc-result">
+                            <span class="calc-label">필요 헤지 매수액</span>
+                            <span id="hedge-result-value" class="calc-value">0</span>
                         </div>
                     </div>
                 </div>

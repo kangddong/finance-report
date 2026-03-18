@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Macro RORO Checklist | Premium Finance</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .checklist-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .checklist-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(25px);
+            border-radius: 32px;
+            padding: 3rem;
+            border: 1px solid var(--glass-border);
+        }
+
+        .summary-box {
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid var(--accent-blue);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .summary-box h3 {
+            color: var(--accent-blue);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .macro-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 0.8rem;
+            margin-top: 2rem;
+        }
+
+        .macro-table th {
+            padding: 1rem;
+            text-align: left;
+            color: var(--accent-purple);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1rem;
+            font-size: 0.85rem;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .macro-table td {
+            padding: 1.2rem 1rem;
+            background: rgba(255, 255, 255, 0.03);
+            vertical-align: middle;
+            font-size: 0.95rem;
+        }
+
+        .macro-table tr td:first-child {
+            border-radius: 16px 0 0 16px;
+            border-left: 1px solid var(--glass-border);
+        }
+
+        .macro-table tr td:last-child {
+            border-radius: 0 16px 16px 0;
+            border-right: 1px solid var(--glass-border);
+        }
+
+        .macro-table tr:hover td {
+            background: rgba(255, 255, 255, 0.07);
+        }
+
+        .category-row td {
+            background: transparent !important;
+            padding: 2rem 1rem 0.5rem 1rem !important;
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: var(--text-primary);
+        }
+
+        .direction-up {
+            color: var(--up-color);
+            font-weight: 700;
+        }
+
+        .direction-down {
+            color: var(--down-color);
+            font-weight: 700;
+        }
+
+        .ticker {
+            font-family: 'Courier New', Courier, monospace;
+            color: var(--accent-blue);
+            background: rgba(56, 189, 248, 0.1);
+            padding: 0.2rem 0.6rem;
+            border-radius: 6px;
+            font-weight: 600;
+        }
+
+        .exception-box {
+            margin-top: 4rem;
+            background: rgba(251, 113, 133, 0.05);
+            border: 1px solid rgba(251, 113, 133, 0.3);
+            border-radius: 24px;
+            padding: 2.5rem;
+        }
+
+        .exception-box h3 {
+            color: var(--up-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .guide-step {
+            margin-bottom: 1rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .step-num {
+            background: var(--accent-blue);
+            color: var(--primary-bg);
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+            margin-top: 0.2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="checklist-container">
+        <header style="margin-bottom: 3rem; text-align: left; animation: none;">
+            <a href="index.html" class="user-badge" style="text-decoration: none;">← Dashboard</a>
+            <h1 style="margin-top: 1.5rem; text-align: left; font-size: 3rem;">Global Macro <br>RORO Checklist</h1>
+            <p style="text-align: left;">매일 아침 1분, 시장의 공격(Risk-On)과 방어(Risk-Off)를 판별하는 20가지 지표</p>
+        </header>
+
+        <div class="summary-box">
+            <h3>⏱ 1분 요약 사용법</h3>
+            <div class="guide-step">
+                <div class="step-num">1</div>
+                <div><strong>변동성(VIX/MOVE) 확인:</strong> 둘 다 하락 중이면 시장은 안정을 찾고 Risk-On 환경이 조성됩니다.</div>
+            </div>
+            <div class="guide-step">
+                <div class="step-num">2</div>
+                <div><strong>유동성 프록시(BTC/AUDJPY) 확인:</strong> 이들이 상승하면 스마트 머니가 공격적인 포지션을 취하고 있다는 신호입니다.</div>
+            </div>
+            <div class="guide-step">
+                <div class="step-num">3</div>
+                <div><strong>달러(DXY)와 금리(US10Y) 비교:</strong> 증시가 오르는데 이들이 내리면 '골디락스', 함께 오르면 '오버슈팅' 위험을 경계하세요.</div>
+            </div>
+            <div class="guide-step">
+                <div class="step-num">4</div>
+                <div><strong>예외 상황 체크:</strong> 전쟁이나 지정학 위기 시에는 유가와 금이 'Risk-Off'에도 불구하고 상승하는 예외를 스캔합니다.</div>
+            </div>
+        </div>
+
+        <div class="checklist-card">
+            <table class="macro-table">
+                <thead>
+                    <tr>
+                        <th style="width: 25%;">지표/자산</th>
+                        <th style="width: 35%;">중요도 및 의미 (Researcher Insight)</th>
+                        <th style="width: 15%; text-align: center;">Risk-On</th>
+                        <th style="width: 15%; text-align: center;">Risk-Off</th>
+                        <th style="width: 10%; text-align: right;">Ticker</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Category: US Equities -->
+                    <tr class="category-row">
+                        <td colspan="5">🇺S 주가지수 (Equity Beta)</td>
+                    </tr>
+                    <tr>
+                        <td>S&P 500 Futures</td>
+                        <td>글로벌 증시의 가장 강력한 벤치마크이자 심리 지표</td>
+                        <td style="text-align: center;" class="direction-up">↑</td>
+                        <td style="text-align: center;" class="direction-down">↓</td>
+                        <td style="text-align: right;"><span class="ticker">ES1!</span></td>
+                    </tr>
+                    <tr>
+                        <td>Nasdaq 100 Futures</td>
+                        <td>성장주, 기술주 랠리의 핵심. 유동성 민감도가 매우 높음</td>
+                        <td style="text-align: center;" class="direction-up">↑</td>
+                        <td style="text-align: center;" class="direction-down">↓</td>
+                        <td style="text-align: right;"><span class="ticker">NQ1!</span></td>
+                    </tr>
+                    <tr>
+                        <td>Russell 2000 Futures</td>
+                        <td>중소형주 지수. '찐' 위험 선호가 나타날 때 급등함</td>
+                        <td style="text-align: center;" class="direction-up">↑↑</td>
+                        <td style="text-align: center;" class="direction-down">↓↓</td>
+                        <td style="text-align: right;"><span class="ticker">RTY1!</span></td>
+                    </tr>
+
+                    <!-- Category: Volatility -->
+                    <tr class="category-row">
+                        <td colspan="5">🌪 변동성 (Volatility)</td>
+                    </tr>
+                    <tr>
+                        <td>VIX Index</td>
+                        <td>S&P 500 옵션 기반 공포 지수. 20 이상 시 주의</td>
+                        <td style="text-align: center;" class="direction-down">↓</td>
+                        <td style="text-align: center;" class="direction-up">↑</td>
+                        <td style="text-align: right;"><span class="ticker">VIX</span></td>
+                    </tr>
+                    <tr>
+                        <td>VVIX Index</td>
+                        <td>VIX의 변동성. 꼬리 위험(Tail Risk)에 대한 헤지 수요 판별</td>
+                        <td style="text-align: center;" class="direction-down">↓</td>
+                        <td style="text-align: center;" class="direction-up">↑</td>
+                        <td style="text-align: right;"><span class="ticker">VVIX</span></td>
+                    </tr>
+                    <tr>
+                        <td>MOVE Index</td>
+                        <td>채권 시장의 변동성. 주식보다 먼저 깨지는 신호탄 역할</td>
+                        <td style="text-align: center;" class="direction-down">↓</td>
+                        <td style="text-align: center;" class="direction-up">↑</td>
+                        <td style="text-align: right;"><span class="ticker">MOVE</span></td>
+                    </tr>
+
+                    <!-- Category: Treasury -->
+                    <tr class="category-row">
+                        <td colspan="5">🏛 금리 및 채권 (Rates & Bonds)</td>
+                    </tr>
+                    <tr>
+                        <td>US 10Y Yield</td>
+                        <td>글로벌 무위험 금리의 기준. 실질 금리 상승은 위협적</td>
+                        <td style="text-align: center;" class="direction-up">↑ (Stability)</td>
+                        <td style="text-align: center;" class="direction-down">↓ (Safety)</td>
+                        <td style="text-align: right;"><span class="ticker">US10Y</span></td>
+                    </tr>
+                    <tr>
+                        <td>US 2Y Yield</td>
+                        <td>연준의 정책 금리에 가장 민감. 긴축 속도를 반영</td>
+                        <td style="text-align: center;">-</td>
+                        <td style="text-align: center;">-</td>
+                        <td style="text-align: right;"><span class="ticker">US02Y</span></td>
+                    </tr>
+                    <tr>
+                        <td>10Y - 2Y Spread</td>
+                        <td>장단기 금리차. 경기 침체 vs 회복의 가장 정확한 예언자</td>
+                        <td style="text-align: center;">Steepening</td>
+                        <td style="text-align: center;">Inversion</td>
+                        <td style="text-align: right;"><span class="ticker">10Y-2Y</span></td>
+                    </tr>
+                    <tr>
+                        <td>HYG/IEF Ratio</td>
+                        <td>투기등급 채권과 국채 비중. 크레딧 리스크 선호도 프록시</td>
+                        <td style="text-align: center;" class="direction-up">↑</td>
+                        <td style="text-align: center;" class="direction-down">↓</td>
+                        <td style="text-align: right;"><span class="ticker">HYG/IEF</span></td>
+                    </tr>
+
+                    <!-- Category: FX -->
+                    <tr class="category-row">
+                        <td colspan="5">💵 달러 및 외환 (FX)</td>
+                    </tr>
+                    <tr>
+                        <td>Dollar Index (DXY)</td>
+                        <td>킹달러는 신흥국과 위험자산의 적. 낮을수록 Risk-On 유리</td>
+                        <td style="text-align: center;" class="direction-down">↓</td>
+                        <td style="text-align: center;" class="direction-up">↑</td>
+                        <td style="text-align: right;"><span class="ticker">DXY</span></td>
+                    </tr>
+                    <tr>
+                        <td>USD/JPY</td>
+                        <td>대표적 안전자산 엔화. 환율 하락(엔고)은 위기 신호</td>
+                        <td style="text-align: center;" class="direction-up">↑ (엔저)</td>
+                        <td style="text-align: center;" class="direction-down">↓ (엔고)</td>
+                        <td style="text-align: right;"><span class="ticker">USDJPY</span></td>
+                    </tr>
+                    <tr>
+                        <td>AUD/JPY</td>
+                        <td>자원부국(수출) vs 저금리(안전). RORO 판단의 정석 페어</td>
+                        <td style="text-align: center;" class="direction-up">↑</td>
+                        <td style="text-align: center;" class="direction-down">↓</td>
+                        <td style="text-align: right;"><span class="ticker">AUDJPY</span></td>
+                    </tr>
+
+                    <!-- Category: Commodities -->
+                    <tr class="category-row">
+                        <td colspan="5">⛏ 원자재 (Commodities)</td>
+                    </tr>
+                    <tr>
+                        <td>Copper Futures</td>
+                        <td>'닥터 코퍼'. 실물 경제의 수요와 회복을 직접적으로 반영</td>
+                        <td style="text-align: center;" class="direction-up">↑</td>
+                        <td style="text-align: center;" class="direction-down">↓</td>
+                        <td style="text-align: right;"><span class="ticker">HG1!</span></td>
+                    </tr>
+                    <tr>
+                        <td>Gold Futures</td>
+                        <td>최종적인 안전자산. 중앙은행들의 현금 대안 수요 반영</td>
+                        <td style="text-align: center;" class="direction-down">↓</td>
+                        <td style="text-align: center;" class="direction-up">↑</td>
+                        <td style="text-align: right;"><span class="ticker">GC1!</span></td>
+                    </tr>
+                    <tr>
+                        <td>WTI Crude Oil</td>
+                        <td>글로벌 에너지 비용. 수요 증가 시 상승하나 비용 압박 변수</td>
+                        <td style="text-align: center;" class="direction-up">↑ (Demand)</td>
+                        <td style="text-align: center;" class="direction-down">↓ (Recession)</td>
+                        <td style="text-align: right;"><span class="ticker">CL1!</span></td>
+                    </tr>
+
+                    <!-- Category: Crypto -->
+                    <tr class="category-row">
+                        <td colspan="5">₿ 크립토 (Crypto Asset)</td>
+                    </tr>
+                    <tr>
+                        <td>Bitcoin (BTC)</td>
+                        <td>디지털 골드이자 최고의 투기 자산. 유동성 과잉 여부 판별</td>
+                        <td style="text-align: center;" class="direction-up">↑</td>
+                        <td style="text-align: center;" class="direction-down">↓</td>
+                        <td style="text-align: right;"><span class="ticker">BTCUSD</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="exception-box">
+            <h3>⚠️ [예외 섹션] 전쟁 및 지정학적 리스크 발발 시</h3>
+            <p style="color: var(--text-secondary); margin-bottom: 2rem;">
+                통상적인 Risk-Off와 달리, 공급망 충격이나 안보 위기가 닥치면 아래 항목들은 증시 폭락과 **함께 상승**합니다.
+            </p>
+            <div class="insight-grid">
+                <div class="insight-card" style="border-color: rgba(251, 113, 133, 0.4);">
+                    <h4 style="color: var(--up-color);">유가 (Crude Oil)</h4>
+                    <p>수요 감소(경기침체) 공포보다 공급 중단(전쟁) 공포가 클 때, Risk-Off 상황임에도 폭등합니다.</p>
+                </div>
+                <div class="insight-card" style="border-color: rgba(251, 113, 133, 0.4);">
+                    <h4 style="color: var(--up-color);">방산/에너지 섹터</h4>
+                    <p>자산시장 전반이 투매에 휩싸여도 국방 예산 증액 및 자원 무기화 기대감으로 독자적 랠리를 보입니다. (예: HAE, LMT)</p>
+                </div>
+                <div class="insight-card" style="border-color: rgba(251, 113, 133, 0.4);">
+                    <h4 style="color: var(--up-color);">달러 (DXY)</h4>
+                    <p>금리가 내려가도 '안전 기축 통화'에 대한 쏠림으로 달러 가치만 독주하는 현상이 나타납니다.</p>
+                </div>
+            </div>
+        </div>
+
+        <footer style="margin-top: 5rem; text-align: center; color: var(--text-secondary); font-size: 0.9rem;">
+            © 2026 Antigravity Macro Research Unit. For Educational Purposes Only.
+        </footer>
+    </div>
+</body>
+
+</html>
