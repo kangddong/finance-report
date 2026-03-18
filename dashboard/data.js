@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @file data.js
  * @description 주식 분석 리포트의 히스토리를 저장하는 파일입니다.
  * sync-dashboard 스킬에 의해 자동으로 업데이트됩니다.
@@ -98,6 +98,111 @@ const REPORTS_HISTORY = [
             "position": "Defensive",
             "title": "폭풍 전의 고요함, 월요일장을 대비하라",
             "description": "2월의 마지막 주말은 평온하지 않습니다. 이란-이스라엘 충돌 소식은 금융 시장의 위험 회피(Risk-off) 심리를 자극할 것입니다. 월요일 개장 시 갭하락 출발 가능성이 높으므로, 성급한 추격 매수보다는 시장이 안정을 찾는 화요일 이후를 노리는 보수적인 접근이 필요합니다. 현금 비중 20% 이상 유지를 권장합니다."
+        },
+        "foreignInvestorTrend": {
+            "market_flow": [
+                {
+                    "investor": "개인",
+                    "summary": "최신 순매수 금액 -6,409억",
+                    "top_stocks": [
+                        {
+                            "name": "03-17 -6,409억"
+                        },
+                        {
+                            "name": "03-16 +8,032억"
+                        },
+                        {
+                            "name": "03-13 +32,649억"
+                        }
+                    ]
+                },
+                {
+                    "investor": "외국인",
+                    "summary": "최신 순매수 금액 -2,771억",
+                    "top_stocks": [
+                        {
+                            "name": "03-17 -2,771억"
+                        },
+                        {
+                            "name": "03-16 -8,494억"
+                        },
+                        {
+                            "name": "03-13 -18,352억"
+                        }
+                    ]
+                },
+                {
+                    "investor": "기관",
+                    "summary": "최신 순매수 금액 +9,238억",
+                    "top_stocks": [
+                        {
+                            "name": "03-17 +9,238억"
+                        },
+                        {
+                            "name": "03-16 -178억"
+                        },
+                        {
+                            "name": "03-13 -14,601억"
+                        }
+                    ]
+                }
+            ],
+            "daily_rows": [
+                {
+                    "date": "2026-03-17",
+                    "individualsNetBuying": -640896067020,
+                    "foreignersNetBuying": -277149255959,
+                    "institutionsNetBuying": 923761871536
+                },
+                {
+                    "date": "2026-03-16",
+                    "individualsNetBuying": 803187650987,
+                    "foreignersNetBuying": -849428115809,
+                    "institutionsNetBuying": -17819435253
+                },
+                {
+                    "date": "2026-03-13",
+                    "individualsNetBuying": 3264927245543,
+                    "foreignersNetBuying": -1835192446457,
+                    "institutionsNetBuying": -1460057398481
+                },
+                {
+                    "date": "2026-03-12",
+                    "individualsNetBuying": 3107270402663,
+                    "foreignersNetBuying": -3000306446659,
+                    "institutionsNetBuying": -240066022765
+                },
+                {
+                    "date": "2026-03-11",
+                    "individualsNetBuying": -388616227228,
+                    "foreignersNetBuying": -309999872287,
+                    "institutionsNetBuying": 718859878626
+                }
+            ],
+            "top_foreign": [
+                {
+                    "Rank": 1,
+                    "Name": "03-17 -2,771억"
+                },
+                {
+                    "Rank": 2,
+                    "Name": "03-16 -8,494억"
+                },
+                {
+                    "Rank": 3,
+                    "Name": "03-13 -18,352억"
+                },
+                {
+                    "Rank": 4,
+                    "Name": "03-12 -30,003억"
+                },
+                {
+                    "Rank": 5,
+                    "Name": "03-11 -3,100억"
+                }
+            ],
+            "source": "Toss Invest",
+            "fetchedAt": "2026-03-18 02:16:03"
         }
     },
     {
@@ -2082,12 +2187,12 @@ const ANALYSIS_REPORTS = [
         "link": "analysis/doosan-enerbility-smr.html",
         "thumbnail": null
     },
-    {
+        {
         "id": "foreign-sector-flow",
-        "title": "외국인 매매 동향: 지금 어디로 돈이 흐르는가?",
+        "title": "코스피 매매 동향: 오늘 시장의 주도 자금은 어디인가?",
         "date": "2026-02-07",
-        "summary": "최근 외국인 매도세 속에서도 매수 우위를 보이는 '방산/바이오' 섹터와 매도 집중 섹터인 '반도체/2차전지'의 수급 현황을 분석합니다.",
-        "tags": ["수급분석", "외국인", "섹터전략"],
+        "summary": "코스피 시장에서 투자 주체별 매수·매도 흐름과 업종별 자금 이동을 한눈에 정리한 매매 동향 리포트입니다.",
+        "tags": ["코스피", "매매동향", "수급분석"],
         "link": "analysis/foreign-sector-flow.html",
         "thumbnail": null
     },
@@ -2119,3 +2224,434 @@ const ANALYSIS_REPORTS = [
         "thumbnail": null
     }
 ];
+
+const COMPANY_ANALYSIS_ITEMS = [
+    {
+        name: "삼성전자",
+        ticker: "005930.KS",
+        summary: "메모리, 파운드리, 모바일, 디스플레이를 아우르는 사업 포트폴리오와 AI 반도체 사이클 속 실적 회복 가능성을 정리한 기업 분석입니다.",
+        tags: ["반도체", "파운드리", "HBM", "AI"],
+        link: "analysis/samsung-electronics.html"
+    },
+    {
+        name: "SK하이닉스",
+        ticker: "000660.KS",
+        summary: "HBM 주도권과 메모리 업황 개선, AI 수요 확대에 따른 실적 레버리지와 밸류에이션 포인트를 정리한 기업 분석입니다.",
+        tags: ["반도체", "HBM", "DRAM", "AI"],
+        link: "analysis/sk-hynix.html"
+    },
+    {
+        name: "엔비디아",
+        ticker: "NVDA",
+        summary: "AI 가속기 시장 지배력, CUDA 생태계, 데이터센터 수요 지속성, 높은 기대가 반영된 밸류에이션 부담을 함께 정리한 기업 분석입니다.",
+        tags: ["AI", "GPU", "데이터센터", "플랫폼"],
+        link: "analysis/nvidia.html"
+    },
+    {
+        name: "현대차",
+        ticker: "005380.KS",
+        summary: "하이브리드 경쟁력, 주주환원 정책, 글로벌 생산 포트폴리오와 SDV 전환 가능성을 중심으로 정리한 기업 분석입니다.",
+        tags: ["자동차", "하이브리드", "주주환원", "SDV"],
+        link: "analysis/hyundai-motor.html"
+    },
+    {
+        name: "LG전자",
+        ticker: "066570.KS",
+        summary: "가전 중심의 안정적 현금흐름 위에 전장과 냉난방공조 성장이 더해지는 사업 재평가 가능성을 정리한 기업 분석입니다.",
+        tags: ["가전", "전장", "HVAC", "B2B"],
+        link: "analysis/lg-electronics.html"
+    },
+    {
+        name: "팔란티어",
+        ticker: "PLTR",
+        summary: "정부·국방 기반의 안정적 매출 위에 AIP 중심 민간 확장이 더해지는 소프트웨어 플랫폼 기업으로서의 투자 포인트를 정리한 기업 분석입니다.",
+        tags: ["AI", "소프트웨어", "플랫폼", "데이터"],
+        link: "analysis/palantir.html"
+    }
+];
+
+const COMPANY_DETAIL_LIBRARY = {
+    samsung: {
+        name: "삼성전자", ticker: "005930.KS", subtitle: "메모리 업황 회복과 HBM 추격, 파운드리 체질 개선을 함께 봐야 하는 종합 반도체 기업",
+        business: "메모리, 파운드리, 모바일, 디스플레이, 가전까지 포트폴리오가 넓어 업황 변동을 흡수할 체력이 강합니다.",
+        thesis: "메모리 가격 반등과 HBM 성과가 숫자로 확인되면 대형 우량주에서 성장주 성격이 일부 붙을 수 있습니다.",
+        risks: "HBM 인증 지연, 파운드리 적자 지속, 메모리 업황 둔화가 핵심 리스크입니다."
+    },
+    skhynix: {
+        name: "SK하이닉스", ticker: "000660.KS", subtitle: "HBM 리더십을 앞세운 AI 메모리 사이클의 핵심 수혜주",
+        business: "DRAM과 NAND 중심의 메모리 기업이며, 현재 투자 포인트는 사실상 HBM 지배력입니다.",
+        thesis: "AI 서버 증설과 HBM 믹스 개선이 이어지면 이익 레버리지가 가장 크게 열릴 수 있습니다.",
+        risks: "경쟁사 증설, 고객사 발주 둔화, 메모리 가격 조정이 부담입니다."
+    },
+    nvidia: {
+        name: "엔비디아", ticker: "NVDA", subtitle: "CUDA 생태계와 GPU 독점력을 가진 AI 인프라 표준 기업",
+        business: "GPU 판매를 넘어 AI 데이터센터 인프라와 개발자 생태계 전체를 지배하는 플랫폼 기업입니다.",
+        thesis: "좋은 회사인 것은 분명하지만 이제는 성장 지속성과 현재 밸류에이션 정당화가 더 중요합니다.",
+        risks: "빅테크 자체 칩 확대, 고객 CAPEX 피크아웃, 높은 기대치가 부담입니다."
+    },
+    hyundai: {
+        name: "현대차", ticker: "005380.KS", subtitle: "하이브리드와 주주환원으로 할인 축소를 노리는 완성차 대표주",
+        business: "완성차, 금융, 브랜드, 글로벌 생산 네트워크를 가진 종합 모빌리티 기업입니다.",
+        thesis: "북미 고수익 믹스와 하이브리드 강세가 밸류에이션 할인 축소의 핵심입니다.",
+        risks: "미국 정책 변화, 관세, 인센티브 경쟁이 부담입니다."
+    },
+    lge: {
+        name: "LG전자", ticker: "066570.KS", subtitle: "가전 캐시카우 위에 전장과 HVAC 성장이 더해지는 복합 기업",
+        business: "생활가전과 TV가 안정성을 제공하고, 전장과 냉난방공조가 성장축을 담당합니다.",
+        thesis: "전장과 HVAC 비중 확대가 실적으로 확인되면 단순 가전주 할인에서 벗어날 수 있습니다.",
+        risks: "소비 경기 둔화, TV 부진, 전장 수익성 지연이 리스크입니다."
+    },
+    palantir: {
+        name: "팔란티어", ticker: "PLTR", subtitle: "정부 기반 안정성과 AIP 민간 확장이 공존하는 AI 소프트웨어 플랫폼",
+        business: "데이터 통합과 의사결정 운영체제를 제공하는 소프트웨어 플랫폼 기업입니다.",
+        thesis: "민간 매출 성장과 수익성 개선이 이어질수록 고밸류가 정당화될 수 있습니다.",
+        risks: "높은 기대치, 대형 계약 변동성, 스톡보상 부담이 핵심입니다."
+    },
+    kia: {
+        name: "기아", ticker: "000270.KS", subtitle: "현대차 그룹 내 고수익 믹스와 브랜드 개선을 이끄는 핵심 완성차",
+        business: "SUV와 RV 중심 포트폴리오, 북미 판매력, 전동화 전환 대응력이 강점입니다.",
+        thesis: "현대차와 유사하게 하이브리드·고수익 믹스가 실적을 방어하며 주주환원 기대가 유효합니다.",
+        risks: "관세, 경쟁 심화, 환율 민감도가 부담입니다."
+    },
+    mobis: {
+        name: "현대모비스", ticker: "012330.KS", subtitle: "전장과 모듈 중심으로 현대차 그룹 가치사슬의 핵심을 담당하는 부품주",
+        business: "모듈, 핵심 부품, 전장, AS부품 사업을 통해 안정성과 성장성을 함께 가집니다.",
+        thesis: "전장 비중 확대와 AS부품의 안정적 이익이 재평가 포인트입니다.",
+        risks: "완성차 생산 변동, 전동화 투자 부담, 고객 집중도가 리스크입니다."
+    },
+    doosan: {
+        name: "두산에너빌리티", ticker: "034020.KS", subtitle: "원전과 발전 설비, AI 전력 수요 기대가 동시에 붙는 전력 인프라 대표주",
+        business: "원전, 가스터빈, 발전 설비와 관련 EPC 역량을 가진 중후장대 산업주입니다.",
+        thesis: "원전 르네상스와 전력 인프라 투자 확대가 장기 수주 스토리를 강화합니다.",
+        risks: "대형 프로젝트 지연, 원가 부담, 정책 변수에 민감합니다."
+    },
+    hyosungheavy: {
+        name: "효성중공업", ticker: "298040.KS", subtitle: "변압기와 전력기기 수요 확대의 대표 수혜주",
+        business: "변압기, 차단기 등 전력기기와 중공업 사업을 영위합니다.",
+        thesis: "글로벌 전력망 투자 확대와 북미 중심 수요가 실적 가시성을 높입니다.",
+        risks: "원가 변동과 수주 타이밍 변동성이 리스크입니다."
+    },
+    lselectric: {
+        name: "LS ELECTRIC", ticker: "010120.KS", subtitle: "자동화와 전력기기를 동시에 갖춘 스마트 전력 인프라 기업",
+        business: "전력기기, 자동화, 스마트팩토리 솔루션을 제공하는 산업재 기업입니다.",
+        thesis: "AI 전력 수요와 공장 자동화 흐름이 함께 작동하는 점이 강점입니다.",
+        risks: "설비투자 둔화와 글로벌 경기 민감도가 부담입니다."
+    },
+    hanwhaaero: {
+        name: "한화에어로스페이스", ticker: "012450.KS", subtitle: "방산 수출과 항공엔진 역량을 동시에 가진 방산 대장주",
+        business: "지상무기, 우주항공, 엔진 사업까지 보유한 종합 방산 기업입니다.",
+        thesis: "유럽·중동 수출 확대와 장기 수주가 밸류에이션 상향을 지지합니다.",
+        risks: "급등 후 밸류 부담, 대형 수주 변동성이 있습니다."
+    },
+    lignex1: {
+        name: "LIG넥스원", ticker: "079550.KS", subtitle: "유도무기와 정밀타격체계 중심의 첨단 방산주",
+        business: "유도무기, 감시정찰, 항공전자 분야에서 경쟁력을 가진 방산 기업입니다.",
+        thesis: "첨단 무기 수요와 수출 확대가 실적 성장 동력입니다.",
+        risks: "프로젝트 일정과 정책 변수에 민감합니다."
+    },
+    hyundairotem: {
+        name: "현대로템", ticker: "064350.KS", subtitle: "방산과 철도, 플랜트를 아우르는 수출형 산업재 기업",
+        business: "K2 전차, 철도차량, 플랜트 장비를 생산합니다.",
+        thesis: "방산 수출 비중 확대가 실적 체질 개선의 핵심입니다.",
+        risks: "수주 공백과 원가 통제가 중요합니다."
+    },
+    lgenergy: {
+        name: "LG에너지솔루션", ticker: "373220.KS", subtitle: "글로벌 배터리 셀 탑티어지만 단기 수요 둔화 영향을 받는 대장주",
+        business: "전기차용 배터리 셀과 ESS용 배터리를 공급하는 글로벌 배터리 기업입니다.",
+        thesis: "장기 성장성은 강하지만 단기적으로는 수요 회복 시점이 중요합니다.",
+        risks: "EV 수요 둔화, 가격 경쟁, 보조금 정책 변화가 부담입니다."
+    },
+    poscofuture: {
+        name: "포스코퓨처엠", ticker: "003670.KS", subtitle: "양극재와 음극재 중심의 배터리 소재 대표주",
+        business: "배터리 소재 밸류체인에서 핵심인 양극재·음극재를 담당합니다.",
+        thesis: "전기차 수요 회복 시 소재 레버리지가 크게 나타날 수 있습니다.",
+        risks: "메탈 가격 변동과 고객사 수요 둔화가 리스크입니다."
+    },
+    ecoprobm: {
+        name: "에코프로비엠", ticker: "247540.KQ", subtitle: "고니켈 양극재 강점을 가진 2차전지 소재 핵심주",
+        business: "양극재 중심 사업을 영위하며 국내 2차전지 투자심리의 바로미터 역할을 합니다.",
+        thesis: "수요 회복이 오면 주가 탄력은 크지만 변동성도 매우 큽니다.",
+        risks: "실적 추정치 하향과 밸류 부담이 큽니다."
+    },
+    naver: {
+        name: "네이버", ticker: "035420.KS", subtitle: "검색·광고·커머스 기반 위에 AI 서비스 확장을 더하는 국내 플랫폼 대장주",
+        business: "검색 광고, 커머스, 콘텐츠, 클라우드와 AI 서비스가 핵심입니다.",
+        thesis: "본업 회복과 AI 수익화가 함께 확인되면 재평가 여지가 있습니다.",
+        risks: "광고 경기 둔화, 경쟁 심화, AI 투자비 부담이 있습니다."
+    },
+    kakao: {
+        name: "카카오", ticker: "035720.KS", subtitle: "플랫폼 자산은 많지만 구조조정과 수익성 회복이 중요한 플랫폼주",
+        business: "메신저, 콘텐츠, 모빌리티, 금융 등 다양한 플랫폼 자산을 보유합니다.",
+        thesis: "사업 재편과 비용 통제가 숫자로 확인되면 할인 축소가 가능합니다.",
+        risks: "규제, 구조조정 지연, 광고·콘텐츠 부진이 리스크입니다."
+    },
+    samsungbio: {
+        name: "삼성바이오로직스", ticker: "207940.KS", subtitle: "CDMO 수주 경쟁력을 바탕으로 실적 가시성이 높은 대형 바이오주",
+        business: "바이오의약품 위탁개발생산(CDMO) 사업이 핵심입니다.",
+        thesis: "수주와 증설이 실적 성장으로 이어지는 구조가 명확합니다.",
+        risks: "증설 이후 가동률과 수주 속도가 중요합니다."
+    },
+    celltrion: {
+        name: "셀트리온", ticker: "068270.KS", subtitle: "바이오시밀러 중심으로 실적과 신제품 모멘텀을 함께 보는 대표 바이오주",
+        business: "바이오시밀러 개발과 판매가 핵심 사업입니다.",
+        thesis: "신제품 확대와 유통 구조 안정화가 관건입니다.",
+        risks: "약가 경쟁, 규제, 실적 변동성이 부담입니다."
+    },
+    alteogen: {
+        name: "알테오젠", ticker: "196170.KQ", subtitle: "기술수출 기대와 플랫폼 가치가 핵심인 고변동성 바이오주",
+        business: "바이오 플랫폼과 기술수출 기대가 투자 포인트인 기업입니다.",
+        thesis: "대형 기술이전이나 임상 성과가 나올 때 밸류 확장이 큽니다.",
+        risks: "이벤트 지연 시 변동성이 매우 커집니다."
+    },
+    hdship: {
+        name: "HD한국조선해양", ticker: "009540.KS", subtitle: "조선 업황 회복의 대표 지주형 플레이어",
+        business: "LNG선, 특수선, 엔진, 조선 자회사를 거느린 조선 지주사입니다.",
+        thesis: "고선가와 수주잔고가 이익 개선으로 이어질 가능성이 높습니다.",
+        risks: "원가 반영과 인력·납기 문제가 변수입니다."
+    },
+    hanwhaocean: {
+        name: "한화오션", ticker: "042660.KS", subtitle: "조선·해양과 방산 스토리가 함께 붙는 복합 플레이어",
+        business: "조선과 해양플랜트, 특수선 역량을 가진 대형 조선사입니다.",
+        thesis: "방산과 특수선 기대가 일반 조선주 대비 차별화 요소입니다.",
+        risks: "원가 통제와 수주 공백 리스크가 있습니다."
+    },
+    samsungheavy: {
+        name: "삼성중공업", ticker: "010140.KS", subtitle: "고부가가치 선박 중심으로 턴어라운드를 노리는 조선주",
+        business: "해양플랜트와 LNG선 중심 포트폴리오를 보유한 조선사입니다.",
+        thesis: "고선가 수주가 손익에 반영되면 실적 개선 폭이 커질 수 있습니다.",
+        risks: "해양플랜트 변동성과 원가 부담이 큽니다."
+    }
+};
+
+const SECTOR_ANALYSIS_ITEMS = [
+    {
+        name: "반도체",
+        performance: "+8.4%",
+        flow: "강세",
+        flowOfFunds: "외국인 중심 선호",
+        valuation: "높지만 정당화 구간",
+        leaders: ["삼성전자", "SK하이닉스", "엔비디아"],
+        summary: "AI 서버 투자와 HBM 수요가 계속 핵심 모멘텀입니다. 단기 변동성은 크지만 업황 회복과 기술 경쟁력이 동시에 붙는 구간이라 시장의 중심 섹터 역할을 이어가고 있습니다.",
+        drivers: "HBM 공급 부족, 데이터센터 CAPEX 지속, 메모리 가격 반등 기대가 섹터를 지지합니다.",
+        watchPoint: "AI 투자 피크아웃 신호, HBM 증설 속도, 엔비디아 가이던스가 가장 중요합니다.",
+        view: "강세 지속",
+        link: "analysis/sector-semiconductors.html"
+    },
+    {
+        name: "자동차",
+        performance: "+5.1%",
+        flow: "강세",
+        flowOfFunds: "기관·가치 자금 유입",
+        valuation: "여전히 저평가 매력",
+        leaders: ["현대차", "기아", "현대모비스"],
+        summary: "전기차 캐즘 국면에서도 하이브리드와 북미 고수익 믹스가 버팀목이 되고 있습니다. 실적 안정성과 주주환원 기대가 같이 붙는 섹터입니다.",
+        drivers: "하이브리드 판매 호조, 주주환원 정책, 북미 판매 믹스 개선이 밸류에이션 할인 축소를 유도합니다.",
+        watchPoint: "미국 정책 변화, 관세 이슈, 인센티브 경쟁 심화 여부를 봐야 합니다.",
+        view: "눌림목 매수",
+        link: "analysis/sector-autos.html"
+    },
+    {
+        name: "전력",
+        performance: "+7.3%",
+        flow: "강세",
+        flowOfFunds: "테마와 실적 자금 동시 유입",
+        valuation: "중립 이상",
+        leaders: ["두산에너빌리티", "효성중공업", "LS ELECTRIC"],
+        summary: "AI 데이터센터 증설이 전력 인프라 투자로 연결되면서 구조적 수혜 기대가 커졌습니다. 단순 테마가 아니라 실제 수주와 설비 투자로 이어질 가능성이 높은 점이 강점입니다.",
+        drivers: "AI 전력 수요, 전력망 투자, 원전 및 변압기·송배전 설비 발주 기대가 섹터를 밀고 있습니다.",
+        watchPoint: "실제 수주 공시와 CAPEX 확대가 숫자로 확인되는지 중요합니다.",
+        view: "강세 지속",
+        link: "analysis/sector-power-infra.html"
+    },
+    {
+        name: "방산",
+        performance: "+6.8%",
+        flow: "강세",
+        flowOfFunds: "지정학 리스크 수혜 자금 유입",
+        valuation: "높아졌지만 모멘텀 유지",
+        leaders: ["한화에어로스페이스", "LIG넥스원", "현대로템"],
+        summary: "전쟁과 지정학 긴장이 이어질수록 방산 수출 기대가 유지됩니다. 실적 기반 수주 산업이라는 점에서 단순 뉴스 테마보다 지속성이 있는 편입니다.",
+        drivers: "유럽과 중동 지역 안보 우려, 장기 수주 계약, 정책 지원이 긍정적으로 작용합니다.",
+        watchPoint: "단기 급등 이후 밸류에이션 부담과 실제 수주 속도의 괴리를 확인해야 합니다.",
+        view: "추세 추종",
+        link: "analysis/sector-defense.html"
+    },
+    {
+        name: "2차전지",
+        performance: "-2.7%",
+        flow: "약세",
+        flowOfFunds: "단기 이탈 우세",
+        valuation: "조정 중",
+        leaders: ["LG에너지솔루션", "포스코퓨처엠", "에코프로비엠"],
+        summary: "장기 성장 산업임은 분명하지만, 단기적으로는 수요 둔화와 가격 경쟁 우려가 주가에 부담을 주는 구간입니다. 실적 추정치 하향에 민감하게 반응하고 있습니다.",
+        drivers: "EV 수요 둔화, 메탈 가격 변동, 북미 보조금 정책 불확실성이 부담입니다.",
+        watchPoint: "전기차 판매 회복과 재고 조정 마무리 시점이 핵심입니다.",
+        view: "관망",
+        link: "analysis/sector-batteries.html"
+    },
+    {
+        name: "인터넷",
+        performance: "+3.4%",
+        flow: "중립",
+        flowOfFunds: "선별적 유입",
+        valuation: "종목별 차별화",
+        leaders: ["네이버", "카카오", "팔란티어"],
+        summary: "광고와 커머스, AI 서비스 기대가 섞여 있는 섹터입니다. 플랫폼 본업 회복과 AI 수익화 스토리가 확인되는 기업에만 자금이 붙는 선별 장세가 나타나고 있습니다.",
+        drivers: "광고 경기 회복 기대, AI 서비스 출시, 플랫폼 비용 통제가 핵심 동력입니다.",
+        watchPoint: "실제 매출 기여가 없는 AI 기대만으로는 주가 지속성이 약할 수 있습니다.",
+        view: "선별 매수",
+        link: "analysis/sector-internet.html"
+    },
+    {
+        name: "바이오",
+        performance: "+1.9%",
+        flow: "중립",
+        flowOfFunds: "이벤트 드리븐",
+        valuation: "변동성 높음",
+        leaders: ["삼성바이오로직스", "셀트리온", "알테오젠"],
+        summary: "실적 기반 대형 바이오와 임상 기대 중소형 바이오의 온도차가 큰 섹터입니다. 대형주는 방어적이고, 중소형은 뉴스 이벤트에 크게 흔들립니다.",
+        drivers: "임상 결과, 수주, 기술수출 기대가 단기 수급을 좌우합니다.",
+        watchPoint: "이벤트 이후 실적 가시성으로 이어지는지 확인이 필요합니다.",
+        view: "종목 장세",
+        link: "analysis/sector-biotech.html"
+    },
+    {
+        name: "조선",
+        performance: "+4.6%",
+        flow: "강세",
+        flowOfFunds: "실적 기대 자금 유입",
+        valuation: "상향 재평가 구간",
+        leaders: ["HD한국조선해양", "한화오션", "삼성중공업"],
+        summary: "수주 잔고와 선가 상승이 동시에 뒷받침되면서 업황 가시성이 높은 섹터입니다. 방산, LNG, 친환경 선박 이슈까지 겹치며 중장기 스토리가 좋아졌습니다.",
+        drivers: "고선가 유지, LNG선 발주, 방산·특수선 기대가 섹터를 지지합니다.",
+        watchPoint: "원가 반영 구간이 끝나며 실제 마진 개선이 얼마나 빠르게 나타나는지가 중요합니다.",
+        view: "강세 지속",
+        link: "analysis/sector-shipbuilding.html"
+    }
+];
+
+const EXTERNAL_SHOCK_EVENTS = [
+    {
+        date: "2026-03-17",
+        category: "유가",
+        title: "중동 전쟁 장기화 우려로 유가 재상승",
+        summary: "미국 증시는 다소 안정을 찾았지만, 이란 전쟁 여파가 길어질 수 있다는 경계감으로 국제유가가 다시 상승했다.",
+        marketImpact: "에너지 가격 부담이 다시 부각되며 인플레이션 재자극 우려와 운송·화학 업종 부담이 확대됐다.",
+        watchPoint: "전쟁 장기화 여부와 유가 100달러 안착 여부를 확인해야 한다.",
+        sources: [
+            { label: "AP", url: "https://apnews.com/article/stocks-markets-trump-tariffs-oil-prices-iran-d4f7eaeeb5f412df2f1c81f7c1f45727" }
+        ]
+    },
+    {
+        date: "2026-03-11",
+        category: "정책",
+        title: "IEA, 사상 최대 규모 비상 비축유 방출 결정",
+        summary: "국제에너지기구가 중동 전쟁에 따른 공급 충격에 대응하기 위해 4억 배럴 규모의 비축유를 방출하기로 했다.",
+        marketImpact: "유가 급등을 진정시키려는 정책 대응이 본격화되면서 에너지 쇼크가 실물경제로 번지는 속도를 늦추려는 신호로 해석됐다.",
+        watchPoint: "비축유 방출만으로 공급 부족 우려가 꺾일지, 실제 물류 차질이 완화되는지가 중요하다.",
+        sources: [
+            { label: "IEA", url: "https://www.iea.org/news/iea-countries-agree-largest-ever-emergency-oil-stocks-release" }
+        ]
+    },
+    {
+        date: "2026-03-09",
+        category: "전쟁",
+        title: "이란 전쟁 충격으로 브렌트유 급등",
+        summary: "미국의 이란 공습 이후 전쟁 우려가 심화되며 브렌트유가 장중 배럴당 119.50달러까지 치솟았다.",
+        marketImpact: "전형적인 리스크오프 장세가 나타났고 항공·소비주가 압박을 받는 반면 에너지주는 강세를 보였다.",
+        watchPoint: "호르무즈 해협과 중동 원유 수송 차질 여부가 다음 단계 충격을 좌우한다.",
+        sources: [
+            { label: "AP", url: "https://apnews.com/article/stocks-markets-oil-prices-iran-war-trump-federal-reserve-c0e5320042c964d7d7060fc5a27262f9" }
+        ]
+    },
+    {
+        date: "2026-03-04",
+        category: "환율",
+        title: "이란 리스크 확대로 원화 급락, 17년 만의 저점",
+        summary: "이란 관련 군사 충돌 우려가 커지자 코스피가 급락했고 원/달러 환율은 원화 약세로 17년 만의 저점을 기록했다.",
+        marketImpact: "한국 시장에서는 외국인 이탈 압력과 수입물가 부담이 동시에 커졌고, 안전자산 선호가 달러로 집중됐다.",
+        watchPoint: "전쟁 리스크 완화 전까지 원화 변동성이 높은 상태가 이어질 수 있다.",
+        sources: [
+            { label: "Reuters", url: "https://www.reuters.com/world/asia-pacific/skorean-stocks-plunge-won-hits-17-year-low-bonds-fall-amid-iran-conflict-2026-03-04/" }
+        ]
+    },
+    {
+        date: "2026-02-21",
+        category: "정치 이벤트",
+        title: "트럼프, 법원 제동 뒤 글로벌 관세 인상 방침 재확인",
+        summary: "미 대법원의 일부 관세 무효 판단 이후에도 트럼프 대통령은 10% 기본관세를 15% 수준으로 올릴 수 있다고 밝혔다.",
+        marketImpact: "무역정책 불확실성이 다시 확대되며 달러와 미국 내 보호무역 리스크가 시장 변수로 부상했다.",
+        watchPoint: "추가 행정명령과 품목별 조사 착수 여부가 후속 충격의 강도를 결정한다.",
+        sources: [
+            { label: "AP", url: "https://apnews.com/article/trump-tariffs-trade-supreme-court-europe-iran-9e9a44db1d4f245f13a1e8b33f2c2f4d" }
+        ]
+    },
+    {
+        date: "2026-02-20",
+        category: "규제",
+        title: "미 대법원, 긴급권한 기반 관세 조치에 제동",
+        summary: "미국 대법원이 트럼프 대통령의 일부 긴급권한 기반 관세 조치를 무효화하면서 관세 정책의 법적 불확실성이 커졌다.",
+        marketImpact: "단기적으로는 관세 완화 기대가 있었지만, 이후 백악관이 다른 통상 권한을 활용하겠다고 밝히며 정책 혼선이 확대됐다.",
+        watchPoint: "사법 판단 이후 행정부가 어떤 법적 수단으로 관세를 재추진하는지 확인해야 한다.",
+        sources: [
+            { label: "AP", url: "https://apnews.com/article/trump-tariffs-trade-supreme-court-europe-iran-9e9a44db1d4f245f13a1e8b33f2c2f4d" },
+            { label: "White House", url: "https://www.whitehouse.gov/fact-sheets/2026/02/fact-sheet-president-donald-j-trump-ends-certain-tariff-actions-to-protect-the-national-security-of-the-united-states/" }
+        ]
+    },
+    {
+        date: "2026-02-05",
+        category: "정책",
+        title: "ECB, 기준금리 동결로 유럽 통화정책 신중론 유지",
+        summary: "ECB는 2월 회의에서 기준금리를 유지하며 물가와 성장 흐름을 더 확인하겠다는 신중한 태도를 보였다.",
+        marketImpact: "유럽 경기 둔화 우려와 인플레이션 관리가 동시에 부각되며 글로벌 금리 인하 기대가 부분적으로 조정됐다.",
+        watchPoint: "유럽 경기 둔화가 심해질 경우 금리 인하 재개 기대가 다시 커질 수 있다.",
+        sources: [
+            { label: "ECB", url: "https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.mp260205~61e6960d87.en.html" }
+        ]
+    },
+    {
+        date: "2026-01-30",
+        category: "정책",
+        title: "연준 월러 이사, 1월 인하 가능성 언급하며 내부 시각차 노출",
+        summary: "크리스토퍼 월러 이사는 1월 회의에서 25bp 인하가 적절했을 수 있다고 밝히며 연준 내부의 정책 시각차를 드러냈다.",
+        marketImpact: "시장에서는 연준의 향후 인하 속도에 대한 해석이 엇갈렸고, 금리 민감 자산 변동성이 확대됐다.",
+        watchPoint: "연준 위원 간 발언 차이가 실제 점도표 변화로 이어지는지 봐야 한다.",
+        sources: [
+            { label: "Federal Reserve", url: "https://www.federalreserve.gov/newsevents/speech/waller20260130a.htm" }
+        ]
+    },
+    {
+        date: "2026-01-28",
+        category: "정책",
+        title: "연준, 1월 FOMC에서 금리 동결",
+        summary: "미 연준은 1월 FOMC에서 기준금리를 동결하며 물가와 고용 흐름을 더 지켜보겠다는 입장을 유지했다.",
+        marketImpact: "시장에서는 빠른 인하 기대가 일부 후퇴했고, 장단기 금리와 달러 방향성에 다시 민감해졌다.",
+        watchPoint: "이후 발표되는 물가와 고용 지표가 연준 스탠스를 얼마나 바꿀지가 핵심이다.",
+        sources: [
+            { label: "Federal Reserve", url: "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260128a.htm" }
+        ]
+    },
+    {
+        date: "2026-01-17",
+        category: "정치 이벤트",
+        title: "트럼프, 그린란드 문제를 둘러싸고 유럽 8개국에 관세 위협",
+        summary: "트럼프 대통령이 그린란드 접근 문제와 관련해 유럽 8개국에 10% 관세를 거론하며 대서양 무역 긴장을 키웠다.",
+        marketImpact: "대서양 무역 갈등 가능성이 커지며 유럽 자산과 통상 민감 업종 전반에 부담이 생겼다.",
+        watchPoint: "실제 관세 발표로 이어질지, 외교 협상으로 완화될지 확인이 필요하다.",
+        sources: [
+            { label: "AP", url: "https://www.wdbj7.com/2026/01/17/trump-threatens-10-tariffs-8-european-countries-over-greenland-dispute/" }
+        ]
+    },
+    {
+        date: "2026-01-13",
+        category: "정책",
+        title: "트럼프, 이란 거래국 대상 25% 관세 카드 거론",
+        summary: "트럼프 대통령이 이란과 거래하는 국가들에 대해 25% 관세를 부과할 수 있다고 밝히며 중동 리스크와 통상 리스크를 동시에 자극했다.",
+        marketImpact: "관세와 지정학 리스크가 겹치며 에너지, 운송, 달러 흐름에 대한 경계가 커졌다.",
+        watchPoint: "실제 관세 시행 여부와 이란 제재 강화가 원유 공급망에 미치는 영향을 봐야 한다.",
+        sources: [
+            { label: "AP", url: "https://www.wbap.com/news/trump-threatens-25-tariffs-on-countries-doing-business-with-iran/" }
+        ]
+    }
+];
+
