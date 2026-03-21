@@ -138,10 +138,50 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Update sections
             sections.forEach(sec => sec.classList.remove('active'));
-            document.getElementById(`section-${sectionId}`).classList.add('active');
+            const targetSection = document.getElementById(`section-${sectionId}`);
+            if (targetSection) targetSection.classList.add('active');
+        });
+    });
+
+    // Recommender System Logic
+    const recBtns = document.querySelectorAll('.rec-sel-btn');
+    recBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            recBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            renderRecommender(btn.getAttribute('data-rec-type'));
+        });
+    });
+
+    // Initial render for recommender
+    renderRecommender('balanced');
+
+    // --- External Factors Sub-tab Logic ---
+    const shockTabBtns = document.querySelectorAll('.shock-tab-btn');
+    const timelineView = document.getElementById('shock-timeline-view');
+    const policyView = document.getElementById('shock-policy-view');
+
+    shockTabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const tab = btn.getAttribute('data-shock-tab');
+
+            // Update buttons
+            shockTabBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            // Toggle views
+            if (tab === 'timeline') {
+                timelineView.style.display = 'block';
+                policyView.style.display = 'none';
+            } else {
+                timelineView.style.display = 'none';
+                policyView.style.display = 'block';
+                renderPolicyPage();
+            }
         });
     });
 });
+
 
 function renderDashboard(data) {
     // 헤더 개요 업데이트 (Markdown bold 지원)
@@ -151,7 +191,8 @@ function renderDashboard(data) {
     renderIndicators(data.indicators);
     renderCompanyAnalysisGrid();
     renderSectorAnalysis();
-    renderExternalShocks();
+    renderExternalFactors();
+    renderPolicyStance(data.policyStance);
 
     // 보유 종목 렌더링
     const holdingsList = document.querySelector('#holdings-list');
@@ -418,7 +459,7 @@ function renderCompanyAnalysisGrid() {
     });
 }
 
-function renderExternalShocks() {
+function renderExternalFactors() {
     const summary = document.getElementById('external-shocks-summary');
     const timeline = document.getElementById('external-shocks-timeline');
     if (!summary || !timeline) return;
@@ -451,16 +492,22 @@ function renderExternalShocks() {
 
     timeline.innerHTML = events.map((event) => {
         const sources = (event.sources || []).map((source) => `
-            <a class="shock-source-link" href="${source.url}" target="_blank" rel="noopener noreferrer">${source.label}</a>
+            <a class="shock-source-link" href="${source.url}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">${source.label}</a>
         `).join('');
 
+        const isGenesis = event.title.includes('제네시스 미션');
+        const isCommCode = event.title.includes('상법 개정');
+        const clickableClass = (isGenesis || isCommCode) ? 'clickable-shock' : '';
+        const policyKey = isGenesis ? 'genesisMission' : (isCommCode ? 'commercialCode' : '');
+        const clickAttr = policyKey ? `onclick="switchToPolicyTab('${policyKey}')"` : '';
+
         return `
-            <article class="shock-card">
+            <article class="shock-card ${clickableClass}" ${clickAttr} id="event-${event.date}">
                 <div class="shock-meta">
                     <div class="shock-date">${event.date}</div>
                     <div class="shock-category">${event.category}</div>
                 </div>
-                <div class="shock-title">${event.title}</div>
+                <div class="shock-title">${event.title} ${(isGenesis || isCommCode) ? ' <span style="font-size:0.7rem; color:var(--accent-blue);">(상세 분석 보기 ↗)</span>' : ''}</div>
                 <div class="shock-body">
                     <div class="shock-line"><strong>핵심 내용:</strong> ${event.summary}</div>
                     <div class="shock-line"><strong>시장 영향:</strong> ${event.marketImpact}</div>
@@ -472,12 +519,28 @@ function renderExternalShocks() {
     }).join('');
 }
 
+function switchToPolicyTab(policyKey) {
+    const policyBtn = document.querySelector('button[data-shock-tab="policy"]');
+    if (policyBtn) policyBtn.click();
+    
+    // Smooth scroll to the policy section after a short delay to ensure rendering
+    setTimeout(() => {
+        const el = document.getElementById(`policy-${policyKey}`);
+        if (el) {
+            el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            el.classList.add('highlight-policy');
+            setTimeout(() => el.classList.remove('highlight-policy'), 2000);
+        }
+    }, 100);
+}
+
 function renderSectorAnalysis() {
     const summary = document.getElementById('sector-analysis-summary');
     const list = document.getElementById('sector-analysis-list');
     if (!summary || !list) return;
 
     const sectors = (typeof SECTOR_ANALYSIS_ITEMS !== 'undefined') ? SECTOR_ANALYSIS_ITEMS : [];
+    const companyAnalyses = (typeof COMPANY_ANALYSIS_ITEMS !== 'undefined') ? COMPANY_ANALYSIS_ITEMS : [];
     summary.innerHTML = '';
     list.innerHTML = '';
 
@@ -503,36 +566,147 @@ function renderSectorAnalysis() {
     `).join('');
 
     list.innerHTML = sectors.map((sector) => {
-        const leaders = (sector.leaders || []).map((item) => `<span class="sector-meta-pill">${item}</span>`).join('');
+        const leadersHtml = (sector.leaders || []).map((leaderName) => {
+            const analysis = companyAnalyses.find(a => a.name === leaderName);
+            if (analysis) {
+                return `<a href="${analysis.link}" class="sector-meta-pill leader-link" title="${leaderName} 기업 분석 보기">${leaderName} ↗</a>`;
+            }
+            return `<span class="sector-meta-pill">${leaderName}</span>`;
+        }).join('');
+
         const performanceClass = sector.performance && sector.performance.startsWith('-') ? 'down' : 'up';
 
         return `
-            <a href="${sector.link || '#'}" class="sector-link">
-                <article class="sector-card">
-                    <div class="sector-card-header">
-                        <div>
-                            <div class="sector-name">${sector.name}</div>
-                            <div class="sector-meta">
-                                <span class="sector-meta-pill">흐름: ${sector.flow}</span>
-                                <span class="sector-meta-pill">수급: ${sector.flowOfFunds}</span>
-                                <span class="sector-meta-pill">밸류에이션: ${sector.valuation}</span>
-                            </div>
-                        </div>
-                        <div style="text-align: right;">
-                            <div class="sector-performance ${performanceClass}">${sector.performance || '-'}</div>
-                            <div class="sector-score">${sector.view}</div>
+            <article class="sector-card">
+                <div class="sector-card-header">
+                    <div>
+                        <a href="${sector.link || '#'}" class="sector-name-link">
+                            <div class="sector-name">${sector.name} <span style="font-size: 0.8rem; opacity: 0.6;">(Report ↗)</span></div>
+                        </a>
+                        <div class="sector-meta">
+                            <span class="sector-meta-pill">흐름: ${sector.flow}</span>
+                            <span class="sector-meta-pill">수급: ${sector.flowOfFunds}</span>
+                            <span class="sector-meta-pill">밸류에이션: ${sector.valuation}</span>
                         </div>
                     </div>
-                    <div class="sector-reason">${sector.summary}</div>
-                    <div class="sector-meta">${leaders}</div>
-                    <div class="sector-detail-grid">
-                        <div class="sector-detail-box"><strong>상승/하락 이유:</strong> ${sector.drivers}</div>
-                        <div class="sector-detail-box"><strong>체크포인트:</strong> ${sector.watchPoint}</div>
+                    <div style="text-align: right;">
+                        <div class="sector-performance ${performanceClass}">${sector.performance || '-'}</div>
+                        <div class="sector-score">${sector.view}</div>
                     </div>
-                </article>
-            </a>
+                </div>
+                <div class="sector-reason">${sector.summary}</div>
+                <div class="sector-meta" style="margin-top: 0.5rem;">
+                    <span style="font-size: 0.85rem; color: var(--text-secondary); margin-right: 0.5rem; display: flex; align-items: center;">관련종목:</span>
+                    ${leadersHtml}
+                </div>
+                <div class="sector-detail-grid">
+                    <div class="sector-detail-box"><strong>상승/하락 이유:</strong> ${sector.drivers}</div>
+                    <div class="sector-detail-box"><strong>체크포인트:</strong> ${sector.watchPoint}</div>
+                </div>
+            </article>
         `;
     }).join('');
+}
+
+function renderPolicyStance(policyData) {
+    const container = document.getElementById('policy-data-container');
+    const strategyBox = document.getElementById('policy-strategy-content');
+    if (!container || !strategyBox) return;
+
+    if (!policyData) {
+        container.innerHTML = '<p style="color: var(--text-secondary); grid-column: 1/-1; text-align: center; padding: 2rem;">해당 날짜의 정책 기조 데이터가 없습니다.</p>';
+        strategyBox.innerHTML = '<p style="color: var(--text-secondary);">데이터를 분석 중입니다...</p>';
+        return;
+    }
+
+    const fed = policyData.fed;
+    const bok = policyData.bok;
+
+    const CHAIR_DATA = {
+        fed: {
+            name: "제롬 파월 (Jerome Powell)",
+            title: "제16대 연준 의장",
+            image: "images/profiles/powell.png",
+            link: "fed-chair-detail.html",
+            next: {
+                name: "케빈 워시 (Kevin Warsh)",
+                title: "차기 의장 지명자",
+                image: "images/profiles/warsh.png",
+                link: "fed-warsh-detail.html"
+            }
+        },
+        bok: {
+            name: "이창용 (Rhee Chang-yong)",
+            title: "제26대 한은 총재",
+            image: "images/profiles/rhee.png",
+            link: "bok-governor-detail.html"
+        }
+    };
+
+    const renderCard = (title, data, type) => {
+        const chair = CHAIR_DATA[type];
+        return `
+        <div class="policy-card ${type}">
+            <div class="policy-header">
+                <span class="flag">${type === 'fed' ? '🇺🇸' : '🇰🇷'}</span>
+                <div class="policy-name">${title}</div>
+            </div>
+            <div class="policy-status-container">
+                <div class="policy-row">
+                    <span class="policy-label">현재 금리</span>
+                    <span class="policy-value">${data.rate}</span>
+                </div>
+                <div class="policy-row">
+                    <span class="policy-label">정책 기조</span>
+                    <span class="policy-badge ${data.stance.toLowerCase()}">${data.stance}</span>
+                </div>
+                <div class="policy-row">
+                    <span class="policy-label">차기 회의</span>
+                    <span class="policy-value">${data.nextMeeting}</span>
+                </div>
+
+                <!-- Chair Info Section -->
+                <div class="policy-chair-info">
+                    <div class="chair-avatar-container">
+                        <img src="${chair.image}" alt="${chair.name}" class="chair-avatar" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        <div class="chair-fallback" style="display: none;">
+                            ${chair.name.split(' ').map(n => n[0]).join('')}
+                        </div>
+                    </div>
+                    <div class="chair-meta">
+                        <div class="chair-label">${chair.title}</div>
+                        <div class="chair-name" style="font-size: 1.1rem; font-weight: 700;">${chair.name}</div>
+                        <a href="${chair.link}" class="chair-link">상세 프로필 보기 →</a>
+                    </div>
+                </div>
+
+                ${chair.next ? `
+                <div class="policy-chair-info next-chair" style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                    <div class="chair-avatar-container" style="width: 48px; height: 48px; border-color: #f59e0b;">
+                        <img src="${chair.next.image}" alt="${chair.next.name}" class="chair-avatar">
+                    </div>
+                    <div class="chair-meta">
+                        <div class="chair-label" style="color: #f59e0b;">${chair.next.title}</div>
+                        <div class="chair-name" style="font-size: 0.95rem;">${chair.next.name}</div>
+                        <a href="${chair.next.link}" class="chair-link" style="color: #f59e0b; opacity: 0.8;">상세 프로필 보기 →</a>
+                    </div>
+                </div>
+                ` : ''}
+
+                <div class="policy-summary">
+                    ${parseMarkdown(data.summary)}
+                </div>
+            </div>
+        </div>
+    `;
+    };
+
+    container.innerHTML = `
+        ${renderCard('미국 연준 (Fed / FOMC)', fed, 'fed')}
+        ${renderCard('한국은행 (BOK)', bok, 'bok')}
+    `;
+
+    strategyBox.innerHTML = parseMarkdown(policyData.strategy || '한/미 정책 금리 차이와 국내 외인 수급 영향을 지속적으로 모니터링해야 합니다.');
 }
 
 function parseMarkdown(text) {
@@ -590,4 +764,335 @@ function renderIndicators(indicators) {
             container.appendChild(card);
         }
     });
+}
+
+// --- Recommender System Data & Functions ---
+const RECOMMENDER_DATA = {
+    balanced: {
+        title: "추천 최적화 비중: \"Balanced Growth\"",
+        logic: "<strong>삼성전자/하이닉스</strong>의 회복과 <strong>엔비디아</strong>의 성장을 핵심으로 두되, 중동 리스크에 강한 <strong>방산/팔란티어</strong>와 정책 수혜주인 <strong>두산에너빌리티</strong>를 적절히 섞어 하락장에서도 견디는 포트폴리오를 지향합니다.",
+        pillars: [
+            { label: "AI/반도체 코어 (삼성전자, Hynix, NVDA)", weight: 45, class: "ai", desc: "Main Growth Pillar" },
+            { label: "국방/에너지 헤지 (팔란티어, 방산, 두산)", weight: 35, class: "defense", desc: "Defensive Shield" },
+            { label: "미래 모멘텀 & 현금 (테슬라, Cash)", weight: 20, class: "cash", desc: "Future Ammo" }
+        ],
+        stocks: [
+            { category: "Core: 반도체 듀오", tags: ["삼성전자", "SK하이닉스"], color: "rgba(79, 70, 229, 0.2)" },
+            { category: "Growth: AI 마스터", tags: ["NVIDIA"], color: "rgba(129, 140, 248, 0.2)" },
+            { category: "Shield: 국방/데이터 AI", tags: ["Palantir", "K-방산"], color: "rgba(244, 63, 94, 0.2)" },
+            { category: "Utility: 원전/에너지", tags: ["두산에너빌리티"], color: "rgba(14, 165, 233, 0.2)" },
+            { category: "Option: 차세대 모빌리티", tags: ["테슬라"], color: "rgba(156, 163, 175, 0.2)" }
+        ],
+        advice: [
+            "<strong>하이닉스:</strong> 100만원 선 지지 시 비중 유지",
+            "<strong>팔란티어:</strong> 국방 수요 증대 시 비중 확대 권장",
+            "<strong>테슬라:</strong> $400 저항 돌파 전까지는 현금 비중으로 간주"
+        ]
+    },
+    stability: {
+        title: "추천 최적화 비중: \"Stability First\"",
+        logic: "원금 보존과 리스크 관리에 집중합니다. 변동성이 큰 IT/성장주 비중을 줄이고, 지연된 지정학적 리스크에 강한 <strong>방산</strong>과 배당 성향이 강한 <strong>삼성전자</strong>, 그리고 현금 비중을 높게 유지합니다.",
+        pillars: [
+            { label: "방어/헤지 (팔란티어, 방산, 두산)", weight: 50, class: "defense", desc: "Main Shield" },
+            { label: "안정적 대형주 (삼성전자, 하이닉스)", weight: 25, class: "ai", desc: "Safe Core" },
+            { label: "현금 및 안전자산 (Cash)", weight: 25, class: "cash", desc: "Liquidity" }
+        ],
+        stocks: [
+            { category: "Shield: 국방/데이터 AI", tags: ["Palantir", "K-방산"], color: "rgba(244, 63, 94, 0.2)" },
+            { category: "Utility: 원전/에너지", tags: ["두산에너빌리티"], color: "rgba(14, 165, 233, 0.2)" },
+            { category: "Stable: 우량주", tags: ["삼성전자"], color: "rgba(79, 70, 229, 0.2)" },
+            { category: "Liquidity: 현금 비중", tags: ["CASH"], color: "rgba(156, 163, 175, 0.2)" }
+        ],
+        advice: [
+            "<strong>K-방산:</strong> 포트폴리오의 중추로 활용하여 하락장 방어",
+            "<strong>삼성전자:</strong> 배당 및 장기 보유 관점 유지",
+            "<strong>신규 매수:</strong> 지수 급락 시에만 현금의 일부 집행"
+        ]
+    },
+    aggressive: {
+        title: "추천 최적화 비중: \"Maximum Momentum\"",
+        logic: "성장성이 가장 높은 섹터에 집중 투자합니다. <strong>엔비디아</strong>와 <strong>하이닉스</strong>의 AI 주도권을 극대화하고, 변동성이 크지만 업사이드가 열린 <strong>팔란티어</strong>와 <strong>테슬라</strong>에 공격적으로 배분합니다.",
+        pillars: [
+            { label: "AI/반도체 집중 (NVDA, SK Hynix)", weight: 60, class: "ai", desc: "Growth Engine" },
+            { label: "하이테크 모멘텀 (Palantir, Tesla)", weight: 30, class: "defense", desc: "High Beta" },
+            { label: "헤지/기회 포착 (두산, Cash)", weight: 10, class: "cash", desc: "Tactical" }
+        ],
+        stocks: [
+            { category: "Engine: AI 대장", tags: ["NVIDIA", "SK하이닉스"], color: "rgba(79, 70, 229, 0.2)" },
+            { category: "Momentum: 테크 리더", tags: ["Palantir", "테슬라"], color: "rgba(129, 140, 248, 0.2)" },
+            { category: "Satellite: 원전/에너지", tags: ["두산에너빌리티"], color: "rgba(14, 165, 233, 0.2)" },
+            { category: "Alpha: 관심 종목", tags: ["K-방산"], color: "rgba(244, 63, 94, 0.2)" }
+        ],
+        advice: [
+            "<strong>NVDA/Hynix:</strong> 업황 피크 아웃 전까지 공격적 보유",
+            "<strong>테슬라:</strong> $420 돌파 시 비중 대폭 확대",
+            "<strong>리스크:</strong> 레버리지 사용 자제 및 추세 이탈 시 칼같은 손절"
+        ]
+    },
+    'core-satellite': {
+        title: "추천 최적화 비중: \"Core & Satellite\"",
+        logic: "수익의 기반이 되는 우량주(Core)를 넓게 가져가고, 개별 알파 수익을 위해 변동성 종목(Satellite)을 섞습니다. 삼성전자와 하이닉스로 시장 수익률을 추종하며, 나머지는 테크/에너지 테마로 초과 수익을 노립니다.",
+        pillars: [
+            { label: "Core 자산 (삼성전자, SK하이닉스)", weight: 70, class: "ai", desc: "Index Follower" },
+            { label: "Satellite 자산 (NVDA, PLTR, 테슬라)", weight: 20, class: "defense", desc: "Alpha Seeker" },
+            { label: "Tactical 자산 (두산, 방산, Cash)", weight: 10, class: "cash", desc: "Thematic" }
+        ],
+        stocks: [
+            { category: "Core: 시장 대장주", tags: ["삼성전자", "SK하이닉스"], color: "rgba(79, 70, 229, 0.2)" },
+            { category: "Satellite: AI/테크", tags: ["NVIDIA", "Palantir"], color: "rgba(129, 140, 248, 0.2)" },
+            { category: "Satellite: 모빌리티/에너지", tags: ["테슬라", "두산에너빌리티"], color: "rgba(14, 165, 233, 0.2)" },
+            { category: "Alpha: 기회 포착", tags: ["PLUS K 방산"], color: "rgba(244, 63, 94, 0.2)" }
+        ],
+        advice: [
+            "<strong>코어 비중:</strong> 최소 70% 유지하여 전체 자산 안정성 확보",
+            "<strong>리밸런싱:</strong> 새틀라이트 자산의 수익이 커질 경우 코어로 전이",
+            "<strong>전략:</strong> 지루하더라도 원칙을 지키는 투자가 핵심"
+        ]
+    }
+};
+
+function renderRecommender(type) {
+    const config = RECOMMENDER_DATA[type];
+    const container = document.getElementById('recommender-content');
+    if (!container || !config) return;
+
+    // Build Visual Bars
+    const barsHtml = config.pillars.map(p => `
+        <div class="sector-bar-wrapper">
+            <div class="sector-bar-header"><span>${p.label}</span> <span>${p.weight}%</span></div>
+            <div class="sector-bar-outer"><div class="sector-bar-inner ${p.class}" style="width: ${p.weight}%;">${p.desc}</div></div>
+        </div>
+    `).join('');
+
+    // Build Stocks List
+    const stocksHtml = config.stocks.map(s => `
+        <li>
+            <span>${s.category}</span>
+            <div class="asset-tags">
+                ${s.tags.map(t => `<span class="asset-tag" style="background: ${s.color};">${t}</span>`).join('')}
+            </div>
+        </li>
+    `).join('');
+
+    // Build Advice List
+    const adviceHtml = config.advice.map(a => `<li>${a}</li>`).join('');
+
+    container.innerHTML = `
+        <!-- Recommended Mix Card -->
+        <div class="recommender-card">
+            <div class="section-label">Tailored Allocation</div>
+            <h3 class="portfolio-type-title">${config.title}</h3>
+            
+            <div class="sector-mix-visual">
+                ${barsHtml}
+            </div>
+
+            <div class="recommender-logic-box">
+                <h4>💡 맞춤형 구성 로직</h4>
+                <p class="portfolio-type-desc" style="font-size: 0.85rem; margin-bottom: 0;">
+                    ${config.logic}
+                </p>
+            </div>
+        </div>
+
+        <!-- Asset Guide Card -->
+        <div class="recommender-card">
+            <div class="section-label">Stock Breakdown</div>
+            <h3 class="portfolio-type-title">종목별 포지셔닝 가이드</h3>
+            
+            <ul class="recommender-list">
+                ${stocksHtml}
+            </ul>
+
+            <div class="portfolio-info-box" style="margin-top: 1.5rem;">
+                <strong>🎯 종목별 대응 핵심:</strong>
+                <ul style="font-size: 0.85rem;">
+                    ${adviceHtml}
+                </ul>
+            </div>
+        </div>
+
+        <!-- Disclaimer -->
+        <div class="recommender-card full-width">
+            <div class="disclaimer-box">
+                <span style="font-size: 1.5rem;">⚠️</span>
+                <div>
+                    <strong>해당 구성은 사용자의 현재 관심 종목 리스트를 바탕으로 시뮬레이션된 결과입니다.</strong><br>
+                    실제 매수에 앞서 개별 종목의 최신 실적 리포트와 뉴스플로우를 반드시 재확인하시기 바랍니다. 
+                    분산 투자는 리스크를 낮추지만 손실을 완전히 방지하지는 못합니다.
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+function renderPolicyPage() {
+    const container = document.getElementById('policy-content');
+    if (!container || typeof EXTERNAL_POLICY_DATA === 'undefined') return;
+
+    container.innerHTML = Object.entries(EXTERNAL_POLICY_DATA).map(([key, pm]) => {
+        const pillarsHtml = pm.keyPillars.map(p => `
+            <div class="policy-pillar-card">
+                <h4>${p.title}</h4>
+                <p>${p.desc}</p>
+            </div>
+        `).join('');
+
+        const focusHtml = pm.focusAreas ? pm.focusAreas.map(f => `<li>${f}</li>`).join('') : '';
+
+        const stagesHtml = pm.stages ? `
+            <div class="policy-roadmap">
+                ${pm.stages.map(s => `
+                    <div class="roadmap-step ${s.status === '완료' ? 'completed' : (s.status === '진행중' ? 'active' : '')}">
+                        <div class="step-badge">${s.step}</div>
+                        <div class="step-content">
+                            <div class="step-header">
+                                <span class="step-title">${s.title}</span>
+                                <span class="step-status-tag">${s.status}</span>
+                            </div>
+                            <div class="step-details">${s.details}</div>
+                        </div>
+                    </div>
+                `).join('')}
+            </div>
+        ` : '';
+
+        const marketHtml = pm.marketImplications.map(m => `
+            <div class="policy-impact-item">
+                <span class="impact-sector">${m.sector}</span>
+                <span class="impact-desc">${m.impact}</span>
+            </div>
+        `).join('');
+
+        const scheduleHtml = pm.schedule ? pm.schedule.map(s => `
+            <div class="schedule-row">
+                <span class="schedule-term">${s.term}</span>
+                <span class="schedule-task">${s.task}</span>
+            </div>
+        `).join('') : '';
+
+        const isGenesis = key === 'genesisMission';
+        const insightTitle = isGenesis ? "Researcher Insight & Deep Dive: Genesis Mission" : "Researcher Insight & Deep Dive: Value-up Korea";
+        const insightText = isGenesis ? 
+            `제네시스 미션은 단순한 기술 지원을 넘어 **'AI를 통한 과학적 패권 유지'**를 목표로 합니다. <br>
+            1. **데이터의 국가 자산화:** 구글이나 오픈AI가 가진 웹 데이터가 아닌, 수십 년간 축적된 연방 정부의 핵물리학, 기상, 재료공학 데이터를 AI 학습의 핵심 원천으로 사용합니다. <br>
+            2. **에너지-AI 결합:** 이 미션이 에너지부(DOE) 주도인 이유는 AI 연산에 필요한 막대한 전력을 해결(원전 활용 등)함과 동시에, 에너지를 만드는 기술 자체를 AI로 혁신하겠다는 의도입니다. <br>
+            3. **투자 관점:** 이는 반도체(Chip), 인프라(Grid/Nuclear), 그리고 국방 데이터 분석 소프트웨어 전반에 걸친 10년 단위의 거대한 국가적 자본 투입(CAPEX) 사이클의 시작점으로 해석해야 합니다.` :
+            `상법 개정은 단순회 회계적인 밸류업을 넘어, 한국 자본시장의 **'Rule of the Game'**이 바뀌는 사건입니다. <br>
+            1. **지배구조 리스크 해소:** 이사의 의무가 주주로 확대됨에 따라, 대주주 위주의 불공정 합병이나 물적분할 후 재상장 같은 코리아 디스카운트의 고질적 원인이 법적 견제를 받게 됩니다. <br>
+            2. **수급의 질적 변화:** 거버넌스 투명성이 확보되면 장기 투자 성격의 글로벌 연기금 및 패시브 자금이 한국 시장에 안착할 수 있는 명분이 생깁니다. <br>
+            3. **투자 전략:** 배당 성향이 낮거나 자산 가치가 높음에도 만성적 저평가를 받던 지주사 및 금융주들에 대한 재평가(Re-rating)를 준비해야 하는 시점입니다.`;
+
+        return `
+            <div class="policy-main-card" id="policy-${key}" style="margin-bottom: 3rem;">
+                <div class="section-label">Strategic Policy Analysis</div>
+                <h2 class="policy-title">${pm.title}</h2>
+                <p class="policy-subtitle">${pm.subtitle}</p>
+                
+                <div class="policy-meta-grid">
+                    <div class="policy-meta-item">
+                        <span class="label">서명/시행일</span>
+                        <span class="value">${pm.signedDate}</span>
+                    </div>
+                    <div class="policy-meta-item">
+                        <span class="label">핵심 목표</span>
+                        <span class="value">${pm.objective}</span>
+                    </div>
+                </div>
+
+                <div class="policy-grid-three">
+                    ${pillarsHtml}
+                </div>
+
+                ${stagesHtml ? `
+                    <div class="policy-sub-section" style="margin-top: 2rem;">
+                        <h3>🗺️ 개정 로드맵 (1차 ~ 4차)</h3>
+                        ${stagesHtml}
+                    </div>
+                ` : ''}
+
+                <div class="policy-section-split">
+                    ${pm.focusAreas ? `
+                        <div class="policy-sub-section">
+                            <h3>🎯 핵심 집중 분야</h3>
+                            <ul class="policy-list">
+                                ${focusHtml}
+                            </ul>
+                        </div>
+                    ` : ''}
+                    <div class="policy-sub-section" style="${!pm.focusAreas ? 'grid-column: span 2;' : ''}">
+                        <h3>📈 시장 영향 및 수혜</h3>
+                        <div class="policy-impact-list">
+                            ${marketHtml}
+                        </div>
+                    </div>
+                </div>
+
+                ${pm.risks ? `
+                    <div class="policy-sub-section" style="margin-top: 2rem;">
+                        <h3 style="color: #fca5a5;">⚠️ 주요 우려 사항 및 리스크 (재계 반발)</h3>
+                        <div class="policy-grid-three">
+                            ${pm.risks.map(r => `
+                                <div class="policy-pillar-card" style="border-color: rgba(239, 68, 68, 0.2); background: rgba(239, 68, 68, 0.02);">
+                                    <h4 style="color: #fca5a5;">${r.title}</h4>
+                                    <p style="font-size: 0.85rem;">${r.desc}</p>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                ` : ''}
+
+                ${pm.recentStatus ? `
+                    <div class="policy-sub-section" style="margin-top: 2rem;">
+                         <h3 style="color: #6ee7b7;">📡 실시간 시행 동향 (Pulse)</h3>
+                         <div class="policy-status-box">
+                             <div class="status-meta">
+                                 <span class="status-date">${pm.recentStatus.asOf}</span>
+                                 <span class="status-summary">${pm.recentStatus.summary}</span>
+                             </div>
+                             <ul class="status-list">
+                                 ${pm.recentStatus.stats.map(s => `<li>${s}</li>`).join('')}
+                             </ul>
+                         </div>
+                    </div>
+                ` : ''}
+
+                ${pm.schedule ? `
+                    <div class="policy-sub-section" style="margin-top: 2rem;">
+                        <h3>📅 추진 일정</h3>
+                        <div class="policy-schedule-box">
+                            ${scheduleHtml}
+                        </div>
+                    </div>
+                ` : ''}
+
+                ${pm.sources ? `
+                    <div class="policy-sub-section" style="margin-top: 2rem;">
+                        <h3>🔗 관련 기사 및 뉴스</h3>
+                        <div class="policy-sources-grid">
+                            ${pm.sources.map(src => `
+                                <a href="${src.url}" target="_blank" class="policy-source-item">
+                                    <span class="source-icon">📰</span>
+                                    <span class="source-label">${src.label}</span>
+                                </a>
+                            `).join('')}
+                        </div>
+                    </div>
+                ` : ''}
+                ${pm.reportPath ? `
+                    <div class="policy-sub-section" style="margin-top: 2rem;">
+                        <a href="${pm.reportPath}" class="policy-source-item" style="background: var(--accent-blue); color: white; border: none; justify-content: center; padding: 1.25rem;">
+                            <span class="source-icon">📊</span>
+                            <span class="source-label" style="font-weight: 700;">제네시스 미션 심층 분석 리포트 보러가기 →</span>
+                        </a>
+                    </div>
+                ` : ''}
+
+                <div class="disclaimer-box" style="margin-top: 2rem;">
+                    <strong>💡 ${insightTitle}:</strong><br><br>
+                    ${insightText}
+                </div>
+            </div>
+        `;
+    }).join('<hr style="border:0; border-top:1px solid rgba(255,255,255,0.05); margin: 2rem 0;">');
 }

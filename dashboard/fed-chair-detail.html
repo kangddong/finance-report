@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제롬 파월 (Jerome Powell) - 상세 프로필</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .detail-container {
+            max-width: 900px;
+            margin: 4rem auto;
+            padding: 2rem;
+        }
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+        .profile-image {
+            width: 220px;
+            height: 220px;
+            border-radius: 30px;
+            object-fit: cover;
+            border: 4px solid var(--accent-blue);
+            box-shadow: 0 20px 40px rgba(56, 189, 248, 0.3);
+        }
+        .profile-info h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #fff, var(--accent-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .profile-title {
+            font-size: 1.25rem;
+            color: var(--accent-blue);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        .profile-stats {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        .stat-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.75rem 1.25rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.25rem;
+        }
+        .stat-value {
+            font-weight: 700;
+            font-size: 1rem;
+        }
+        .bio-section {
+            margin-bottom: 3rem;
+        }
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+            border-left: 2px solid rgba(56, 189, 248, 0.3);
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.35rem;
+            top: 0.25rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--accent-blue);
+            box-shadow: 0 0 10px var(--accent-blue);
+        }
+        .timeline-date {
+            font-weight: 700;
+            color: var(--accent-blue);
+            margin-bottom: 0.25rem;
+        }
+        .timeline-content {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        .quote-box {
+            background: rgba(56, 189, 248, 0.1);
+            border-left: 4px solid var(--accent-blue);
+            padding: 1.5rem;
+            border-radius: 0 15px 15px 0;
+            font-style: italic;
+            margin: 2rem 0;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            color: var(--text-primary);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(-5px);
+        }
+    </style>
+</head>
+<body>
+    <div class="detail-container">
+        <a href="index.html" class="back-btn">← 대시보드로 돌아가기</a>
+        
+        <header class="profile-header">
+            <div class="profile-image-container" style="position: relative; width: 220px; height: 220px; border-radius: 30px; overflow: hidden; border: 4px solid var(--accent-blue);">
+                <img src="images/profiles/powell.png" alt="Jerome Powell" class="profile-image" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                <div class="profile-fallback" style="display: none; width: 100%; height: 100%; align-items: center; justify-content: center; font-size: 5rem; font-weight: 700; color: #fff; background: linear-gradient(135deg, var(--accent-blue), #1e293b);">JP</div>
+            </div>
+            <div class="profile-info">
+                <div class="profile-title">제16대 연방준비제도 이사회 의장</div>
+                <h1>제롬 파월 (Jerome Powell)</h1>
+                <p style="color: var(--text-secondary); max-width: 500px;">"세계 경제의 대통령"이라 불리며, 미국의 통화 정책을 진두지휘하는 인물입니다.</p>
+                
+                <div class="profile-stats">
+                    <div class="stat-item">
+                        <div class="stat-label">임기 시작</div>
+                        <div class="stat-value">2018년 2월 5일</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">학력</div>
+                        <div class="stat-value">조지타운 대학교 법학 박사</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section class="bio-section">
+            <h2 class="card-title">인물 개요</h2>
+            <p class="sector-reason">
+                제롬 파월은 2012년부터 연준 이사로 재직하였으며, 2018년 도널드 트럼프 대통령에 의해 연준 의장으로 임명되었습니다. 이후 조 바이든 대통령에 의해 연임되었습니다. 
+                그는 전임 의장들(재닛 옐런, 벤 버냉키)과 달리 경제학 박사 학위가 없는 법률가 및 투자 은행가 출신이라는 점이 특징입니다. 
+                이러한 배경 덕분에 이론보다는 실무와 시장 소통에 강점이 있다는 평가를 받습니다.
+            </p>
+        </section>
+
+        <section class="bio-section">
+            <h2 class="card-title">🏠 임기 및 거취</h2>
+            <p class="sector-reason">
+                • <strong>현재 의장 임기 종료:</strong> 2026년 5월<br>
+                • <strong>연준 이사직 임기:</strong> 2028년 1월까지<br>
+                2026년 5월 의장 임기 만료 후 후임자가 상원 인준을 받을 때까지 자리를 지킬 것으로 보입니다. 정치적 압박 속에서도 연준의 독립성을 사수하겠다는 강한 의지를 보이고 있습니다.
+            </p>
+        </section>
+
+        <section class="bio-section">
+            <h2 class="card-title">📊 평가 및 영향력</h2>
+            <p class="sector-reason">
+                • <strong>국민적 지지:</strong> 2025년 말 갤럽 조사에서 44%의 지지율을 기록, 미국 주요 공직자 중 가장 인기 있는 인물로 꼽혔습니다. 민주당(46%)과 인디펜던트(49%) 등 당파를 초월한 신뢰를 받고 있습니다.<br>
+                • <strong>시장의 평가:</strong> "세계 경제의 대통령"이라는 별명답게 그의 한마디에 전 세계 증시가 요동칩니다. 팬데믹 위기 극복 과정에서 보여준 과감한 결단력은 '경제 소방수'로서의 면모를 유감없이 보여주었다는 평가입니다.
+            </p>
+        </section>
+
+        <section class="bio-section">
+            <h2 class="card-title">🏆 주요 정책 업적</h2>
+            <p class="sector-reason">
+                • <strong>팬데믹 위기 방어:</strong> 제로 금리 복귀와 무제한 양적 완화를 통해 글로벌 금융 시스템의 붕괴를 막아냈습니다.<br>
+                • <strong>인플레이션 억제 (2022-2023):</strong> 40년 만의 최악의 인플레이션을 잡기 위해 전례 없는 속도로 금리를 인상하여 물가 상승세를 꺾는 데 성공했습니다.<br>
+                • <strong>연준의 독립성 수호:</strong> 정치적 금리 인하 압박에도 데이터 기반의 원칙을 고수하며 중앙은행의 중립성을 지켜냈습니다.
+            </p>
+        </section>
+
+        <section class="bio-section">
+            <h2 class="card-title">주요 약력</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">1979 - 1984</div>
+                    <div class="timeline-content">변호사 활동 및 조지타운 대학교 법무팀 근무</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">1984 - 1990</div>
+                    <div class="timeline-content">딜런 리드(Dillon, Read & Co.) 투자 은행가</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">1990 - 1993</div>
+                    <div class="timeline-content">미국 재무부 차관보 및 차관 (금융 부문)</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">1997 - 2005</div>
+                    <div class="timeline-content">칼라일 그룹(The Carlyle Group) 파트너</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2012 - 현재</div>
+                    <div class="timeline-content">연방준비제도(Fed) 이사</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2018 - 현재</div>
+                    <div class="timeline-content">제16대 연방준비제도 이사회 의장</div>
+                </div>
+            </div>
+        </section>
+
+        <div class="quote-box">
+            "우리는 인플레이션을 2% 목표치로 되돌리는 데 전념하고 있습니다. 시장의 안정과 국민들의 구매력을 보호하는 것이 우리의 가장 큰 책무입니다."
+        </div>
+
+        <section class="bio-section">
+            <h2 class="card-title">정책 성향</h2>
+            <p class="sector-reason">
+                초기에는 '비둘기파'적인 성향을 보였으나, 코로나19 이후 급증한 인플레이션을 잡기 위해 '자이언트 스텝(0.75%p 금리 인상)'을 단행하는 등 매우 '매파적'인 모습으로 전환하기도 했습니다. 
+                현재는 데이터에 기반한(Data-dependent) 신중한 행보를 보이며, 시장과의 소통을 가장 중요시하는 의장으로 꼽힙니다.
+            </p>
+        </section>
+    </div>
+</body>
+</html>

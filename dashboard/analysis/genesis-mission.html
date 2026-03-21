@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제네시스 미션(Genesis Mission) 상세 분석 | Premium Finance</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .analysis-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: var(--accent-blue);
+        }
+
+        .analysis-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid var(--glass-border);
+            border-radius: 32px;
+            padding: 3rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #fff 0%, #a5f3fc 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        h2 {
+            color: var(--accent-blue);
+            margin: 2.5rem 0 1.5rem;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        h2::before {
+            content: '';
+            display: block;
+            width: 4px;
+            height: 24px;
+            background: var(--accent-blue);
+            border-radius: 2px;
+        }
+
+        p {
+            line-height: 1.8;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .highlight-box {
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .logic-flow {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .step {
+            flex: 1;
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+            padding: 1.5rem;
+            border-radius: 16px;
+            border: 1px solid var(--glass-border);
+            text-align: center;
+            min-width: 140px;
+            transition: transform 0.3s;
+        }
+
+        .step:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-blue);
+        }
+
+        .step-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .step-title {
+            color: var(--accent-blue);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .arrow {
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .conclusion {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.1) 100%);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .conclusion h3 {
+            color: #34d399;
+            margin-top: 0;
+        }
+
+        .policy-link-btn {
+            display: inline-block;
+            background: var(--accent-blue);
+            color: #fff;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            margin-top: 1rem;
+            transition: all 0.3s;
+        }
+
+        .policy-link-btn:hover {
+            background: #2563eb;
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .logic-flow {
+                flex-direction: column;
+            }
+
+            .arrow {
+                transform: rotate(90deg);
+                margin: 0.5rem 0;
+            }
+
+            .analysis-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="analysis-container">
+        <a href="../index.html" class="back-link">← 대시보드로 돌아가기</a>
+
+        <main class="analysis-card">
+            <header>
+                <h1>미국 '제네시스 미션(Genesis Mission)' 상세 분석</h1>
+                <p class="subtitle">AI 판 '맨해튼 프로젝트'가 불러올 글로벌 기술 패권의 지각변동</p>
+            </header>
+
+            <div class="logic-flow">
+                <div class="step">
+                    <span class="step-icon">🏛️</span>
+                    <span class="step-title">행정명령 서명</span>
+                    <small>국가 역량 총동원</small>
+                </div>
+                <div class="arrow">→</div>
+                <div class="step">
+                    <span class="step-icon">🧬</span>
+                    <span class="step-title">AI x 과학혁신</span>
+                    <small>에너지/신소재 돌파</small>
+                </div>
+                <div class="arrow">→</div>
+                <div class="step">
+                    <span class="step-icon">🇺🇸</span>
+                    <span class="step-title">기술 패권</span>
+                    <small>미국 독주 체제 강화</small>
+                </div>
+                <div class="arrow">→</div>
+                <div class="step">
+                    <span class="step-icon">💰</span>
+                    <span class="step-title">투자 기회</span>
+                    <small>컴퓨팅/인프라/모빌리티</small>
+                </div>
+            </div>
+
+            <section>
+                <h2>1. 제네시스 미션이란 무엇인가?</h2>
+                <p>
+                    <strong>제네시스 미션(Genesis Mission)</strong>은 2025년 11월 24일, 미국 트럼프 행정부가 서명한 행정명령으로,
+                    인공지능(AI)을 활용하여 파괴적인 과학적 발견을 가속화하고 미국의 기술적 우위를 확고히 하기 위한 국가적 이니셔티브입니다.
+                    백악관은 이를 제2차 세계대전 당시 원자폭탄을 개발했던 <strong>'맨해튼 프로젝트'</strong>에 비유하며 그 시급성과 규모를 강조했습니다.
+                </p>
+                <div class="highlight-box">
+                    <strong>핵심 요약:</strong><br>
+                    정부의 방대한 과학 데이터셋과 슈퍼컴퓨팅 인프라를 개방하여, 전 세계가 따라올 수 없는 AI 연구 환경을 조성하는 것이 목표입니다.
+                </div>
+            </section>
+
+            <section>
+                <h2>2. 범정부적 추진 체계와 주요 목표</h2>
+                <p>
+                    에너지부(DOE)가 이 프로젝트의 주관 부처로 지정되었습니다. DOE 산하 국립연구소들의 고성능 컴퓨팅(HPC) 자원과 과학 데이터를 결합하여
+                    실험과 이론을 연결하는 <strong>'통합 AI 플랫폼'</strong>을 구축합니다.
+                </p>
+                <ul>
+                    <li><strong style="color: var(--accent-blue);">에너지 패권:</strong> 차세대 원자력(SMR), 핵융합, 고효율 배터리 소재 개발 가속화</li>
+                    <li><strong style="color: var(--accent-blue);">국가 안보:</strong> AI 기반 방어 체제 및 암호화 기술 확보</li>
+                    <li><strong style="color: var(--accent-blue);">경제 생산성:</strong> 모든 산업 분야에 인공지능 에이전트 도입을 통한 노동 생산성 대폭 향상</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>3. 정해진 스케줄 및 현재 진행 상황 (Status)</h2>
+                <p>
+                    2026년 3월 21일 현재, 트럼프 행정부의 공격적인 스케줄은 <strong>연쇄적인 이정표 달성</strong>을 보여주고 있습니다.
+                </p>
+                <div class="status-list">
+                    <div class="highlight-box" style="margin: 1rem 0; border-left: 4px solid #34d399;">
+                        <strong>✅ 60일 이내: 20대 과학 기술 과제 식별 (완료)</strong><br>
+                        2026년 3월 초, DOE는 바이오, 핵에너지, 양자 과학 등 핵심 20대 분야를 확정하고 이를 위한 **$293M(약 3,900억 원) 규모의 펀딩** 공고를 발표했습니다.
+                    </div>
+                    <div class="highlight-box" style="margin: 1rem 0; border-left: 4px solid #34d399;">
+                        <strong>✅ 90일 이내: 연방 컴퓨팅 및 데이터 자산 조사 (완료)</strong><br>
+                        국립연구소의 슈퍼컴퓨팅 인프라 활용 계획이 수립되었습니다.
+                    </div>
+                    <div class="highlight-box" style="margin: 1rem 0; border-left: 4px solid #fbbf24;">
+                        <strong>⏳ 120일 이내: 초기 데이터 및 모델 자산 식별 (진행 중)</strong><br>
+                        과학 전용 Foundation Model 개발을 위한 데이터 정제 작업이 진행 중입니다. (2026년 3월 말 완료 예정)
+                    </div>
+                    <div class="highlight-box" style="margin: 1rem 0; border-left: 4px solid rgba(255,255,255,0.2);">
+                        <strong>⌛ 180일 이내: 리소스 공유 프레임워크 구축 (예정)</strong><br>
+                        민간 기업 및 학계와의 데이터 공유 표준 마련 (2026년 5월 목표)
+                    </div>
+                    <div class="highlight-box" style="margin: 1rem 0; border-left: 4px solid rgba(255,255,255,0.2);">
+                        <strong>⌛ 270일 이내: 통합 AI 플랫폼 IOC 시연 (예정)</strong><br>
+                        (2026년 8월 목표)
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>4. 국내외 주요 기업 영향 분석</h2>
+                <p>
+                    이 거대한 프로젝트는 반도체, 에너지, 로보틱스 산업에 막대한 자금을 유입시킬 것입니다.
+                </p>
+                <ul>
+                    <li><strong>엔비디아(NVIDIA):</strong> 프로젝트 수행을 위한 연산 인프라의 핵심 공급자로서 지위 공고화</li>
+                    <li><strong>삼성전자/SK하이닉스:</strong> 폭발적으로 증가할 슈퍼컴퓨팅용 초고성능 메모리(HBM) 수요 수혜</li>
+                    <li><strong>현대차그룹:</strong> AI 에이전트가 탑재된 자율주행 모빌리티 및 로보틱스(보스턴 다이내믹스) 기술과 프로젝트의 접점 증대</li>
+                    <li><strong>두산에너빌리티:</strong> AI 센터 가동을 위한 막대한 전력 수요를 감당할 SMR(소형모듈원자로) 시장 확대</li>
+                </ul>
+            </section>
+
+            <div class="conclusion">
+                <h3>5. 실제 정책 문서 확인</h3>
+                <p>
+                    본 행정명령의 전문과 구체적인 시행 지침은 아래 백악관 공식 브리핑룸 링크에서 확인하실 수 있습니다.
+                </p>
+                <a href="https://www.whitehouse.gov/briefing-room/presidential-actions/2025/11/24/executive-order-on-launching-the-genesis-mission-accelerating-artificial-intelligence-for-transformative-scientific-discovery/" target="_blank" class="policy-link-btn">
+                    📜 제네시스 미션 행정명령 전문 보기
+                </a>
+                <p style="margin-top: 1.5rem; opacity: 0.8; font-size: 0.9rem;">
+                    * 참고: 본 분석은 2026년 3월 현재까지 공개된 정보를 바탕으로 작성되었습니다.
+                </p>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>케빈 워시 (Kevin Warsh) - 차기 연준 의장 지명자</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .detail-container {
+            max-width: 900px;
+            margin: 4rem auto;
+            padding: 2rem;
+        }
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+        .profile-image {
+            width: 220px;
+            height: 220px;
+            border-radius: 30px;
+            object-fit: cover;
+            border: 4px solid #f59e0b; /* Gold/Amber for candidate */
+            box-shadow: 0 20px 40px rgba(245, 158, 11, 0.3);
+        }
+        .profile-info h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #fff, #f59e0b);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .profile-title {
+            font-size: 1.25rem;
+            color: #f59e0b;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        .bio-section {
+            margin-bottom: 3rem;
+        }
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+            border-left: 2px solid rgba(245, 158, 11, 0.3);
+        }
+        .timeline-item::before {
+            background: #f59e0b;
+            box-shadow: 0 0 10px #f59e0b;
+        }
+        .quote-box {
+            background: rgba(245, 158, 11, 0.1);
+            border-left: 4px solid #f59e0b;
+        }
+    </style>
+</head>
+<body>
+    <div class="detail-container">
+        <a href="index.html" class="back-btn">← 대시보드로 돌아가기</a>
+        
+        <header class="profile-header">
+            <div class="profile-image-container" style="position: relative; width: 220px; height: 220px; border-radius: 30px; overflow: hidden; border: 4px solid #f59e0b;">
+                <img src="images/profiles/warsh.png" alt="Kevin Warsh" class="profile-image" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div class="profile-info">
+                <div class="profile-title">차기 연방준비제도 이사회 의장 지명자 (2026~)</div>
+                <h1>케빈 워시 (Kevin Warsh)</h1>
+                <p style="color: var(--text-secondary); max-width: 500px;">"AI 퍼스트 이코노미"를 주장하는 차세대 경제 혁신가이자 트럼프 정부의 연준 의장 지명자입니다.</p>
+            </div>
+        </header>
+
+        <section class="bio-section">
+            <h2 class="card-title">🏠 향후 거취 및 지명 배경</h2>
+            <p class="sector-reason">
+                제16대 제롬 파월 의장의 임기가 끝나는 2026년 5월, 차기 연준 의장으로 공식 지명되었습니다. 
+                그는 35세의 나이로 연준 최연소 이사를 역임한 '금융 천재'로 불리며, 강한 달러와 균형 잡힌 재정 정책을 옹호하는 인물입니다.
+            </p>
+        </section>
+
+        <section class="bio-section">
+            <h2 class="card-title">📊 정책 성향: "Run It Hot" & AI-Focus</h2>
+            <p class="sector-reason">
+                • <strong>AI-First 경제론:</strong> 인공지능이 생산성을 극적으로 높여 물가 상승 없이도 저금리와 고성장이 가능하다고 믿는 낙관론을 펼칩니다.<br>
+                • <strong>금리 정책:</strong> 과거에는 '매파'로 분류되었으나, 최근에는 경제 성장을 위한 금리 인하의 필요성을 주장하며 유연한 태도를 보이고 있습니다.<br>
+                • <strong>양적 긴축 강조:</strong> 연준의 비대해진 자산 규모를 줄여야 한다는 입장을 고수하고 있으며, 이는 장기 금리 상승 요인으로 작용할 수 있습니다.
+            </p>
+        </section>
+
+        <section class="bio-section">
+            <h2 class="card-title">🏆 주요 정책 업적 및 경력</h2>
+            <p class="sector-reason">
+                • <strong>2008 금융 위기 소방수:</strong> 연준 이사 재직 당시 월가와 연준 사이의 핵심 메신저 역할을 하며 위기 대응 시스템 구축에 기여했습니다.<br>
+                • <strong>G20 대표:</strong> 연준을 대표하여 G20 회의 및 글로벌 금융 협상에 참여하며 국제 금융 질서 재편에 참여했습니다.
+            </p>
+        </section>
+
+        <section class="bio-section">
+            <h2 class="card-title">🎓 주요 약력</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">1995 - 2002</div>
+                    <div class="timeline-content">모건 스탠리(Morgan Stanley) M&A 부문 이사</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2002 - 2006</div>
+                    <div class="timeline-content">백악관 국가경제위원회(NEC) 특별 보좌관</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2006 - 2011</div>
+                    <div class="timeline-content">연방준비제도(Fed) 이사 (최연소 임명)</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2011 - 2026</div>
+                    <div class="timeline-content">스탠퍼드 대학교 후버 연구소 수석 연구원</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2026 - 현재</div>
+                    <div class="timeline-content">제17대 연방준비제도 이사회 의장 지명자</div>
+                </div>
+            </div>
+        </section>
+
+        <div class="quote-box">
+            "인플레이션은 언제나 '선택'의 결과입니다. 우리는 AI 혁명을 통한 생산성 향상과 정교한 통화 정책을 결합하여 미국 경제의 새로운 전성기를 열 것입니다."
+        </div>
+    </div>
+</body>
+</html>

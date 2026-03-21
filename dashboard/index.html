@@ -22,9 +22,6 @@
                     <a href="macro-check.html" class="user-badge"
                         style="text-decoration: none; cursor: pointer; background: rgba(249, 115, 22, 0.2); border-color: #f97316; color: #fff;">🌍
                         Macro Check</a>
-                    <a href="market-regime.html" class="user-badge"
-                        style="text-decoration: none; cursor: pointer; background: rgba(16, 185, 129, 0.2); border-color: #10b981; color: #fff;">📊
-                        Market Regime</a>
                     <a href="reports.html" class="user-badge"
                         style="text-decoration: none; cursor: pointer; background: rgba(56, 189, 248, 0.2); border-color: var(--accent-blue); color: #fff;">Market
                         Insights</a>
@@ -63,9 +60,14 @@
             <button class="nav-btn" data-section="watchlist">🔍 관심 종목 분석</button>
             <button class="nav-btn" data-section="company-analysis">🏢 기업 분석</button>
             <button class="nav-btn" data-section="sector-analysis">🧭 섹터 분석</button>
-            <button class="nav-btn" data-section="external-shocks">🌍 외부 충격</button>
+            <button class="nav-btn" data-section="external-factors">🌍 외부 요소</button>
+            <button class="nav-btn" data-section="policy-stance">🏛 정책 기조 (BOK/FOMC)</button>
             <button class="nav-btn" data-section="foreign">📈 코스피 매매 동향</button>
             <button class="nav-btn" data-section="strategy">💡 투자 조언</button>
+            <button class="nav-btn" data-section="portfolio">📊 포트폴리오 종류</button>
+            <button class="nav-btn" data-section="recommender">🎯 섹터 추천기</button>
+            <button class="nav-btn" data-section="bond-guide">📜 채권 가이드</button>
+            <button class="nav-btn" data-section="masters">🏆 투자 대가 철학</button>
         </nav>
 
         <div class="content-wrapper">
@@ -119,6 +121,19 @@
                             <span class="calc-label">필요 헤지 매수액</span>
                             <span id="hedge-result-value" class="calc-value">0</span>
                         </div>
+                        <!-- Market Regime Analyzer -->
+                    <div class="card">
+                        <div class="section-label">Market Regime</div>
+                        <div class="card-title">Market Regime Analyzer</div>
+                        <div class="calc-inputs" style="grid-template-columns: 1fr;">
+                            <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; margin-bottom: 1rem;">
+                                미국 증시 개장 전후의 선물 지수와 프리마켓 지표를 분석하여 오늘의 시장 성격(추세 지속 vs 되돌림 vs 변동성)을 판정합니다.
+                            </p>
+                            <a href="market-regime.html" class="nav-btn"
+                                style="text-decoration: none; display: flex; align-items: center; justify-content: center; background: rgba(16, 185, 129, 0.15); border-color: #10b981; color: #fff; gap: 0.5rem;">
+                                <span>📊</span> 분석기 실행하기
+                            </a>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -168,15 +183,48 @@
                 </div>
             </section>
 
-            <section id="section-external-shocks" class="nav-section">
+            <section id="section-external-factors" class="nav-section">
                 <div class="card full-width">
-                    <div class="section-label">External Shocks</div>
-                    <div class="card-title">외부 충격 이벤트</div>
-                    <div id="external-shocks-summary" class="external-shocks-summary">
-                        <p style="color: var(--text-secondary);">외부 충격 데이터를 불러오는 중입니다...</p>
+                    <div class="section-label">External Factors Analysis</div>
+                    <div class="card-title">외부 요소 (정책/매크로/지정학)</div>
+                    
+                    <div class="recommender-selector" style="margin-top: 1rem; margin-bottom: 2rem;">
+                        <button class="shock-tab-btn active" data-shock-tab="timeline">이벤트 타임라인</button>
+                        <button class="shock-tab-btn" data-shock-tab="policy">주요 정책 분석</button>
                     </div>
-                    <div id="external-shocks-timeline" class="external-shocks-timeline">
-                        <p style="color: var(--text-secondary);">이벤트 타임라인을 준비 중입니다...</p>
+
+                    <div id="shock-timeline-view">
+                        <div id="external-shocks-summary" class="external-shocks-summary">
+                            <p style="color: var(--text-secondary);">외부 충격 데이터를 불러오는 중입니다...</p>
+                        </div>
+                        <div id="external-shocks-timeline" class="external-shocks-timeline">
+                            <p style="color: var(--text-secondary);">이벤트 타임라인을 준비 중입니다...</p>
+                        </div>
+                    </div>
+
+                    <div id="shock-policy-view" style="display: none;">
+                        <div id="policy-content" class="policy-content">
+                            <!-- Policy details will be rendered here -->
+                             <p style="color: var(--text-secondary);">정책 데이터를 불러오는 중입니다...</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="section-policy-stance" class="nav-section">
+                <div class="card full-width">
+                    <div class="section-label">Central Bank Policy</div>
+                    <h3 class="card-title">한/미 통화 정책 기조</h3>
+                    
+                    <div id="policy-data-container" class="policy-main-grid">
+                        <!-- Dynamic Content Loaded via JS -->
+                    </div>
+
+                    <div id="policy-analysis-box" class="recommender-logic-box" style="margin-top: 2rem;">
+                        <h4>🕊️ 한/미 정책 디커플링 및 시사점</h4>
+                        <div id="policy-strategy-content" class="policy-text-small">
+                            <!-- Dynamic Content -->
+                        </div>
                     </div>
                 </div>
             </section>
@@ -206,6 +254,691 @@
                     <div class="card-title">종합 투자 조언</div>
                     <div class="advice-text">
                         <p style="color: var(--text-secondary);">데이터를 분석 중입니다...</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Portfolio Section -->
+            <section id="section-portfolio" class="nav-section">
+                <div class="card full-width">
+                    <div class="section-label">Investment Strategy</div>
+                    <div class="card-title">대표적인 포트폴리오 종류</div>
+
+                    <div class="portfolio-intro">
+                        📌 포트폴리오에 정답은 없지만, 자신의 투자 성향과 목표에 맞는 방향성을 설정하는 것이 중요합니다. 아래의 대표적인 예시들을 참고하여 나만의 포트폴리오를 구성해 보세요.
+                    </div>
+
+                    <div class="portfolio-grid" id="portfolio-container">
+                        <!-- Stability Type -->
+                        <div class="portfolio-item-card">
+                            <div class="portfolio-type-badge stability">안정형</div>
+                            <h3 class="portfolio-type-title">1. 안정형</h3>
+                            <p class="portfolio-type-desc">원금 변동을 최대한 줄이고, 수익보다 방어와 현금흐름을 더 중시하는 타입입니다. 보통 주식 비중이 낮고 채권·현금 비중이 높습니다.</p>
+                            <div class="portfolio-info-box">
+                                <strong>🎯 이 유형이 맞는 사람:</strong>
+                                <ul>
+                                    <li>가까운 시기(1~3년 내) 쓸 돈이 있다</li>
+                                    <li>큰 하락을 견디기 어렵다</li>
+                                    <li>투자보다 “보존”이 우선이다</li>
+                                </ul>
+                            </div>
+                            <div class="portfolio-allocation-box">
+                                <strong>📊 구성 예시 (Vanguard 보수형):</strong>
+                                <div class="allocation-legend">
+                                    <div class="legend-item"><span class="legend-dot equity"></span> 주식 30%</div>
+                                    <div class="legend-item"><span class="legend-dot bond"></span> 채권 55%</div>
+                                    <div class="legend-item"><span class="legend-dot cash"></span> 현금 15%</div>
+                                </div>
+                                <div class="allocation-bar">
+                                    <div class="bar-segment equity" style="width: 30%;"></div>
+                                    <div class="bar-segment bond" style="width: 55%;"></div>
+                                    <div class="bar-segment cash" style="width: 15%;"></div>
+                                </div>
+                                <p class="allocation-text">주식 20~40 / 채권 40~70 / 현금 10~20</p>
+                            </div>
+
+                        </div>
+
+                        <!-- Balanced Type -->
+                        <div class="portfolio-item-card">
+                            <div class="portfolio-type-badge balanced">균형형</div>
+                            <h3 class="portfolio-type-title">2. 균형형</h3>
+                            <p class="portfolio-type-desc">가장 대표적인 “정석형”입니다. 성장도 챙기고 방어도 챙기려는 구조고, 흔히 말하는 60/40 포트폴리오가 여기에 해당합니다.</p>
+                            <div class="portfolio-info-box">
+                                <strong>🎯 이 유형이 맞는 사람:</strong>
+                                <ul>
+                                    <li>장기투자는 하고 싶지만 변동성이 너무 크면 힘들다</li>
+                                    <li>자산 배분의 기본형을 원한다</li>
+                                    <li>“공격형까지는 아니고, 예금형도 아니다”</li>
+                                </ul>
+                            </div>
+                            <div class="portfolio-allocation-box">
+                                <strong>📊 구성 예시 (대표 포트폴리오):</strong>
+                                <div class="allocation-legend">
+                                    <div class="legend-item"><span class="legend-dot equity"></span> 주식 60%</div>
+                                    <div class="legend-item"><span class="legend-dot bond"></span> 채권 35%</div>
+                                    <div class="legend-item"><span class="legend-dot cash"></span> 현금 5%</div>
+                                </div>
+                                <div class="allocation-bar">
+                                    <div class="bar-segment equity" style="width: 60%;"></div>
+                                    <div class="bar-segment bond" style="width: 35%;"></div>
+                                    <div class="bar-segment cash" style="width: 5%;"></div>
+                                </div>
+                                <p class="allocation-text">주식 50~70 / 채권 25~45 / 현금 0~10</p>
+                            </div>
+
+                        </div>
+
+                        <!-- Aggressive Type -->
+                        <div class="portfolio-item-card">
+                            <div class="portfolio-type-badge aggressive">공격형</div>
+                            <h3 class="portfolio-type-title">3. 공격형</h3>
+                            <p class="portfolio-type-desc">자산 증식이 최우선이고, 중간의 큰 변동성을 감수하는 타입입니다. 수익 기대치가 높은 대신, 하락장에서 버틸 수 있는 멘탈이 핵심입니다.</p>
+                            <div class="portfolio-info-box">
+                                <strong>🎯 이 유형이 맞는 사람:</strong>
+                                <ul>
+                                    <li>투자기간이 길다</li>
+                                    <li>월급/현금흐름이 따로 있어 버틸 수 있다</li>
+                                    <li>단기 하락보다 장기 복리를 더 중시한다</li>
+                                </ul>
+                            </div>
+                            <div class="portfolio-allocation-box">
+                                <strong>📊 구성 예시 (Vanguard 공격형):</strong>
+                                <div class="allocation-legend">
+                                    <div class="legend-item"><span class="legend-dot equity"></span> 주식 80%</div>
+                                    <div class="legend-item"><span class="legend-dot bond"></span> 채권 20%</div>
+                                </div>
+                                <div class="allocation-bar">
+                                    <div class="bar-segment equity" style="width: 80%;"></div>
+                                    <div class="bar-segment bond" style="width: 20%;"></div>
+                                </div>
+                                <p class="allocation-text">주식 70~90 / 채권 10~30 / 현금 0~10</p>
+                            </div>
+
+                        </div>
+
+                        <!-- Index Type -->
+                        <div class="portfolio-item-card">
+                            <div class="portfolio-type-badge index">인덱스형</div>
+                            <h3 class="portfolio-type-title">4. 초간단 인덱스형</h3>
+                            <p class="portfolio-type-desc">대표적으로 '3펀드 포트폴리오'가 유명합니다. 종목을 고르는 게 아니라 시장 전체를 사는 단순하지만 강한 구조입니다.</p>
+                            <div class="portfolio-info-box">
+                                <strong>🛠 구성 자산 (Bogleheads 기준):</strong>
+                                <ul>
+                                    <li>자국 전체 주식시장</li>
+                                    <li>해외 전체 주식시장</li>
+                                    <li>전체 채권시장</li>
+                                </ul>
+                            </div>
+                            <div class="portfolio-info-box">
+                                <strong>✨ 장점:</strong>
+                                <p>단순하고 관리가 쉬우며, 과도한 종목 선택 실수를 줄이고 장기 투자와 궁합이 매우 좋습니다.</p>
+                            </div>
+                            <div class="portfolio-allocation-box">
+                                <strong>📊 구성 예시 (Bogleheads 3-Fund):</strong>
+                                <div class="allocation-legend">
+                                    <div class="legend-item"><span class="legend-dot equity"></span> 전체 주식 60%</div>
+                                    <div class="legend-item"><span class="legend-dot bond"></span> 전체 채권 40%</div>
+                                </div>
+                                <div class="allocation-bar">
+                                    <div class="bar-segment equity" style="width: 60%;"></div>
+                                    <div class="bar-segment bond" style="width: 40%;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- All-in-one Type -->
+
+                        <div class="portfolio-item-card">
+                            <div class="portfolio-type-badge allinone">올인원형</div>
+                            <h3 class="portfolio-type-title">5. 올인원형</h3>
+                            <p class="portfolio-type-desc">직접 비중 조절하기 귀찮거나 리밸런싱을 자동화하고 싶은 사람에게 맞습니다. 한 상품 안에 수천 개 주식·채권이 이미 섞여 있습니다.</p>
+                            <div class="portfolio-info-box">
+                                <strong>✨ 장점:</strong>
+                                <p>관리 난이도 최하, 실수 방지 효과가 높습니다. (Vanguard Target Retirement 등)</p>
+                            </div>
+                            <div class="portfolio-info-box">
+                                <strong>⚠️ 단점:</strong>
+                                <p>세밀한 커스터마이징이 제한적이며 직접 설계하는 재미는 적습니다.</p>
+                            </div>
+                            <div class="portfolio-allocation-box">
+                                <strong>📊 구성 예시 (Target Date Fund):</strong>
+                                <div class="allocation-legend">
+                                    <div class="legend-item"><span class="legend-dot equity"></span> 글로벌 주식 50%</div>
+                                    <div class="legend-item"><span class="legend-dot bond"></span> 자산배분 50%</div>
+                                </div>
+                                <div class="allocation-bar">
+                                    <div class="bar-segment equity" style="width: 50%;"></div>
+                                    <div class="bar-segment bond" style="width: 50%;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Core-Satellite Type -->
+
+                        <div class="portfolio-item-card">
+                            <div class="portfolio-type-badge core">코어-새틀라이트</div>
+                            <h3 class="portfolio-type-title">6. 코어-새틀라이트형</h3>
+                            <p class="portfolio-type-desc">해당 방식은 실무적으로 많이 쓰입니다. 핵심 자산(Core)은 넓게 분산하고, 일부(Satellite)만 테마나 개별주에 배치합니다.</p>
+                            <div class="portfolio-info-box">
+                                <strong>📐 구성 예시:</strong>
+                                <ul>
+                                    <li><strong>70~90% (Core):</strong> 광범위 인덱스, 채권 등</li>
+                                    <li><strong>10~30% (Satellite):</strong> 반도체, AI, 배당, 금, 리츠 등</li>
+                                </ul>
+                            </div>
+                            <div class="portfolio-info-box">
+                                <strong>✨ 장점:</strong>
+                                <p>중심은 안정적으로 가져가면서 확신 있는 아이디어는 별도로 반영 가능합니다.</p>
+                            </div>
+                            <div class="portfolio-allocation-box">
+                                <strong>📊 구성 예시 (전략적 배분):</strong>
+                                <div class="allocation-legend">
+                                    <div class="legend-item"><span class="legend-dot equity"></span> Core (지수) 80%</div>
+                                    <div class="legend-item"><span class="legend-dot commodity"></span> Satellite (테마) 20%</div>
+                                </div>
+                                <div class="allocation-bar">
+                                    <div class="bar-segment equity" style="width: 80%;"></div>
+                                    <div class="bar-segment commodity" style="width: 20%;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="portfolio-item-card">
+
+                            <div class="portfolio-type-badge permanent">올웨더/영구</div>
+                            <h3 class="portfolio-type-title">7. 영구 포트폴리오</h3>
+                            <p class="portfolio-type-desc">해리 브라운이 제안한 방식으로, 어떤 경제 상황(성장, 침체, 인플레이션, 디플레이션)에서도 살아남도록 설계된 초분산 전략입니다.</p>
+                            <div class="portfolio-info-box">
+                                <strong>📐 구성 자산 (각 25%):</strong>
+                                <ul>
+                                    <li>주식 (성장기 대응)</li>
+                                    <li>장기채권 (금리 하락기 대응)</li>
+                                    <li>현금 (침체기 대응)</li>
+                                    <li>금 (인플레이션 대응)</li>
+                                </ul>
+                            </div>
+                            <div class="portfolio-allocation-box">
+                                <strong>📊 구성 예시 (Permanent Portfolio):</strong>
+                                <div class="allocation-legend">
+                                    <div class="legend-item"><span class="legend-dot equity"></span> 주식 25%</div>
+                                    <div class="legend-item"><span class="legend-dot bond"></span> 채권 25%</div>
+                                    <div class="legend-item"><span class="legend-dot cash"></span> 현금 25%</div>
+                                    <div class="legend-item"><span class="legend-dot gold"></span> 금 25%</div>
+                                </div>
+                                <div class="allocation-bar">
+                                    <div class="bar-segment equity" style="width: 25%;"></div>
+                                    <div class="bar-segment bond" style="width: 25%;"></div>
+                                    <div class="bar-segment cash" style="width: 25%;"></div>
+                                    <div class="bar-segment gold" style="width: 25%;"></div>
+                                </div>
+                                <p class="allocation-text">주식 25 / 채권 25 / 현금 25 / 금 25</p>
+                            </div>
+                        </div>
+
+                        <!-- Income Type -->
+                        <div class="portfolio-item-card">
+                            <div class="portfolio-type-badge income">인컴형</div>
+                            <h3 class="portfolio-type-title">8. 인컴형</h3>
+                            <p class="portfolio-type-desc">자산 성장보다 현금흐름이 중요한 사람에게 맞습니다. 배당주, 배당 ETF, 채권, 우선주, 리츠 등을 조합합니다.</p>
+                            <div class="portfolio-info-box">
+                                <strong>🎯 이 유형이 맞는 사람:</strong>
+                                <ul>
+                                    <li>생활비 보완이 중요하다</li>
+                                    <li>심리적으로 “들어오는 돈”이 중요하다</li>
+                                    <li>은퇴 준비나 현금흐름 관리가 목적이다</li>
+                                </ul>
+                            </div>
+                            <div class="portfolio-info-box">
+                                <strong>⚠️ 주의할 점:</strong>
+                                <p>분배금이 높다고 무조건 좋은 건 아니며, 성장성이 떨어질 수 있습니다. 세금과 총수익률을 같이 고려해야 합니다.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+            <!-- Sector Recommender Section -->
+            <section id="section-recommender" class="nav-section">
+                <div class="recommender-intro">
+                    <div class="section-label">Custom Portfolio Guide</div>
+                    <h2>보유 종목 기반 맞춤형 비중 구성</h2>
+                    <p>사용자의 <strong>실제 보유 및 관심 종목</strong>을 시장 보고서 데이터와 결합한 구성안입니다. <br>원하는 포트폴리오 전략을 선택하면 최적화된 비중과 대응 로직을 제안합니다.</p>
+                </div>
+
+                <!-- Portfolio Type Selector inside Recommender -->
+                <div class="recommender-selector">
+                    <button class="rec-sel-btn active" data-rec-type="balanced">균형 성장형</button>
+                    <button class="rec-sel-btn" data-rec-type="stability">안정 방어형</button>
+                    <button class="rec-sel-btn" data-rec-type="aggressive">공격 수익형</button>
+                    <button class="rec-sel-btn" data-rec-type="core-satellite">코어-새틀라이트</button>
+                </div>
+
+                <div class="recommender-grid" id="recommender-content">
+                    <!-- Dynamic Content Loaded via JS -->
+                </div>
+            </section>
+
+            <!-- Bond Guide Section -->
+            <section id="section-bond-guide" class="nav-section">
+                <div class="recommender-intro">
+                    <div class="section-label">Financial Knowledge</div>
+                    <h2>채권(Bond) 투자를 위한 필수 금융 지식</h2>
+                    <p>안전 자산의 핵심, 채권의 기본 원리와 금리와의 관계를 이해하여 균형 잡힌 포트폴리오를 구성하세요.</p>
+                </div>
+
+                <div class="bond-guide-grid">
+                    <!-- Bond Basics -->
+                    <div class="card">
+                        <div class="section-label">Definition</div>
+                        <div class="card-title">채권이란 무엇인가?</div>
+                        <p class="bond-text">채권은 정부, 공공기관, 기업 등이 <strong>자금을 조달하기 위해 발행한 차용증</strong>입니다. 발행자는 일정 기간마다 이자를 지급하고, 만기에 원금을 돌려줄 것을 약속합니다.</p>
+                        <div class="concept-tags">
+                            <span class="asset-tag" style="background: rgba(56, 189, 248, 0.2);">정부(국채)</span>
+                            <span class="asset-tag" style="background: rgba(34, 197, 94, 0.2);">지자체(지방채)</span>
+                            <span class="asset-tag" style="background: rgba(249, 115, 22, 0.2);">기업(회사채)</span>
+                        </div>
+                    </div>
+
+                    <!-- Market Price vs Yield -->
+                    <div class="card">
+                        <div class="section-label">Key Principle</div>
+                        <div class="card-title" style="color: var(--accent-red);">금리와 채권 가격의 역관비</div>
+                        <p class="bond-text">채권 투자에서 가장 중요한 원칙입니다. <strong>시장 금리가 오르면 기존 채권의 가격은 떨어지고, 금리가 내리면 채권 가격은 오릅니다.</strong></p>
+                        <div class="logic-box">
+                            <p>📉 <strong>금리 상승:</strong> 새로 나오는 채권 이자가 더 높음 → 기존 채권 매력 하락 → 가격 하락</p>
+                            <p>📈 <strong>금리 하락:</strong> 새로 나오는 채권 이자가 더 낮음 → 기존 채권 매력 상승 → 가격 상승</p>
+                        </div>
+                    </div>
+
+                    <!-- Core Terms -->
+                    <div class="card full-width">
+                        <div class="section-label">Core Concepts</div>
+                        <div class="card-title">채권 이해를 위한 4대 핵심 용어</div>
+                        <div class="bond-terms-grid">
+                            <div class="term-item">
+                                <div class="term-name">표면금리 (Coupon Rate)</div>
+                                <p>채권 증서에 적힌 확정 이자율입니다. 채권의 액면가에 곱해져 매달 혹은 매분기 지급됩니다.</p>
+                            </div>
+                            <div class="term-item">
+                                <div class="term-name">만기수수료율 (YTM)</div>
+                                <p>현재 가격에 채권을 사서 만기까지 보유했을 때 얻게 되는 연평균 수익률입니다. 실질적인 투자 지표입니다.</p>
+                            </div>
+                            <div class="term-item">
+                                <div class="term-name">듀레이션 (Duration)</div>
+                                <p>금리 변화에 따른 채권 가격의 <strong>민감도</strong>입니다. 만기가 길수록, 표면금리가 낮을수록 듀레이션이 길어집니다.</p>
+                            </div>
+                            <div class="term-item">
+                                <div class="term-name">신용등급 (Credit Rating)</div>
+                                <p>발행자가 원금과 이자를 갚을 능력을 평가한 것입니다. (AAA ~ D). 등급이 낮을수록 이자가 높습니다(하이일드 채권).</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Strategy Tip -->
+                    <div class="card full-width">
+                        <div class="section-label">Investment Strategy</div>
+                        <div class="card-title">포트폴리오 내 채권의 역할</div>
+                        <div class="recommender-logic-box">
+                            <ul class="recommender-list" style="margin-top: 0.5rem;">
+                                <li><strong>주식 하락의 헤지:</strong> 경기 불황으로 주식이 급락할 때, 보통 금리가 내리며 채권 가격이 방어해 줍니다.</li>
+                                <li><strong>현금 흐름 창출:</strong> 배당과 마찬가지로 정기적인 이자(쿠폰) 수익을 제공합니다.</li>
+                                <li><strong>장단기 금리 역전 체크:</strong> 단기 금리가 장기 금리보다 높아지면 보통 1~2년 내 경기 침체의 신호로 해석됩니다.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Investment Masters Philosophy Section -->
+            <section id="section-masters" class="nav-section">
+                <div class="recommender-intro">
+                    <div class="section-label">Legendary Investors</div>
+                    <h2>🏆 주식 고수들의 투자 철학</h2>
+                    <p>역사상 가장 위대한 투자자들의 핵심 철학과 원칙을 정리했습니다. <br>이들의 공통점은 <strong>원칙을 지키고, 감정을 통제하며, 장기적 관점을 유지</strong>한다는 것입니다.</p>
+                </div>
+
+                <div class="masters-grid" id="masters-container">
+
+                    <!-- Warren Buffett -->
+                    <div class="master-card">
+                        <div class="master-header">
+                            <div class="master-avatar" style="background: linear-gradient(135deg, #667eea, #764ba2);">WB</div>
+                            <div class="master-info">
+                                <h3>워런 버핏 <span class="master-en">Warren Buffett</span></h3>
+                                <span class="master-title">오마하의 현인 · Berkshire Hathaway</span>
+                            </div>
+                        </div>
+                        <blockquote class="master-quote">"남들이 탐욕스러울 때 두려워하고, 남들이 두려워할 때 탐욕스러워라."</blockquote>
+                        <div class="master-philosophy">
+                            <div class="philosophy-tag value">가치투자</div>
+                            <div class="philosophy-tag long-term">초장기 보유</div>
+                            <div class="philosophy-tag moat">경제적 해자</div>
+                        </div>
+                        <ul class="master-principles">
+                            <li><strong>능력의 원(Circle of Competence):</strong> 내가 이해하는 사업에만 투자한다</li>
+                            <li><strong>안전마진(Margin of Safety):</strong> 내재가치 대비 충분히 싸게 산다</li>
+                            <li><strong>복리의 마법:</strong> 시간이 최고의 동맹이다. 좋은 기업을 사서 영원히 보유한다</li>
+                            <li><strong>Rule #1:</strong> 돈을 잃지 마라. Rule #2: Rule #1을 잊지 마라</li>
+                        </ul>
+                        <div class="master-stats">
+                            <div class="stat-item"><span class="stat-value">~20%</span><span class="stat-label">연평균 수익률 (60년)</span></div>
+                            <div class="stat-item"><span class="stat-value">$1,400억+</span><span class="stat-label">순자산</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Peter Lynch -->
+                    <div class="master-card">
+                        <div class="master-header">
+                            <div class="master-avatar" style="background: linear-gradient(135deg, #f093fb, #f5576c);">PL</div>
+                            <div class="master-info">
+                                <h3>피터 린치 <span class="master-en">Peter Lynch</span></h3>
+                                <span class="master-title">마젤란 펀드의 전설 · Fidelity</span>
+                            </div>
+                        </div>
+                        <blockquote class="master-quote">"당신이 가장 잘 아는 분야에서 투자 기회를 찾아라."</blockquote>
+                        <div class="master-philosophy">
+                            <div class="philosophy-tag growth">성장주 발굴</div>
+                            <div class="philosophy-tag practical">생활 속 투자</div>
+                            <div class="philosophy-tag research">철저한 리서치</div>
+                        </div>
+                        <ul class="master-principles">
+                            <li><strong>일상 속 텐배거:</strong> 쇼핑몰, 식당, 일상에서 성장 기업을 찾아라</li>
+                            <li><strong>6가지 분류법:</strong> 저성장주, 대형우량주, 고성장주, 경기순환주, 자산주, 턴어라운드주</li>
+                            <li><strong>PEG Ratio:</strong> PER만 보지 말고, 이익 성장률 대비 밸류에이션을 봐라</li>
+                            <li><strong>"자기가 뭘 사는지 알아라":</strong> 설명할 수 없는 기업에 투자하지 마라</li>
+                        </ul>
+                        <div class="master-stats">
+                            <div class="stat-item"><span class="stat-value">29.2%</span><span class="stat-label">연평균 수익률 (13년)</span></div>
+                            <div class="stat-item"><span class="stat-value">$140억</span><span class="stat-label">마젤란 펀드 운용 규모</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Jesse Livermore -->
+                    <div class="master-card">
+                        <div class="master-header">
+                            <div class="master-avatar" style="background: linear-gradient(135deg, #fa709a, #fee140);">JL</div>
+                            <div class="master-info">
+                                <h3>제시 리버모어 <span class="master-en">Jesse Livermore</span></h3>
+                                <span class="master-title">월가의 전설적 투기꾼</span>
+                            </div>
+                        </div>
+                        <blockquote class="master-quote">"시장은 절대 틀리지 않는다. 틀리는 것은 사람의 의견이다."</blockquote>
+                        <div class="master-philosophy">
+                            <div class="philosophy-tag momentum">추세 매매</div>
+                            <div class="philosophy-tag timing">타이밍</div>
+                            <div class="philosophy-tag risk">리스크 관리</div>
+                        </div>
+                        <ul class="master-principles">
+                            <li><strong>추세를 따르라:</strong> 큰 흐름을 읽고, 그 방향으로만 매매한다</li>
+                            <li><strong>피라미딩:</strong> 수익이 나는 포지션에만 추가 매수한다</li>
+                            <li><strong>손절의 미학:</strong> 빠르게 손절하고, 수익은 길게 가져간다</li>
+                            <li><strong>인내:</strong> "돈을 벌어준 건 내 판단이 아니라 가만히 앉아 있었던 것이다"</li>
+                        </ul>
+                        <div class="master-stats">
+                            <div class="stat-item"><span class="stat-value">$1억+</span><span class="stat-label">1929년 대공황 수익</span></div>
+                            <div class="stat-item"><span class="stat-value">1877~1940</span><span class="stat-label">활동 시기</span></div>
+                        </div>
+                    </div>
+
+                    <!-- George Soros -->
+                    <div class="master-card">
+                        <div class="master-header">
+                            <div class="master-avatar" style="background: linear-gradient(135deg, #a18cd1, #fbc2eb);">GS</div>
+                            <div class="master-info">
+                                <h3>조지 소로스 <span class="master-en">George Soros</span></h3>
+                                <span class="master-title">영란은행을 무너뜨린 남자</span>
+                            </div>
+                        </div>
+                        <blockquote class="master-quote">"중요한 것은 맞고 틀리는 게 아니라, 맞을 때 얼마를 버느냐이다."</blockquote>
+                        <div class="master-philosophy">
+                            <div class="philosophy-tag macro">글로벌 매크로</div>
+                            <div class="philosophy-tag contrarian">반사성 이론</div>
+                            <div class="philosophy-tag leverage">레버리지</div>
+                        </div>
+                        <ul class="master-principles">
+                            <li><strong>반사성 이론:</strong> 시장 참여자의 인식이 펀더멘털을 변화시키고, 그것이 다시 인식을 바꾼다</li>
+                            <li><strong>비대칭 베팅:</strong> 확률이 높을 때 압도적으로 크게 베팅한다</li>
+                            <li><strong>가설 → 검증:</strong> 투자는 가설을 세우고 시장이 검증하는 과학적 과정이다</li>
+                            <li><strong>생존 우선:</strong> 틀렸다면 즉시 인정하고 포지션을 정리한다</li>
+                        </ul>
+                        <div class="master-stats">
+                            <div class="stat-item"><span class="stat-value">$10억</span><span class="stat-label">1992 파운드 공매도 수익</span></div>
+                            <div class="stat-item"><span class="stat-value">$86억</span><span class="stat-label">순자산</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Ray Dalio -->
+                    <div class="master-card">
+                        <div class="master-header">
+                            <div class="master-avatar" style="background: linear-gradient(135deg, #4facfe, #00f2fe);">RD</div>
+                            <div class="master-info">
+                                <h3>레이 달리오 <span class="master-en">Ray Dalio</span></h3>
+                                <span class="master-title">올웨더 포트폴리오의 창시자 · Bridgewater</span>
+                            </div>
+                        </div>
+                        <blockquote class="master-quote">"고통 + 반성 = 진보 (Pain + Reflection = Progress)"</blockquote>
+                        <div class="master-philosophy">
+                            <div class="philosophy-tag allweather">올웨더</div>
+                            <div class="philosophy-tag systematic">시스템 투자</div>
+                            <div class="philosophy-tag diversify">극한 분산</div>
+                        </div>
+                        <ul class="master-principles">
+                            <li><strong>올웨더 전략:</strong> 어떤 경제 환경에서도 살아남는 '리스크 패리티' 포트폴리오</li>
+                            <li><strong>경제 기계:</strong> 경제는 단기 부채 사이클과 장기 부채 사이클의 반복이다</li>
+                            <li><strong>원칙(Principles):</strong> 의사결정은 감정이 아닌 원칙과 알고리즘에 기반해야 한다</li>
+                            <li><strong>상관관계 낮은 15가지 자산:</strong> 분산의 성배(Holy Grail of Investing)</li>
+                        </ul>
+                        <div class="master-stats">
+                            <div class="stat-item"><span class="stat-value">$1,500억+</span><span class="stat-label">Bridgewater 운용 규모</span></div>
+                            <div class="stat-item"><span class="stat-value">12%</span><span class="stat-label">올웨더 연평균 수익률</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Benjamin Graham -->
+                    <div class="master-card">
+                        <div class="master-header">
+                            <div class="master-avatar" style="background: linear-gradient(135deg, #43e97b, #38f9d7);">BG</div>
+                            <div class="master-info">
+                                <h3>벤저민 그레이엄 <span class="master-en">Benjamin Graham</span></h3>
+                                <span class="master-title">가치투자의 아버지 · 버핏의 스승</span>
+                            </div>
+                        </div>
+                        <blockquote class="master-quote">"주식시장은 단기적으로 투표기이지만, 장기적으로는 저울이다."</blockquote>
+                        <div class="master-philosophy">
+                            <div class="philosophy-tag value">가치투자 원조</div>
+                            <div class="philosophy-tag safety">안전마진</div>
+                            <div class="philosophy-tag rational">이성적 판단</div>
+                        </div>
+                        <ul class="master-principles">
+                            <li><strong>미스터 마켓:</strong> 시장은 매일 가격을 제시하는 조울증 환자다. 그에게 휘둘리지 마라</li>
+                            <li><strong>안전마진:</strong> 내재가치보다 30~50% 할인된 가격에서만 매수한다</li>
+                            <li><strong>투자 vs 투기:</strong> 원금의 안전과 적절한 수익을 보장하는 것만이 '투자'다</li>
+                            <li><strong>청산가치 분석:</strong> 기업의 순유동자산(NCAV)만으로도 투자 판단이 가능하다</li>
+                        </ul>
+                        <div class="master-stats">
+                            <div class="stat-item"><span class="stat-value">~20%</span><span class="stat-label">연평균 수익률</span></div>
+                            <div class="stat-item"><span class="stat-value">1934</span><span class="stat-label">《증권분석》 출간</span></div>
+                        </div>
+                    </div>
+
+                    <!-- John Templeton -->
+                    <div class="master-card">
+                        <div class="master-header">
+                            <div class="master-avatar" style="background: linear-gradient(135deg, #ff9a9e, #fecfef);">JT</div>
+                            <div class="master-info">
+                                <h3>존 템플턴 <span class="master-en">John Templeton</span></h3>
+                                <span class="master-title">글로벌 분산투자의 선구자</span>
+                            </div>
+                        </div>
+                        <blockquote class="master-quote">"'이번에는 다르다'는 투자에서 가장 비싼 네 단어다."</blockquote>
+                        <div class="master-philosophy">
+                            <div class="philosophy-tag contrarian">역발상 투자</div>
+                            <div class="philosophy-tag global">글로벌 분산</div>
+                            <div class="philosophy-tag patience">극한의 인내</div>
+                        </div>
+                        <ul class="master-principles">
+                            <li><strong>최대 비관 시점에 매수:</strong> 공포에 질린 시장이 최고의 매수 타이밍이다</li>
+                            <li><strong>글로벌 시야:</strong> 한 나라에 국한하지 말고 전 세계에서 저평가 자산을 찾아라</li>
+                            <li><strong>감사와 겸손:</strong> 시장에 대한 겸손함이 장기적 성공의 열쇠다</li>
+                        </ul>
+                        <div class="master-stats">
+                            <div class="stat-item"><span class="stat-value">15.8%</span><span class="stat-label">연평균 수익률 (38년)</span></div>
+                            <div class="stat-item"><span class="stat-value">1954~1992</span><span class="stat-label">Templeton Growth Fund</span></div>
+                        </div>
+                    </div>
+
+                    <!-- William O'Neil -->
+                    <div class="master-card">
+                        <div class="master-header">
+                            <div class="master-avatar" style="background: linear-gradient(135deg, #ffecd2, #fcb69f);">WO</div>
+                            <div class="master-info">
+                                <h3>윌리엄 오닐 <span class="master-en">William O'Neil</span></h3>
+                                <span class="master-title">CAN SLIM 투자법 창시자 · IBD</span>
+                            </div>
+                        </div>
+                        <blockquote class="master-quote">"시장에서 이기려면 대중의 의견이 아니라 차트와 실적을 따라야 한다."</blockquote>
+                        <div class="master-philosophy">
+                            <div class="philosophy-tag momentum">모멘텀 투자</div>
+                            <div class="philosophy-tag canslim">CAN SLIM</div>
+                            <div class="philosophy-tag technical">기술적 분석</div>
+                        </div>
+                        <ul class="master-principles">
+                            <li><strong>C:</strong> Current Quarterly Earnings – 최근 분기 이익이 25%+ 성장</li>
+                            <li><strong>A:</strong> Annual Earnings Growth – 연간 이익 성장률 우수</li>
+                            <li><strong>N:</strong> New Products/Management – 새로운 제품·경영진·신고가</li>
+                            <li><strong>S/L/I/M:</strong> Supply·Leader·Institutional·Market Direction</li>
+                            <li><strong>손절 7~8%:</strong> 매수가 대비 7~8% 하락 시 무조건 손절한다</li>
+                        </ul>
+                        <div class="master-stats">
+                            <div class="stat-item"><span class="stat-value">2,000%+</span><span class="stat-label">30세 개인 수익률</span></div>
+                            <div class="stat-item"><span class="stat-value">1963</span><span class="stat-label">NYSE 최연소 시트 구매</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Andre Kostolany -->
+                    <div class="master-card">
+                        <div class="master-header">
+                            <div class="master-avatar" style="background: linear-gradient(135deg, #c471f5, #fa71cd);">AK</div>
+                            <div class="master-info">
+                                <h3>앙드레 코스톨라니 <span class="master-en">André Kostolany</span></h3>
+                                <span class="master-title">유럽의 투자 철학자</span>
+                            </div>
+                        </div>
+                        <blockquote class="master-quote">"수면제를 먹고 몇 년 뒤에 깨어나라. 그러면 부자가 되어 있을 것이다."</blockquote>
+                        <div class="master-philosophy">
+                            <div class="philosophy-tag contrarian">역발상</div>
+                            <div class="philosophy-tag patience">인내</div>
+                            <div class="philosophy-tag psychology">군중 심리</div>
+                        </div>
+                        <ul class="master-principles">
+                            <li><strong>달걀 이론:</strong> 주식시장은 '소신파 → 부화뇌동파'로 자금이 이동하는 순환 구조</li>
+                            <li><strong>4G 원칙:</strong> 돈(Geld), 생각(Gedanken), 인내(Geduld), 운(Glück)</li>
+                            <li><strong>주인과 개:</strong> 경제(주인)와 주가(개)는 같이 산책하지만 개가 더 왔다 갔다 한다</li>
+                            <li><strong>확신에 투자:</strong> 소문에 사지 말고 본인의 확신에 투자하라</li>
+                        </ul>
+                        <div class="master-stats">
+                            <div class="stat-item"><span class="stat-value">80년</span><span class="stat-label">투자 경력</span></div>
+                            <div class="stat-item"><span class="stat-value">1906~1999</span><span class="stat-label">생몰 연도</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Charlie Munger -->
+                    <div class="master-card">
+                        <div class="master-header">
+                            <div class="master-avatar" style="background: linear-gradient(135deg, #30cfd0, #330867);">CM</div>
+                            <div class="master-info">
+                                <h3>찰리 멍거 <span class="master-en">Charlie Munger</span></h3>
+                                <span class="master-title">버핏의 파트너 · 사고의 거인</span>
+                            </div>
+                        </div>
+                        <blockquote class="master-quote">"현명한 사람은 문제를 해결하고, 더 현명한 사람은 문제를 피한다."</blockquote>
+                        <div class="master-philosophy">
+                            <div class="philosophy-tag mental">격자형 사고</div>
+                            <div class="philosophy-tag quality">고품질 집중</div>
+                            <div class="philosophy-tag inversion">역산법</div>
+                        </div>
+                        <ul class="master-principles">
+                            <li><strong>격자형 정신 모델:</strong> 다양한 학문(심리학, 물리학, 경제학 등)의 프레임으로 투자를 분석</li>
+                            <li><strong>역산법(Inversion):</strong> '어떻게 성공할까'보다 '어떻게 망할까'를 먼저 생각하라</li>
+                            <li><strong>적정 가격의 좋은 기업:</strong> 싸구려 기업보다 좋은 기업을 적정 가격에 사라</li>
+                            <li><strong>Sit on your ass:</strong> 좋은 기회가 올 때까지 기다렸다가 크게 베팅한다</li>
+                        </ul>
+                        <div class="master-stats">
+                            <div class="stat-item"><span class="stat-value">19.8%</span><span class="stat-label">연평균 수익률</span></div>
+                            <div class="stat-item"><span class="stat-value">$26억</span><span class="stat-label">순자산</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Philip Fisher -->
+                    <div class="master-card">
+                        <div class="master-header">
+                            <div class="master-avatar" style="background: linear-gradient(135deg, #89f7fe, #66a6ff);">PF</div>
+                            <div class="master-info">
+                                <h3>필립 피셔 <span class="master-en">Philip Fisher</span></h3>
+                                <span class="master-title">성장주 투자의 아버지</span>
+                            </div>
+                        </div>
+                        <blockquote class="master-quote">"훌륭한 기업의 주식을 팔아야 할 시점은 거의 오지 않는다."</blockquote>
+                        <div class="master-philosophy">
+                            <div class="philosophy-tag growth">성장주</div>
+                            <div class="philosophy-tag scuttlebutt">소문 투자법</div>
+                            <div class="philosophy-tag concentrated">집중 투자</div>
+                        </div>
+                        <ul class="master-principles">
+                            <li><strong>스카틀버트(Scuttlebutt):</strong> 고객, 경쟁사, 공급사를 통해 기업의 진짜 실력을 파악</li>
+                            <li><strong>15가지 체크포인트:</strong> R&D 비중, 마진율, 경영진 자질 등 정성적 분석 중심</li>
+                            <li><strong>집중 투자:</strong> 소수의 최고 기업에 집중하라 (10~30종목)</li>
+                            <li><strong>팔지 마라:</strong> 좋은 기업을 산 후 초장기 보유하는 것이 최선의 전략이다</li>
+                        </ul>
+                        <div class="master-stats">
+                            <div class="stat-item"><span class="stat-value">1958</span><span class="stat-label">《위대한 기업에 투자하라》 출간</span></div>
+                            <div class="stat-item"><span class="stat-value">Motorola</span><span class="stat-label">21년간 보유</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Stanley Druckenmiller -->
+                    <div class="master-card">
+                        <div class="master-header">
+                            <div class="master-avatar" style="background: linear-gradient(135deg, #fda085, #f6d365);">SD</div>
+                            <div class="master-info">
+                                <h3>스탠리 드러켄밀러 <span class="master-en">Stanley Druckenmiller</span></h3>
+                                <span class="master-title">30년 무손실의 전설 · Duquesne Capital</span>
+                            </div>
+                        </div>
+                        <blockquote class="master-quote">"큰 돈은 작은 베팅 여러 개가 아니라, 큰 확신의 단 한 번이 벌어 준다."</blockquote>
+                        <div class="master-philosophy">
+                            <div class="philosophy-tag macro">매크로</div>
+                            <div class="philosophy-tag concentrated">집중 베팅</div>
+                            <div class="philosophy-tag flexible">유연성</div>
+                        </div>
+                        <ul class="master-principles">
+                            <li><strong>100% 확신 베팅:</strong> 기회가 오면 포트폴리오의 대부분을 투입한다</li>
+                            <li><strong>손실 최소화:</strong> 30년간 연간 기준 손실 기록 없음 (연평균 30%)</li>
+                            <li><strong>유동성을 읽어라:</strong> 연준의 유동성 정책이 모든 자산가격의 핵심 동인이다</li>
+                            <li><strong>빠른 변신:</strong> 틀렸다면 방향을 빠르게 바꿔라. 자존심은 독이다</li>
+                        </ul>
+                        <div class="master-stats">
+                            <div class="stat-item"><span class="stat-value">30%</span><span class="stat-label">연평균 수익률 (30년)</span></div>
+                            <div class="stat-item"><span class="stat-value">$0</span><span class="stat-label">연간 손실 기록 (제로)</span></div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Common Principles -->
+                <div class="card full-width" style="margin-top: 2rem;">
+                    <div class="section-label">Common Wisdom</div>
+                    <div class="card-title">🔑 대가들의 공통된 원칙</div>
+                    <div class="recommender-logic-box">
+                        <ul class="recommender-list" style="margin-top: 0.5rem;">
+                            <li><strong>원칙을 세우고 지켜라:</strong> 감정이 아닌 시스템으로 투자 결정을 내린다</li>
+                            <li><strong>리스크 관리가 수익보다 중요하다:</strong> 잃지 않는 것이 버는 것보다 선행한다</li>
+                            <li><strong>역발상의 용기:</strong> 대중의 공포 속에서 기회를 찾는 담대함이 필요하다</li>
+                            <li><strong>내가 이해하는 것에 투자하라:</strong> 모르는 것에 돈을 넣는 것은 투자가 아니라 도박이다</li>
+                            <li><strong>시간은 최고의 동맹이다:</strong> 복리의 마법은 인내하는 자에게 보상한다</li>
+                            <li><strong>끊임없이 공부하라:</strong> 시장은 변하지만, 학습하는 투자자만이 살아남는다</li>
+                        </ul>
                     </div>
                 </div>
             </section>
