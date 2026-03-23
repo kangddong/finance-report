@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palantir Technologies (PLTR) 전문가 딥다이브 | Premium Finance</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .analysis-container { max-width: 900px; margin: 0 auto; padding: 4rem 2rem; }
+        .analysis-header { margin-bottom: 3rem; text-align: center; }
+        .analysis-content { background: var(--card-bg); backdrop-filter: blur(40px); border-radius: 32px; padding: 4rem; border: 1px solid var(--glass-border); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); }
+        .logic-flow { display: flex; align-items: center; justify-content: space-between; margin: 3rem 0; flex-wrap: wrap; gap: 1.5rem; background: rgba(255,255,255,0.03); padding: 2rem; border-radius: 20px; }
+        .logic-step { background: rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 16px; text-align: center; flex: 1; min-width: 150px; border: 1px solid var(--glass-border); transition: transform 0.3s ease; }
+        .logic-step:hover { transform: translateY(-5px); background: rgba(255,255,255,0.1); }
+        .logic-step h4 { color: var(--accent-blue); margin-bottom: 0.5rem; }
+        .arrow { font-size: 1.5rem; color: var(--accent-blue); opacity: 0.5; }
+        .comparison-table { width: 100%; border-collapse: collapse; margin: 2rem 0; background: rgba(255,255,255,0.02); border-radius: 16px; overflow: hidden; }
+        .comparison-table th, .comparison-table td { padding: 1.25rem; text-align: left; border-bottom: 1px solid var(--glass-border); }
+        .comparison-table th { background: rgba(255,255,255,0.05); color: var(--accent-blue); font-weight: 600; }
+        .highlight-box { border-left: 4px solid var(--accent-blue); padding: 1.5rem; background: rgba(0, 122, 255, 0.1); border-radius: 0 16px 16px 0; margin: 2rem 0; }
+        .highlight-box.purple { border-left-color: var(--accent-purple); background: rgba(129, 140, 248, 0.08); }
+        .highlight-box.green { border-left-color: #22c55e; background: rgba(34, 197, 94, 0.08); }
+        .highlight-box.red { border-left-color: #ef4444; background: rgba(239, 68, 68, 0.08); }
+        h2 { margin-top: 3rem; color: #fff; border-bottom: 2px solid var(--accent-blue); display: inline-block; padding-bottom: 0.5rem; margin-bottom: 1.5rem; }
+        h3 { color: var(--accent-blue); margin-top: 2rem; margin-bottom: 1rem; }
+        p { line-height: 1.8; color: #ccc; margin-bottom: 1.5rem; }
+        ul { margin-bottom: 1.5rem; list-style: none; padding-left: 0; }
+        ul li { position: relative; padding-left: 1.5rem; margin-bottom: 0.75rem; color: #ddd; line-height: 1.7; }
+        ul li::before { content: "▸"; color: var(--accent-blue); position: absolute; left: 0; font-weight: bold; }
+        .back-link { display: inline-flex; align-items: center; color: var(--accent-blue); text-decoration: none; font-weight: 600; margin-bottom: 1rem; transition: gap 0.2s; gap: 0.3rem; }
+        .back-link:hover { gap: 0.5rem; }
+        .status-tag { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; margin-bottom: 1rem; }
+        .status-buy { background: rgba(34, 197, 94, 0.2); color: #22c55e; border: 1px solid rgba(34, 197, 94, 0.3); }
+        .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 2rem 0; }
+        .kpi-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 18px; padding: 1.25rem; text-align: center; transition: transform 0.3s ease; }
+        .kpi-card:hover { transform: translateY(-4px); border-color: rgba(56, 189, 248, 0.3); }
+        .kpi-value { font-size: 1.8rem; font-weight: 800; background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+        .kpi-label { font-size: 0.82rem; color: var(--text-secondary); margin-top: 0.35rem; }
+        .product-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 2rem 0; }
+        .product-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 1.25rem; }
+        .product-card h4 { color: var(--accent-blue); margin-bottom: 0.5rem; font-size: 1.05rem; }
+        .product-card p { font-size: 0.9rem; margin-bottom: 0; }
+        .chart-img { width: 100%; border-radius: 16px; margin: 2rem 0; border: 1px solid rgba(255,255,255,0.1); }
+        @media (max-width: 768px) {
+            .product-grid { grid-template-columns: 1fr; }
+            .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+            .analysis-content { padding: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="analysis-container">
+        <header class="analysis-header">
+            <a href="../index.html" class="back-link">← DASHBOARD</a>
+            <div class="status-tag status-buy">투자 의견: BUY</div>
+            <h1>Palantir Technologies (PLTR)<br>전문가 딥다이브 분석</h1>
+            <p style="color: var(--text-secondary);">작성일: 2026-03-22 | 평단가: $166.51 | 현재가: $150.31 | 수익률: -9.73%</p>
+        </header>
+
+        <main class="analysis-content">
+
+            <!-- 한줄 결론 -->
+            <section>
+                <h2>💎 한줄 결론</h2>
+                <div class="highlight-box purple">
+                    <strong>"AIP(AI Platform)를 통한 기업용 AI 운영체제의 패권 장악, 2026년은 이익 폭발의 원년이다."</strong>
+                    <p style="margin-top: 0.75rem; margin-bottom: 0;">Rule of 40 score 118%, 미국 상업 매출 +115%, FCF 마진 57% — 소프트웨어 업계 역사상 전례 없는 효율성을 가이던스로 제시한 유일한 기업.</p>
+                </div>
+            </section>
+
+            <!-- KPI Dashboard -->
+            <section>
+                <h2>📊 핵심 KPI 대시보드 (2026 Guidance)</h2>
+                <div class="kpi-grid">
+                    <div class="kpi-card">
+                        <div class="kpi-value">$7.18B</div>
+                        <div class="kpi-label">2026 매출 가이던스 (+61%)</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-value">118%</div>
+                        <div class="kpi-label">Rule of 40 Score</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-value">$3.14B</div>
+                        <div class="kpi-label">US Commercial Revenue (+115%)</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-value">57%</div>
+                        <div class="kpi-label">Adjusted FCF Margin</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-value">139%</div>
+                        <div class="kpi-label">Net Dollar Retention</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-value">10분기</div>
+                        <div class="kpi-label">GAAP 연속 흑자</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 기업 개요 -->
+            <section>
+                <h2>1. 기업 개요 — AI 운영체제의 탄생</h2>
+                <p>팔란티어는 단순한 데이터 분석 기업이 아닙니다. 기업과 정부가 복잡한 데이터를 통합하여 <strong>'의사결정 프로세스'를 자동화</strong>할 수 있게 돕는 <strong>OS(Operating System) 공급자</strong>입니다. 2003년 Peter Thiel과 Alex Karp이 공동 창업하였으며, CIA의 투자 기관 In-Q-Tel로부터 초기 자금을 유치하여 국가 안보 영역에서 사업을 시작했습니다.</p>
+
+                <div class="product-grid">
+                    <div class="product-card">
+                        <h4>🛡️ Gotham (정부/국방)</h4>
+                        <p>전쟁 수행, 테러 방지 등 대규모 데이터를 활용한 국가 안보 플랫폼. Project Maven, ShipOS(미 해군) 등 미군의 핵심 의사결정 시스템에 통합.</p>
+                    </div>
+                    <div class="product-card">
+                        <h4>🏭 Foundry (민간/기업)</h4>
+                        <p>제조, 금융, 헬스케어 등 방대한 공급망과 운영 데이터를 통합하는 기업용 OS. Airbus, BP, Merck 등 글로벌 기업이 핵심 운영 시스템으로 사용.</p>
+                    </div>
+                    <div class="product-card">
+                        <h4>🚀 Apollo (배포)</h4>
+                        <p>클라우드, 온프레미스, 전장(戰場) 어디서나 소프트웨어를 끊김 없이 배포하고 관리하는 CI/CD 환경. 다른 SaaS와 차별화되는 핵심 인프라.</p>
+                    </div>
+                    <div class="product-card">
+                        <h4>🧠 AIP (AI Platform)</h4>
+                        <p>거대언어모델(LLM)을 기업의 실제 데이터와 연결하여 분석을 넘어 '실행(Action)'까지 이끄는 최신 AI 플랫폼. 2025~2026년 성장의 핵심 엔진.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 토스증권 차트 -->
+            <section>
+                <h2>2. 기술적 위치 — 차트 분석</h2>
+                <img src="../../report/images/2026-03-21/팔란티어.png" alt="팔란티어 차트" class="chart-img">
+                <ul>
+                    <li><strong>단기 추세:</strong> 현재 주가 $150.31로, 5일 이동평균선($152선)을 살짝 하향 이탈하며 단기 눌림목 구간에 진입했습니다.</li>
+                    <li><strong>이평선 배열:</strong> 주봉/월봉상 완벽한 정배열을 유지하고 있어 장기 추세는 여전히 매우 강력합니다.</li>
+                    <li><strong>이격도:</strong> 최근 $170 부근 고점 형성 후 5일선과의 이격을 줄이며 과열을 식히는 건강한 조정 과정으로 판단됩니다.</li>
+                    <li><strong>지지선:</strong> $145 (강력한 매물 지지대) → $135 (60일선 부근)</li>
+                    <li><strong>저항선:</strong> $170 (실망 매물벽 및 심리적 저항선) → $207.52 (52주 신고가)</li>
+                </ul>
+            </section>
+
+            <!-- 실적과 성장률 -->
+            <section>
+                <h2>3. 실적과 성장률 — 파괴적인 2026 가이던스</h2>
+                <p>시장이 팔란티어의 '고평가'를 논할 때, 우리는 '압도적인 가이던스'를 봐야 합니다. 팔란티어는 2025년 한 해 동안 매출 56% 성장이라는 놀라운 실적을 기록했고, 2026년에는 오히려 <strong>성장이 가속화</strong>되고 있습니다.</p>
+
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>지표</th>
+                            <th>FY2024</th>
+                            <th>FY2025 (실적)</th>
+                            <th>FY2026 (가이던스)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>매출</strong></td>
+                            <td>$2.87B</td>
+                            <td>$4.475B (+56%)</td>
+                            <td>$7.18~7.20B (+61%)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>US Commercial</strong></td>
+                            <td>$0.70B</td>
+                            <td>$1.465B (+109%)</td>
+                            <td>$3.14B+ (+115%)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>US Government</strong></td>
+                            <td>-</td>
+                            <td>+75% YoY</td>
+                            <td>국방 AI 법안 $10B+ 수혜</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Adj. FCF</strong></td>
+                            <td>$0.79B</td>
+                            <td>$2.27B (51% 마진)</td>
+                            <td>$3.9~4.1B (57% 마진)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Rule of 40</strong></td>
+                            <td>~68%</td>
+                            <td>~107% (Q4: 127%)</td>
+                            <td>118% (가이던스)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>EPS (Adj.)</strong></td>
+                            <td>$0.13</td>
+                            <td>$0.25 (Q4)</td>
+                            <td>시장 예상 상회 전망</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="highlight-box">
+                    <strong>💡 Rule of 40이 왜 중요한가?</strong>
+                    <p style="margin-top: 0.5rem; margin-bottom: 0;">Rule of 40은 매출 성장률(%)과 이익 마진(%)을 합산한 SaaS 기업의 건강도 지표입니다. 보통 <strong>40%만 넘어도 Top tier</strong>로 불리는데, 팔란티어는 그 <strong>세 배에 가까운 118%</strong>를 가이던스로 제시했습니다. 이는 '성장'과 '수익성'을 동시에 장악한 극히 희소한 기업임을 의미합니다.</p>
+                </div>
+            </section>
+
+            <!-- 기술적 해자 -->
+            <section>
+                <h2>4. 기술적 해자 — 온톨로지(Ontology)의 힘</h2>
+                <p>팔란티어의 진짜 경쟁력은 AI 모델이나 알고리즘이 아닙니다. 그것은 <strong>'Ontology(온톨로지)'</strong>입니다.</p>
+                <ul>
+                    <li><strong>디지털 트윈 구축:</strong> 고객사의 복잡한 운영 데이터(자산, 프로세스, 사람 사이의 관계)를 Ontology라는 생태계로 통합합니다. 이는 단순 데이터베이스가 아니라, 기업의 '디지털 두뇌' 그 자체입니다.</li>
+                    <li><strong>천문학적 전환 비용:</strong> 일단 팔란티어 위에 기업 시스템이 올라가면, 이를 다른 플랫폼으로 옮기는 것 자체가 <strong>불가능에 가까운 비용</strong>을 발생시킵니다. NDR 139%가 이를 증명합니다.</li>
+                    <li><strong>AI의 '실행':</strong> 타 BI 툴(Tableau, Power BI)은 데이터를 보여주기만 합니다. 팔란티어의 AIP는 Ontology 위에서 AI가 <strong>"재고가 부족하니 주문해라"</strong> 같은 실제 비즈니스 행동을 정확하게 수행하게 합니다.</li>
+                </ul>
+
+                <div class="logic-flow">
+                    <div class="logic-step">
+                        <h4>데이터 통합</h4>
+                        <p>Foundry/Gotham으로 수집</p>
+                    </div>
+                    <div class="arrow">→</div>
+                    <div class="logic-step">
+                        <h4>Ontology 구축</h4>
+                        <p>디지털 트윈 생성</p>
+                    </div>
+                    <div class="arrow">→</div>
+                    <div class="logic-step">
+                        <h4>AIP 연결</h4>
+                        <p>LLM + 기업 데이터</p>
+                    </div>
+                    <div class="arrow">→</div>
+                    <div class="logic-step">
+                        <h4>실행(Action)</h4>
+                        <p>자동화된 의사결정</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- AIP Bootcamp -->
+            <section>
+                <h2>5. AIP Bootcamp — 저항 없는 도입 전략</h2>
+                <p>팔란티어의 AIP Bootcamp는 기존 엔터프라이즈 소프트웨어 도입의 패러다임을 뒤집은 혁신적인 영업 전략입니다.</p>
+                <ul>
+                    <li><strong>도입 속도 혁명:</strong> 기존 수 개월 걸리던 PoC(Proof of Concept) 과정을 <strong>5일간의 집중 부트캠프</strong>로 대체. 고객이 며칠 만에 실질적인 비즈니스 가치를 체감하게 합니다.</li>
+                    <li><strong>Land and Expand:</strong> 작은 프로젝트로 시작하여 전사적으로 확대하는 전략. 마케팅 비용을 줄이면서도 계약 규모를 기하급수적으로 키웁니다.</li>
+                    <li><strong>AIPCon 9 (2026.03):</strong> 2026년 3월 개최된 AIPCon 9에서는 미 해군 ShipOS, Project Maven, 에너지·헬스케어 분야 등 다양한 섹터에서의 실전 배치 사례가 공개되었습니다.</li>
+                    <li><strong>Federal AI Deployment Act:</strong> 2026년 초 통과된 이 법안은 미국 정부 워크플로우에 AI를 통합하기 위해 <strong>$10B+ 이상</strong>을 배정. 팔란티어는 핵심 수혜자입니다.</li>
+                </ul>
+            </section>
+
+            <!-- 거버넌스 -->
+            <section>
+                <h2>6. 거버넌스 — 창업주 중심의 강력한 지배구조</h2>
+                <p>팔란티어의 거버넌스는 일반적인 빅테크와 다릅니다. 이 구조가 투자자에게 양날의 검이 되는 이유를 이해해야 합니다.</p>
+                <ul>
+                    <li><strong>Class F Shares (Founder Shares):</strong> Alex Karp, Peter Thiel, Stephen Cohen 등 창업자 그룹이 강력한 의결권을 보유. 외부 행동주의 투자자의 단기 수익 실현 압박으로부터 완전히 자유롭습니다.</li>
+                    <li><strong>장기 프로젝트 추진력:</strong> 이 구조 덕분에 'Sovereign AI'처럼 당장 수익으로 이어지지 않더라도 국가 안보와 직결된 장기 프로젝트에 집중할 수 있습니다. 이것이 변동성 장세에서 전문 투자자들이 팔란티어를 신뢰하는 핵심 이유입니다.</li>
+                    <li><strong>SBC(주식보상비용) 통제:</strong> 과거 가장 큰 리스크였던 SBC 비중이 매출 대비 급격히 감소하며 <strong>GAAP 기준 10분기 연속 흑자</strong>를 달성. S&P 500 편입 이후 기관들의 패시브 자금이 안정적으로 유입되고 있습니다.</li>
+                </ul>
+
+                <div class="highlight-box green">
+                    <strong>🟢 Alex Karp의 2026 주주 서한 핵심:</strong>
+                    <p style="margin-top: 0.5rem; margin-bottom: 0;">"팔란티어는 '세대적 프로젝트(Generational Project)'입니다. 우리의 임무는 서방 세계의 기술적 우위를 지키고, AI가 실제 세계에서 올바르게 작동하도록 만드는 것입니다."</p>
+                </div>
+            </section>
+
+            <!-- 밸류에이션 -->
+            <section>
+                <h2>7. 밸류에이션 — 비싼가, 프리미엄이 정당한가?</h2>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>지표</th>
+                            <th>PLTR</th>
+                            <th>CrowdStrike</th>
+                            <th>ServiceNow</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Forward P/E</strong></td>
+                            <td>~82.5x</td>
+                            <td>~68x</td>
+                            <td>~55x</td>
+                        </tr>
+                        <tr>
+                            <td><strong>P/S (TTM)</strong></td>
+                            <td>~44x</td>
+                            <td>~22x</td>
+                            <td>~18x</td>
+                        </tr>
+                        <tr>
+                            <td><strong>매출 성장률</strong></td>
+                            <td>+61%</td>
+                            <td>+28%</td>
+                            <td>+22%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Rule of 40</strong></td>
+                            <td>118%</td>
+                            <td>~52%</td>
+                            <td>~50%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>FCF Margin</strong></td>
+                            <td>57%</td>
+                            <td>~30%</td>
+                            <td>~31%</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>숫자만 보면 가장 비싸 보이지만, <strong>성장률과 효율성</strong>을 함께 보면 팔란티어의 프리미엄은 충분히 정당화됩니다. 가장 높은 Rule of 40, 가장 높은 FCF 마진, 가장 높은 성장률을 동시에 보유한 유일한 기업입니다.</p>
+
+                <h3>애널리스트 타겟 프라이스 (2026.03 기준)</h3>
+                <ul>
+                    <li><strong>UBS:</strong> $200 (Buy)</li>
+                    <li><strong>Rosenblatt:</strong> $200 (Buy)</li>
+                    <li><strong>Wedbush:</strong> $230 (Outperform)</li>
+                    <li><strong>Citigroup:</strong> $260 (Buy)</li>
+                    <li><strong>컨센서스 중앙값:</strong> $202.5 (16명 애널리스트)</li>
+                </ul>
+            </section>
+
+            <!-- 리스크 -->
+            <section>
+                <h2>8. 리스크 — 반드시 알아야 할 하방 요인</h2>
+                <div class="highlight-box red">
+                    <strong>⚠️ 고평가 리스크:</strong> Forward P/E 82.5x는 완벽한 실행을 전제합니다. 가이던스 미달 시 급격한 밸류에이션 조정이 올 수 있습니다.
+                </div>
+                <ul>
+                    <li><strong>국제 사업 둔화:</strong> 미국 외 지역(유럽, 아시아)에서의 침투 속도가 상대적으로 느림. 특히 NHS 영국 계약 논란($330M)은 투자 심리에 부정적.</li>
+                    <li><strong>내부자 매도:</strong> 경영진의 스톡옵션 행사 및 정기적 매도 물량이 단기적 오버행 이슈로 작용할 수 있음.</li>
+                    <li><strong>금리 민감도:</strong> 고성장 기술주 특성상 금리 인하 지연 시 밸류에이션 멀티플 압축 가능.</li>
+                    <li><strong>경쟁 심화:</strong> Snowflake, Databricks 등의 AI 플랫폼 경쟁이 가속화되고 있으나, Ontology 기반의 해자는 여전히 다른 차원.</li>
+                </ul>
+            </section>
+
+            <!-- 투자 판단 -->
+            <section>
+                <h2>9. 투자 판단 — 평단가 $166.51 분석</h2>
+                <h3>📈 Bull Case ($230~$260)</h3>
+                <ul>
+                    <li>AIP 매출 비중이 전체의 50%를 넘어서고, 2026년 가이던스 $7.2B를 상회할 경우</li>
+                    <li>Federal AI Deployment Act로 미 정부 매출 폭발적 성장</li>
+                    <li>국제 사업 반등 (일본, 한국, 중동 시장 확대)</li>
+                </ul>
+
+                <h3>📉 Bear Case ($135~$145)</h3>
+                <ul>
+                    <li>금리 인하 지연 및 매크로 악화 시 성장주 전반의 밸류에이션 축소</li>
+                    <li>국제 사업 부진 지속 + 내부자 매도 가속화</li>
+                    <li>AI 산업 전반의 버블 논란 심화</li>
+                </ul>
+
+                <div class="highlight-box purple">
+                    <strong>🔑 마스터의 최종 의견:</strong>
+                    <p style="margin-top: 0.75rem; margin-bottom: 0;">동영님의 <strong>평단가 $166.51</strong>은 현재 주가 대비 약 10% 미만의 손실 구간입니다.<br><br>
+                    그러나 2026년 가이던스(61% 성장, Rule of 40: 118%)와 애널리스트 컨센서스($200+)를 고려하면, 이 가격은 <strong>'미래 가치 대비 할인된 구간'</strong>입니다.<br><br>
+                    <strong>전략:</strong> $145~148 구간의 강력한 지지선을 활용한 <strong>분할 매수(Averaging Down)</strong>로 평단을 낮추고, 2026년 하반기 실적 시즌을 기다리십시오. 팔란티어의 '시간을 내 편으로 만드는' 온톨로지 해자는 단기 노이즈를 압도할 것입니다.<br><br>
+                    <em>"가이던스는 거짓말을 하지 않습니다. 팔란티어의 진가는 이제 막 드러나기 시작했습니다."</em></p>
+                </div>
+            </section>
+
+        </main>
+
+        <footer style="margin-top: 3rem; text-align: center; color: var(--text-secondary);">
+            <p>© 2026 Premium Finance Dashboard. AI-Powered Analysis.</p>
+        </footer>
+    </div>
+</body>
+</html>

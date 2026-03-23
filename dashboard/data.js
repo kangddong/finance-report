@@ -66,27 +66,11 @@ const REPORTS_HISTORY = [
                 "return": "-9.73%",
                 "advice": "BUY",
                 "reason": "1. **2026 가이던스**: 매출 $7.18B(+61% YoY) 및 미국 상업 매출 $3.14B(+115%)의 초강세 전망.\n2. **Rule of 40의 혁신**: 118%라는 유례없는 기록(성장+마진)을 가이던스로 제시, 펀더멘털은 무적 상태.\n3. **거버넌코 및 해자**: Alex Karp의 강력한 리더십과 Ontology(온톨로지) 시스템 기반의 높은 전환 비용 확보.\n4. **대응 전략**: $145~148 구간의 강력한 지지선을 활용한 분할 매수. $166 평단가는 2026년 타겟가($230+) 대비 여전히 매력적입니다.",
-                "image": "report/images/2026-03-21/팔란티어.png"
+                "image": "report/images/2026-03-21/팔란티어.png",
+                "reportPath": "analysis/palantir-deep-dive.html"
             }
         ],
-        "watchlist": [
-            {
-                "name": "글로벌 사모대출 리스크",
-                "currentPrice": "위험 가중",
-                "outlook": "매우 부정적",
-                "advice": "AVOID",
-                "reason": "환매 중단 및 자산 가치 재평가 리스크. 시스템 리스크 전이 가능성 모니터링 필수.",
-                "reportPath": "analysis/private-equity-risk-2026.html"
-            },
-            {
-                "name": "중동 지정학적 관계도",
-                "currentPrice": "고변동성",
-                "outlook": "복합적",
-                "advice": "WATCH",
-                "reason": "UAE-한국 에너지 동맹 강화 vs 이란-중국 전략적 딜레마. 에너지 공급망 재편의 핵심 키워드.",
-                "reportPath": "analysis/middle-east-geopolitics-2026.html"
-            }
-        ],
+        "watchlist": [],
         "strategy": {
             "position": "Defensive & Hedge",
             "title": "사모펀드 리스크와 중동 에너지 안보의 충돌",
@@ -2600,6 +2584,73 @@ const COMPANY_ANALYSIS_ITEMS = [
     }
 ];
 
+const DEEP_DIVE_ITEMS = [
+    {
+        name: "테슬라 (Tesla Terafab)",
+        ticker: "TSLA",
+        date: "2026-03-21",
+        opinion: "BUY",
+        summary: "자체 AI 칩 100~200B개 달성 목표의 테라 팹 프로젝트. 반도체 내재화를 통한 마진 확대 및 AI 파운드리 플랫폼으로의 밸류 리레이팅 기대.",
+        tags: ["Terafab", "원가 절감", "xAI 연합", "파운드리 독립"],
+        link: "analysis/tesla-terafab-deep-dive.html"
+    },
+    {
+        name: "팔란티어",
+        ticker: "PLTR",
+        date: "2026-03-22",
+        opinion: "BUY",
+        summary: "AIP(AI Platform)를 통한 기업용 AI 운영체제의 패권 장악. Rule of 40 score 118%, 미국 상업 매출 +115%, FCF 마진 57% — 2026년은 이익 폭발의 원년이다.",
+        tags: ["AI 플랫폼", "Rule of 40: 118%", "FCF 57%", "국방 AI", "Ontology"],
+        kpis: { revenue: "$7.18B", growth: "+61%", ruleOf40: "118%", fcfMargin: "57%" },
+        link: "analysis/palantir-deep-dive.html"
+    },
+    {
+        name: "엔비디아",
+        ticker: "NVDA",
+        date: "2026-03-22",
+        opinion: "HOLD",
+        summary: "Blackwell 슈퍼사이클 진입 및 데이터센터 패권 유지. 매출 총이익률 75% 방어 시 강력한 FCF 창출 여력이 지속됩니다.",
+        tags: ["Blackwell", "CUDA 생태계", "데이터센터", "Gross Margin 74%"],
+        link: "analysis/nvidia-deep-dive.html"
+    },
+    {
+        name: "SK하이닉스",
+        ticker: "000660.KS",
+        date: "2026-03-22",
+        opinion: "BUY",
+        summary: "HBM3E 및 HBM4 시장 독점력 유지. AI 메모리 사이클의 최대 수혜주로, 이익 레버리지가 극대화되는 구간입니다.",
+        tags: ["HBM 독점", "영업이익률 극대화", "엔비디아 연합"],
+        link: "analysis/sk-hynix-deep-dive.html"
+    },
+    {
+        name: "삼성전자",
+        ticker: "005930.KS",
+        date: "2026-03-22",
+        opinion: "HOLD",
+        summary: "메모리 업황의 캐시카우 역할은 지속되나, HBM 퀄 테스트 지연 및 파운드리 적자에 대한 체질 개선 확인이 선행되어야 합니다.",
+        tags: ["HBM 퀄", "레거시 메모리", "파운드리 적자", "배당 매력"],
+        link: "analysis/samsung-electronics-deep-dive.html"
+    },
+    {
+        name: "현대차",
+        ticker: "005380.KS",
+        date: "2026-03-22",
+        opinion: "BUY",
+        summary: "피크아웃 우려를 종식시키는 눈부신 하이브리드(HEV) 믹스와 압도적인 주주환원율(TSR). 밸류업 프로그램의 최선호주.",
+        tags: ["하이브리드(HEV)", "주주환원율 35%", "SDV 전환", "인도 IPO"],
+        link: "analysis/hyundai-motor-deep-dive.html"
+    },
+    {
+        name: "LG전자",
+        ticker: "066570.KS",
+        date: "2026-03-22",
+        opinion: "BUY",
+        summary: "백색 가전의 안정성 위에 B2B(VS 전장부품, 냉난방공조 HVAC) 성장이 더해지는 체질 개선. AI 데이터센터 쿨링이라는 새로운 트리거.",
+        tags: ["VS전장", "HVAC(공조)", "AI 데이터센터", "WebOS 플랫폼"],
+        link: "analysis/lg-electronics-deep-dive.html"
+    }
+];
+
 const COMPANY_DETAIL_LIBRARY = {
     samsung: {
         name: "삼성전자", ticker: "005930.KS", subtitle: "메모리 업황 회복과 HBM 추격, 파운드리 체질 개선을 함께 봐야 하는 종합 반도체 기업",
@@ -2861,6 +2912,28 @@ const SECTOR_ANALYSIS_ITEMS = [
 ];
 
 const EXTERNAL_SHOCK_EVENTS = [
+    {
+        date: "2026-03-21",
+        category: "거시경제",
+        title: "글로벌 사모대출 리스크 점검",
+        summary: "사모펀드 환매 중단 및 자산 가치 재평가 리스크 발생. 고금리 장기화에 따른 그레이 스완(Grey Swan) 부각.",
+        marketImpact: "시스템 리스크 전이 가능성으로 증시 상단 제한 요인. 금융 위기로 번질지 단기 노이즈에 그칠지 모니터링 필요.",
+        watchPoint: "사모대출 환매 지연 연쇄 발생 및 크레딧(채권/부동산) 시장 스프레드 확대 여부.",
+        sources: [
+            { label: "전문가 리포트 보기", url: "analysis/private-equity-risk-2026.html" }
+        ]
+    },
+    {
+        date: "2026-03-21",
+        category: "지정학",
+        title: "중동 지정학적 관계도 및 에너지 딜레마",
+        summary: "천궁-II 수출을 매개로 한 UAE-한국 에너지 동맹 강화 대비, 이란-중국 간의 전략적 딜레마 확대.",
+        marketImpact: "글로벌 에너지 공급망 재편의 핵심 키워드 활성화. 대한민국 방산 및 원전 수혜 확실시.",
+        watchPoint: "호르무즈 해협 봉쇄 가능성 및 주변국의 개입 확전 여부 점검.",
+        sources: [
+            { label: "지정학 상세 분석 보기", url: "analysis/middle-east-geopolitics-2026.html" }
+        ]
+    },
     {
         date: "2025-11-24",
         category: "정책",

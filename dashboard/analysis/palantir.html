@@ -12,7 +12,7 @@
         .back-link { display: inline-flex; color: var(--text-secondary); text-decoration: none; margin-bottom: 2rem; }
         .back-link:hover { color: var(--accent-blue); }
         .analysis-card { background: var(--card-bg); border: 1px solid var(--glass-border); border-radius: 32px; padding: 3rem; backdrop-filter: blur(25px); }
-        h1 { font-size: 2.6rem; margin-bottom: 0.6rem; background: linear-gradient(135deg, #fff 0%, #f9a8d4 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+        h1 { font-size: 2.6rem; margin-bottom: 0.6rem; background: linear-gradient(135deg, #fff 0%, #93c5fd 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
         .subtitle { color: var(--text-secondary); margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
         .hero-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin-bottom: 2rem; }
         .hero-metric { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; padding: 1.2rem; }
@@ -21,7 +21,9 @@
         h2 { color: var(--accent-blue); margin: 2.2rem 0 1rem; font-size: 1.55rem; }
         p, li { color: var(--text-primary); line-height: 1.8; font-size: 1.02rem; }
         ul { padding-left: 1.2rem; }
-        .point-box { background: rgba(244,114,182,0.08); border: 1px solid rgba(244,114,182,0.18); border-radius: 20px; padding: 1.25rem; margin-top: 1.5rem; }
+        .point-box { background: rgba(56,189,248,0.08); border: 1px solid rgba(56,189,248,0.18); border-radius: 20px; padding: 1.25rem; margin-top: 1.5rem; }
+        .deep-dive-link { display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 1.5rem; padding: 0.75rem 1.5rem; border-radius: 16px; background: rgba(129, 140, 248, 0.15); border: 1px solid rgba(129, 140, 248, 0.3); color: #c4b5fd; text-decoration: none; font-weight: 600; transition: all 0.3s ease; }
+        .deep-dive-link:hover { background: rgba(129, 140, 248, 0.25); transform: translateY(-2px); }
         @media (max-width: 768px) { .analysis-card { padding: 1.5rem; } .hero-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
@@ -32,53 +34,55 @@
         <main class="analysis-card">
             <header>
                 <h1>팔란티어 기업 분석</h1>
-                <p class="subtitle">정부 매출의 안정성과 AIP 기반 민간 확장이 동시에 부각되는 AI 소프트웨어 플랫폼 기업</p>
+                <p class="subtitle">정부·국방 기반의 안정적 매출 위에 AIP 중심 민간 확장이 더해지는 소프트웨어 플랫폼 기업으로서의 투자 포인트 정리</p>
             </header>
 
             <div class="hero-grid">
-                <div class="hero-metric"><div class="hero-metric-label">핵심 포인트</div><div class="hero-metric-value">AIP와 데이터 운영체제</div></div>
-                <div class="hero-metric"><div class="hero-metric-label">체크포인트</div><div class="hero-metric-value">민간 매출 성장 가속</div></div>
-                <div class="hero-metric"><div class="hero-metric-label">투자 성격</div><div class="hero-metric-value">고밸류 성장주</div></div>
+                <div class="hero-metric"><div class="hero-metric-label">핵심 포인트</div><div class="hero-metric-value">AIP + Ontology 플랫폼</div></div>
+                <div class="hero-metric"><div class="hero-metric-label">체크포인트</div><div class="hero-metric-value">US Commercial 성장률</div></div>
+                <div class="hero-metric"><div class="hero-metric-label">투자 성격</div><div class="hero-metric-value">고성장 AI 소프트웨어</div></div>
             </div>
 
             <section>
                 <h2>1. 기업 개요</h2>
-                <p>팔란티어는 단순한 분석 소프트웨어 회사라기보다, 복잡한 데이터를 실제 의사결정과 운영에 연결하는 플랫폼 기업에 가깝습니다. 정부와 국방 부문에서 검증된 기술력을 바탕으로 민간 기업으로 확장하고 있다는 점이 핵심입니다.</p>
+                <p>팔란티어는 데이터 통합과 의사결정 운영체제를 제공하는 소프트웨어 플랫폼 기업입니다. Gotham(정부/국방), Foundry(기업), Apollo(배포), AIP(AI 플랫폼) 등 네 가지 핵심 제품으로 구성되며, 기업의 복잡한 데이터를 Ontology라는 디지털 트윈으로 통합하여 AI 기반 의사결정을 지원합니다.</p>
             </section>
 
             <section>
                 <h2>2. 실적과 성장률</h2>
-                <p>과거에는 정부 부문 의존도가 높았지만, 최근 투자 포인트는 민간 매출 성장입니다. 특히 AIP 도입이 늘어나면 파일럿 프로젝트에서 실제 계약 확대로 이어질 수 있는지가 중요합니다.</p>
+                <p>민간 매출 성장이 핵심 투자 포인트입니다. 특히 미국 상업(US Commercial) 부문에서 AIP 부트캠프를 통한 폭발적 성장이 이루어지고 있으며, 정부 매출 역시 국방 AI 수요 확대로 안정적으로 성장하고 있습니다.</p>
                 <ul>
-                    <li>정부 부문은 안정적인 기반 매출 역할을 합니다.</li>
-                    <li>민간 부문은 멀티플 확장의 핵심입니다.</li>
-                    <li>계약 수 증가보다 고객당 매출 확대가 더 중요할 수 있습니다.</li>
+                    <li>매출 성장률이 가속화되고 있는지가 가장 중요합니다.</li>
+                    <li>US Commercial 성장률이 전체 기업의 성장 방향성을 보여줍니다.</li>
+                    <li>Rule of 40 score는 성장과 수익의 균형을 판단하는 핵심 지표입니다.</li>
                 </ul>
             </section>
 
             <section>
                 <h2>3. 수익성과 재무건전성</h2>
-                <p>소프트웨어 기업 특성상 매출이 쌓일수록 영업 레버리지가 크게 나타날 수 있습니다. 시장은 단순 성장보다 "지속 가능한 이익 성장"이 가능한지, 그리고 스톡보상 부담이 얼마나 통제되는지를 함께 봅니다.</p>
+                <p>팔란티어는 소프트웨어 기업 특성상 매출총이익률이 매우 높으며, SBC(주식보상비용)가 과거 대비 크게 감소하면서 GAAP 기준으로도 연속 흑자를 기록하고 있습니다. Free Cash Flow 마진이 50%를 넘어서는 것은 소프트웨어 업계에서도 극히 희소한 수준입니다.</p>
             </section>
 
             <section>
-                <h2>4. 밸류에이션과 경쟁력</h2>
-                <p>팔란티어는 기대가 많이 반영되는 종목입니다. 그래서 기술이 좋다는 사실만으로는 부족하고, 실제 고객 확장과 수익성 개선이 계속 증명되어야 높은 밸류에이션이 유지됩니다. 경쟁력의 핵심은 데이터 통합, 보안, 운영 의사결정까지 이어지는 깊은 제품 침투력입니다.</p>
+                <h2>4. 밸류에이션</h2>
+                <p>Forward P/E와 P/S 기준으로 동종업계(CrowdStrike, ServiceNow 등) 대비 높은 프리미엄을 받고 있습니다. 핵심 쟁점은 비싸냐가 아니라, 이 성장률과 효율성이 프리미엄을 정당화하느냐입니다. Rule of 40이 100%를 크게 상회하는 기업은 역사적으로 매우 드뭅니다.</p>
             </section>
 
             <section>
                 <h2>5. 성장동력과 리스크</h2>
                 <ul>
-                    <li>성장동력: AIP 확산, 민간 고객 확대, 국방·공공 계약 증가</li>
-                    <li>리스크: 높은 기대치, 대형 계약 변동성, 스톡보상 부담, 경쟁 심화</li>
-                    <li>관전 포인트: 민간 매출 성장률과 영업이익률 동시 개선</li>
+                    <li>성장동력: AIP 플랫폼 확산, Federal AI 법안 수혜, 국방 AI 통합, US Commercial 초고속 성장</li>
+                    <li>리스크: 높은 밸류에이션, 국제 사업 둔화, 내부자 매도, 금리 민감도</li>
+                    <li>관전 포인트: 가이던스 달성 여부, NDR(순달러보유율), 신규 고객 확보 속도</li>
                 </ul>
             </section>
 
             <div class="point-box">
                 <strong>투자 판단</strong>
-                <p style="margin: 0.7rem 0 0;">팔란티어는 AI 소프트웨어 테마에서 독특한 포지션을 가진 기업입니다. 다만 좋은 스토리만큼 기대도 높기 때문에, 실제 계약 확장과 수익성 개선이 꾸준히 나오는지를 확인하며 접근하는 것이 중요합니다.</p>
+                <p style="margin: 0.7rem 0 0;">팔란티어는 AI 시대의 '기업용 운영체제'를 구축하고 있는 유일한 기업입니다. Ontology 기반의 높은 전환 비용과 AIP를 통한 민간 확장이 맞물리며 성장이 가속화되고 있습니다. 현재 밸류에이션은 높지만, 펀더멘털의 질이 이를 뒷받침하고 있습니다.</p>
             </div>
+
+            <a href="palantir-deep-dive.html" class="deep-dive-link">🔬 전문가 딥다이브 분석 보기 →</a>
         </main>
     </div>
 </body>
