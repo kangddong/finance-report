@@ -1,5 +1,5 @@
 
-const FINANCE_WORDS = [
+export const FINANCE_WORDS = [
     // 1. 거시경제 (Macro)
     { term: "GDP (국내총생산)", category: "Macro", definition: "한 나라의 영역 내에서 가계, 기업, 정부 등 모든 경제주체가 일정기간 동안 생산한 재화 및 서비스의 부가가치를 시장가격으로 평가하여 합산한 것." },
     { term: "CPI (소비자물가지수)", category: "Macro", definition: "일반 도시 가구가 소비생활을 영위하기 위해 구입하는 소비재와 서비스의 가격변동을 나타내는 지수로, 인플레이션을 측정하는 대표적인 지표." },

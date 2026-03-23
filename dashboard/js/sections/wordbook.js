@@ -1,41 +1,41 @@
-function initWordbook() {
-    if (typeof FINANCE_WORDS !== 'undefined') {
-        const wordbookContainer = document.getElementById('wordbook-container');
-        const modal = document.getElementById('word-definition-modal');
-        const closeModal = document.querySelector('.close-modal');
-        const modalTerm = document.getElementById('modal-term');
-        const modalCategory = document.getElementById('modal-category');
-        const modalDef = document.getElementById('modal-definition');
+import { FINANCE_WORDS } from '../../finance_word_data.js';
 
-        if (!wordbookContainer) return;
+export function initWordbook() {
+    const wordbookContainer = document.getElementById('wordbook-container');
+    const modal = document.getElementById('word-definition-modal');
+    const closeModal = document.querySelector('.close-modal');
+    const modalTerm = document.getElementById('modal-term');
+    const modalCategory = document.getElementById('modal-category');
+    const modalDef = document.getElementById('modal-definition');
 
-        // Render Capsules
-        FINANCE_WORDS.forEach(word => {
-            const capsule = document.createElement('div');
-            capsule.className = 'word-capsule';
-            capsule.textContent = word.term.split('(')[0].trim();
+    if (!wordbookContainer) return;
 
-            capsule.addEventListener('click', () => {
-                modalTerm.textContent = word.term;
-                modalCategory.textContent = word.category;
-                modalDef.textContent = word.definition;
-                modal.classList.add('active');
-            });
+    // Render Capsules
+    FINANCE_WORDS.forEach(word => {
+        const capsule = document.createElement('div');
+        capsule.className = 'word-capsule';
+        capsule.textContent = word.term.split('(')[0].trim();
 
-            wordbookContainer.appendChild(capsule);
+        capsule.addEventListener('click', () => {
+            modalTerm.textContent = word.term;
+            modalCategory.textContent = word.category;
+            modalDef.textContent = word.definition;
+            modal.classList.add('active');
         });
 
-        // Close Modal Events
-        if (closeModal) {
-            closeModal.addEventListener('click', () => {
-                modal.classList.remove('active');
-            });
-        }
+        wordbookContainer.appendChild(capsule);
+    });
 
-        window.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.classList.remove('active');
-            }
+    // Close Modal Events
+    if (closeModal) {
+        closeModal.addEventListener('click', () => {
+            modal.classList.remove('active');
         });
     }
+
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.classList.remove('active');
+        }
+    });
 }

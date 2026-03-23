@@ -142,7 +142,7 @@ function renderRecommender(type) {
     `;
 }
 
-function initRecommender() {
+export function initRecommender() {
     const recBtns = document.querySelectorAll('.rec-sel-btn');
     recBtns.forEach(btn => {
         btn.addEventListener('click', () => {

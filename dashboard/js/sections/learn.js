@@ -408,7 +408,7 @@ function renderPortfolios() {
     `).join('');
 }
 
-function initLearnSections() {
+export function initLearnSections() {
     renderPortfolios();
     renderBondGuide();
     renderMasters();

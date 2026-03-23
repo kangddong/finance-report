@@ -1,4 +1,8 @@
-function renderIndicators(indicators) {
+import { parseMarkdown } from '../utils/markdown.js';
+import { renderCompanyAnalysisGrid, renderDeepDiveGrid, renderSectorAnalysis } from './analysis.js';
+import { renderExternalFactors, renderPolicyStance } from './external-factors.js';
+
+export function renderIndicators(indicators) {
     const container = document.getElementById('market-indicators');
     if (!indicators || !container) {
         if (container) container.style.display = 'none';
@@ -51,7 +55,7 @@ function renderIndicators(indicators) {
     });
 }
 
-function renderHoldings(holdings) {
+export function renderHoldings(holdings) {
     const holdingsList = document.querySelector('#holdings-list');
     if (!holdingsList) return;
     holdingsList.innerHTML = '';
@@ -71,7 +75,7 @@ function renderHoldings(holdings) {
                         <span class="badge ${stock.advice && stock.advice.includes('HOLD') ? 'hold' : 'buy'}">${stock.advice}</span>
                     </div>
                     <div class="reason-text">
-                        ${typeof parseMarkdown === 'function' ? parseMarkdown(stock.reason) : stock.reason}
+                        ${parseMarkdown(stock.reason)}
                     </div>
                 </div>
             `;
@@ -93,7 +97,7 @@ function renderHoldings(holdings) {
     }
 }
 
-function renderWatchlist(watchlist) {
+export function renderWatchlist(watchlist) {
     const watchlistList = document.querySelector('#watchlist-list');
     if (!watchlistList) return;
     watchlistList.innerHTML = '';
@@ -111,7 +115,7 @@ function renderWatchlist(watchlist) {
                         <span class="badge buy">${stock.advice}</span>
                     </div>
                     <div class="reason-text">
-                        ${typeof parseMarkdown === 'function' ? parseMarkdown(stock.reason) : stock.reason}
+                        ${parseMarkdown(stock.reason)}
                     </div>
                 </div>
             `;
@@ -133,7 +137,7 @@ function renderWatchlist(watchlist) {
     }
 }
 
-function renderForeignTrend(trend) {
+export function renderForeignTrend(trend) {
     const foreignList = document.querySelector('#foreign-trend-list');
     const topList = document.querySelector('#foreign-top-list');
     if (!foreignList || !topList) return;
@@ -255,27 +259,27 @@ function renderForeignTrend(trend) {
     }
 }
 
-function renderDashboard(data) {
+export function renderDashboard(data) {
     if (!data) return;
 
     // Header Overview
     const overviewEl = document.getElementById('report-overview');
     if (overviewEl) {
-        overviewEl.innerHTML = typeof parseMarkdown === 'function' ? parseMarkdown(data.overview) : data.overview;
+        overviewEl.innerHTML = parseMarkdown(data.overview);
     }
 
     // Call sub-renders
-    if (typeof renderIndicators === 'function') renderIndicators(data.indicators);
-    if (typeof renderHoldings === 'function') renderHoldings(data.holdings);
-    if (typeof renderWatchlist === 'function') renderWatchlist(data.watchlist);
-    if (typeof renderForeignTrend === 'function') renderForeignTrend(data.foreignInvestorTrend);
+    renderIndicators(data.indicators);
+    renderHoldings(data.holdings);
+    renderWatchlist(data.watchlist);
+    renderForeignTrend(data.foreignInvestorTrend);
     
     // Global components
-    if (typeof renderCompanyAnalysisGrid === 'function') renderCompanyAnalysisGrid();
-    if (typeof renderDeepDiveGrid === 'function') renderDeepDiveGrid();
-    if (typeof renderSectorAnalysis === 'function') renderSectorAnalysis();
-    if (typeof renderExternalFactors === 'function') renderExternalFactors();
-    if (typeof renderPolicyStance === 'function') renderPolicyStance(data.policyStance);
+    renderCompanyAnalysisGrid();
+    renderDeepDiveGrid();
+    renderSectorAnalysis();
+    renderExternalFactors();
+    renderPolicyStance(data.policyStance);
 
     // Strategy Section
     const adviceText = document.querySelector('.advice-text');
@@ -285,7 +289,7 @@ function renderDashboard(data) {
                 <p style="margin-bottom: 1rem;"><strong>📌 매수 추천:</strong> ${data.strategy.buy || '없음'}</p>
                 <p style="margin-bottom: 1rem;"><strong>⚠️ 매도 고려:</strong> ${data.strategy.sellConsider || '없음'}</p>
                 <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1);">
-                    ${typeof parseMarkdown === 'function' ? parseMarkdown(data.strategy.summary) : data.strategy.summary}
+                    ${parseMarkdown(data.strategy.summary)}
                 </div>
             `;
         } else {

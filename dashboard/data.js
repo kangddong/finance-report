@@ -4,7 +4,7 @@
  * sync-dashboard 스킬에 의해 자동으로 업데이트됩니다.
  */
 
-const REPORTS_HISTORY = [
+export const REPORTS_HISTORY = [
     {
         "date": "2026-03-21",
         "overview": "[주요 이슈] 글로벌 사모대출 리스크와 함께 중동 전쟁의 국가적 역학 관계가 급변하고 있습니다. 이란-이스라엘 전면전 속에서 UAE는 한국을 '최우선 원유 공급국'으로 지정하며 에너지 안보를 약속했습니다. 이는 국산 미사일 '천궁-II'의 기여도가 결정적이었던 것으로 분석됩니다. 반면 이란-중국 관계는 전략적 딜레마에 처하며 시장의 불확실성을 가속화하고 있습니다.",
@@ -2539,7 +2539,7 @@ const ANALYSIS_REPORTS = [
     }
 ];
 
-const COMPANY_ANALYSIS_ITEMS = [
+export const COMPANY_ANALYSIS_ITEMS = [
     {
         name: "삼성전자",
         ticker: "005930.KS",
@@ -2584,7 +2584,7 @@ const COMPANY_ANALYSIS_ITEMS = [
     }
 ];
 
-const DEEP_DIVE_ITEMS = [
+export const DEEP_DIVE_ITEMS = [
     {
         name: "테슬라 (Tesla Terafab)",
         ticker: "TSLA",
@@ -2651,7 +2651,7 @@ const DEEP_DIVE_ITEMS = [
     }
 ];
 
-const COMPANY_DETAIL_LIBRARY = {
+export const COMPANY_DETAIL_LIBRARY = {
     samsung: {
         name: "삼성전자", ticker: "005930.KS", subtitle: "메모리 업황 회복과 HBM 추격, 파운드리 체질 개선을 함께 봐야 하는 종합 반도체 기업",
         business: "메모리, 파운드리, 모바일, 디스플레이, 가전까지 포트폴리오가 넓어 업황 변동을 흡수할 체력이 강합니다.",
@@ -2804,7 +2804,7 @@ const COMPANY_DETAIL_LIBRARY = {
     }
 };
 
-const SECTOR_ANALYSIS_ITEMS = [
+export const SECTOR_ANALYSIS_ITEMS = [
     {
         name: "반도체",
         performance: "+8.4%",
@@ -2911,7 +2911,7 @@ const SECTOR_ANALYSIS_ITEMS = [
     }
 ];
 
-const EXTERNAL_SHOCK_EVENTS = [
+export const EXTERNAL_SHOCK_EVENTS = [
     {
         date: "2026-03-21",
         category: "거시경제",
@@ -3102,7 +3102,7 @@ const EXTERNAL_SHOCK_EVENTS = [
     }
 ];
 
-const EXTERNAL_POLICY_DATA = {
+export const EXTERNAL_POLICY_DATA = {
     genesisMission: {
         title: "US Genesis Mission (제네시스 미션)",
         subtitle: "AI 기반 과학 연구 가속화를 위한 미국의 국가적 이니셔티브",

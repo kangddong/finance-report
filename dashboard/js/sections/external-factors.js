@@ -1,9 +1,12 @@
-function renderExternalFactors() {
+import { parseMarkdown } from '../utils/markdown.js';
+import { EXTERNAL_SHOCK_EVENTS, EXTERNAL_POLICY_DATA } from '../../data.js';
+
+export function renderExternalFactors() {
     const summary = document.getElementById('external-shocks-summary');
     const timeline = document.getElementById('external-shocks-timeline');
     if (!summary || !timeline) return;
 
-    const events = (typeof EXTERNAL_SHOCK_EVENTS !== 'undefined') ? EXTERNAL_SHOCK_EVENTS : [];
+    const events = EXTERNAL_SHOCK_EVENTS || [];
     summary.innerHTML = '';
     timeline.innerHTML = '';
 
@@ -58,7 +61,7 @@ function renderExternalFactors() {
     }).join('');
 }
 
-function switchToPolicyTab(policyKey) {
+export function switchToPolicyTab(policyKey) {
     const policyBtn = document.querySelector('button[data-shock-tab="policy"]');
     if (policyBtn) policyBtn.click();
     
@@ -72,7 +75,7 @@ function switchToPolicyTab(policyKey) {
     }, 100);
 }
 
-function renderPolicyStance(policyData) {
+export function renderPolicyStance(policyData) {
     const container = document.getElementById('policy-data-container');
     const strategyBox = document.getElementById('policy-strategy-content');
     if (!container || !strategyBox) return;
@@ -155,7 +158,7 @@ function renderPolicyStance(policyData) {
                 ` : ''}
 
                 <div class="policy-summary">
-                    ${typeof parseMarkdown === 'function' ? parseMarkdown(data.summary) : data.summary}
+                    ${parseMarkdown(data.summary)}
                 </div>
             </div>
         </div>
@@ -167,12 +170,12 @@ function renderPolicyStance(policyData) {
         ${renderCard('한국은행 (BOK)', bok, 'bok')}
     `;
 
-    strategyBox.innerHTML = typeof parseMarkdown === 'function' ? parseMarkdown(policyData.strategy || '데이터 분석 중입니다.') : policyData.strategy;
+    strategyBox.innerHTML = parseMarkdown(policyData.strategy || '데이터 분석 중입니다.');
 }
 
-function renderPolicyPage() {
+export function renderPolicyPage() {
     const container = document.getElementById('policy-content');
-    if (!container || typeof EXTERNAL_POLICY_DATA === 'undefined') return;
+    if (!container) return;
 
     let gridHtml = '<div id="policy-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 1rem;">';
     Object.entries(EXTERNAL_POLICY_DATA).forEach(([key, pm]) => {
@@ -195,7 +198,7 @@ function renderPolicyPage() {
     container.innerHTML = gridHtml + detailsContainerHtml;
 }
 
-window.showPolicyDetail = function(key) {
+export function showPolicyDetail(key) {
     const pm = EXTERNAL_POLICY_DATA[key];
     if (!pm) return;
 
@@ -376,13 +379,13 @@ window.showPolicyDetail = function(key) {
     document.getElementById('section-external-factors').scrollIntoView({behavior: 'smooth', block: 'start'});
 }
 
-window.hidePolicyDetail = function() {
+export function hidePolicyDetail() {
     document.getElementById('policy-detail-view').style.display = 'none';
     document.getElementById('policy-grid').style.display = 'grid';
     document.getElementById('section-external-factors').scrollIntoView({behavior: 'smooth', block: 'start'});
 }
 
-function initExternalFactors() {
+export function initExternalFactors() {
     const shockTabBtns = document.querySelectorAll('.shock-tab-btn');
     const timelineView = document.getElementById('shock-timeline-view');
     const policyView = document.getElementById('shock-policy-view');
@@ -400,8 +403,13 @@ function initExternalFactors() {
             } else {
                 if (timelineView) timelineView.style.display = 'none';
                 if (policyView) policyView.style.display = 'block';
-                if (typeof renderPolicyPage === 'function') renderPolicyPage();
+                renderPolicyPage();
             }
         });
     });
 }
+
+// Expose to window for HTML onclick handlers
+window.switchToPolicyTab = switchToPolicyTab;
+window.showPolicyDetail = showPolicyDetail;
+window.hidePolicyDetail = hidePolicyDetail;

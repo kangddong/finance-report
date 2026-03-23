@@ -1,8 +1,10 @@
-function renderCompanyAnalysisGrid() {
+import { COMPANY_ANALYSIS_ITEMS, DEEP_DIVE_ITEMS, SECTOR_ANALYSIS_ITEMS } from '../../data.js';
+
+export function renderCompanyAnalysisGrid() {
     const grid = document.getElementById('company-analysis-grid');
     if (!grid) return;
 
-    const analyses = (typeof COMPANY_ANALYSIS_ITEMS !== 'undefined') ? COMPANY_ANALYSIS_ITEMS : [];
+    const analyses = COMPANY_ANALYSIS_ITEMS || [];
     grid.innerHTML = '';
 
     if (!analyses.length) {
@@ -38,9 +40,9 @@ function renderCompanyAnalysisGrid() {
     });
 }
 
-function renderDeepDiveGrid() {
+export function renderDeepDiveGrid() {
     const grid = document.getElementById('deep-dive-grid');
-    if (!grid || typeof DEEP_DIVE_ITEMS === 'undefined') return;
+    if (!grid) return;
 
     grid.innerHTML = '';
     
@@ -77,13 +79,13 @@ function renderDeepDiveGrid() {
     });
 }
 
-function renderSectorAnalysis() {
+export function renderSectorAnalysis() {
     const summary = document.getElementById('sector-analysis-summary');
     const list = document.getElementById('sector-analysis-list');
     if (!summary || !list) return;
 
-    const sectors = (typeof SECTOR_ANALYSIS_ITEMS !== 'undefined') ? SECTOR_ANALYSIS_ITEMS : [];
-    const companyAnalyses = (typeof COMPANY_ANALYSIS_ITEMS !== 'undefined') ? COMPANY_ANALYSIS_ITEMS : [];
+    const sectors = SECTOR_ANALYSIS_ITEMS || [];
+    const companyAnalyses = COMPANY_ANALYSIS_ITEMS || [];
     summary.innerHTML = '';
     list.innerHTML = '';
 
@@ -151,7 +153,7 @@ function renderSectorAnalysis() {
     }).join('');
 }
 
-function initAnalysisSections() {
+export function initAnalysisSections() {
     const compTabBtns = document.querySelectorAll('.comp-tab-btn');
     const compGeneralView = document.getElementById('comp-general-view');
     const compDeepdiveView = document.getElementById('comp-deepdive-view');
