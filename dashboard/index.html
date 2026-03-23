@@ -7,67 +7,99 @@
     <title>Premium Finance Dashboard</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/sidebar.css">
 </head>
 
 <body>
-    <div class="container">
-        <header>
-            <div class="header-top">
-                <div class="date-selector-wrapper">
-                    <select id="date-selector" class="date-select">
-                        <option value="">데이터 로딩 중...</option>
-                    </select>
+    <div class="app-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <span class="sidebar-logo">Premium Finance</span>
+            </div>
+            <nav class="sidebar-nav">
+                <!-- Daily Report Group -->
+                <div class="nav-group">
+                    <div class="nav-group-label">📊 Daily Report</div>
+                    <button class="side-nav-btn active" data-section="holdings">💼 보유 종목 현황</button>
+                    <button class="side-nav-btn" data-section="watchlist">🔍 관심 종목 분석</button>
+                    <button class="side-nav-btn" data-section="foreign">📈 코스피 매매 동향</button>
+                    <button class="side-nav-btn" data-section="strategy">💡 투자 조언</button>
                 </div>
-                <div class="badge-container">
-                    <a href="macro-check.html" class="user-badge"
-                        style="text-decoration: none; cursor: pointer; background: rgba(249, 115, 22, 0.2); border-color: #f97316; color: #fff;">🌍
-                        Macro Check</a>
-                    <a href="reports.html" class="user-badge"
-                        style="text-decoration: none; cursor: pointer; background: rgba(56, 189, 248, 0.2); border-color: var(--accent-blue); color: #fff;">Market
-                        Insights</a>
+
+                <!-- Market Analysis Group -->
+                <div class="nav-group">
+                    <div class="nav-group-label">📈 Market Analysis</div>
+                    <button class="side-nav-btn" data-section="company-analysis">🏢 기업 및 섹터 분석</button>
+                    <button class="side-nav-btn" data-section="external-factors">🌍 외부 요소</button>
+                    <button class="side-nav-btn" data-section="policy-stance">🏛 정책 기조 (BOK/FOMC)</button>
                 </div>
-            </div>
-            <h1>Premium Finance Report</h1>
-            <p id="report-overview">보고서 데이터를 불러오는 중입니다...</p>
-        </header>
 
-        <!-- Finance Wordbook Section -->
-        <div class="wordbook-section">
-            <div class="wordbook-header">
-                <span class="wordbook-icon">📚</span> Finance Wordbook
-            </div>
-            <div id="wordbook-container" class="wordbook-container">
-                <!-- Data loaded via JS -->
-            </div>
-            <div id="word-definition-modal" class="word-modal">
-                <div class="word-modal-content">
-                    <span class="close-modal">&times;</span>
-                    <h3 id="modal-term">Term</h3>
-                    <span id="modal-category" class="category-badge">Category</span>
-                    <p id="modal-definition">Definition goes here...</p>
+                <!-- Tools & Utilities -->
+                <div class="nav-group">
+                    <div class="nav-group-label">🛠 Tools</div>
+                    <button class="side-nav-btn" data-section="tools">🛠 Financial Tools</button>
+                    <button class="side-nav-btn" data-section="recommender">🎯 섹터 추천기</button>
                 </div>
-            </div>
-        </div>
 
-        <div id="market-indicators" class="indicator-bar">
-            <!-- Dynamic Content -->
-        </div>
+                <!-- Knowledge & Philosophy -->
+                <div class="nav-group">
+                    <div class="nav-group-label">📚 Learn</div>
+                    <button class="side-nav-btn" data-section="bond-guide">📜 채권 가이드</button>
+                    <button class="side-nav-btn" data-section="portfolio">📊 포트폴리오 종류</button>
+                    <button class="side-nav-btn" data-section="masters">🏆 투자 대가 철학</button>
+                </div>
+            </nav>
+        </aside>
 
-        <!-- Main Navigation Section -->
-        <nav class="main-nav">
-            <button class="nav-btn" data-section="tools">🛠 Financial Tools</button>
-            <button class="nav-btn active" data-section="holdings">💼 보유 종목 현황</button>
-            <button class="nav-btn" data-section="watchlist">🔍 관심 종목 분석</button>
-            <button class="nav-btn" data-section="company-analysis">🏢 기업 및 섹터 분석</button>
-            <button class="nav-btn" data-section="external-factors">🌍 외부 요소</button>
-            <button class="nav-btn" data-section="policy-stance">🏛 정책 기조 (BOK/FOMC)</button>
-            <button class="nav-btn" data-section="foreign">📈 코스피 매매 동향</button>
-            <button class="nav-btn" data-section="strategy">💡 투자 조언</button>
-            <button class="nav-btn" data-section="portfolio">📊 포트폴리오 종류</button>
-            <button class="nav-btn" data-section="recommender">🎯 섹터 추천기</button>
-            <button class="nav-btn" data-section="bond-guide">📜 채권 가이드</button>
-            <button class="nav-btn" data-section="masters">🏆 투자 대가 철학</button>
-        </nav>
+        <!-- Mobile Overlay & Toggle -->
+        <div class="sidebar-overlay" id="sidebar-overlay"></div>
+        <button class="mobile-toggle" id="mobile-toggle">☰</button>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <div class="container">
+                <header>
+                    <div class="header-top">
+                        <div class="date-selector-wrapper">
+                            <select id="date-selector" class="date-select">
+                                <option value="">데이터 로딩 중...</option>
+                            </select>
+                        </div>
+                        <div class="badge-container">
+                            <a href="macro-check.html" class="user-badge"
+                                style="text-decoration: none; cursor: pointer; background: rgba(249, 115, 22, 0.2); border-color: #f97316; color: #fff;">🌍
+                                Macro Check</a>
+                            <a href="reports.html" class="user-badge"
+                                style="text-decoration: none; cursor: pointer; background: rgba(56, 189, 248, 0.2); border-color: var(--accent-blue); color: #fff;">Market
+                                Insights</a>
+                        </div>
+                    </div>
+                    <h1>Premium Finance Report</h1>
+                    <p id="report-overview">보고서 데이터를 불러오는 중입니다...</p>
+                </header>
+
+                <!-- Finance Wordbook Section -->
+                <div class="wordbook-section">
+                    <div class="wordbook-header">
+                        <span class="wordbook-icon">📚</span> Finance Wordbook
+                    </div>
+                    <div id="wordbook-container" class="wordbook-container">
+                        <!-- Data loaded via JS -->
+                    </div>
+                    <div id="word-definition-modal" class="word-modal">
+                        <div class="word-modal-content">
+                            <span class="close-modal">&times;</span>
+                            <h3 id="modal-term">Term</h3>
+                            <span id="modal-category" class="category-badge">Category</span>
+                            <p id="modal-definition">Definition goes here...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="market-indicators" class="indicator-bar">
+                    <!-- Dynamic Content -->
+                </div>
 
         <div class="content-wrapper">
             <!-- Financial Tools Section -->
@@ -954,9 +986,20 @@
                 </div>
             </section>
         </div>
-    </div>
+        </div>
+    </main>
     <script src="data.js"></script>
     <script src="finance_word_data.js"></script>
+    <!-- Core Utils -->
+    <script src="js/utils/markdown.js"></script>
+    <!-- Sections -->
+    <script src="js/sections/dashboard.js"></script>
+    <script src="js/sections/analysis.js"></script>
+    <script src="js/sections/external-factors.js"></script>
+    <script src="js/sections/recommender.js"></script>
+    <script src="js/sections/wordbook.js"></script>
+    <script src="js/sections/tools.js"></script>
+    <!-- Main App -->
     <script src="script.js"></script>
 </body>
 

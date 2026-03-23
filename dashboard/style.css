@@ -23,7 +23,8 @@ body {
     position: relative;
     color: var(--text-primary);
     min-height: 100vh;
-    padding: 4rem 2rem;
+    padding: 0;
+    margin: 0;
     overflow-x: hidden;
 }
 
@@ -184,42 +185,7 @@ header p {
     background: rgba(56, 189, 248, 0.1) !important;
 }
 
-/* Main Navigation */
-.main-nav {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-bottom: 3rem;
-    flex-wrap: wrap;
-    animation: fadeInDown 1s ease-out;
-}
-
-.nav-btn {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid var(--glass-border);
-    padding: 0.8rem 1.8rem;
-    border-radius: 50px;
-    color: var(--text-secondary);
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    backdrop-filter: blur(10px);
-}
-
-.nav-btn:hover {
-    background: rgba(56, 189, 248, 0.1);
-    color: var(--accent-blue);
-    border-color: var(--accent-blue);
-    transform: translateY(-3px);
-}
-
-.nav-btn.active {
-    background: var(--accent-blue);
-    color: var(--primary-bg);
-    border-color: var(--accent-blue);
-    box-shadow: 0 10px 20px rgba(56, 189, 248, 0.3);
-}
+/* Main Navigation styles removed, now using sidebar.css */
 
 /* Recommender Selector */
 .recommender-selector {
