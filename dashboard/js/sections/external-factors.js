@@ -1,5 +1,5 @@
 import { parseMarkdown } from '../utils/markdown.js';
-import { EXTERNAL_SHOCK_EVENTS, EXTERNAL_POLICY_DATA } from '../../data.js';
+import { EXTERNAL_SHOCK_EVENTS, EXTERNAL_POLICY_DATA } from '../db.js';
 
 export function renderExternalFactors() {
     const summary = document.getElementById('external-shocks-summary');

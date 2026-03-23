@@ -2464,7 +2464,7 @@ export const REPORTS_HISTORY = [
     }
 ];
 
-const ANALYSIS_REPORTS = [
+export const ANALYSIS_REPORTS = [
     {
         "id": "genesis-mission",
         "title": "미국 '제네시스 미션(Genesis Mission)' 행정명령 상세 분석",

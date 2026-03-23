@@ -1,4 +1,4 @@
-import { FINANCE_WORDS } from '../../finance_word_data.js';
+import { FINANCE_WORDS } from '../db.js';
 
 export function initWordbook() {
     const wordbookContainer = document.getElementById('wordbook-container');

@@ -1,4 +1,4 @@
-function initTools() {
+export function initTools() {
     // --- Target Price Calculator Logic ---
     const epsInput = document.getElementById('calc-eps');
     const perInput = document.getElementById('calc-per');

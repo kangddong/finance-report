@@ -5,16 +5,18 @@ import { initWordbook } from './sections/wordbook.js';
 import { initTools } from './sections/tools.js';
 import { initAnalysisSections } from './sections/analysis.js';
 import { initExternalFactors } from './sections/external-factors.js';
-import { REPORTS_HISTORY } from '../data.js';
+import { getAllReports, getLatestReport, getAvailableDates } from './db.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     const selector = document.getElementById('date-selector');
 
-    if (REPORTS_HISTORY && REPORTS_HISTORY.length > 0) {
+    const reports = getAllReports();
+
+    if (reports && reports.length > 0) {
         // Build Date Selector
         if (selector) {
             selector.innerHTML = ''; 
-            REPORTS_HISTORY.forEach((report, index) => {
+            reports.forEach((report, index) => {
                 const option = document.createElement('option');
                 option.value = index;
                 option.textContent = report.date.replace(/-/g, '. ');
@@ -23,12 +25,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Default to latest
             selector.value = 0;
-            renderDashboard(REPORTS_HISTORY[0]);
+            renderDashboard(reports[0]);
 
             // Date selector event
             selector.addEventListener('change', (e) => {
                 const selectedIndex = e.target.value;
-                renderDashboard(REPORTS_HISTORY[selectedIndex]);
+                renderDashboard(reports[selectedIndex]);
 
                 // Animation effect
                 const cards = document.querySelectorAll('.card');
@@ -40,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         } else {
             // If selector not found, just render the latest
-            renderDashboard(REPORTS_HISTORY[0]);
+            renderDashboard(reports[0]);
         }
     } else {
         const errorMsg = '보고서 데이터가 없습니다. 먼저 리포트를 생성해 주세요.';

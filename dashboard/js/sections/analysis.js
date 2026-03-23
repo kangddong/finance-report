@@ -1,4 +1,8 @@
-import { COMPANY_ANALYSIS_ITEMS, DEEP_DIVE_ITEMS, SECTOR_ANALYSIS_ITEMS } from '../../data.js';
+import { 
+    COMPANY_ANALYSIS_ITEMS, 
+    DEEP_DIVE_ITEMS, 
+    SECTOR_ANALYSIS_ITEMS 
+} from '../db.js';
 
 export function renderCompanyAnalysisGrid() {
     const grid = document.getElementById('company-analysis-grid');

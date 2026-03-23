@@ -27,7 +27,7 @@ def get_foreign_data():
         return None
     except json.JSONDecodeError as e:
         print(f"Error decoding JSON: {e}")
-        print(f"Output was: {result.stdout}")
+        print(f"Output was: {result.stdout if 'result' in locals() else 'N/A'}")
         return None
 
 def update_data_js(new_data):
@@ -36,20 +36,15 @@ def update_data_js(new_data):
         with open(DATA_JS_PATH, 'r', encoding='utf-8') as f:
             content = f.read()
         
-        # Find start of REPORTS_HISTORY array
-        start_marker = 'const REPORTS_HISTORY = ['
-        start_idx = content.find(start_marker)
-        if start_idx == -1:
+        # Find start of REPORTS_HISTORY array with regex (handles optional export)
+        match = re.search(r'(export\s+)?const\s+REPORTS_HISTORY\s*=\s*\[', content)
+        if not match:
             print("Could not find REPORTS_HISTORY in data.js")
             return
             
-        start_bracket_idx = start_idx + len('const REPORTS_HISTORY = ')
-        # Ensure it points to '[' (it might have space)
-        while content[start_bracket_idx].isspace():
-            start_bracket_idx += 1
-            
+        start_bracket_idx = match.end() - 1
         if content[start_bracket_idx] != '[':
-            print("Expected '[' after declaration")
+            print(f"Error finding bracket. Found '{content[start_bracket_idx]}' instead of '['")
             return
 
         # Find the matching closing bracket
@@ -91,7 +86,6 @@ def update_data_js(new_data):
         except json.JSONDecodeError as e:
             print(f"Error parsing JSON: {e}")
             # Try to handle trailing comma if present (common in JS)
-            # Remove trailing commas before ] or }
             cleaned_json_str = re.sub(r',\s*([\]}])', r'\1', json_str)
             try:
                 history = json.loads(cleaned_json_str)
@@ -102,7 +96,6 @@ def update_data_js(new_data):
         # Update the first element (latest report)
         if history:
             print("Updating latest report...")
-            # Ensure foreignInvestorTrend is updated or added
             history[0]['foreignInvestorTrend'] = new_data
             
             # Convert back to JSON string

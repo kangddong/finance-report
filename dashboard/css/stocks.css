@@ -1,0 +1,100 @@
+/* Stock Items & Trading UI */
+.stock-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.stock-item {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    transition: background 0.3s ease;
+}
+
+.stock-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.stock-info .name {
+    font-weight: 700;
+    font-size: 1.35rem;
+    margin-bottom: 0.25rem;
+}
+
+.stock-info .price {
+    font-size: 1rem;
+    color: var(--text-secondary);
+}
+
+.stock-status {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-end;
+    min-width: 100px;
+}
+
+.reason-text {
+    grid-column: 1 / -1;
+    margin-top: 1rem;
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    border-left: 3px solid var(--accent-blue);
+    white-space: pre-line;
+}
+
+.chart-container {
+    grid-column: 1 / -1;
+    margin-top: 1rem;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stock-chart {
+    width: 100%;
+    height: auto;
+    display: block;
+    cursor: zoom-in;
+    transition: transform 0.3s ease;
+}
+
+.stock-chart:hover {
+    transform: scale(1.02);
+}
+
+.return { font-weight: 800; font-size: 1.25rem; }
+.return.up { color: var(--up-color); }
+.return.down { color: var(--down-color); }
+
+.badge {
+    padding: 0.4rem 1rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 800;
+}
+
+.badge.buy { background: rgba(56, 189, 248, 0.2); color: #fff; border: 1px solid var(--accent-blue); }
+.badge.hold { background: rgba(251, 191, 36, 0.2); color: #fff; border: 1px solid var(--hold-color); }
+
+.advice-section {
+    grid-column: 1 / -1;
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.9));
+    padding: 1.5rem;
+    border-radius: 16px;
+    margin-top: 1rem;
+}
+
+.advice-text { font-size: 1.15rem; line-height: 1.8; color: var(--text-secondary); }
+.advice-text strong { color: var(--text-primary); border-bottom: 2px solid var(--accent-blue); }
