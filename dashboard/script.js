@@ -47,6 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (typeof initExternalFactors === 'function') initExternalFactors();
     if (typeof initAnalysisSections === 'function') initAnalysisSections();
     if (typeof initTools === 'function') initTools();
+    if (typeof initLearnSections === 'function') initLearnSections();
 
     // --- Sidebar Navigation System ---
     const sideNavBtns = document.querySelectorAll('.side-nav-btn');
