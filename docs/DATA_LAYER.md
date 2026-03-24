@@ -42,3 +42,9 @@ UI 컴포넌트는 `data.js`의 원본 데이터를 직접 사용하지 않고, 
 - **날짜별 리포트 추가**: `REPORTS_HISTORY` 배열의 처음에 새로운 리포트 객체를 추가합니다.
 - **종목 데이터 수정**: `ANALYSIS_REPORTS`의 해당 종목 키값을 찾아 `content`, `rating`, `tags` 등을 수정합니다.
 - **용어 추가**: `FINANCE_WORDS` 객체의 해당 카테고리(예: `Economy`)에 새로운 용어 객체를 추가합니다.
+## 2026-03 Session Helpers
+
+- `getLatestIndicatorsSnapshot()` returns `{ date, indicators }` for the dedicated indicator page.
+- `getMarketSessionData(report, market)` returns normalized `holdings`, `watchlist`, and `strategy`.
+- If a report already contains `krSession` or `usSession`, use those values first.
+- If not, split legacy arrays by market as a fallback so older reports still render in the KR/US tab UI.

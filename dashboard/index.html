@@ -34,6 +34,14 @@
                     <button class="side-nav-btn" data-section="strategy">💡 투자 조언</button>
                 </div>
 
+                <!-- Market Monitor Group -->
+                <div class="nav-group">
+                    <div class="nav-group-label">🌐 Market Monitor</div>
+                    <a href="indicators.html" class="side-nav-btn" style="text-decoration:none;display:flex;align-items:center;gap:0.5rem;">📊 지수 모니터링</a>
+                    <a href="macro-check.html" class="side-nav-btn" style="text-decoration:none;display:flex;align-items:center;gap:0.5rem;">🌍 Macro Check</a>
+                    <a href="market-regime.html" class="side-nav-btn" style="text-decoration:none;display:flex;align-items:center;gap:0.5rem;">🔄 Market Regime</a>
+                </div>
+
                 <!-- Market Analysis Group -->
                 <div class="nav-group">
                     <div class="nav-group-label">📈 Market Analysis</div>
@@ -74,6 +82,9 @@
                             </select>
                         </div>
                         <div class="badge-container">
+                            <a href="indicators.html" class="user-badge"
+                                style="text-decoration: none; cursor: pointer; background: rgba(99, 102, 241, 0.2); border-color: #6366f1; color: #fff;">📊
+                                Indicators</a>
                             <a href="macro-check.html" class="user-badge"
                                 style="text-decoration: none; cursor: pointer; background: rgba(249, 115, 22, 0.2); border-color: #f97316; color: #fff;">🌍
                                 Macro Check</a>
@@ -181,6 +192,11 @@
                 <div class="card full-width">
                     <div class="section-label">Current Portfolio</div>
                     <div class="card-title">보유 종목 현황</div>
+                    <!-- 국장/미장 탭 -->
+                    <div class="recommender-selector" style="margin: 1rem 0 1.5rem;">
+                        <button class="session-tab-btn active" data-session="kr" id="tab-kr-holdings">🇰🇷 국장 (Korea)</button>
+                        <button class="session-tab-btn" data-session="us" id="tab-us-holdings">🇺🇸 미장 (US)</button>
+                    </div>
                     <div id="holdings-list" class="stock-list">
                         <p style="color: var(--text-secondary);">데이터를 분석 중입니다...</p>
                     </div>
@@ -192,6 +208,10 @@
                 <div class="card full-width">
                     <div class="section-label">Market Watchlist</div>
                     <div class="card-title">관심 종목 분석</div>
+                    <div class="recommender-selector" style="margin: 1rem 0 1.5rem;">
+                        <button class="session-tab-btn active" data-session="kr" id="tab-kr-watchlist">🇰🇷 국장 관심종목</button>
+                        <button class="session-tab-btn" data-session="us" id="tab-us-watchlist">🇺🇸 미장 관심종목</button>
+                    </div>
                     <div id="watchlist-list" class="stock-list">
                         <p style="color: var(--text-secondary);">데이터를 분석 중입니다...</p>
                     </div>
@@ -302,7 +322,12 @@
                 <div class="card full-width advice-section">
                     <div class="section-label">Strategy Advice</div>
                     <div class="card-title">종합 투자 조언</div>
-                    <div class="advice-text">
+                    <!-- 국장/미장 탭 -->
+                    <div class="recommender-selector" style="margin: 1rem 0 1.5rem;">
+                        <button class="session-tab-btn active" data-session="kr" id="tab-kr-strategy">🇰🇷 국장 전략</button>
+                        <button class="session-tab-btn" data-session="us" id="tab-us-strategy">🇺🇸 미장 전략</button>
+                    </div>
+                    <div class="advice-text" id="strategy-content">
                         <p style="color: var(--text-secondary);">데이터를 분석 중입니다...</p>
                     </div>
                 </div>

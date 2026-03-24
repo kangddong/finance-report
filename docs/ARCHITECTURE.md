@@ -44,3 +44,10 @@ dashboard/
 
 ### 4. **SEO & Accessibility Ready**
 - 시맨틱 HTML5 태그를 적극 활용하여 검색 엔진 및 보조 공학 기기의 접근성을 높였습니다. 
+## 2026-03 Update Notes
+
+- `dashboard/indicators.html` is now a dedicated indicator-check page instead of a large inline script page.
+- Indicator page logic lives in `dashboard/js/sections/indicators-page.js`.
+- Indicator page styling lives in `dashboard/css/indicators.css`.
+- Main dashboard session switching is handled through `dashboard/js/db.js` session helpers and `dashboard/js/sections/dashboard.js`.
+- UI modules must continue to read report data through `db.js`, not by importing `data.js` directly.

@@ -70,3 +70,8 @@ document.addEventListener('DOMContentLoaded', () => {
 - **JSON 기반 동적 리포트 로더**: 특정 일자의 리포트를 외부 JSON 파일로부터 비동기 호출하는 기능.
 - **차트 라이브러리 연동**: `Chart.js` 또는 `D3.js` 를 활용한 고급 시각화 모듈 추가.
 - **다크/라이트 모드 자동 전환**: 시스템 설정에 따른 테마 전환 최적화.
+## 2026-03 Working Rules
+
+- For indicator-page changes, edit `dashboard/indicators.html`, `dashboard/css/indicators.css`, and `dashboard/js/sections/indicators-page.js` together.
+- For KR/US dashboard tabs, keep the rendering logic in `dashboard/js/sections/dashboard.js` and resolve data through `dashboard/js/db.js`.
+- When adding report fields for one market session, prefer `krSession` and `usSession`, but preserve fallback rendering for legacy reports that only have top-level `holdings`, `watchlist`, and `strategy`.

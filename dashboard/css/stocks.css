@@ -98,3 +98,55 @@
 
 .advice-text { font-size: 1.15rem; line-height: 1.8; color: var(--text-secondary); }
 .advice-text strong { color: var(--text-primary); border-bottom: 2px solid var(--accent-blue); }
+
+.recommender-selector {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.session-tab-btn {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text-secondary);
+    border-radius: 999px;
+    padding: 0.75rem 1.1rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.session-tab-btn:hover:not(:disabled) {
+    color: var(--text-primary);
+    border-color: rgba(56, 189, 248, 0.35);
+}
+
+.session-tab-btn.active {
+    color: #ffffff;
+    border-color: rgba(56, 189, 248, 0.5);
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.18), rgba(129, 140, 248, 0.2));
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.session-tab-btn.is-disabled,
+.session-tab-btn:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+@media (max-width: 640px) {
+    .stock-item {
+        grid-template-columns: 1fr;
+    }
+
+    .stock-status {
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    .session-tab-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}

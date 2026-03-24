@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>지수 정보 확인 | Premium Finance Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/indicators.css">
+</head>
+<body class="indicator-page">
+    <div class="indicator-shell">
+        <header class="indicator-page-header">
+            <a href="index.html" class="indicator-back-link">← 대시보드로 돌아가기</a>
+            <div class="indicator-hero">
+                <section class="indicator-hero-card">
+                    <div class="indicator-kicker">Market Monitor</div>
+                    <h1 class="indicator-page-title">지수 정보 확인</h1>
+                    <p class="indicator-page-subtitle">
+                        장 전에는 미국 선물과 코스피 야간선물, 환율과 변동성을 먼저 보고,
+                        장 중에는 외국인 수급과 거래대금, 업종 주도력을 확인합니다.
+                    </p>
+                    <div class="indicator-focus-list">
+                        <span class="indicator-focus-chip">코스피 야간선물</span>
+                        <span class="indicator-focus-chip">NQ / ES 선물</span>
+                        <span class="indicator-focus-chip">원/달러 환율</span>
+                        <span class="indicator-focus-chip">VIX</span>
+                        <span class="indicator-focus-chip">Fear &amp; Greed</span>
+                    </div>
+                </section>
+
+                <aside class="indicator-summary-card">
+                    <div class="indicator-summary-title">오늘 핵심 요약</div>
+                    <div class="indicator-summary-grid" id="indicator-summary-grid"></div>
+                </aside>
+            </div>
+        </header>
+
+        <main>
+            <div class="indicator-page-layout" id="indicator-page-layout"></div>
+            <section class="indicator-section indicator-priority-table" id="indicator-priority-table"></section>
+            <p class="indicator-last-updated" id="indicator-last-updated"></p>
+        </main>
+    </div>
+
+    <script type="module" src="js/indicators-app.js"></script>
+</body>
+</html>

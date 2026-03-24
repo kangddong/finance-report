@@ -1,0 +1,396 @@
+{
+    "date": "2026-03-24",
+    "overview": "[국내 장마감] 2026년 3월 24일 코스피는 5,553.92(+2.74%), 코스닥은 1,121.44(+2.24%)로 동반 반등했습니다. 미·이란 긴장 완화 기대가 되살아나며 전일 급락분을 일부 되돌렸고, 삼성전자와 SK하이닉스가 각각 1.83%, 5.68% 상승해 지수 반등을 주도했습니다. 방산 ETF와 AI 전력 인프라 ETF도 강세를 유지한 반면, 두산에너빌리티는 장중 변동성 끝에 약보합으로 마감했습니다. 원/달러 환율은 1,496.8원 부근으로 높은 수준을 유지하고 있어, 반등장에서도 외국인 수급과 환율 안정 여부를 함께 보는 보수적 대응이 필요합니다.",
+    "indicators": {
+        "fearAndGreed": {
+            "label": "Fear & Greed",
+            "value": "N/A",
+            "status": "업데이트 대기"
+        },
+        "exchangeRate": {
+            "label": "원/달러 환율",
+            "value": "1,496.8",
+            "status": "고환율 경계"
+        },
+        "dollarIndex": {
+            "label": "달러 인덱스",
+            "value": "99.21",
+            "status": "보합"
+        },
+        "vix": {
+            "label": "VIX",
+            "value": "25.71",
+            "status": "경계 구간"
+        },
+        "us10y": {
+            "label": "미국 10년물",
+            "value": "4.33%",
+            "status": "성장주 부담 완화"
+        },
+        "us2y": {
+            "label": "미국 2년물",
+            "value": "3.61%",
+            "status": "단기금리 보합"
+        },
+        "yieldSpread": {
+            "label": "10Y-2Y 스프레드",
+            "value": "0.72%",
+            "status": "정상 구간"
+        },
+        "usdJpy": {
+            "label": "USD/JPY",
+            "value": "158.58",
+            "status": "엔 약세 지속"
+        },
+        "usdCnh": {
+            "label": "USD/CNH",
+            "value": "6.8899",
+            "status": "위안 약세 경계"
+        },
+        "esFutures": {
+            "label": "S&P 500 선물",
+            "value": "6,644.50",
+            "status": "강보합"
+        },
+        "nqFutures": {
+            "label": "나스닥 선물",
+            "value": "24,465.25",
+            "status": "기술주 우위"
+        },
+        "ymFutures": {
+            "label": "다우 선물",
+            "value": "46,591.00",
+            "status": "반등"
+        },
+        "rtyFutures": {
+            "label": "러셀 2000 선물",
+            "value": "2,515.90",
+            "status": "리스크온 회복"
+        },
+        "kospiNightFutures": {
+            "label": "코스피 야간선물",
+            "value": "N/A",
+            "status": "장후 확인 필요"
+        },
+        "kosdaqNightFutures": {
+            "label": "코스닥 야간선물",
+            "value": "N/A",
+            "status": "장후 확인 필요"
+        },
+        "gold": {
+            "label": "금",
+            "value": "4,413.40",
+            "status": "안전자산 선호 유지"
+        },
+        "goldSilverRatio": {
+            "label": "금/은 비율",
+            "value": "63.19",
+            "status": "중립"
+        },
+        "bitcoin": {
+            "label": "비트코인",
+            "value": "71,007.71",
+            "status": "리스크 자산 보합"
+        },
+        "wti": {
+            "label": "WTI 유가",
+            "value": "N/A",
+            "status": "업데이트 대기"
+        },
+        "sox": {
+            "label": "SOX",
+            "value": "N/A",
+            "status": "미장 확인 필요"
+        }
+    },
+    "holdings": [
+        {
+            "name": "삼성전자",
+            "avgPrice": "141,675원",
+            "currentPrice": "189,700원",
+            "return": "+33.90%",
+            "advice": "HOLD",
+            "reason": "1. **기술적 분석**: 전일 급락 이후 1.83% 반등하며 19만원선을 회복했습니다. 아직 20만원 재돌파는 남아 있지만 반등 첫날로는 거래대금이 충분히 실렸습니다.\n2. **수급 포인트**: 대형 반도체 투심이 다시 살아나며 시장 반등을 이끌었습니다. 다만 환율이 1,496원대로 높아 외국인 추격 매수는 제한될 수 있습니다.\n3. **대응 전략**: 19만원 초반 지지 여부를 확인하며 **홀딩(HOLD)**이 유리합니다. 20만원 재돌파 전까지는 비중 확대보다 보유 우위가 낫습니다.",
+            "image": null,
+            "reportPath": "analysis/samsung-electronics-deep-dive.html"
+        },
+        {
+            "name": "SK하이닉스",
+            "avgPrice": "592,800원",
+            "currentPrice": "986,000원",
+            "return": "+66.33%",
+            "advice": "HOLD",
+            "reason": "1. **기술적 분석**: 5.68% 급반등으로 100만원 재도전 구간에 올라왔습니다. 낙폭이 컸던 만큼 반발 매수 강도는 확인됐지만, 심리적 저항선은 아직 완전히 넘지 못했습니다.\n2. **모멘텀**: HBM 및 메모리 부족 확산 뉴스가 투심 회복에 힘을 실어줬습니다. 국내 반도체 반등의 핵심 축입니다.\n3. **대응 전략**: 수익 구간이 큰 만큼 **홀딩(HOLD)**이 기본입니다. 100만원 안착 전 추격 매수는 자제하고, 95만원대 지지 여부를 체크하는 보수적 대응이 좋습니다.",
+            "image": null,
+            "reportPath": "analysis/sk-hynix-deep-dive.html"
+        },
+        {
+            "name": "PLUS K 방산",
+            "avgPrice": "60,264원",
+            "currentPrice": "68,910원",
+            "return": "+14.35%",
+            "advice": "HOLD",
+            "reason": "1. **테마 강도**: 지정학 리스크가 완화돼도 방산 프리미엄은 쉽게 꺼지지 않았습니다. 2.79% 상승으로 강한 상대강도를 유지했습니다.\n2. **위치 판단**: 단기 급등 후 고점 부담은 있지만, 장기 수급은 여전히 방산 쪽으로 남아 있습니다.\n3. **대응 전략**: 이미 수익 구간이므로 **홀딩(HOLD)**이 우세합니다. 단기 급등일에는 추가 매수보다 눌림 확인이 필요합니다.",
+            "image": null
+        },
+        {
+            "name": "KODEX AI 전력핵심설비",
+            "avgPrice": "26,472원",
+            "currentPrice": "32,515원",
+            "return": "+22.83%",
+            "advice": "HOLD",
+            "reason": "1. **섹터 흐름**: AI 인프라 투자 재개 기대가 살아나며 1.34% 상승 마감했습니다. 반도체 반등과 함께 전력 설비 ETF도 동반 강세입니다.\n2. **장점**: 단일 종목 대비 변동성이 낮으면서도 AI 인프라 확장 테마를 넓게 담을 수 있습니다.\n3. **대응 전략**: 중기 테마가 유효하므로 **홀딩(HOLD)** 유지가 적절합니다. 31,500원대 지지 확인 시 추가 접근이 가능합니다.",
+            "image": null
+        },
+        {
+            "name": "현대차",
+            "avgPrice": "498,500원",
+            "currentPrice": "492,000원",
+            "return": "-1.30%",
+            "advice": "BUY",
+            "reason": "1. **가격 위치**: 1.44% 반등했지만 아직 평단가 아래입니다. 장중 50만원대 재진입을 시도한 점은 긍정적입니다.\n2. **투자 포인트**: 자동차 업종 내에서는 환원 기대와 실적 체력이 여전히 좋습니다. 지수 반등일에 다시 자금이 붙는 모습이 확인됐습니다.\n3. **대응 전략**: 평단가 부근에서 압박이 크지 않은 자리라 **분할 매수(BUY)** 관점이 가능합니다. 다만 48만원 초반 이탈 시 단기 경계가 필요합니다.",
+            "image": null,
+            "reportPath": "analysis/hyundai-motor-deep-dive.html"
+        },
+        {
+            "name": "두산에너빌리티",
+            "avgPrice": "92,700원",
+            "currentPrice": "100,100원",
+            "return": "+7.98%",
+            "advice": "HOLD",
+            "reason": "1. **장중 변동성**: 고가 106,800원까지 갔다가 100,100원으로 밀리며 약보합 마감했습니다. 원전/전력 테마는 살아 있지만 단기 차익 실현도 강합니다.\n2. **모멘텀**: SMR과 발전 설비 기대는 유지됩니다. 다만 오늘은 시장 반등 속에서도 종가가 약했던 점을 체크해야 합니다.\n3. **대응 전략**: 수익 구간이므로 **홀딩(HOLD)**하되, 10만원선 안착을 며칠 더 확인하는 편이 안전합니다.",
+            "image": null,
+            "reportPath": "analysis/doosan-enerbility-smr.html"
+        },
+        {
+            "name": "사이퍼 마이닝",
+            "avgPrice": "18.4650달러",
+            "currentPrice": "14.89달러",
+            "return": "-19.36%",
+            "advice": "WATCH",
+            "reason": "1. **현 위치**: 비트코인은 버티고 있지만 채굴주는 변동성이 더 큽니다. 평단가 대비 손실 구간이라 무리한 추가매수는 조심해야 합니다.\n2. **체크 포인트**: 비트코인 7만 달러 회복이 지속되면 채굴주 탄력도 살아날 수 있으나, 아직은 확인 단계입니다.\n3. **대응 전략**: 당장은 **관망(WATCH)**이 더 낫습니다. 미장 개장 후 거래량이 붙는지 먼저 보고 대응하는 편이 좋습니다.",
+            "image": null
+        },
+        {
+            "name": "엔비디아",
+            "avgPrice": "189.0620달러",
+            "currentPrice": "175.64달러",
+            "return": "-7.10%",
+            "advice": "BUY",
+            "reason": "1. **현 위치**: 아직 평단 아래지만 AI 인프라 투자 기대가 다시 살아나며 기술주 선물이 강합니다.\n2. **의미**: 국내 반도체 반등이 엔비디아 센티먼트와 연결되는 만큼 핵심 선행지표 역할을 계속합니다.\n3. **대응 전략**: 장기 성장성은 유효하므로 **분할 매수(BUY)** 관점이 유지됩니다. 다만 미장 변동성이 크니 한 번에 비중을 늘리기보다 나눠 접근하는 편이 좋습니다.",
+            "image": null,
+            "reportPath": "analysis/nvidia-deep-dive.html"
+        },
+        {
+            "name": "팔란티어 테크",
+            "avgPrice": "166.5100달러",
+            "currentPrice": "160.84달러",
+            "return": "-3.41%",
+            "advice": "BUY",
+            "reason": "1. **현 위치**: 평단 아래이지만 낙폭은 많이 줄었습니다. 지정학 이슈와 정부향 AI 수요 기대가 다시 살아날 수 있는 구간입니다.\n2. **해석**: 국내장이 위험 완화로 반등한 날에는 미국 AI 방산주도 심리 회복 가능성을 같이 봐야 합니다.\n3. **대응 전략**: 중장기 스토리가 살아 있으므로 **매수(BUY)** 관점 유지가 가능합니다. 단기 급등 추격보다는 150달러대 눌림에서 나눠보는 전략이 적절합니다.",
+            "image": "report/images/2026-03-21/팔란티어.png",
+            "reportPath": "analysis/palantir-deep-dive.html"
+        }
+    ],
+    "watchlist": [
+        {
+            "name": "엔비디아",
+            "currentPrice": "175.64달러",
+            "outlook": "반등 시도",
+            "advice": "BUY",
+            "reason": "국내 반도체 강세와 연결되는 핵심 종목입니다. 단기 조정 구간이지만 AI 인프라 수요 스토리는 유지되고 있어 분할 접근이 유효합니다."
+        },
+        {
+            "name": "SK하이닉스",
+            "currentPrice": "986,000원",
+            "outlook": "100만원 재도전",
+            "advice": "WATCH",
+            "reason": "당일 탄력이 강했지만 심리적 저항선 직전입니다. 추격보다는 100만원 안착 여부 확인이 우선입니다."
+        },
+        {
+            "name": "금/은",
+            "currentPrice": "비율 63.19",
+            "outlook": "중립",
+            "advice": "WATCH",
+            "reason": "극단적 공포 구간은 아니지만 안전자산 선호가 완전히 꺾이지는 않았습니다. 리스크온 전환 확인용 보조 지표로 유지합니다."
+        },
+        {
+            "name": "달러 인덱스",
+            "currentPrice": "99.21",
+            "outlook": "보합",
+            "advice": "WATCH",
+            "reason": "달러 강세가 크게 재가속되지는 않았지만 원/달러는 여전히 높습니다. 외국인 수급 체크용 핵심 지표입니다."
+        },
+        {
+            "name": "테슬라",
+            "currentPrice": "380.85달러",
+            "outlook": "변동성 확대",
+            "advice": "WATCH",
+            "reason": "반등 탄력은 남아 있지만 변동성이 여전히 큽니다. 강한 추세 재확인 전까지는 관찰 우선이 적절합니다."
+        },
+        {
+            "name": "현대차",
+            "currentPrice": "492,000원",
+            "outlook": "저가 매수 구간",
+            "advice": "BUY",
+            "reason": "평단 부근까지 내려와 부담이 크지 않고, 주주환원과 실적 체력도 살아 있습니다. 48만원대 지지 확인 시 좋은 분할 매수 구간입니다."
+        }
+    ],
+    "strategy": {
+        "position": "Selective Risk-On",
+        "buy": "현대차, 엔비디아, 팔란티어 테크",
+        "sellConsider": "단기 급등한 PLUS K 방산은 추격 매수 자제, SK하이닉스는 100만원 안착 확인 후 대응",
+        "summary": "국내장은 3월 24일 급락 다음 날 반등이 강하게 들어왔지만, 환율이 높고 변동성이 완전히 사라진 것은 아닙니다. 따라서 오늘 전략은 전면 공격보다는 **반도체와 AI 인프라, 자동차에서 선별적 리스크온**입니다. 삼성전자와 SK하이닉스는 보유 우위, 현대차는 평단 부근 분할 매수, 두산에너빌리티는 10만원 안착 확인이 핵심입니다. 미장 보유 종목은 엔비디아와 팔란티어를 중심으로 눌림 대응, 사이퍼 마이닝은 비트코인 흐름 확인 전까지 관망이 적절합니다."
+    },
+    "krSession": {
+        "holdings": [
+            {
+                "name": "삼성전자",
+                "avgPrice": "141,675원",
+                "currentPrice": "189,700원",
+                "return": "+33.90%",
+                "advice": "HOLD",
+                "reason": "19만원선 회복 반등은 확인됐지만 20만원 재돌파 전까지는 보유 우위입니다.",
+                "image": null,
+                "reportPath": "analysis/samsung-electronics-deep-dive.html"
+            },
+            {
+                "name": "SK하이닉스",
+                "avgPrice": "592,800원",
+                "currentPrice": "986,000원",
+                "return": "+66.33%",
+                "advice": "HOLD",
+                "reason": "강한 반등이 나왔지만 100만원 안착 확인이 먼저입니다.",
+                "image": null,
+                "reportPath": "analysis/sk-hynix-deep-dive.html"
+            },
+            {
+                "name": "PLUS K 방산",
+                "avgPrice": "60,264원",
+                "currentPrice": "68,910원",
+                "return": "+14.35%",
+                "advice": "HOLD",
+                "reason": "상대강도는 여전히 강하지만 단기 급등 추격은 자제합니다.",
+                "image": null
+            },
+            {
+                "name": "KODEX AI 전력핵심설비",
+                "avgPrice": "26,472원",
+                "currentPrice": "32,515원",
+                "return": "+22.83%",
+                "advice": "HOLD",
+                "reason": "AI 인프라 테마가 살아 있어 중기 보유 관점이 유효합니다.",
+                "image": null
+            },
+            {
+                "name": "현대차",
+                "avgPrice": "498,500원",
+                "currentPrice": "492,000원",
+                "return": "-1.30%",
+                "advice": "BUY",
+                "reason": "평단 부근 분할 매수 관점이 유효합니다.",
+                "image": null,
+                "reportPath": "analysis/hyundai-motor-deep-dive.html"
+            },
+            {
+                "name": "두산에너빌리티",
+                "avgPrice": "92,700원",
+                "currentPrice": "100,100원",
+                "return": "+7.98%",
+                "advice": "HOLD",
+                "reason": "10만원선 안착 여부를 확인하며 보유합니다.",
+                "image": null,
+                "reportPath": "analysis/doosan-enerbility-smr.html"
+            }
+        ],
+        "watchlist": [
+            {
+                "name": "SK하이닉스",
+                "currentPrice": "986,000원",
+                "outlook": "100만원 재도전",
+                "advice": "WATCH",
+                "reason": "안착 확인 전까지 추격보다 관찰이 우선입니다."
+            },
+            {
+                "name": "금/은",
+                "currentPrice": "비율 63.19",
+                "outlook": "중립",
+                "advice": "WATCH",
+                "reason": "리스크오프 완화 여부를 보는 보조 지표입니다."
+            },
+            {
+                "name": "달러 인덱스",
+                "currentPrice": "99.21",
+                "outlook": "보합",
+                "advice": "WATCH",
+                "reason": "원/달러와 함께 외국인 수급 체크가 필요합니다."
+            },
+            {
+                "name": "현대차",
+                "currentPrice": "492,000원",
+                "outlook": "저가 매수 구간",
+                "advice": "BUY",
+                "reason": "평단 부근 분할 매수 후보입니다."
+            }
+        ],
+        "strategy": {
+            "buy": "현대차",
+            "sellConsider": "PLUS K 방산 추격 매수 자제",
+            "summary": "국장은 반등장이지만 환율이 높습니다. 반도체는 보유 우위, 자동차는 선별 매수, 방산은 추격 자제 전략이 적절합니다."
+        }
+    },
+    "usSession": {
+        "holdings": [
+            {
+                "name": "사이퍼 마이닝",
+                "avgPrice": "18.4650달러",
+                "currentPrice": "14.89달러",
+                "return": "-19.36%",
+                "advice": "WATCH",
+                "reason": "비트코인 유지력은 좋지만 채굴주 변동성이 커 관망 우위입니다.",
+                "image": null
+            },
+            {
+                "name": "엔비디아",
+                "avgPrice": "189.0620달러",
+                "currentPrice": "175.64달러",
+                "return": "-7.10%",
+                "advice": "BUY",
+                "reason": "AI 인프라 스토리가 살아 있어 분할 매수 관점이 유효합니다.",
+                "image": null,
+                "reportPath": "analysis/nvidia-deep-dive.html"
+            },
+            {
+                "name": "팔란티어 테크",
+                "avgPrice": "166.5100달러",
+                "currentPrice": "160.84달러",
+                "return": "-3.41%",
+                "advice": "BUY",
+                "reason": "정부향 AI 수요 기대가 유지돼 눌림 매수 관점이 가능합니다.",
+                "image": "report/images/2026-03-21/팔란티어.png",
+                "reportPath": "analysis/palantir-deep-dive.html"
+            }
+        ],
+        "watchlist": [
+            {
+                "name": "엔비디아",
+                "currentPrice": "175.64달러",
+                "outlook": "반등 시도",
+                "advice": "BUY",
+                "reason": "반도체 대표주로 눌림 대응 가치가 큽니다."
+            },
+            {
+                "name": "테슬라",
+                "currentPrice": "380.85달러",
+                "outlook": "변동성 확대",
+                "advice": "WATCH",
+                "reason": "강한 추세 재확인 전까지는 관망이 적절합니다."
+            }
+        ],
+        "strategy": {
+            "buy": "엔비디아, 팔란티어 테크",
+            "sellConsider": "사이퍼 마이닝은 거래량 확인 전 공격적 매수 자제",
+            "summary": "미장은 기술주 선물이 우호적이지만 변동성이 남아 있습니다. 엔비디아와 팔란티어는 분할 매수, 채굴주는 관망이 적절합니다."
+        }
+    }
+}

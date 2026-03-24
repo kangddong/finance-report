@@ -5,7 +5,7 @@ import { initWordbook } from './sections/wordbook.js';
 import { initTools } from './sections/tools.js';
 import { initAnalysisSections } from './sections/analysis.js';
 import { initExternalFactors } from './sections/external-factors.js';
-import { getAllReports, getLatestReport, getAvailableDates } from './db.js';
+import { getAllReports, getMarketSessionData } from './db.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     const selector = document.getElementById('date-selector');
@@ -13,6 +13,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const reports = getAllReports();
 
     if (reports && reports.length > 0) {
+        reports.forEach((report) => {
+            report.sessionData = {
+                kr: getMarketSessionData(report, 'kr'),
+                us: getMarketSessionData(report, 'us')
+            };
+        });
+
         // Build Date Selector
         if (selector) {
             selector.innerHTML = ''; 

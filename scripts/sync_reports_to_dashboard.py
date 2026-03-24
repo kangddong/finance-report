@@ -6,6 +6,12 @@ import re
 DATA_JS_PATH = os.path.join('dashboard', 'data.js')
 REPORT_DIR = 'report'
 
+REQUIRED_REPORT_KEYS = {'date', 'overview', 'holdings', 'watchlist'}
+
+
+def is_dashboard_report(data):
+    return isinstance(data, dict) and REQUIRED_REPORT_KEYS.issubset(data.keys())
+
 def sync_reports():
     print("Starting sync of all reports...")
     
@@ -24,8 +30,11 @@ def sync_reports():
         try:
             with open(filepath, 'r', encoding='utf-8') as f:
                 data = json.load(f)
-                reports.append(data)
-                print(f"Loaded {filename}")
+                if is_dashboard_report(data):
+                    reports.append(data)
+                    print(f"Loaded {filename}")
+                else:
+                    print(f"Skipped non-dashboard report {filename}")
         except Exception as e:
             print(f"Error loading {filename}: {e}")
             
@@ -103,6 +112,8 @@ def sync_reports():
             # Map date -> extra fields
             extra_data_map = {}
             for param in old_reports:
+                if not isinstance(param, dict):
+                    continue
                 date = param.get('date')
                 if date:
                     # Store entire object to merge? Or just specific fields?
