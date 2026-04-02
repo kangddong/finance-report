@@ -72,9 +72,14 @@ financeHelper/
 │   ├── reports.html
 │   ├── market-regime.html
 │   ├── style.css
-│   ├── script.js
+│   ├── js/
+│   │   ├── load-data.js
+│   │   ├── render-main.js
+│   │   ├── render-reports.js
+│   │   ├── render-company-detail.js
+│   │   └── utils.js
 │   ├── data.json
-│   └── finance_word_data.jsonon
+│   └── finance_word_data.json
 ├── report/
 │   └── YYYY-MM-DD.json
 ├── scripts/
@@ -182,8 +187,8 @@ python -m http.server 8000
 
 ### 3. 프론트엔드 렌더링
 
-- `dashboard/index.html`이 `dashboard/data.json`, `dashboard/finance_word_data.jsonon`, `dashboard/script.js`를 로드합니다.
-- `dashboard/script.js`가 `REPORTS_HISTORY`를 기준으로 섹션별 UI를 렌더링합니다.
+- `dashboard/index.html`이 `dashboard/data.json`, `dashboard/finance_word_data.json`, `dashboard/js/*.js`를 비동기로 로드합니다.
+- `load-data.js`가 데이터를 fetch하고, `render-main.js` 등 모듈이 `dataContext`를 받아 섹션별 UI를 렌더링합니다.
 
 ## 실행 검증
 

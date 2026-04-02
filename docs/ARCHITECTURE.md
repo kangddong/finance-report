@@ -7,8 +7,8 @@
 ```text
 dashboard/
 ├── index.html            # 메인 애플리케이션 진입점 (모든 섹션 컨테이너)
-├── data.js               # 원본 데이터 스택 (JSON 배열 및 객체)
-├── finance_word_data.js  # 금융 용어 사전 데이터
+├── data.json             # 원본 데이터 (fetch로 비동기 로드)
+├── finance_word_data.json # 금융 용어 사전 데이터
 ├── css/                  # 모듈화된 스타일 시트
 │   ├── base.css          # 글로벌 변수, 초기화, 배경 설정
 │   ├── sidebar.css       # 내비게이션 및 레이아웃
@@ -17,7 +17,7 @@ dashboard/
 │   ├── ... (외부 요소, 학습, 주식 목록 등 전용 CSS)
 ├── js/                   # 현대적인 ES 모듈 기반 로직
 │   ├── app.js            # 메인 오케스트레이터 (애플리케이션 초기화 및 이벤트 바인딩)
-│   ├── db.js             # 데이터 레이어 허브 (데이터 가공 및 접근 인터페이스)
+│   ├── db.js             # 데이터 레이어 허브 (fetch + 캐시 + 접근 API, `ready()` 필수)
 │   ├── sections/         # 섹션별 렌더링 로직 (ES Modules)
 │   │   ├── dashboard.js  # 메인 대시보드 및 지표 렌더링
 │   │   ├── analysis.js   # 기업 리포트 그리드 렌더링
@@ -31,8 +31,10 @@ dashboard/
 ## 🛠️ 주요 아키텍처 원칙 (Core Principles)
 
 ### 1. **Data Centralization (db.js)**
-- 모든 UI 컴포넌트는 `data.js`를 직접 호출하지 않습니다.
-- 대신 `db.js`가 제공하는 API(`getAllReports`, `getLatestReport` 등)를 사용하여 데이터의 무결성을 보장하고 추상화된 접근을 실현합니다.
+- 모든 UI 컴포넌트는 JSON 파일을 직접 `fetch`하지 않습니다.
+- `db.js`가 `fetch()` API로 `data.json`을 비동기 로드하고, 모듈 내부에 캐시합니다.
+- 소비자(app.js, indicators-app.js 등)는 데이터 접근 전에 반드시 `await ready()`를 호출합니다.
+- 이후 `getAllReports()`, `getLatestReport()` 등 API를 통해 데이터에 접근합니다.
 
 ### 2. **Section Separation (Single Responsibility)**
 - 각 UI 섹션은 자신만의 전용 JS 모듈(`js/sections/*.js`)과 전용 CSS 파일(`css/*.css`)을 가집니다.
@@ -50,4 +52,5 @@ dashboard/
 - Indicator page logic lives in `dashboard/js/sections/indicators-page.js`.
 - Indicator page styling lives in `dashboard/css/indicators.css`.
 - Main dashboard session switching is handled through `dashboard/js/db.js` session helpers and `dashboard/js/sections/dashboard.js`.
-- UI modules must continue to read report data through `db.js`, not by importing `data.js` directly.
+- UI modules must continue to read report data through `db.js`, not by fetching `data.json` directly.
+- All entry points (`app.js`, `indicators-app.js`) call `await ready()` before any data access.

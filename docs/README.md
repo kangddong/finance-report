@@ -5,7 +5,7 @@
 ## 📁 문서 리스트
 
 - [🏗️ 시스템 아키텍처 (ARCHITECTURE.md)](./ARCHITECTURE.md): 프로젝트의 구조와 모듈화 전략
-- [💾 데이터 레이어 가이드 (DATA_LAYER.md)](./DATA_LAYER.md): `data.js` 구조와 `db.js` 인터페이스
+- [💾 데이터 레이어 가이드 (DATA_LAYER.md)](./DATA_LAYER.md): `data.json` 구조와 `db.js` 인터페이스
 - [🎨 스타일링 시스템 (STYLING.md)](./STYLING.md): 모듈화된 CSS 관리 및 스타일 가이드
 - [🚀 개발 및 확장 가이드 (DEVELOPMENT.md)](./DEVELOPMENT.md): 새로운 기능 추가 및 로컬 개발 환경 설정
 

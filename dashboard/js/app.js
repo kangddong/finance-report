@@ -5,9 +5,11 @@ import { initWordbook } from './sections/wordbook.js';
 import { initTools } from './sections/tools.js';
 import { initAnalysisSections } from './sections/analysis.js';
 import { initExternalFactors } from './sections/external-factors.js';
-import { getAllReports, getMarketSessionData } from './db.js';
+import { ready, getAllReports, getMarketSessionData } from './db.js';
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+    await ready();
+
     const selector = document.getElementById('date-selector');
 
     const reports = getAllReports();
