@@ -7,11 +7,10 @@ __pycache__/
 
 .env
 .env.*
-
-scripts/__pycache__/
-signal-forge/__pycache__/
-signal-forge/.env
-signal-forge/.env.*
+apps/finance-helper/.env
+apps/finance-helper/.env.*
+pipelines/signal-forge/.env
+pipelines/signal-forge/.env.*
 
 yt_*.json
 yt_*.md
