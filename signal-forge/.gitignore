@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.pyc
+
+# Environment
+.env
+.env.*
+
+# Local tooling
+.DS_Store
+Thumbs.db
+
+# Generated transcript artifacts
+yt_*.json
+yt_*.md

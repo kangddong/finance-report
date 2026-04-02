@@ -1,0 +1,17 @@
+.DS_Store
+Thumbs.db
+
+.venv/
+__pycache__/
+*.pyc
+
+.env
+.env.*
+
+scripts/__pycache__/
+signal-forge/__pycache__/
+signal-forge/.env
+signal-forge/.env.*
+
+yt_*.json
+yt_*.md
