@@ -1,0 +1,12 @@
+{
+  "date": "2026-03-18",
+  "indicators": {
+    "exchangeRate": {
+      "label": "원/달러 환율",
+      "value": "1,489.70",
+      "status": "▲ 4.50",
+      "sourceDate": "2026-03-18",
+      "sourceMetric": "FH_BACKFILL_VALIDATION_EXCHANGE_RATE"
+    }
+  }
+}

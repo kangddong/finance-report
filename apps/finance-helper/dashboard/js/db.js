@@ -20,14 +20,36 @@ let COMPANY_DETAIL_LIBRARY = {};
 let EXTERNAL_SHOCK_EVENTS  = [];
 let EXTERNAL_POLICY_DATA   = {};
 let FINANCE_WORDS          = [];
+let SUPABASE_INDICATOR_SNAPSHOT_DATE = '';
+let SUPABASE_INDICATOR_OVERRIDES = {};
 
 // ── Bootstrap ───────────────────────────────────────────────────
 let _loadPromise = null;
 
+function inferSupabaseSnapshotDate(indicators = {}) {
+    const dates = Object.values(indicators)
+        .map((indicator) => indicator?.sourceDate)
+        .filter(Boolean)
+        .sort((a, b) => new Date(b) - new Date(a));
+
+    return dates[0] || '';
+}
+
+function normalizeSupabaseIndicatorSnapshot(payload = {}) {
+    const indicators = payload.indicators || payload.latestIndicators || {};
+    return {
+        date: payload.date || inferSupabaseSnapshotDate(indicators),
+        indicators,
+    };
+}
+
 async function _load() {
-    const [dataRes, wordsRes] = await Promise.all([
+    const [dataRes, wordsRes, supabaseIndicatorsRes] = await Promise.all([
         fetch('data.json').catch(() => fetch('../data.json')),
-        fetch('finance_word_data.json').catch(() => fetch('../finance_word_data.json'))
+        fetch('finance_word_data.json').catch(() => fetch('../finance_word_data.json')),
+        fetch('generated/supabase-indicators.json')
+            .catch(() => fetch('../generated/supabase-indicators.json'))
+            .catch(() => null)
     ]);
 
     if (!dataRes.ok)  throw new Error('Failed to load data.json');
@@ -35,6 +57,11 @@ async function _load() {
 
     const data      = await dataRes.json();
     const wordsData = await wordsRes.json();
+    const supabaseIndicatorSnapshot = normalizeSupabaseIndicatorSnapshot(
+        supabaseIndicatorsRes && supabaseIndicatorsRes.ok
+            ? await supabaseIndicatorsRes.json()
+            : {}
+    );
 
     // Fallback + sort
     REPORTS_HISTORY        = (data.REPORTS_HISTORY        || []).sort((a, b) => new Date(b.date) - new Date(a.date));
@@ -46,6 +73,18 @@ async function _load() {
     EXTERNAL_SHOCK_EVENTS  = data.EXTERNAL_SHOCK_EVENTS   || [];
     EXTERNAL_POLICY_DATA   = data.EXTERNAL_POLICY_DATA    || {};
     FINANCE_WORDS          = wordsData;
+    SUPABASE_INDICATOR_SNAPSHOT_DATE = supabaseIndicatorSnapshot.date || '';
+    SUPABASE_INDICATOR_OVERRIDES = supabaseIndicatorSnapshot.indicators || {};
+
+    if (REPORTS_HISTORY.length > 0 && Object.keys(SUPABASE_INDICATOR_OVERRIDES).length > 0) {
+        REPORTS_HISTORY[0] = {
+            ...REPORTS_HISTORY[0],
+            indicators: {
+                ...(REPORTS_HISTORY[0].indicators || {}),
+                ...SUPABASE_INDICATOR_OVERRIDES
+            }
+        };
+    }
 }
 
 /**
@@ -84,7 +123,7 @@ export function getLatestIndicatorsSnapshot() {
     const latest = getLatestReport();
     if (!latest) return null;
     return {
-        date: latest.date,
+        date: SUPABASE_INDICATOR_SNAPSHOT_DATE || latest.date,
         indicators: latest.indicators || {}
     };
 }

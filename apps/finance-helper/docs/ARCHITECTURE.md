@@ -8,6 +8,8 @@
 dashboard/
 ├── index.html            # 메인 애플리케이션 진입점 (모든 섹션 컨테이너)
 ├── data.json             # 원본 데이터 (fetch로 비동기 로드)
+├── generated/
+│   └── supabase-indicators.json # Supabase에서 동기화된 지표 스냅샷 (`date` + `indicators`)
 ├── finance_word_data.json # 금융 용어 사전 데이터
 ├── css/                  # 모듈화된 스타일 시트
 │   ├── base.css          # 글로벌 변수, 초기화, 배경 설정
@@ -33,6 +35,7 @@ dashboard/
 ### 1. **Data Centralization (db.js)**
 - 모든 UI 컴포넌트는 JSON 파일을 직접 `fetch`하지 않습니다.
 - `db.js`가 `fetch()` API로 `data.json`을 비동기 로드하고, 모듈 내부에 캐시합니다.
+- 선택적으로 `generated/supabase-indicators.json`을 함께 읽어 대시보드가 바로 쓸 수 있는 `indicators` 스냅샷을 최신 카드에 오버레이합니다.
 - 소비자(app.js, indicators-app.js 등)는 데이터 접근 전에 반드시 `await ready()`를 호출합니다.
 - 이후 `getAllReports()`, `getLatestReport()` 등 API를 통해 데이터에 접근합니다.
 

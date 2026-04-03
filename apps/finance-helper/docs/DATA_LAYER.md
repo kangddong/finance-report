@@ -18,6 +18,11 @@
 - 금융 용어 및 정의 데이터를 전문적으로 관리합니다.
 - `FINANCE_WORDS` 배열 구조로 카테고리별 용어를 제공합니다.
 
+### 3. **`dashboard/generated/supabase-indicators.json` (Supabase 지표 스냅샷)**
+- Supabase `macro_daily` row를 대시보드가 바로 쓰는 `indicator` 객체로 변환한 산출물입니다.
+- 기본 구조는 `{ "date": "YYYY-MM-DD", "indicators": { ... } }` 입니다.
+- `db.js`와 레거시 `load-data.js`는 이 파일을 읽어 메인 대시보드 최신 카드에 지표를 오버레이합니다.
+
 ## 🛠️ `db.js`: 데이터 접근 인터페이스 (Hub)
 
 UI 컴포넌트는 JSON 파일을 직접 `fetch`하지 않고, 반드시 **`js/db.js`**를 거치도록 설계되었습니다.
@@ -49,7 +54,7 @@ const reports = getAllReports();
 ### **데이터 연동 (Data Flow)**
 
 1. **데이터 업데이트**: Python 스크립트(`scripts/`)가 `report/*.json`과 외부 수집 결과를 `dashboard/data.json`에 반영합니다.
-2. **비동기 로드**: `db.js`가 `fetch()` API로 `data.json`과 `finance_word_data.json`을 비동기 로드하고 모듈 내부에 캐시합니다.
+2. **비동기 로드**: `db.js`가 `fetch()` API로 `data.json`, `finance_word_data.json`, `generated/supabase-indicators.json`을 비동기 로드하고 모듈 내부에 캐시합니다.
 3. **UI 소비**: 각 섹션 모듈(`js/sections/*.js`)이 필요한 데이터를 `db.js`에서 `import`하여 렌더링에 사용합니다.
 
 ## 🚀 데이터 추가 및 수정 가이드
