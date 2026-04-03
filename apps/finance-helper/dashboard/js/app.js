@@ -71,13 +71,15 @@ document.addEventListener('DOMContentLoaded', async () => {
     initExternalFactors();
 
     // --- Sidebar Navigation System ---
-    const sideNavBtns = document.querySelectorAll('.side-nav-btn');
+    const sideNavBtns = document.querySelectorAll('.side-nav-btn[data-section]');
     const sections = document.querySelectorAll('.nav-section');
     const sidebar = document.getElementById('sidebar');
     const sidebarOverlay = document.getElementById('sidebar-overlay');
     const mobileToggle = document.getElementById('mobile-toggle');
 
     function showSection(sectionId) {
+        if (!sectionId) return;
+
         // Update buttons
         sideNavBtns.forEach(b => {
             if (b.getAttribute('data-section') === sectionId) {
@@ -100,12 +102,21 @@ document.addEventListener('DOMContentLoaded', async () => {
         btn.addEventListener('click', () => {
             const sectionId = btn.getAttribute('data-section');
             showSection(sectionId);
+            window.location.hash = sectionId;
 
             // Close sidebar on mobile after clicking
             if (window.innerWidth <= 1024 && sidebar) {
                 sidebar.classList.remove('open');
             }
         });
+    });
+
+    const initialSection = window.location.hash.replace('#', '') || 'holdings';
+    showSection(initialSection);
+
+    window.addEventListener('hashchange', () => {
+        const sectionId = window.location.hash.replace('#', '');
+        if (sectionId) showSection(sectionId);
     });
 
     // Mobile Sidebar Toggle

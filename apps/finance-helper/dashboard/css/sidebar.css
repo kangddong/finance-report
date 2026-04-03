@@ -88,6 +88,7 @@
 
 /* Sidebar Navigation Buttons */
 .side-nav-btn {
+    position: relative;
     width: 100%;
     display: flex;
     align-items: center;
@@ -103,6 +104,10 @@
     text-align: left;
     cursor: pointer;
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.side-nav-link {
+    text-decoration: none;
 }
 
 .side-nav-btn:hover {
@@ -136,6 +141,10 @@
     min-height: 100vh;
     padding: 2.5rem 2rem;
     transition: var(--sidebar-transition);
+}
+
+.main-content .container {
+    max-width: 1280px;
 }
 
 /* Mobile Toggle Overlay (Hidden on Desktop) */
