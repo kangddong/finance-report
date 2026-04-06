@@ -1,6 +1,10 @@
 import { parseMarkdown } from '../utils/markdown.js';
 import { EXTERNAL_SHOCK_EVENTS, EXTERNAL_POLICY_DATA } from '../db.js';
 
+function isExternalUrl(url = '') {
+    return /^(https?:)?\/\//.test(String(url));
+}
+
 export function renderExternalFactors() {
     const summary = document.getElementById('external-shocks-summary');
     const timeline = document.getElementById('external-shocks-timeline');
@@ -34,7 +38,7 @@ export function renderExternalFactors() {
 
     timeline.innerHTML = events.map((event) => {
         const sources = (event.sources || []).map((source) => `
-            <a class="shock-source-link" href="${source.url}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">${source.label}</a>
+            <a class="shock-source-link" href="${source.url}" ${isExternalUrl(source.url) ? 'target="_blank" rel="noopener noreferrer"' : ''} onclick="event.stopPropagation()">${source.label}</a>
         `).join('');
 
         const isGenesis = event.title.includes('제네시스 미션');

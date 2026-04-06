@@ -229,6 +229,10 @@ function initDashboard(dataContext, financeWords) {
     });
 }
 
+function isExternalUrl(url = '') {
+    return /^(https?:)?\/\//.test(String(url));
+}
+
 
 function renderDashboard(data, dataContext) {
     // 헤더 개요 업데이트 (Markdown bold 지원)
@@ -580,7 +584,7 @@ function renderExternalFactors(dataContext) {
 
     timeline.innerHTML = events.map((event) => {
         const sources = (event.sources || []).map((source) => `
-            <a class="shock-source-link" href="${source.url}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">${source.label}</a>
+            <a class="shock-source-link" href="${source.url}" ${isExternalUrl(source.url) ? 'target="_blank" rel="noopener noreferrer"' : ''} onclick="event.stopPropagation()">${source.label}</a>
         `).join('');
 
         const isGenesis = event.title.includes('제네시스 미션');
