@@ -1,4 +1,4 @@
-import { getLatestIndicatorsSnapshot } from '../db.js';
+import { getAvailableIndicatorDates, getIndicatorsSnapshotByDate, getLatestIndicatorsSnapshot } from '../db.js';
 
 const INDICATOR_GROUPS = [
     {
@@ -135,6 +135,7 @@ function createCard(item, indicators) {
 }
 
 function renderSummary(container, indicators) {
+    if (!container) return;
     const summaryItems = [
         ['오늘 리스크', getIndicator(indicators, 'fearAndGreed')],
         ['VIX', getIndicator(indicators, 'vix')],
@@ -151,6 +152,7 @@ function renderSummary(container, indicators) {
 }
 
 function renderGroups(container, indicators) {
+    if (!container) return;
     container.innerHTML = INDICATOR_GROUPS.map((group) => `
         <section class="indicator-section">
             <div class="indicator-section-header">
@@ -169,6 +171,7 @@ function renderGroups(container, indicators) {
 }
 
 function renderPriorityTable(container) {
+    if (!container) return;
     container.innerHTML = `
         <table>
             <thead>
@@ -188,8 +191,7 @@ function renderPriorityTable(container) {
     `;
 }
 
-export function initIndicatorsPage() {
-    const snapshot = getLatestIndicatorsSnapshot();
+function renderSnapshot(snapshot) {
     const indicators = snapshot?.indicators || {};
 
     renderSummary(document.getElementById('indicator-summary-grid'), indicators);
@@ -199,7 +201,50 @@ export function initIndicatorsPage() {
     const lastUpdated = document.getElementById('indicator-last-updated');
     if (lastUpdated) {
         lastUpdated.textContent = snapshot?.date
-            ? `최종 업데이트: ${snapshot.date}`
-            : '최신 리포트에 지수 데이터가 없습니다.';
+            ? `기준 일자: ${snapshot.date}`
+            : '선택한 날짜의 지수 데이터가 없습니다.';
     }
+}
+
+export function initIndicatorsPage() {
+    const summaryGrid = document.getElementById('indicator-summary-grid');
+    const layout = document.getElementById('indicator-page-layout');
+    const priorityTable = document.getElementById('indicator-priority-table');
+
+    if (!summaryGrid || !layout || !priorityTable) {
+        return;
+    }
+
+    const dateSelector = document.getElementById('indicator-date-selector');
+    const availableDates = getAvailableIndicatorDates();
+    const latestSnapshot = getLatestIndicatorsSnapshot();
+
+    if (dateSelector) {
+        dateSelector.innerHTML = '';
+
+        availableDates.forEach((date) => {
+            const option = document.createElement('option');
+            option.value = date;
+            option.textContent = date.replace(/-/g, '. ');
+            dateSelector.appendChild(option);
+        });
+
+        const selectedDate = availableDates.includes(latestSnapshot.date)
+            ? latestSnapshot.date
+            : availableDates[0];
+
+        if (selectedDate) {
+            dateSelector.value = selectedDate;
+            renderSnapshot(getIndicatorsSnapshotByDate(selectedDate));
+        } else {
+            renderSnapshot(latestSnapshot);
+        }
+
+        dateSelector.addEventListener('change', (event) => {
+            renderSnapshot(getIndicatorsSnapshotByDate(event.target.value));
+        });
+        return;
+    }
+
+    renderSnapshot(latestSnapshot);
 }

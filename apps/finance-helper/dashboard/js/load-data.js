@@ -13,20 +13,31 @@ function inferSupabaseSnapshotDate(indicators = {}) {
 
 function normalizeSupabaseIndicatorSnapshot(payload = {}) {
     const indicators = payload.indicators || payload.latestIndicators || {};
+    const byDate = payload.byDate || {};
     return {
         date: payload.date || inferSupabaseSnapshotDate(indicators),
         indicators,
+        byDate,
     };
+}
+
+/**
+ * Helper to fetch with a fallback URL if the first attempt fails (e.g. 404).
+ */
+async function fetchWithFallback(primary, secondary) {
+    try {
+        const resp = await fetch(primary);
+        if (resp.ok) return resp;
+    } catch (e) {}
+    return fetch(secondary).catch(() => null);
 }
 
 async function loadDashboardData() {
     try {
         const [response, wordsResponse, supabaseIndicatorsResponse] = await Promise.all([
-            fetch('data.json').catch(() => fetch('../data.json')),
-            fetch('finance_word_data.json').catch(() => fetch('../finance_word_data.json')),
-            fetch('generated/supabase-indicators.json')
-                .catch(() => fetch('../generated/supabase-indicators.json'))
-                .catch(() => null)
+            fetchWithFallback('data.json', '../data.json'),
+            fetchWithFallback('finance_word_data.json', '../finance_word_data.json'),
+            fetchWithFallback('generated/supabase-indicators.json', '../generated/supabase-indicators.json')
         ]);
         
         if (!response.ok) throw new Error('Failed to load data.json');
@@ -49,16 +60,11 @@ async function loadDashboardData() {
         data.REPORTS_HISTORY.sort((a, b) => new Date(b.date) - new Date(a.date));
         data.ANALYSIS_REPORTS.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-        const latestIndicators = supabaseIndicatorSnapshot.indicators || {};
-        if (data.REPORTS_HISTORY.length > 0 && Object.keys(latestIndicators).length > 0) {
-            data.REPORTS_HISTORY[0] = {
-                ...data.REPORTS_HISTORY[0],
-                indicators: {
-                    ...(data.REPORTS_HISTORY[0].indicators || {}),
-                    ...latestIndicators,
-                },
-            };
-        }
+        const indicatorsByDate = supabaseIndicatorSnapshot.byDate || {};
+        data.REPORTS_HISTORY = data.REPORTS_HISTORY.map((report) => ({
+            ...report,
+            indicators: indicatorsByDate[report.date] || {},
+        }));
 
         // Ensure optional top-level keys have safe defaults
         data.COMPANY_ANALYSIS_ITEMS  = data.COMPANY_ANALYSIS_ITEMS  || [];

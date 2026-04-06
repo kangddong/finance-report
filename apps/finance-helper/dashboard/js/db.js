@@ -22,6 +22,7 @@ let EXTERNAL_POLICY_DATA   = {};
 let FINANCE_WORDS          = [];
 let SUPABASE_INDICATOR_SNAPSHOT_DATE = '';
 let SUPABASE_INDICATOR_OVERRIDES = {};
+let SUPABASE_INDICATORS_BY_DATE = {};
 
 // ── Bootstrap ───────────────────────────────────────────────────
 let _loadPromise = null;
@@ -37,10 +38,17 @@ function inferSupabaseSnapshotDate(indicators = {}) {
 
 function normalizeSupabaseIndicatorSnapshot(payload = {}) {
     const indicators = payload.indicators || payload.latestIndicators || {};
+    const byDate = payload.byDate || {};
     return {
         date: payload.date || inferSupabaseSnapshotDate(indicators),
         indicators,
+        byDate,
     };
+}
+
+function getSupabaseIndicatorsForDate(date) {
+    if (!date) return {};
+    return SUPABASE_INDICATORS_BY_DATE[date] || {};
 }
 
 async function _load() {
@@ -75,16 +83,12 @@ async function _load() {
     FINANCE_WORDS          = wordsData;
     SUPABASE_INDICATOR_SNAPSHOT_DATE = supabaseIndicatorSnapshot.date || '';
     SUPABASE_INDICATOR_OVERRIDES = supabaseIndicatorSnapshot.indicators || {};
+    SUPABASE_INDICATORS_BY_DATE = supabaseIndicatorSnapshot.byDate || {};
 
-    if (REPORTS_HISTORY.length > 0 && Object.keys(SUPABASE_INDICATOR_OVERRIDES).length > 0) {
-        REPORTS_HISTORY[0] = {
-            ...REPORTS_HISTORY[0],
-            indicators: {
-                ...(REPORTS_HISTORY[0].indicators || {}),
-                ...SUPABASE_INDICATOR_OVERRIDES
-            }
-        };
-    }
+    REPORTS_HISTORY = REPORTS_HISTORY.map((report) => ({
+        ...report,
+        indicators: getSupabaseIndicatorsForDate(report.date),
+    }));
 }
 
 /**
@@ -121,11 +125,34 @@ export function getLatestReport() {
 
 export function getLatestIndicatorsSnapshot() {
     const latest = getLatestReport();
-    if (!latest) return null;
+    if (!latest) {
+        return {
+            date: SUPABASE_INDICATOR_SNAPSHOT_DATE,
+            indicators: SUPABASE_INDICATOR_OVERRIDES,
+        };
+    }
     return {
         date: SUPABASE_INDICATOR_SNAPSHOT_DATE || latest.date,
-        indicators: latest.indicators || {}
+        indicators: getSupabaseIndicatorsForDate(SUPABASE_INDICATOR_SNAPSHOT_DATE) || SUPABASE_INDICATOR_OVERRIDES
     };
+}
+
+export function getIndicatorsSnapshotByDate(date) {
+    if (!date) return getLatestIndicatorsSnapshot();
+
+    const report = getReportByDate(date);
+    const indicators = report?.indicators || getSupabaseIndicatorsForDate(date) || {};
+
+    return {
+        date,
+        indicators,
+    };
+}
+
+export function getAvailableIndicatorDates() {
+    return REPORTS_HISTORY
+        .filter((report) => report?.date && report?.indicators && Object.keys(report.indicators).length > 0)
+        .map((report) => report.date);
 }
 
 export function getReportByDate(date) {
