@@ -5,6 +5,7 @@ import { initWordbook } from './sections/wordbook.js';
 import { initTools } from './sections/tools.js';
 import { initAnalysisSections } from './sections/analysis.js';
 import { initExternalFactors } from './sections/external-factors.js';
+import { initIndicatorsPage } from './sections/indicators-page.js';
 import { ready, getAllReports, getMarketSessionData } from './db.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -69,6 +70,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     initTools();
     initAnalysisSections();
     initExternalFactors();
+    initIndicatorsPage();
 
     // --- Sidebar Navigation System ---
     const sideNavBtns = document.querySelectorAll('.side-nav-btn[data-section]');

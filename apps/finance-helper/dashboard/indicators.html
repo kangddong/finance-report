@@ -27,10 +27,18 @@
                         <span class="indicator-focus-chip">VIX</span>
                         <span class="indicator-focus-chip">Fear &amp; Greed</span>
                     </div>
+                    <div class="indicator-toolbar">
+                        <label class="indicator-date-control" for="indicator-date-selector">
+                            <span>기준 일자</span>
+                            <select id="indicator-date-selector" class="date-select indicator-date-select">
+                                <option value="">데이터 로딩 중...</option>
+                            </select>
+                        </label>
+                    </div>
                 </section>
 
                 <aside class="indicator-summary-card">
-                    <div class="indicator-summary-title">오늘 핵심 요약</div>
+                    <div class="indicator-summary-title">선택 날짜 핵심 요약</div>
                     <div class="indicator-summary-grid" id="indicator-summary-grid"></div>
                 </aside>
             </div>

@@ -2,6 +2,19 @@
     padding: 2rem 1.5rem 4rem;
 }
 
+.daily-report-shell {
+    display: block;
+    margin-bottom: 2rem;
+}
+
+.daily-report-header {
+    margin-bottom: 0;
+}
+
+.daily-report-shell .indicator-bar {
+    margin-top: 0;
+}
+
 .badge-container {
     display: flex;
     align-items: center;
@@ -86,6 +99,7 @@
 
 .content-wrapper {
     display: block;
+    margin-top: 0;
 }
 
 .full-width {

@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="css/external-factors.css">
     <link rel="stylesheet" href="css/stocks.css">
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/indicators.css">
+    <link rel="stylesheet" href="css/macro-check.css">
 </head>
 
 <body>
@@ -34,9 +36,8 @@
 
                 <div class="nav-group">
                     <div class="nav-group-label">Market Monitor</div>
-                    <a href="indicators.html" class="side-nav-btn side-nav-link">📊 지수 모니터링</a>
-                    <a href="macro-check.html" class="side-nav-btn side-nav-link">🌍 Macro Check</a>
-                    <a href="market-regime.html" class="side-nav-btn side-nav-link">🔄 Market Regime</a>
+                    <button class="side-nav-btn" data-section="indicators">📊 지수 모니터링</button>
+                    <button class="side-nav-btn" data-section="macro-check">🌍 Macro Check</button>
                 </div>
 
                 <div class="nav-group">
@@ -66,7 +67,8 @@
 
         <main class="main-content">
             <div class="container">
-                <header>
+                <div class="daily-report-shell">
+                <header class="daily-report-header">
                     <div class="header-top">
                         <div class="date-selector-wrapper">
                             <select id="date-selector" class="date-select">
@@ -74,7 +76,7 @@
                             </select>
                         </div>
                         <div class="badge-container">
-                            <a href="macro-check.html" class="user-badge"
+                            <a href="#macro-check" class="user-badge"
                                 style="text-decoration: none; cursor: pointer; background: rgba(249, 115, 22, 0.2); border-color: #f97316; color: #fff;">🌍
                                 Macro Check</a>
                             <a href="reports.html" class="user-badge"
@@ -106,6 +108,7 @@
 
                 <div id="market-indicators" class="indicator-bar">
                     <!-- Dynamic Content -->
+                </div>
                 </div>
 
                 <div class="content-wrapper">
@@ -178,7 +181,7 @@
             </section>
 
             <!-- Holdings Section -->
-            <section id="section-holdings" class="nav-section active">
+            <section id="section-holdings" class="nav-section daily-report-section active">
                 <div class="card full-width">
                     <div class="section-label">Current Portfolio</div>
                     <div class="card-title">보유 종목 현황</div>
@@ -193,7 +196,7 @@
             </section>
 
             <!-- Watchlist Section -->
-            <section id="section-watchlist" class="nav-section">
+            <section id="section-watchlist" class="nav-section daily-report-section">
                 <div class="card full-width">
                     <div class="section-label">Market Watchlist</div>
                     <div class="card-title">관심 종목 분석</div>
@@ -289,7 +292,7 @@
             </section>
 
             <!-- Foreign Trend Section -->
-            <section id="section-foreign" class="nav-section">
+            <section id="section-foreign" class="nav-section daily-report-section">
                 <div class="card full-width">
                     <div class="section-label">KOSPI Trading Flow</div>
                     <div class="card-title">코스피 매매 동향</div>
@@ -307,7 +310,7 @@
             </section>
 
             <!-- Strategy Section -->
-            <section id="section-strategy" class="nav-section">
+            <section id="section-strategy" class="nav-section daily-report-section">
                 <div class="card full-width advice-section">
                     <div class="section-label">Strategy Advice</div>
                     <div class="card-title">종합 투자 조언</div>
@@ -318,6 +321,47 @@
                     <div class="advice-text" id="strategy-content">
                         <p style="color: var(--text-secondary);">데이터를 분석 중입니다...</p>
                     </div>
+                </div>
+            </section>
+
+            <section id="section-indicators" class="nav-section">
+                <div class="indicator-page-shell">
+                    <header class="indicator-page-header">
+                        <div class="indicator-hero">
+                            <section class="indicator-hero-card">
+                                <div class="indicator-kicker">Market Monitor</div>
+                                <h1 class="indicator-page-title">지수 정보 확인</h1>
+                                <p class="indicator-page-subtitle">
+                                    장 전에는 미국 선물과 코스피 야간선물, 환율과 변동성을 먼저 보고,
+                                    장 중에는 외국인 수급과 거래대금, 업종 주도력을 확인합니다.
+                                </p>
+                                <div class="indicator-toolbar">
+                                    <div class="indicator-focus-list">
+                                        <span class="indicator-focus-chip">코스피 야간선물</span>
+                                        <span class="indicator-focus-chip">NQ / ES 선물</span>
+                                        <span class="indicator-focus-chip">원/달러 환율</span>
+                                        <span class="indicator-focus-chip">VIX</span>
+                                        <span class="indicator-focus-chip">Fear &amp; Greed</span>
+                                    </div>
+                                    <label class="indicator-date-control" for="indicator-date-selector">
+                                        <span>기준 일자</span>
+                                        <select id="indicator-date-selector" class="date-select indicator-date-select">
+                                            <option value="">데이터 로딩 중...</option>
+                                        </select>
+                                    </label>
+                                </div>
+                            </section>
+
+                            <aside class="indicator-summary-card">
+                                <div class="indicator-summary-title">선택 날짜 핵심 요약</div>
+                                <div class="indicator-summary-grid" id="indicator-summary-grid"></div>
+                            </aside>
+                        </div>
+                    </header>
+
+                    <div class="indicator-page-layout" id="indicator-page-layout"></div>
+                    <section class="indicator-section indicator-priority-table" id="indicator-priority-table"></section>
+                    <p class="indicator-last-updated" id="indicator-last-updated"></p>
                 </div>
             </section>
 
@@ -1003,6 +1047,205 @@
                             <li><strong>끊임없이 공부하라:</strong> 시장은 변하지만, 학습하는 투자자만이 살아남는다</li>
                         </ul>
                     </div>
+                </div>
+            </section>
+
+            <section id="section-macro-check" class="nav-section macro-check-section">
+                <div class="macro-check-container">
+                    <header class="macro-check-header">
+                        <div class="section-label">Market Monitor</div>
+                        <h2 class="macro-check-title">Global Macro RORO Checklist</h2>
+                        <p class="macro-check-subtitle">
+                            매일 아침 1분, 시장의 공격(Risk-On)과 방어(Risk-Off)를 판별하는 20가지 지표를 한 화면에서 확인합니다.
+                        </p>
+                    </header>
+
+                    <div class="summary-box">
+                        <h3>⏱ 1분 요약 사용법</h3>
+                        <div class="guide-step">
+                            <div class="step-num">1</div>
+                            <div><strong>변동성(VIX/MOVE) 확인:</strong> 둘 다 하락 중이면 시장은 안정을 찾고 Risk-On 환경이 조성됩니다.</div>
+                        </div>
+                        <div class="guide-step">
+                            <div class="step-num">2</div>
+                            <div><strong>유동성 프록시(BTC/AUDJPY) 확인:</strong> 이들이 상승하면 스마트 머니가 공격적인 포지션을 취하고 있다는 신호입니다.</div>
+                        </div>
+                        <div class="guide-step">
+                            <div class="step-num">3</div>
+                            <div><strong>달러(DXY)와 금리(US10Y) 비교:</strong> 증시가 오르는데 이들이 내리면 골디락스, 함께 오르면 오버슈팅 위험을 경계하세요.</div>
+                        </div>
+                        <div class="guide-step">
+                            <div class="step-num">4</div>
+                            <div><strong>예외 상황 체크:</strong> 전쟁이나 지정학 위기 시에는 유가와 금이 Risk-Off에도 불구하고 상승하는 예외를 스캔합니다.</div>
+                        </div>
+                    </div>
+
+                    <div class="checklist-card">
+                        <table class="macro-table">
+                            <thead>
+                                <tr>
+                                    <th style="width: 25%;">지표/자산</th>
+                                    <th style="width: 35%;">중요도 및 의미 (Researcher Insight)</th>
+                                    <th style="width: 15%; text-align: center;">Risk-On</th>
+                                    <th style="width: 15%; text-align: center;">Risk-Off</th>
+                                    <th style="width: 10%; text-align: right;">Ticker</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="category-row"><td colspan="5">US 주가지수 (Equity Beta)</td></tr>
+                                <tr>
+                                    <td>S&amp;P 500 Futures</td>
+                                    <td>글로벌 증시의 가장 강력한 벤치마크이자 심리 지표</td>
+                                    <td style="text-align: center;" class="direction-up">↑</td>
+                                    <td style="text-align: center;" class="direction-down">↓</td>
+                                    <td style="text-align: right;"><span class="ticker">ES1!</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Nasdaq 100 Futures</td>
+                                    <td>성장주, 기술주 랠리의 핵심. 유동성 민감도가 매우 높음</td>
+                                    <td style="text-align: center;" class="direction-up">↑</td>
+                                    <td style="text-align: center;" class="direction-down">↓</td>
+                                    <td style="text-align: right;"><span class="ticker">NQ1!</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Russell 2000 Futures</td>
+                                    <td>중소형주 지수. '찐' 위험 선호가 나타날 때 급등함</td>
+                                    <td style="text-align: center;" class="direction-up">↑↑</td>
+                                    <td style="text-align: center;" class="direction-down">↓↓</td>
+                                    <td style="text-align: right;"><span class="ticker">RTY1!</span></td>
+                                </tr>
+
+                                <tr class="category-row"><td colspan="5">변동성 (Volatility)</td></tr>
+                                <tr>
+                                    <td>VIX Index</td>
+                                    <td>S&amp;P 500 옵션 기반 공포 지수. 20 이상 시 주의</td>
+                                    <td style="text-align: center;" class="direction-down">↓</td>
+                                    <td style="text-align: center;" class="direction-up">↑</td>
+                                    <td style="text-align: right;"><span class="ticker">VIX</span></td>
+                                </tr>
+                                <tr>
+                                    <td>VVIX Index</td>
+                                    <td>VIX의 변동성. 꼬리 위험(Tail Risk)에 대한 헤지 수요 판별</td>
+                                    <td style="text-align: center;" class="direction-down">↓</td>
+                                    <td style="text-align: center;" class="direction-up">↑</td>
+                                    <td style="text-align: right;"><span class="ticker">VVIX</span></td>
+                                </tr>
+                                <tr>
+                                    <td>MOVE Index</td>
+                                    <td>채권 시장의 변동성. 주식보다 먼저 깨지는 신호탄 역할</td>
+                                    <td style="text-align: center;" class="direction-down">↓</td>
+                                    <td style="text-align: center;" class="direction-up">↑</td>
+                                    <td style="text-align: right;"><span class="ticker">MOVE</span></td>
+                                </tr>
+
+                                <tr class="category-row"><td colspan="5">금리 및 채권 (Rates &amp; Bonds)</td></tr>
+                                <tr>
+                                    <td>US 10Y Yield</td>
+                                    <td>글로벌 무위험 금리의 기준. 실질 금리 상승은 위협적</td>
+                                    <td style="text-align: center;" class="direction-up">↑ (Stability)</td>
+                                    <td style="text-align: center;" class="direction-down">↓ (Safety)</td>
+                                    <td style="text-align: right;"><span class="ticker">US10Y</span></td>
+                                </tr>
+                                <tr>
+                                    <td>US 2Y Yield</td>
+                                    <td>연준의 정책 금리에 가장 민감. 긴축 속도를 반영</td>
+                                    <td style="text-align: center;">-</td>
+                                    <td style="text-align: center;">-</td>
+                                    <td style="text-align: right;"><span class="ticker">US02Y</span></td>
+                                </tr>
+                                <tr>
+                                    <td>10Y - 2Y Spread</td>
+                                    <td>장단기 금리차. 경기 침체 vs 회복의 가장 정확한 예언자</td>
+                                    <td style="text-align: center;">Steepening</td>
+                                    <td style="text-align: center;">Inversion</td>
+                                    <td style="text-align: right;"><span class="ticker">10Y-2Y</span></td>
+                                </tr>
+                                <tr>
+                                    <td>HYG/IEF Ratio</td>
+                                    <td>투기등급 채권과 국채 비중. 크레딧 리스크 선호도 프록시</td>
+                                    <td style="text-align: center;" class="direction-up">↑</td>
+                                    <td style="text-align: center;" class="direction-down">↓</td>
+                                    <td style="text-align: right;"><span class="ticker">HYG/IEF</span></td>
+                                </tr>
+
+                                <tr class="category-row"><td colspan="5">달러 및 외환 (FX)</td></tr>
+                                <tr>
+                                    <td>Dollar Index (DXY)</td>
+                                    <td>킹달러는 신흥국과 위험자산의 적. 낮을수록 Risk-On 유리</td>
+                                    <td style="text-align: center;" class="direction-down">↓</td>
+                                    <td style="text-align: center;" class="direction-up">↑</td>
+                                    <td style="text-align: right;"><span class="ticker">DXY</span></td>
+                                </tr>
+                                <tr>
+                                    <td>USD/JPY</td>
+                                    <td>대표적 안전자산 엔화. 환율 하락(엔고)은 위기 신호</td>
+                                    <td style="text-align: center;" class="direction-up">↑ (엔저)</td>
+                                    <td style="text-align: center;" class="direction-down">↓ (엔고)</td>
+                                    <td style="text-align: right;"><span class="ticker">USDJPY</span></td>
+                                </tr>
+                                <tr>
+                                    <td>AUD/JPY</td>
+                                    <td>자원부국(수출) vs 저금리(안전). RORO 판단의 정석 페어</td>
+                                    <td style="text-align: center;" class="direction-up">↑</td>
+                                    <td style="text-align: center;" class="direction-down">↓</td>
+                                    <td style="text-align: right;"><span class="ticker">AUDJPY</span></td>
+                                </tr>
+
+                                <tr class="category-row"><td colspan="5">원자재 (Commodities)</td></tr>
+                                <tr>
+                                    <td>Copper Futures</td>
+                                    <td>'닥터 코퍼'. 실물 경제의 수요와 회복을 직접적으로 반영</td>
+                                    <td style="text-align: center;" class="direction-up">↑</td>
+                                    <td style="text-align: center;" class="direction-down">↓</td>
+                                    <td style="text-align: right;"><span class="ticker">HG1!</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Gold Futures</td>
+                                    <td>최종적인 안전자산. 중앙은행들의 현금 대안 수요 반영</td>
+                                    <td style="text-align: center;" class="direction-down">↓</td>
+                                    <td style="text-align: center;" class="direction-up">↑</td>
+                                    <td style="text-align: right;"><span class="ticker">GC1!</span></td>
+                                </tr>
+                                <tr>
+                                    <td>WTI Crude Oil</td>
+                                    <td>글로벌 에너지 비용. 수요 증가 시 상승하나 비용 압박 변수</td>
+                                    <td style="text-align: center;" class="direction-up">↑ (Demand)</td>
+                                    <td style="text-align: center;" class="direction-down">↓ (Recession)</td>
+                                    <td style="text-align: right;"><span class="ticker">CL1!</span></td>
+                                </tr>
+
+                                <tr class="category-row"><td colspan="5">크립토 (Crypto Asset)</td></tr>
+                                <tr>
+                                    <td>Bitcoin (BTC)</td>
+                                    <td>디지털 골드이자 최고의 투기 자산. 유동성 과잉 여부 판별</td>
+                                    <td style="text-align: center;" class="direction-up">↑</td>
+                                    <td style="text-align: center;" class="direction-down">↓</td>
+                                    <td style="text-align: right;"><span class="ticker">BTCUSD</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="exception-box">
+                        <h3>예외 섹션: 전쟁 및 지정학적 리스크 발발 시</h3>
+                        <p class="macro-check-note">통상적인 Risk-Off와 달리, 공급망 충격이나 안보 위기가 닥치면 아래 항목들은 증시 폭락과 함께 상승합니다.</p>
+                        <div class="insight-grid">
+                            <div class="insight-card">
+                                <h4>유가 (Crude Oil)</h4>
+                                <p>수요 감소 공포보다 공급 중단 공포가 클 때, Risk-Off 상황임에도 폭등합니다.</p>
+                            </div>
+                            <div class="insight-card">
+                                <h4>방산/에너지 섹터</h4>
+                                <p>자산시장 전반이 투매에 휩싸여도 국방 예산 증액 및 자원 무기화 기대감으로 독자적 랠리를 보입니다.</p>
+                            </div>
+                            <div class="insight-card">
+                                <h4>달러 (DXY)</h4>
+                                <p>금리가 내려가도 안전 기축 통화로의 쏠림 때문에 달러 가치만 독주하는 현상이 나타납니다.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <footer class="macro-check-footer">© 2026 Antigravity Macro Research Unit. For Educational Purposes Only.</footer>
                 </div>
             </section>
                 </div>
