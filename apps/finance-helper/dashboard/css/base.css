@@ -77,6 +77,60 @@ body::before {
     display: block;
 }
 
+.rich-text {
+    color: var(--text-secondary);
+    line-height: 1.72;
+}
+
+.rich-text h3,
+.rich-text h4,
+.rich-text h5 {
+    color: var(--text-primary);
+    font-size: 1rem;
+    line-height: 1.45;
+    margin: 0 0 0.75rem;
+}
+
+.rich-text p + p,
+.rich-text p + ul,
+.rich-text p + ol,
+.rich-text ul + p,
+.rich-text ol + p,
+.rich-text h3 + p,
+.rich-text h4 + p,
+.rich-text h5 + p,
+.rich-text h3 + ul,
+.rich-text h4 + ul,
+.rich-text h5 + ul,
+.rich-text h3 + ol,
+.rich-text h4 + ol,
+.rich-text h5 + ol,
+.rich-text ul + ul,
+.rich-text ol + ol {
+    margin-top: 0.75rem;
+}
+
+.rich-text ul,
+.rich-text ol {
+    padding-left: 1.15rem;
+}
+
+.rich-text li + li {
+    margin-top: 0.45rem;
+}
+
+.rich-text strong {
+    color: var(--text-primary);
+}
+
+.rich-text code {
+    padding: 0.1rem 0.4rem;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.08);
+    color: #dbeafe;
+    font-size: 0.9em;
+}
+
 /* Navigation Sections */
 .nav-section {
     display: none;
@@ -86,6 +140,14 @@ body::before {
 .nav-section.active {
     display: block;
     animation: fadeInUp 0.6s ease-out;
+}
+
+body:has(.nav-section.active:not(.daily-report-section)) .daily-report-shell {
+    display: none;
+}
+
+body:has(.nav-section.active.daily-report-section) .daily-report-shell {
+    display: block;
 }
 
 @keyframes fadeInUp {

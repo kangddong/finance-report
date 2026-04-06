@@ -55,6 +55,10 @@
     flex-grow: 1;
 }
 
+.company-analysis-summary p {
+    margin: 0;
+}
+
 .company-analysis-tags {
     display: flex;
     flex-wrap: wrap;
@@ -71,7 +75,92 @@
     font-weight: 600;
 }
 
+.company-analysis-cta {
+    margin-top: auto;
+    color: var(--accent-blue);
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.company-summary {
+    color: var(--text-secondary);
+    line-height: 1.72;
+}
+
+.company-summary p {
+    margin: 0;
+}
+
+.company-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.company-tag,
+.status-tag {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 700;
+}
+
+.company-tag {
+    padding: 0.32rem 0.7rem;
+}
+
+.status-tag {
+    padding: 0.45rem 0.85rem;
+}
+
+.status-buy {
+    background: rgba(34, 197, 94, 0.16);
+    color: #86efac;
+    border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.status-hold {
+    background: rgba(251, 191, 36, 0.14);
+    color: #fde68a;
+    border: 1px solid rgba(251, 191, 36, 0.28);
+}
+
+.status-sell {
+    background: rgba(248, 113, 113, 0.14);
+    color: #fca5a5;
+    border: 1px solid rgba(248, 113, 113, 0.26);
+}
+
 /* Sector Analysis */
+.sector-summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.sector-summary-card {
+    padding: 1.15rem 1.2rem;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.sector-summary-label {
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+    letter-spacing: 0.08rem;
+    text-transform: uppercase;
+}
+
+.sector-summary-value {
+    margin-top: 0.5rem;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
 .sector-analysis-list {
     display: flex;
     flex-direction: column;
@@ -86,6 +175,12 @@
     transition: all 0.25s ease;
 }
 
+.sector-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(56, 189, 248, 0.28);
+    box-shadow: 0 18px 36px rgba(0, 0, 0, 0.24);
+}
+
 .sector-card-header {
     display: flex;
     justify-content: space-between;
@@ -93,9 +188,21 @@
     margin-bottom: 1rem;
 }
 
+.sector-name-link {
+    text-decoration: none;
+    color: inherit;
+}
+
 .sector-name {
     font-size: 1.4rem;
     font-weight: 700;
+}
+
+.sector-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 0.75rem;
 }
 
 .sector-score {
@@ -107,7 +214,23 @@
     font-size: 0.85rem;
 }
 
+.sector-performance {
+    margin-bottom: 0.65rem;
+    font-size: 1.15rem;
+    font-weight: 800;
+}
+
+.sector-performance.up {
+    color: var(--up-color);
+}
+
+.sector-performance.down {
+    color: var(--down-color);
+}
+
 .sector-meta-pill {
+    display: inline-flex;
+    align-items: center;
     padding: 0.4rem 0.8rem;
     border-radius: 50px;
     background: rgba(255, 255, 255, 0.05);
@@ -115,5 +238,67 @@
     color: var(--text-secondary);
 }
 
+.leader-link {
+    color: #dbeafe;
+    text-decoration: none;
+    border: 1px solid rgba(56, 189, 248, 0.18);
+}
+
+.leader-link:hover {
+    color: #ffffff;
+    border-color: rgba(56, 189, 248, 0.42);
+    background: rgba(56, 189, 248, 0.12);
+}
+
+.sector-reason {
+    padding: 1rem 1.1rem;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.035);
+    border-left: 3px solid rgba(56, 189, 248, 0.55);
+}
+
+.sector-reason p {
+    margin: 0;
+}
+
+.sector-detail-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.sector-detail-box {
+    padding: 1rem 1.1rem;
+    border-radius: 18px;
+    background: rgba(15, 23, 42, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.comp-tab-btn {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text-secondary);
+    border-radius: 999px;
+    padding: 0.75rem 1.1rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.comp-tab-btn.active {
+    color: #ffffff;
+    border-color: rgba(56, 189, 248, 0.5);
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.18), rgba(129, 140, 248, 0.2));
+}
+
 .sector-perf-up { color: var(--up-color); font-weight: 700; }
 .sector-perf-down { color: var(--down-color); font-weight: 700; }
+
+@media (max-width: 720px) {
+    .sector-card-header {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}

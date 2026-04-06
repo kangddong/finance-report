@@ -3,6 +3,7 @@ import {
     DEEP_DIVE_ITEMS, 
     SECTOR_ANALYSIS_ITEMS 
 } from '../db.js';
+import { parseMarkdown } from '../utils/markdown.js';
 
 export function renderCompanyAnalysisGrid() {
     const grid = document.getElementById('company-analysis-grid');
@@ -34,7 +35,7 @@ export function renderCompanyAnalysisGrid() {
                     </div>
                     <span class="badge buy">분석 보기</span>
                 </div>
-                <p class="company-analysis-summary">${item.summary}</p>
+                <div class="company-analysis-summary rich-text">${parseMarkdown(item.summary)}</div>
                 <div class="company-analysis-tags">${tagsHtml}</div>
                 <div class="company-analysis-cta">상세 페이지로 이동 →</div>
             </article>
@@ -71,7 +72,7 @@ export function renderDeepDiveGrid() {
                 <div style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 1rem;">
                     📅 ${item.date} 작성
                 </div>
-                <p class="company-summary" style="margin-top: 1rem;">${item.summary}</p>
+                <div class="company-summary rich-text" style="margin-top: 1rem;">${parseMarkdown(item.summary)}</div>
                 <div class="company-tags" style="margin-bottom: 2rem;">
                     ${(item.tags || []).map(t => `<span class="company-tag" style="background: rgba(129, 140, 248, 0.15); color: #c4b5fd;">${t}</span>`).join('')}
                 </div>
@@ -143,14 +144,14 @@ export function renderSectorAnalysis() {
                         <div class="sector-score">${sector.view}</div>
                     </div>
                 </div>
-                <div class="sector-reason">${sector.summary}</div>
+                <div class="sector-reason rich-text">${parseMarkdown(sector.summary)}</div>
                 <div class="sector-meta" style="margin-top: 0.5rem;">
                     <span style="font-size: 0.85rem; color: var(--text-secondary); margin-right: 0.5rem; display: flex; align-items: center;">관련종목:</span>
                     ${leadersHtml}
                 </div>
                 <div class="sector-detail-grid">
-                    <div class="sector-detail-box"><strong>상승/하락 이유:</strong> ${sector.drivers}</div>
-                    <div class="sector-detail-box"><strong>체크포인트:</strong> ${sector.watchPoint}</div>
+                    <div class="sector-detail-box rich-text"><strong>상승/하락 이유:</strong> ${parseMarkdown(sector.drivers)}</div>
+                    <div class="sector-detail-box rich-text"><strong>체크포인트:</strong> ${parseMarkdown(sector.watchPoint)}</div>
                 </div>
             </article>
         `;

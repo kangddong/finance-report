@@ -51,9 +51,9 @@ export function renderExternalFactors() {
                 </div>
                 <div class="shock-title">${event.title} ${(isGenesis || isCommCode) ? ' <span style="font-size:0.7rem; color:var(--accent-blue);">(상세 분석 보기 ↗)</span>' : ''}</div>
                 <div class="shock-body">
-                    <div class="shock-line"><strong>핵심 내용:</strong> ${event.summary}</div>
-                    <div class="shock-line"><strong>시장 영향:</strong> ${event.marketImpact}</div>
-                    <div class="shock-line"><strong>체크포인트:</strong> ${event.watchPoint}</div>
+                    <div class="shock-line rich-text"><strong>핵심 내용:</strong> ${parseMarkdown(event.summary)}</div>
+                    <div class="shock-line rich-text"><strong>시장 영향:</strong> ${parseMarkdown(event.marketImpact)}</div>
+                    <div class="shock-line rich-text"><strong>체크포인트:</strong> ${parseMarkdown(event.watchPoint)}</div>
                     <div class="shock-sources">${sources}</div>
                 </div>
             </article>
@@ -158,7 +158,7 @@ export function renderPolicyStance(policyData) {
                 ` : ''}
 
                 <div class="policy-summary">
-                    ${parseMarkdown(data.summary)}
+                    <div class="rich-text">${parseMarkdown(data.summary)}</div>
                 </div>
             </div>
         </div>
@@ -170,7 +170,7 @@ export function renderPolicyStance(policyData) {
         ${renderCard('한국은행 (BOK)', bok, 'bok')}
     `;
 
-    strategyBox.innerHTML = parseMarkdown(policyData.strategy || '데이터 분석 중입니다.');
+    strategyBox.innerHTML = `<div class="rich-text">${parseMarkdown(policyData.strategy || '데이터 분석 중입니다.')}</div>`;
 }
 
 export function renderPolicyPage() {

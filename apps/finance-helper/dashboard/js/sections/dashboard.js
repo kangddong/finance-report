@@ -60,7 +60,7 @@ export function renderHoldings(holdings) {
                     <div class="return ${isUp ? 'up' : 'down'}">${stock.return || '-'}</div>
                     <span class="badge ${String(stock.advice || '').includes('HOLD') ? 'hold' : 'buy'}">${stock.advice || 'WATCH'}</span>
                 </div>
-                <div class="reason-text">${parseMarkdown(stock.reason || '')}</div>
+                <div class="reason-text rich-text">${parseMarkdown(stock.reason || '')}</div>
             </div>
         `;
 
@@ -100,7 +100,7 @@ export function renderWatchlist(watchlist) {
                 <div class="stock-status">
                     <span class="badge buy">${stock.advice || 'WATCH'}</span>
                 </div>
-                <div class="reason-text">${parseMarkdown(stock.reason || '')}</div>
+                <div class="reason-text rich-text">${parseMarkdown(stock.reason || '')}</div>
             </div>
         `;
 
@@ -257,7 +257,7 @@ function renderStrategy(strategy) {
     adviceText.innerHTML = `
         <p style="margin-bottom: 1rem;"><strong>매수 아이디어:</strong> ${strategy.buy || '없음'}</p>
         <p style="margin-bottom: 1rem;"><strong>매도/축소 고려:</strong> ${strategy.sellConsider || '없음'}</p>
-        <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1);">
+        <div class="rich-text" style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1);">
             ${parseMarkdown(strategy.summary || strategy.description || '')}
         </div>
     `;
