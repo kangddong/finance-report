@@ -1,12 +1,1503 @@
 {
-  "date": "2026-03-18",
+  "date": "2026-03-24",
   "indicators": {
+    "fearAndGreed": {
+      "label": "Fear & Greed",
+      "value": "18",
+      "status": "Extreme Fear",
+      "sourceDate": "2026-03-24",
+      "sourceMetric": "FH_DASHBOARD_FEAR_AND_GREED"
+    },
+    "cpiKorea": {
+      "label": "한국 CPI",
+      "value": "2.0%",
+      "status": "YoY",
+      "sourceDate": "2026-03-24",
+      "sourceMetric": "FH_DASHBOARD_CPI_KOREA"
+    },
+    "cpiUS": {
+      "label": "미국 CPI",
+      "value": "2.4%",
+      "status": "YoY",
+      "sourceDate": "2026-03-24",
+      "sourceMetric": "FH_DASHBOARD_CPI_US"
+    },
     "exchangeRate": {
       "label": "원/달러 환율",
-      "value": "1,489.70",
-      "status": "▲ 4.50",
-      "sourceDate": "2026-03-18",
-      "sourceMetric": "FH_BACKFILL_VALIDATION_EXCHANGE_RATE"
+      "value": "1,496.8",
+      "status": "고환율 경계",
+      "sourceDate": "2026-03-24",
+      "sourceMetric": "FH_DASHBOARD_EXCHANGE_RATE"
+    },
+    "dollarIndex": {
+      "label": "달러 인덱스",
+      "value": "99.21",
+      "status": "보합",
+      "sourceDate": "2026-03-24",
+      "sourceMetric": "FH_DASHBOARD_DOLLAR_INDEX"
+    },
+    "goldSiverRatio": {
+      "label": "금/은 비율",
+      "value": "63.19",
+      "status": "중립",
+      "sourceDate": "2026-03-24",
+      "sourceMetric": "FH_DASHBOARD_GOLD_SILVER_RATIO"
+    }
+  },
+  "byDate": {
+    "2026-03-18": {
+      "fearAndGreed": {
+        "label": "Fear & Greed",
+        "value": "23",
+        "status": "Extreme Fear",
+        "sourceDate": "2026-03-18",
+        "sourceMetric": "FH_DASHBOARD_FEAR_AND_GREED"
+      },
+      "cpiKorea": {
+        "label": "한국 CPI",
+        "value": "2.0%",
+        "status": "YoY",
+        "sourceDate": "2026-03-18",
+        "sourceMetric": "FH_DASHBOARD_CPI_KOREA"
+      },
+      "cpiUS": {
+        "label": "미국 CPI",
+        "value": "2.4%",
+        "status": "YoY",
+        "sourceDate": "2026-03-18",
+        "sourceMetric": "FH_DASHBOARD_CPI_US"
+      },
+      "exchangeRate": {
+        "label": "원/달러 환율",
+        "value": "1,489.70",
+        "status": "▲ 4.50",
+        "sourceDate": "2026-03-18",
+        "sourceMetric": "FH_DASHBOARD_EXCHANGE_RATE"
+      },
+      "dollarIndex": {
+        "label": "달러 인덱스",
+        "value": "99.70",
+        "status": "▼ 0.10",
+        "sourceDate": "2026-03-18",
+        "sourceMetric": "FH_DASHBOARD_DOLLAR_INDEX"
+      },
+      "goldSiverRatio": {
+        "label": "금/은 비율",
+        "value": "62.86",
+        "status": "▼ 7.64",
+        "sourceDate": "2026-03-18",
+        "sourceMetric": "FH_DASHBOARD_GOLD_SILVER_RATIO"
+      }
+    },
+    "2026-03-03": {
+      "fearAndGreed": {
+        "label": "Fear & Greed",
+        "value": "12",
+        "status": "Extreme Fear",
+        "sourceDate": "2026-03-03",
+        "sourceMetric": "FH_DASHBOARD_FEAR_AND_GREED"
+      },
+      "cpiKorea": {
+        "label": "한국 CPI",
+        "value": "2.8%",
+        "status": "YoY",
+        "sourceDate": "2026-03-03",
+        "sourceMetric": "FH_DASHBOARD_CPI_KOREA"
+      },
+      "cpiUS": {
+        "label": "미국 CPI",
+        "value": "3.3%",
+        "status": "YoY",
+        "sourceDate": "2026-03-03",
+        "sourceMetric": "FH_DASHBOARD_CPI_US"
+      },
+      "exchangeRate": {
+        "label": "원/달러 환율",
+        "value": "1,485.20",
+        "status": "▲ 26.70",
+        "sourceDate": "2026-03-03",
+        "sourceMetric": "FH_DASHBOARD_EXCHANGE_RATE"
+      },
+      "dollarIndex": {
+        "label": "달러 인덱스",
+        "value": "99.80",
+        "status": "▲ 1.60",
+        "sourceDate": "2026-03-03",
+        "sourceMetric": "FH_DASHBOARD_DOLLAR_INDEX"
+      },
+      "goldSiverRatio": {
+        "label": "금/은 비율",
+        "value": "70.50",
+        "status": "▲ 5.00",
+        "sourceDate": "2026-03-03",
+        "sourceMetric": "FH_DASHBOARD_GOLD_SILVER_RATIO"
+      }
+    },
+    "2026-02-28": {
+      "fearAndGreed": {
+        "label": "Fear & Greed",
+        "value": "38",
+        "status": "Fear",
+        "sourceDate": "2026-02-28",
+        "sourceMetric": "FH_DASHBOARD_FEAR_AND_GREED"
+      },
+      "cpiKorea": {
+        "label": "한국 CPI",
+        "value": "2.8%",
+        "status": "YoY",
+        "sourceDate": "2026-02-28",
+        "sourceMetric": "FH_DASHBOARD_CPI_KOREA"
+      },
+      "cpiUS": {
+        "label": "미국 CPI",
+        "value": "3.3%",
+        "status": "YoY",
+        "sourceDate": "2026-02-28",
+        "sourceMetric": "FH_DASHBOARD_CPI_US"
+      },
+      "exchangeRate": {
+        "label": "원/달러 환율",
+        "value": "1,445.00",
+        "status": "▲ 3.86",
+        "sourceDate": "2026-02-28",
+        "sourceMetric": "FH_DASHBOARD_EXCHANGE_RATE"
+      },
+      "dollarIndex": {
+        "label": "달러 인덱스",
+        "value": "97.50",
+        "status": "▲ 0.30",
+        "sourceDate": "2026-02-28",
+        "sourceMetric": "FH_DASHBOARD_DOLLAR_INDEX"
+      },
+      "goldSiverRatio": {
+        "label": "금/은 비율",
+        "value": "65.00",
+        "status": "▲ 0.50",
+        "sourceDate": "2026-02-28",
+        "sourceMetric": "FH_DASHBOARD_GOLD_SILVER_RATIO"
+      }
+    },
+    "2026-02-27": {
+      "fearAndGreed": {
+        "label": "Fear & Greed",
+        "value": "43",
+        "status": "Fear",
+        "sourceDate": "2026-02-27",
+        "sourceMetric": "FH_DASHBOARD_FEAR_AND_GREED"
+      },
+      "cpiKorea": {
+        "label": "한국 CPI",
+        "value": "2.8%",
+        "status": "YoY",
+        "sourceDate": "2026-02-27",
+        "sourceMetric": "FH_DASHBOARD_CPI_KOREA"
+      },
+      "cpiUS": {
+        "label": "미국 CPI",
+        "value": "3.4%",
+        "status": "YoY",
+        "sourceDate": "2026-02-27",
+        "sourceMetric": "FH_DASHBOARD_CPI_US"
+      },
+      "exchangeRate": {
+        "label": "원/달러 환율",
+        "value": "1,441.14",
+        "status": "▲ 1.36",
+        "sourceDate": "2026-02-27",
+        "sourceMetric": "FH_DASHBOARD_EXCHANGE_RATE"
+      },
+      "dollarIndex": {
+        "label": "달러 인덱스",
+        "value": "97.20",
+        "status": "▲ 0.30",
+        "sourceDate": "2026-02-27",
+        "sourceMetric": "FH_DASHBOARD_DOLLAR_INDEX"
+      },
+      "goldSiverRatio": {
+        "label": "금/은 비율",
+        "value": "64.50",
+        "status": "▲ 0.80",
+        "sourceDate": "2026-02-27",
+        "sourceMetric": "FH_DASHBOARD_GOLD_SILVER_RATIO"
+      }
+    },
+    "2026-02-13": {
+      "fearAndGreed": {
+        "label": "Fear & Greed",
+        "value": "80",
+        "status": "Extreme Greed",
+        "sourceDate": "2026-02-13",
+        "sourceMetric": "FH_DASHBOARD_FEAR_AND_GREED"
+      },
+      "cpiKorea": {
+        "label": "한국 CPI",
+        "value": "2.8%",
+        "status": "YoY",
+        "sourceDate": "2026-02-13",
+        "sourceMetric": "FH_DASHBOARD_CPI_KOREA"
+      },
+      "cpiUS": {
+        "label": "미국 CPI",
+        "value": "3.4%",
+        "status": "YoY",
+        "sourceDate": "2026-02-13",
+        "sourceMetric": "FH_DASHBOARD_CPI_US"
+      },
+      "exchangeRate": {
+        "label": "원/달러 환율",
+        "value": "1,440.00",
+        "status": "▼ 2.00",
+        "sourceDate": "2026-02-13",
+        "sourceMetric": "FH_DASHBOARD_EXCHANGE_RATE"
+      },
+      "dollarIndex": {
+        "label": "달러 인덱스",
+        "value": "96.40",
+        "status": "▼ 0.10",
+        "sourceDate": "2026-02-13",
+        "sourceMetric": "FH_DASHBOARD_DOLLAR_INDEX"
+      },
+      "goldSiverRatio": {
+        "label": "금/은 비율",
+        "value": "63.00",
+        "status": "-",
+        "sourceDate": "2026-02-13",
+        "sourceMetric": "FH_DASHBOARD_GOLD_SILVER_RATIO"
+      }
+    },
+    "2026-02-12": {
+      "fearAndGreed": {
+        "label": "Fear & Greed",
+        "value": "78",
+        "status": "Extreme Greed",
+        "sourceDate": "2026-02-12",
+        "sourceMetric": "FH_DASHBOARD_FEAR_AND_GREED"
+      },
+      "cpiKorea": {
+        "label": "한국 CPI",
+        "value": "2.8%",
+        "status": "YoY",
+        "sourceDate": "2026-02-12",
+        "sourceMetric": "FH_DASHBOARD_CPI_KOREA"
+      },
+      "cpiUS": {
+        "label": "미국 CPI",
+        "value": "3.4%",
+        "status": "YoY",
+        "sourceDate": "2026-02-12",
+        "sourceMetric": "FH_DASHBOARD_CPI_US"
+      },
+      "exchangeRate": {
+        "label": "원/달러 환율",
+        "value": "1,442.00",
+        "status": "▼ 13.00",
+        "sourceDate": "2026-02-12",
+        "sourceMetric": "FH_DASHBOARD_EXCHANGE_RATE"
+      },
+      "dollarIndex": {
+        "label": "달러 인덱스",
+        "value": "96.50",
+        "status": "▼ 0.30",
+        "sourceDate": "2026-02-12",
+        "sourceMetric": "FH_DASHBOARD_DOLLAR_INDEX"
+      },
+      "goldSiverRatio": {
+        "label": "금/은 비율",
+        "value": "63.00",
+        "status": "-",
+        "sourceDate": "2026-02-12",
+        "sourceMetric": "FH_DASHBOARD_GOLD_SILVER_RATIO"
+      }
+    },
+    "2026-02-11": {
+      "fearAndGreed": {
+        "label": "Fear & Greed",
+        "value": "58",
+        "status": "Greed",
+        "sourceDate": "2026-02-11",
+        "sourceMetric": "FH_DASHBOARD_FEAR_AND_GREED"
+      },
+      "cpiKorea": {
+        "label": "한국 CPI",
+        "value": "2.8%",
+        "status": "YoY",
+        "sourceDate": "2026-02-11",
+        "sourceMetric": "FH_DASHBOARD_CPI_KOREA"
+      },
+      "cpiUS": {
+        "label": "미국 CPI",
+        "value": "3.4%",
+        "status": "YoY",
+        "sourceDate": "2026-02-11",
+        "sourceMetric": "FH_DASHBOARD_CPI_US"
+      },
+      "exchangeRate": {
+        "label": "원/달러 환율",
+        "value": "1,455.00",
+        "status": "▼ 4.50",
+        "sourceDate": "2026-02-11",
+        "sourceMetric": "FH_DASHBOARD_EXCHANGE_RATE"
+      },
+      "dollarIndex": {
+        "label": "달러 인덱스",
+        "value": "96.80",
+        "status": "▼ 0.10",
+        "sourceDate": "2026-02-11",
+        "sourceMetric": "FH_DASHBOARD_DOLLAR_INDEX"
+      },
+      "goldSiverRatio": {
+        "label": "금/은 비율",
+        "value": "63.50",
+        "status": "-",
+        "sourceDate": "2026-02-11",
+        "sourceMetric": "FH_DASHBOARD_GOLD_SILVER_RATIO"
+      }
+    },
+    "2026-02-10": {
+      "fearAndGreed": {
+        "label": "Fear & Greed",
+        "value": "48",
+        "status": "Neutral",
+        "sourceDate": "2026-02-10",
+        "sourceMetric": "FH_DASHBOARD_FEAR_AND_GREED"
+      },
+      "cpiKorea": {
+        "label": "한국 CPI",
+        "value": "2.8%",
+        "status": "YoY",
+        "sourceDate": "2026-02-10",
+        "sourceMetric": "FH_DASHBOARD_CPI_KOREA"
+      },
+      "cpiUS": {
+        "label": "미국 CPI",
+        "value": "3.4%",
+        "status": "YoY",
+        "sourceDate": "2026-02-10",
+        "sourceMetric": "FH_DASHBOARD_CPI_US"
+      },
+      "exchangeRate": {
+        "label": "원/달러 환율",
+        "value": "1,459.78",
+        "status": "▼ 0.22",
+        "sourceDate": "2026-02-10",
+        "sourceMetric": "FH_DASHBOARD_EXCHANGE_RATE"
+      },
+      "dollarIndex": {
+        "label": "달러 인덱스",
+        "value": "96.90",
+        "status": "▼ 0.43",
+        "sourceDate": "2026-02-10",
+        "sourceMetric": "FH_DASHBOARD_DOLLAR_INDEX"
+      },
+      "goldSiverRatio": {
+        "label": "금/은 비율",
+        "value": "63.70",
+        "status": "▼ 0.13",
+        "sourceDate": "2026-02-10",
+        "sourceMetric": "FH_DASHBOARD_GOLD_SILVER_RATIO"
+      }
+    },
+    "2026-02-09": {
+      "fearAndGreed": {
+        "label": "Fear & Greed",
+        "value": "45",
+        "status": "Neutral",
+        "sourceDate": "2026-02-09",
+        "sourceMetric": "FH_DASHBOARD_FEAR_AND_GREED"
+      },
+      "cpiKorea": {
+        "label": "한국 CPI",
+        "value": "2.8%",
+        "status": "YoY",
+        "sourceDate": "2026-02-09",
+        "sourceMetric": "FH_DASHBOARD_CPI_KOREA"
+      },
+      "cpiUS": {
+        "label": "미국 CPI",
+        "value": "3.4%",
+        "status": "YoY",
+        "sourceDate": "2026-02-09",
+        "sourceMetric": "FH_DASHBOARD_CPI_US"
+      },
+      "exchangeRate": {
+        "label": "원/달러 환율",
+        "value": "1,460.00",
+        "status": "▼ 2.50",
+        "sourceDate": "2026-02-09",
+        "sourceMetric": "FH_DASHBOARD_EXCHANGE_RATE"
+      },
+      "dollarIndex": {
+        "label": "달러 인덱스",
+        "value": "97.33",
+        "status": "▼ 0.17",
+        "sourceDate": "2026-02-09",
+        "sourceMetric": "FH_DASHBOARD_DOLLAR_INDEX"
+      },
+      "goldSiverRatio": {
+        "label": "금/은 비율",
+        "value": "63.83",
+        "status": "▲ 7.73",
+        "sourceDate": "2026-02-09",
+        "sourceMetric": "FH_DASHBOARD_GOLD_SILVER_RATIO"
+      }
+    },
+    "2026-02-07": {
+      "fearAndGreed": {
+        "label": "Fear & Greed",
+        "value": "28",
+        "status": "Fear",
+        "sourceDate": "2026-02-07",
+        "sourceMetric": "FH_DASHBOARD_FEAR_AND_GREED"
+      },
+      "cpiKorea": {
+        "label": "한국 CPI",
+        "value": "2.8%",
+        "status": "YoY",
+        "sourceDate": "2026-02-07",
+        "sourceMetric": "FH_DASHBOARD_CPI_KOREA"
+      },
+      "cpiUS": {
+        "label": "미국 CPI",
+        "value": "3.4%",
+        "status": "YoY",
+        "sourceDate": "2026-02-07",
+        "sourceMetric": "FH_DASHBOARD_CPI_US"
+      },
+      "exchangeRate": {
+        "label": "원/달러 환율",
+        "value": "1,462.50",
+        "status": "▼ 2.50",
+        "sourceDate": "2026-02-07",
+        "sourceMetric": "FH_DASHBOARD_EXCHANGE_RATE"
+      },
+      "dollarIndex": {
+        "label": "달러 인덱스",
+        "value": "97.50",
+        "status": "▼ 0.14",
+        "sourceDate": "2026-02-07",
+        "sourceMetric": "FH_DASHBOARD_DOLLAR_INDEX"
+      },
+      "goldSiverRatio": {
+        "label": "금/은 비율",
+        "value": "56.10",
+        "status": "▼ 0.30",
+        "sourceDate": "2026-02-07",
+        "sourceMetric": "FH_DASHBOARD_GOLD_SILVER_RATIO"
+      }
+    },
+    "2026-02-06": {
+      "fearAndGreed": {
+        "label": "Fear & Greed",
+        "value": "35",
+        "status": "Fear",
+        "sourceDate": "2026-02-06",
+        "sourceMetric": "FH_DASHBOARD_FEAR_AND_GREED"
+      },
+      "cpiKorea": {
+        "label": "한국 CPI",
+        "value": "2.8%",
+        "status": "YoY",
+        "sourceDate": "2026-02-06",
+        "sourceMetric": "FH_DASHBOARD_CPI_KOREA"
+      },
+      "cpiUS": {
+        "label": "미국 CPI",
+        "value": "3.4%",
+        "status": "YoY",
+        "sourceDate": "2026-02-06",
+        "sourceMetric": "FH_DASHBOARD_CPI_US"
+      },
+      "exchangeRate": {
+        "label": "원/달러 환율",
+        "value": "1,465.00",
+        "status": "▲ 7.56",
+        "sourceDate": "2026-02-06",
+        "sourceMetric": "FH_DASHBOARD_EXCHANGE_RATE"
+      },
+      "dollarIndex": {
+        "label": "달러 인덱스",
+        "value": "97.64",
+        "status": "▲ 0.00",
+        "sourceDate": "2026-02-06",
+        "sourceMetric": "FH_DASHBOARD_DOLLAR_INDEX"
+      },
+      "goldSiverRatio": {
+        "label": "금/은 비율",
+        "value": "56.40",
+        "status": "▲ 0.63",
+        "sourceDate": "2026-02-06",
+        "sourceMetric": "FH_DASHBOARD_GOLD_SILVER_RATIO"
+      }
+    },
+    "2026-02-05": {
+      "fearAndGreed": {
+        "label": "Fear & Greed",
+        "value": "41",
+        "status": "Fear",
+        "sourceDate": "2026-02-05",
+        "sourceMetric": "FH_DASHBOARD_FEAR_AND_GREED"
+      },
+      "cpiKorea": {
+        "label": "한국 CPI",
+        "value": "2.8%",
+        "status": "YoY",
+        "sourceDate": "2026-02-05",
+        "sourceMetric": "FH_DASHBOARD_CPI_KOREA"
+      },
+      "cpiUS": {
+        "label": "미국 CPI",
+        "value": "3.4%",
+        "status": "YoY",
+        "sourceDate": "2026-02-05",
+        "sourceMetric": "FH_DASHBOARD_CPI_US"
+      },
+      "exchangeRate": {
+        "label": "원/달러 환율",
+        "value": "1,457.44",
+        "status": "▲ 5.29",
+        "sourceDate": "2026-02-05",
+        "sourceMetric": "FH_DASHBOARD_EXCHANGE_RATE"
+      },
+      "dollarIndex": {
+        "label": "달러 인덱스",
+        "value": "97.64",
+        "status": "▲ 0.06",
+        "sourceDate": "2026-02-05",
+        "sourceMetric": "FH_DASHBOARD_DOLLAR_INDEX"
+      },
+      "goldSiverRatio": {
+        "label": "금/은 비율",
+        "value": "55.77",
+        "status": "▼ 1.52",
+        "sourceDate": "2026-02-05",
+        "sourceMetric": "FH_DASHBOARD_GOLD_SILVER_RATIO"
+      }
+    },
+    "2026-02-04": {
+      "fearAndGreed": {
+        "label": "Fear & Greed",
+        "value": "41",
+        "status": "Fear",
+        "sourceDate": "2026-02-04",
+        "sourceMetric": "FH_DASHBOARD_FEAR_AND_GREED"
+      },
+      "cpiKorea": {
+        "label": "한국 CPI",
+        "value": "2.8%",
+        "status": "YoY",
+        "sourceDate": "2026-02-04",
+        "sourceMetric": "FH_DASHBOARD_CPI_KOREA"
+      },
+      "cpiUS": {
+        "label": "미국 CPI",
+        "value": "3.4%",
+        "status": "YoY",
+        "sourceDate": "2026-02-04",
+        "sourceMetric": "FH_DASHBOARD_CPI_US"
+      },
+      "exchangeRate": {
+        "label": "원/달러 환율",
+        "value": "1,452.15",
+        "status": "▲ 3.15",
+        "sourceDate": "2026-02-04",
+        "sourceMetric": "FH_DASHBOARD_EXCHANGE_RATE"
+      }
+    },
+    "2026-02-03": {
+      "fearAndGreed": {
+        "label": "Fear & Greed",
+        "value": "52",
+        "status": "Neutral",
+        "sourceDate": "2026-02-03",
+        "sourceMetric": "FH_DASHBOARD_FEAR_AND_GREED"
+      },
+      "cpiKorea": {
+        "label": "한국 CPI",
+        "value": "2.8%",
+        "status": "YoY",
+        "sourceDate": "2026-02-03",
+        "sourceMetric": "FH_DASHBOARD_CPI_KOREA"
+      },
+      "cpiUS": {
+        "label": "미국 CPI",
+        "value": "3.4%",
+        "status": "YoY",
+        "sourceDate": "2026-02-03",
+        "sourceMetric": "FH_DASHBOARD_CPI_US"
+      },
+      "exchangeRate": {
+        "label": "원/달러 환율",
+        "value": "1,450.3",
+        "status": "▼ 10.2",
+        "sourceDate": "2026-02-03",
+        "sourceMetric": "FH_DASHBOARD_EXCHANGE_RATE"
+      }
+    },
+    "2026-02-02": {
+      "fearAndGreed": {
+        "label": "Fear & Greed",
+        "value": "15",
+        "status": "Extreme Fear",
+        "sourceDate": "2026-02-02",
+        "sourceMetric": "FH_DASHBOARD_FEAR_AND_GREED"
+      },
+      "cpiKorea": {
+        "label": "한국 CPI",
+        "value": "2.8%",
+        "status": "YoY",
+        "sourceDate": "2026-02-02",
+        "sourceMetric": "FH_DASHBOARD_CPI_KOREA"
+      },
+      "cpiUS": {
+        "label": "미국 CPI",
+        "value": "3.4%",
+        "status": "YoY",
+        "sourceDate": "2026-02-02",
+        "sourceMetric": "FH_DASHBOARD_CPI_US"
+      },
+      "exchangeRate": {
+        "label": "원/달러 환율",
+        "value": "1,460.5",
+        "status": "▲ 25.5",
+        "sourceDate": "2026-02-02",
+        "sourceMetric": "FH_DASHBOARD_EXCHANGE_RATE"
+      }
+    },
+    "2026-02-19": {
+      "fearAndGreed": {
+        "label": "Fear & Greed",
+        "value": "37",
+        "status": "Fear",
+        "sourceDate": "2026-02-19",
+        "sourceMetric": "FH_DASHBOARD_FEAR_AND_GREED"
+      },
+      "cpiKorea": {
+        "label": "한국 CPI",
+        "value": "2.0%",
+        "status": "YoY",
+        "sourceDate": "2026-02-19",
+        "sourceMetric": "FH_DASHBOARD_CPI_KOREA"
+      },
+      "cpiUS": {
+        "label": "미국 CPI",
+        "value": "2.4%",
+        "status": "YoY",
+        "sourceDate": "2026-02-19",
+        "sourceMetric": "FH_DASHBOARD_CPI_US"
+      },
+      "exchangeRate": {
+        "label": "원/달러 환율",
+        "value": "1,440.16",
+        "status": "▲ 0.19",
+        "sourceDate": "2026-02-19",
+        "sourceMetric": "FH_DASHBOARD_EXCHANGE_RATE"
+      },
+      "dollarIndex": {
+        "label": "달러 인덱스",
+        "value": "97.93",
+        "status": "▲ 0.23",
+        "sourceDate": "2026-02-19",
+        "sourceMetric": "FH_DASHBOARD_DOLLAR_INDEX"
+      },
+      "goldSiverRatio": {
+        "label": "금/은 비율",
+        "value": "64.15",
+        "status": "▼ 0.18",
+        "sourceDate": "2026-02-19",
+        "sourceMetric": "FH_DASHBOARD_GOLD_SILVER_RATIO"
+      }
+    },
+    "2026-02-20": {
+      "fearAndGreed": {
+        "label": "Fear & Greed",
+        "value": "44",
+        "status": "Fear",
+        "sourceDate": "2026-02-20",
+        "sourceMetric": "FH_DASHBOARD_FEAR_AND_GREED"
+      },
+      "cpiKorea": {
+        "label": "한국 CPI",
+        "value": "2.0%",
+        "status": "YoY",
+        "sourceDate": "2026-02-20",
+        "sourceMetric": "FH_DASHBOARD_CPI_KOREA"
+      },
+      "cpiUS": {
+        "label": "미국 CPI",
+        "value": "2.4%",
+        "status": "YoY",
+        "sourceDate": "2026-02-20",
+        "sourceMetric": "FH_DASHBOARD_CPI_US"
+      },
+      "exchangeRate": {
+        "label": "원/달러 환율",
+        "value": "1,447.75",
+        "status": "▲ 7.59",
+        "sourceDate": "2026-02-20",
+        "sourceMetric": "FH_DASHBOARD_EXCHANGE_RATE"
+      },
+      "dollarIndex": {
+        "label": "달러 인덱스",
+        "value": "97.80",
+        "status": "▼ 0.13",
+        "sourceDate": "2026-02-20",
+        "sourceMetric": "FH_DASHBOARD_DOLLAR_INDEX"
+      },
+      "goldSiverRatio": {
+        "label": "금/은 비율",
+        "value": "61.49",
+        "status": "▼ 2.66",
+        "sourceDate": "2026-02-20",
+        "sourceMetric": "FH_DASHBOARD_GOLD_SILVER_RATIO"
+      }
+    },
+    "2026-02-23": {
+      "fearAndGreed": {
+        "label": "Fear & Greed",
+        "value": "37",
+        "status": "Fear",
+        "sourceDate": "2026-02-23",
+        "sourceMetric": "FH_DASHBOARD_FEAR_AND_GREED"
+      },
+      "cpiKorea": {
+        "label": "한국 CPI",
+        "value": "2.0%",
+        "status": "YoY",
+        "sourceDate": "2026-02-23",
+        "sourceMetric": "FH_DASHBOARD_CPI_KOREA"
+      },
+      "cpiUS": {
+        "label": "미국 CPI",
+        "value": "2.4%",
+        "status": "YoY",
+        "sourceDate": "2026-02-23",
+        "sourceMetric": "FH_DASHBOARD_CPI_US"
+      },
+      "exchangeRate": {
+        "label": "원/달러 환율",
+        "value": "1,443.44",
+        "status": "▼ 4.31",
+        "sourceDate": "2026-02-23",
+        "sourceMetric": "FH_DASHBOARD_EXCHANGE_RATE"
+      },
+      "dollarIndex": {
+        "label": "달러 인덱스",
+        "value": "97.70",
+        "status": "▼ 0.10",
+        "sourceDate": "2026-02-23",
+        "sourceMetric": "FH_DASHBOARD_DOLLAR_INDEX"
+      },
+      "goldSiverRatio": {
+        "label": "금/은 비율",
+        "value": "60.15",
+        "status": "▼ 1.33",
+        "sourceDate": "2026-02-23",
+        "sourceMetric": "FH_DASHBOARD_GOLD_SILVER_RATIO"
+      }
+    },
+    "2026-02-24": {
+      "fearAndGreed": {
+        "label": "Fear & Greed",
+        "value": "43",
+        "status": "Fear",
+        "sourceDate": "2026-02-24",
+        "sourceMetric": "FH_DASHBOARD_FEAR_AND_GREED"
+      },
+      "cpiKorea": {
+        "label": "한국 CPI",
+        "value": "2.0%",
+        "status": "YoY",
+        "sourceDate": "2026-02-24",
+        "sourceMetric": "FH_DASHBOARD_CPI_KOREA"
+      },
+      "cpiUS": {
+        "label": "미국 CPI",
+        "value": "2.4%",
+        "status": "YoY",
+        "sourceDate": "2026-02-24",
+        "sourceMetric": "FH_DASHBOARD_CPI_US"
+      },
+      "exchangeRate": {
+        "label": "원/달러 환율",
+        "value": "1,442.20",
+        "status": "▼ 1.24",
+        "sourceDate": "2026-02-24",
+        "sourceMetric": "FH_DASHBOARD_EXCHANGE_RATE"
+      },
+      "dollarIndex": {
+        "label": "달러 인덱스",
+        "value": "97.88",
+        "status": "▲ 0.18",
+        "sourceDate": "2026-02-24",
+        "sourceMetric": "FH_DASHBOARD_DOLLAR_INDEX"
+      },
+      "goldSiverRatio": {
+        "label": "금/은 비율",
+        "value": "58.95",
+        "status": "▼ 1.20",
+        "sourceDate": "2026-02-24",
+        "sourceMetric": "FH_DASHBOARD_GOLD_SILVER_RATIO"
+      }
+    },
+    "2026-02-25": {
+      "fearAndGreed": {
+        "label": "Fear & Greed",
+        "value": "46",
+        "status": "Neutral",
+        "sourceDate": "2026-02-25",
+        "sourceMetric": "FH_DASHBOARD_FEAR_AND_GREED"
+      },
+      "cpiKorea": {
+        "label": "한국 CPI",
+        "value": "2.0%",
+        "status": "YoY",
+        "sourceDate": "2026-02-25",
+        "sourceMetric": "FH_DASHBOARD_CPI_KOREA"
+      },
+      "cpiUS": {
+        "label": "미국 CPI",
+        "value": "2.4%",
+        "status": "YoY",
+        "sourceDate": "2026-02-25",
+        "sourceMetric": "FH_DASHBOARD_CPI_US"
+      },
+      "exchangeRate": {
+        "label": "원/달러 환율",
+        "value": "1,439.99",
+        "status": "▼ 2.21",
+        "sourceDate": "2026-02-25",
+        "sourceMetric": "FH_DASHBOARD_EXCHANGE_RATE"
+      },
+      "dollarIndex": {
+        "label": "달러 인덱스",
+        "value": "97.70",
+        "status": "▼ 0.18",
+        "sourceDate": "2026-02-25",
+        "sourceMetric": "FH_DASHBOARD_DOLLAR_INDEX"
+      },
+      "goldSiverRatio": {
+        "label": "금/은 비율",
+        "value": "57.25",
+        "status": "▼ 1.70",
+        "sourceDate": "2026-02-25",
+        "sourceMetric": "FH_DASHBOARD_GOLD_SILVER_RATIO"
+      }
+    },
+    "2026-02-26": {
+      "fearAndGreed": {
+        "label": "Fear & Greed",
+        "value": "42",
+        "status": "Fear",
+        "sourceDate": "2026-02-26",
+        "sourceMetric": "FH_DASHBOARD_FEAR_AND_GREED"
+      },
+      "cpiKorea": {
+        "label": "한국 CPI",
+        "value": "2.0%",
+        "status": "YoY",
+        "sourceDate": "2026-02-26",
+        "sourceMetric": "FH_DASHBOARD_CPI_KOREA"
+      },
+      "cpiUS": {
+        "label": "미국 CPI",
+        "value": "2.4%",
+        "status": "YoY",
+        "sourceDate": "2026-02-26",
+        "sourceMetric": "FH_DASHBOARD_CPI_US"
+      },
+      "exchangeRate": {
+        "label": "원/달러 환율",
+        "value": "1,426.93",
+        "status": "▼ 13.06",
+        "sourceDate": "2026-02-26",
+        "sourceMetric": "FH_DASHBOARD_EXCHANGE_RATE"
+      },
+      "dollarIndex": {
+        "label": "달러 인덱스",
+        "value": "97.79",
+        "status": "▲ 0.09",
+        "sourceDate": "2026-02-26",
+        "sourceMetric": "FH_DASHBOARD_DOLLAR_INDEX"
+      },
+      "goldSiverRatio": {
+        "label": "금/은 비율",
+        "value": "59.50",
+        "status": "▲ 2.25",
+        "sourceDate": "2026-02-26",
+        "sourceMetric": "FH_DASHBOARD_GOLD_SILVER_RATIO"
+      }
+    },
+    "2026-03-04": {
+      "fearAndGreed": {
+        "label": "Fear & Greed",
+        "value": "37",
+        "status": "Fear",
+        "sourceDate": "2026-03-04",
+        "sourceMetric": "FH_DASHBOARD_FEAR_AND_GREED"
+      },
+      "cpiKorea": {
+        "label": "한국 CPI",
+        "value": "2.0%",
+        "status": "YoY",
+        "sourceDate": "2026-03-04",
+        "sourceMetric": "FH_DASHBOARD_CPI_KOREA"
+      },
+      "cpiUS": {
+        "label": "미국 CPI",
+        "value": "2.4%",
+        "status": "YoY",
+        "sourceDate": "2026-03-04",
+        "sourceMetric": "FH_DASHBOARD_CPI_US"
+      },
+      "exchangeRate": {
+        "label": "원/달러 환율",
+        "value": "1,483.07",
+        "status": "▲ 30.80",
+        "sourceDate": "2026-03-04",
+        "sourceMetric": "FH_DASHBOARD_EXCHANGE_RATE"
+      },
+      "dollarIndex": {
+        "label": "달러 인덱스",
+        "value": "98.77",
+        "status": "▼ 0.28",
+        "sourceDate": "2026-03-04",
+        "sourceMetric": "FH_DASHBOARD_DOLLAR_INDEX"
+      },
+      "goldSiverRatio": {
+        "label": "금/은 비율",
+        "value": "61.96",
+        "status": "▲ 0.37",
+        "sourceDate": "2026-03-04",
+        "sourceMetric": "FH_DASHBOARD_GOLD_SILVER_RATIO"
+      }
+    },
+    "2026-03-05": {
+      "fearAndGreed": {
+        "label": "Fear & Greed",
+        "value": "28",
+        "status": "Fear",
+        "sourceDate": "2026-03-05",
+        "sourceMetric": "FH_DASHBOARD_FEAR_AND_GREED"
+      },
+      "cpiKorea": {
+        "label": "한국 CPI",
+        "value": "2.0%",
+        "status": "YoY",
+        "sourceDate": "2026-03-05",
+        "sourceMetric": "FH_DASHBOARD_CPI_KOREA"
+      },
+      "cpiUS": {
+        "label": "미국 CPI",
+        "value": "2.4%",
+        "status": "YoY",
+        "sourceDate": "2026-03-05",
+        "sourceMetric": "FH_DASHBOARD_CPI_US"
+      },
+      "exchangeRate": {
+        "label": "원/달러 환율",
+        "value": "1,460.75",
+        "status": "▼ 22.32",
+        "sourceDate": "2026-03-05",
+        "sourceMetric": "FH_DASHBOARD_EXCHANGE_RATE"
+      },
+      "dollarIndex": {
+        "label": "달러 인덱스",
+        "value": "99.32",
+        "status": "▲ 0.55",
+        "sourceDate": "2026-03-05",
+        "sourceMetric": "FH_DASHBOARD_DOLLAR_INDEX"
+      },
+      "goldSiverRatio": {
+        "label": "금/은 비율",
+        "value": "62.01",
+        "status": "▲ 0.05",
+        "sourceDate": "2026-03-05",
+        "sourceMetric": "FH_DASHBOARD_GOLD_SILVER_RATIO"
+      }
+    },
+    "2026-03-06": {
+      "fearAndGreed": {
+        "label": "Fear & Greed",
+        "value": "25",
+        "status": "Fear",
+        "sourceDate": "2026-03-06",
+        "sourceMetric": "FH_DASHBOARD_FEAR_AND_GREED"
+      },
+      "cpiKorea": {
+        "label": "한국 CPI",
+        "value": "2.0%",
+        "status": "YoY",
+        "sourceDate": "2026-03-06",
+        "sourceMetric": "FH_DASHBOARD_CPI_KOREA"
+      },
+      "cpiUS": {
+        "label": "미국 CPI",
+        "value": "2.4%",
+        "status": "YoY",
+        "sourceDate": "2026-03-06",
+        "sourceMetric": "FH_DASHBOARD_CPI_US"
+      },
+      "exchangeRate": {
+        "label": "원/달러 환율",
+        "value": "1,479.51",
+        "status": "▲ 18.76",
+        "sourceDate": "2026-03-06",
+        "sourceMetric": "FH_DASHBOARD_EXCHANGE_RATE"
+      },
+      "dollarIndex": {
+        "label": "달러 인덱스",
+        "value": "98.99",
+        "status": "▼ 0.33",
+        "sourceDate": "2026-03-06",
+        "sourceMetric": "FH_DASHBOARD_DOLLAR_INDEX"
+      },
+      "goldSiverRatio": {
+        "label": "금/은 비율",
+        "value": "61.40",
+        "status": "▼ 0.61",
+        "sourceDate": "2026-03-06",
+        "sourceMetric": "FH_DASHBOARD_GOLD_SILVER_RATIO"
+      }
+    },
+    "2026-03-09": {
+      "fearAndGreed": {
+        "label": "Fear & Greed",
+        "value": "28",
+        "status": "Fear",
+        "sourceDate": "2026-03-09",
+        "sourceMetric": "FH_DASHBOARD_FEAR_AND_GREED"
+      },
+      "cpiKorea": {
+        "label": "한국 CPI",
+        "value": "2.0%",
+        "status": "YoY",
+        "sourceDate": "2026-03-09",
+        "sourceMetric": "FH_DASHBOARD_CPI_KOREA"
+      },
+      "cpiUS": {
+        "label": "미국 CPI",
+        "value": "2.4%",
+        "status": "YoY",
+        "sourceDate": "2026-03-09",
+        "sourceMetric": "FH_DASHBOARD_CPI_US"
+      },
+      "exchangeRate": {
+        "label": "원/달러 환율",
+        "value": "1,483.89",
+        "status": "▲ 4.38",
+        "sourceDate": "2026-03-09",
+        "sourceMetric": "FH_DASHBOARD_EXCHANGE_RATE"
+      },
+      "dollarIndex": {
+        "label": "달러 인덱스",
+        "value": "99.18",
+        "status": "▲ 0.19",
+        "sourceDate": "2026-03-09",
+        "sourceMetric": "FH_DASHBOARD_DOLLAR_INDEX"
+      },
+      "goldSiverRatio": {
+        "label": "금/은 비율",
+        "value": "60.59",
+        "status": "▼ 0.81",
+        "sourceDate": "2026-03-09",
+        "sourceMetric": "FH_DASHBOARD_GOLD_SILVER_RATIO"
+      }
+    },
+    "2026-03-10": {
+      "fearAndGreed": {
+        "label": "Fear & Greed",
+        "value": "26",
+        "status": "Fear",
+        "sourceDate": "2026-03-10",
+        "sourceMetric": "FH_DASHBOARD_FEAR_AND_GREED"
+      },
+      "cpiKorea": {
+        "label": "한국 CPI",
+        "value": "2.0%",
+        "status": "YoY",
+        "sourceDate": "2026-03-10",
+        "sourceMetric": "FH_DASHBOARD_CPI_KOREA"
+      },
+      "cpiUS": {
+        "label": "미국 CPI",
+        "value": "2.4%",
+        "status": "YoY",
+        "sourceDate": "2026-03-10",
+        "sourceMetric": "FH_DASHBOARD_CPI_US"
+      },
+      "exchangeRate": {
+        "label": "원/달러 환율",
+        "value": "1,464.47",
+        "status": "▼ 19.42",
+        "sourceDate": "2026-03-10",
+        "sourceMetric": "FH_DASHBOARD_EXCHANGE_RATE"
+      },
+      "dollarIndex": {
+        "label": "달러 인덱스",
+        "value": "98.83",
+        "status": "▼ 0.35",
+        "sourceDate": "2026-03-10",
+        "sourceMetric": "FH_DASHBOARD_DOLLAR_INDEX"
+      },
+      "goldSiverRatio": {
+        "label": "금/은 비율",
+        "value": "58.71",
+        "status": "▼ 1.88",
+        "sourceDate": "2026-03-10",
+        "sourceMetric": "FH_DASHBOARD_GOLD_SILVER_RATIO"
+      }
+    },
+    "2026-03-11": {
+      "fearAndGreed": {
+        "label": "Fear & Greed",
+        "value": "25",
+        "status": "Fear",
+        "sourceDate": "2026-03-11",
+        "sourceMetric": "FH_DASHBOARD_FEAR_AND_GREED"
+      },
+      "cpiKorea": {
+        "label": "한국 CPI",
+        "value": "2.0%",
+        "status": "YoY",
+        "sourceDate": "2026-03-11",
+        "sourceMetric": "FH_DASHBOARD_CPI_KOREA"
+      },
+      "cpiUS": {
+        "label": "미국 CPI",
+        "value": "2.4%",
+        "status": "YoY",
+        "sourceDate": "2026-03-11",
+        "sourceMetric": "FH_DASHBOARD_CPI_US"
+      },
+      "exchangeRate": {
+        "label": "원/달러 환율",
+        "value": "1,472.78",
+        "status": "▲ 8.31",
+        "sourceDate": "2026-03-11",
+        "sourceMetric": "FH_DASHBOARD_EXCHANGE_RATE"
+      },
+      "dollarIndex": {
+        "label": "달러 인덱스",
+        "value": "99.23",
+        "status": "▲ 0.40",
+        "sourceDate": "2026-03-11",
+        "sourceMetric": "FH_DASHBOARD_DOLLAR_INDEX"
+      },
+      "goldSiverRatio": {
+        "label": "금/은 비율",
+        "value": "60.75",
+        "status": "▲ 2.04",
+        "sourceDate": "2026-03-11",
+        "sourceMetric": "FH_DASHBOARD_GOLD_SILVER_RATIO"
+      }
+    },
+    "2026-03-12": {
+      "fearAndGreed": {
+        "label": "Fear & Greed",
+        "value": "23",
+        "status": "Extreme Fear",
+        "sourceDate": "2026-03-12",
+        "sourceMetric": "FH_DASHBOARD_FEAR_AND_GREED"
+      },
+      "cpiKorea": {
+        "label": "한국 CPI",
+        "value": "2.0%",
+        "status": "YoY",
+        "sourceDate": "2026-03-12",
+        "sourceMetric": "FH_DASHBOARD_CPI_KOREA"
+      },
+      "cpiUS": {
+        "label": "미국 CPI",
+        "value": "2.4%",
+        "status": "YoY",
+        "sourceDate": "2026-03-12",
+        "sourceMetric": "FH_DASHBOARD_CPI_US"
+      },
+      "exchangeRate": {
+        "label": "원/달러 환율",
+        "value": "1,475.34",
+        "status": "▲ 2.56",
+        "sourceDate": "2026-03-12",
+        "sourceMetric": "FH_DASHBOARD_EXCHANGE_RATE"
+      },
+      "dollarIndex": {
+        "label": "달러 인덱스",
+        "value": "99.74",
+        "status": "▲ 0.51",
+        "sourceDate": "2026-03-12",
+        "sourceMetric": "FH_DASHBOARD_DOLLAR_INDEX"
+      },
+      "goldSiverRatio": {
+        "label": "금/은 비율",
+        "value": "60.42",
+        "status": "▼ 0.33",
+        "sourceDate": "2026-03-12",
+        "sourceMetric": "FH_DASHBOARD_GOLD_SILVER_RATIO"
+      }
+    },
+    "2026-03-13": {
+      "fearAndGreed": {
+        "label": "Fear & Greed",
+        "value": "23",
+        "status": "Extreme Fear",
+        "sourceDate": "2026-03-13",
+        "sourceMetric": "FH_DASHBOARD_FEAR_AND_GREED"
+      },
+      "cpiKorea": {
+        "label": "한국 CPI",
+        "value": "2.0%",
+        "status": "YoY",
+        "sourceDate": "2026-03-13",
+        "sourceMetric": "FH_DASHBOARD_CPI_KOREA"
+      },
+      "cpiUS": {
+        "label": "미국 CPI",
+        "value": "2.4%",
+        "status": "YoY",
+        "sourceDate": "2026-03-13",
+        "sourceMetric": "FH_DASHBOARD_CPI_US"
+      },
+      "exchangeRate": {
+        "label": "원/달러 환율",
+        "value": "1,470.58",
+        "status": "▼ 4.76",
+        "sourceDate": "2026-03-13",
+        "sourceMetric": "FH_DASHBOARD_EXCHANGE_RATE"
+      },
+      "dollarIndex": {
+        "label": "달러 인덱스",
+        "value": "100.36",
+        "status": "▲ 0.62",
+        "sourceDate": "2026-03-13",
+        "sourceMetric": "FH_DASHBOARD_DOLLAR_INDEX"
+      },
+      "goldSiverRatio": {
+        "label": "금/은 비율",
+        "value": "62.44",
+        "status": "▲ 2.02",
+        "sourceDate": "2026-03-13",
+        "sourceMetric": "FH_DASHBOARD_GOLD_SILVER_RATIO"
+      }
+    },
+    "2026-03-16": {
+      "fearAndGreed": {
+        "label": "Fear & Greed",
+        "value": "22",
+        "status": "Extreme Fear",
+        "sourceDate": "2026-03-16",
+        "sourceMetric": "FH_DASHBOARD_FEAR_AND_GREED"
+      },
+      "cpiKorea": {
+        "label": "한국 CPI",
+        "value": "2.0%",
+        "status": "YoY",
+        "sourceDate": "2026-03-16",
+        "sourceMetric": "FH_DASHBOARD_CPI_KOREA"
+      },
+      "cpiUS": {
+        "label": "미국 CPI",
+        "value": "2.4%",
+        "status": "YoY",
+        "sourceDate": "2026-03-16",
+        "sourceMetric": "FH_DASHBOARD_CPI_US"
+      },
+      "exchangeRate": {
+        "label": "원/달러 환율",
+        "value": "1,501.75",
+        "status": "▲ 31.17",
+        "sourceDate": "2026-03-16",
+        "sourceMetric": "FH_DASHBOARD_EXCHANGE_RATE"
+      },
+      "dollarIndex": {
+        "label": "달러 인덱스",
+        "value": "99.71",
+        "status": "▼ 0.65",
+        "sourceDate": "2026-03-16",
+        "sourceMetric": "FH_DASHBOARD_DOLLAR_INDEX"
+      },
+      "goldSiverRatio": {
+        "label": "금/은 비율",
+        "value": "62.22",
+        "status": "▼ 0.22",
+        "sourceDate": "2026-03-16",
+        "sourceMetric": "FH_DASHBOARD_GOLD_SILVER_RATIO"
+      }
+    },
+    "2026-03-17": {
+      "fearAndGreed": {
+        "label": "Fear & Greed",
+        "value": "22",
+        "status": "Extreme Fear",
+        "sourceDate": "2026-03-17",
+        "sourceMetric": "FH_DASHBOARD_FEAR_AND_GREED"
+      },
+      "cpiKorea": {
+        "label": "한국 CPI",
+        "value": "2.0%",
+        "status": "YoY",
+        "sourceDate": "2026-03-17",
+        "sourceMetric": "FH_DASHBOARD_CPI_KOREA"
+      },
+      "cpiUS": {
+        "label": "미국 CPI",
+        "value": "2.4%",
+        "status": "YoY",
+        "sourceDate": "2026-03-17",
+        "sourceMetric": "FH_DASHBOARD_CPI_US"
+      },
+      "exchangeRate": {
+        "label": "원/달러 환율",
+        "value": "1,488.91",
+        "status": "▼ 12.84",
+        "sourceDate": "2026-03-17",
+        "sourceMetric": "FH_DASHBOARD_EXCHANGE_RATE"
+      },
+      "dollarIndex": {
+        "label": "달러 인덱스",
+        "value": "99.58",
+        "status": "▼ 0.13",
+        "sourceDate": "2026-03-17",
+        "sourceMetric": "FH_DASHBOARD_DOLLAR_INDEX"
+      },
+      "goldSiverRatio": {
+        "label": "금/은 비율",
+        "value": "62.88",
+        "status": "▲ 0.66",
+        "sourceDate": "2026-03-17",
+        "sourceMetric": "FH_DASHBOARD_GOLD_SILVER_RATIO"
+      }
+    },
+    "2026-03-19": {
+      "fearAndGreed": {
+        "label": "Fear & Greed",
+        "value": "16",
+        "status": "Extreme Fear",
+        "sourceDate": "2026-03-19",
+        "sourceMetric": "FH_DASHBOARD_FEAR_AND_GREED"
+      },
+      "cpiKorea": {
+        "label": "한국 CPI",
+        "value": "2.0%",
+        "status": "YoY",
+        "sourceDate": "2026-03-19",
+        "sourceMetric": "FH_DASHBOARD_CPI_KOREA"
+      },
+      "cpiUS": {
+        "label": "미국 CPI",
+        "value": "2.4%",
+        "status": "YoY",
+        "sourceDate": "2026-03-19",
+        "sourceMetric": "FH_DASHBOARD_CPI_US"
+      },
+      "exchangeRate": {
+        "label": "원/달러 환율",
+        "value": "1,505.25",
+        "status": "▲ 20.38",
+        "sourceDate": "2026-03-19",
+        "sourceMetric": "FH_DASHBOARD_EXCHANGE_RATE"
+      },
+      "dollarIndex": {
+        "label": "달러 인덱스",
+        "value": "99.23",
+        "status": "▼ 0.86",
+        "sourceDate": "2026-03-19",
+        "sourceMetric": "FH_DASHBOARD_DOLLAR_INDEX"
+      },
+      "goldSiverRatio": {
+        "label": "금/은 비율",
+        "value": "64.89",
+        "status": "▲ 1.58",
+        "sourceDate": "2026-03-19",
+        "sourceMetric": "FH_DASHBOARD_GOLD_SILVER_RATIO"
+      }
+    },
+    "2026-03-20": {
+      "fearAndGreed": {
+        "label": "Fear & Greed",
+        "value": "16",
+        "status": "Extreme Fear",
+        "sourceDate": "2026-03-20",
+        "sourceMetric": "FH_DASHBOARD_FEAR_AND_GREED"
+      },
+      "cpiKorea": {
+        "label": "한국 CPI",
+        "value": "2.0%",
+        "status": "YoY",
+        "sourceDate": "2026-03-20",
+        "sourceMetric": "FH_DASHBOARD_CPI_KOREA"
+      },
+      "cpiUS": {
+        "label": "미국 CPI",
+        "value": "2.4%",
+        "status": "YoY",
+        "sourceDate": "2026-03-20",
+        "sourceMetric": "FH_DASHBOARD_CPI_US"
+      },
+      "exchangeRate": {
+        "label": "원/달러 환율",
+        "value": "1,489.84",
+        "status": "▼ 15.41",
+        "sourceDate": "2026-03-20",
+        "sourceMetric": "FH_DASHBOARD_EXCHANGE_RATE"
+      },
+      "dollarIndex": {
+        "label": "달러 인덱스",
+        "value": "99.65",
+        "status": "▲ 0.42",
+        "sourceDate": "2026-03-20",
+        "sourceMetric": "FH_DASHBOARD_DOLLAR_INDEX"
+      },
+      "goldSiverRatio": {
+        "label": "금/은 비율",
+        "value": "65.89",
+        "status": "▲ 1.01",
+        "sourceDate": "2026-03-20",
+        "sourceMetric": "FH_DASHBOARD_GOLD_SILVER_RATIO"
+      }
+    },
+    "2026-03-24": {
+      "fearAndGreed": {
+        "label": "Fear & Greed",
+        "value": "18",
+        "status": "Extreme Fear",
+        "sourceDate": "2026-03-24",
+        "sourceMetric": "FH_DASHBOARD_FEAR_AND_GREED"
+      },
+      "cpiKorea": {
+        "label": "한국 CPI",
+        "value": "2.0%",
+        "status": "YoY",
+        "sourceDate": "2026-03-24",
+        "sourceMetric": "FH_DASHBOARD_CPI_KOREA"
+      },
+      "cpiUS": {
+        "label": "미국 CPI",
+        "value": "2.4%",
+        "status": "YoY",
+        "sourceDate": "2026-03-24",
+        "sourceMetric": "FH_DASHBOARD_CPI_US"
+      },
+      "exchangeRate": {
+        "label": "원/달러 환율",
+        "value": "1,496.8",
+        "status": "고환율 경계",
+        "sourceDate": "2026-03-24",
+        "sourceMetric": "FH_DASHBOARD_EXCHANGE_RATE"
+      },
+      "dollarIndex": {
+        "label": "달러 인덱스",
+        "value": "99.21",
+        "status": "보합",
+        "sourceDate": "2026-03-24",
+        "sourceMetric": "FH_DASHBOARD_DOLLAR_INDEX"
+      },
+      "goldSiverRatio": {
+        "label": "금/은 비율",
+        "value": "63.19",
+        "status": "중립",
+        "sourceDate": "2026-03-24",
+        "sourceMetric": "FH_DASHBOARD_GOLD_SILVER_RATIO"
+      }
     }
   }
 }

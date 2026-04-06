@@ -1,17 +1,39 @@
 from __future__ import annotations
 
 import json
+import sys
 from pathlib import Path
 from typing import Any
+
+sys.path.append(str(Path(__file__).resolve().parents[1]))
 
 from collectors.common import create_supabase
 
 
 TARGET_METRICS = {
-    "FH_BACKFILL_VALIDATION_EXCHANGE_RATE": {
+    "FH_DASHBOARD_FEAR_AND_GREED": {
+        "indicator_key": "fearAndGreed",
+        "label": "Fear & Greed",
+    },
+    "FH_DASHBOARD_CPI_KOREA": {
+        "indicator_key": "cpiKorea",
+        "label": "한국 CPI",
+    },
+    "FH_DASHBOARD_CPI_US": {
+        "indicator_key": "cpiUS",
+        "label": "미국 CPI",
+    },
+    "FH_DASHBOARD_EXCHANGE_RATE": {
         "indicator_key": "exchangeRate",
         "label": "원/달러 환율",
-        "metric_date": "2026-03-18",
+    },
+    "FH_DASHBOARD_DOLLAR_INDEX": {
+        "indicator_key": "dollarIndex",
+        "label": "달러 인덱스",
+    },
+    "FH_DASHBOARD_GOLD_SILVER_RATIO": {
+        "indicator_key": "goldSiverRatio",
+        "label": "금/은 비율",
     },
 }
 
@@ -33,7 +55,14 @@ def _format_metric_value(value: object) -> str:
     return f"{numeric:,.2f}"
 
 
-def _fetch_metric_row(client: Any, metric_name: str, metric_date: str | None) -> dict[str, Any] | None:
+def _get_display_value(value: object, metadata: dict[str, Any]) -> str:
+    display_value = metadata.get("displayValue")
+    if display_value:
+        return str(display_value)
+    return _format_metric_value(value)
+
+
+def _fetch_metric_rows(client: Any, metric_name: str, metric_date: str | None = None) -> list[dict[str, Any]]:
     query = (
         client.table("macro_daily")
         .select("metric_date,metric_name,metric_value,metadata")
@@ -42,38 +71,47 @@ def _fetch_metric_row(client: Any, metric_name: str, metric_date: str | None) ->
 
     if metric_date:
         query = query.eq("metric_date", metric_date)
-    else:
-        query = query.order("metric_date", desc=True)
+    query = query.order("metric_date", desc=True)
 
-    response = query.limit(1).execute()
-    rows = response.data or []
-    return rows[0] if rows else None
+    response = query.execute()
+    return response.data or []
 
 
 def export_dashboard_indicators() -> dict[str, object]:
     client = create_supabase()
-    indicators: dict[str, dict[str, str]] = {}
-    snapshot_date = ""
+    latest_indicators: dict[str, dict[str, str]] = {}
+    indicators_by_date: dict[str, dict[str, dict[str, str]]] = {}
+    latest_snapshot_date = ""
 
     for metric_name, config in TARGET_METRICS.items():
-        row = _fetch_metric_row(client, metric_name, config.get("metric_date"))
-        if not row:
+        rows = _fetch_metric_rows(client, metric_name, config.get("metric_date"))
+        if not rows:
             continue
 
-        metadata = row.get("metadata") or {}
-        source_date = str(row.get("metric_date") or config.get("metric_date") or "")
-        indicators[config["indicator_key"]] = {
-            "label": str(metadata.get("label") or config["label"]),
-            "value": _format_metric_value(row.get("metric_value")),
-            "status": str(metadata.get("status") or f"Supabase {source_date}"),
-            "sourceDate": source_date,
-            "sourceMetric": metric_name,
-        }
-        snapshot_date = max(snapshot_date, source_date)
+        for row in rows:
+            metadata = row.get("metadata") or {}
+            source_date = str(row.get("metric_date") or config.get("metric_date") or "")
+            if not source_date:
+                continue
+
+            indicator_payload = {
+                "label": str(metadata.get("label") or config["label"]),
+                "value": _get_display_value(row.get("metric_value"), metadata),
+                "status": str(metadata.get("status") or f"Supabase {source_date}"),
+                "sourceDate": source_date,
+                "sourceMetric": metric_name,
+            }
+
+            indicators_by_date.setdefault(source_date, {})[config["indicator_key"]] = indicator_payload
+
+            if source_date >= latest_snapshot_date:
+                latest_snapshot_date = source_date
+                latest_indicators[config["indicator_key"]] = indicator_payload
 
     payload = {
-        "date": snapshot_date,
-        "indicators": indicators,
+        "date": latest_snapshot_date,
+        "indicators": latest_indicators,
+        "byDate": indicators_by_date,
     }
 
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
