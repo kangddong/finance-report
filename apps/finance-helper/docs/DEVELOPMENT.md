@@ -73,5 +73,6 @@ document.addEventListener('DOMContentLoaded', () => {
 ## 2026-03 Working Rules
 
 - For indicator-page changes, edit `dashboard/indicators.html`, `dashboard/css/indicators.css`, and `dashboard/js/sections/indicators-page.js` together.
+- If the same Market Monitor experience is exposed inside `dashboard/index.html`, keep the DOM IDs and rendering contract aligned with `indicators-page.js` so both entry points stay in sync.
 - For KR/US dashboard tabs, keep the rendering logic in `dashboard/js/sections/dashboard.js` and resolve data through `dashboard/js/db.js`.
 - When adding report fields for one market session, prefer `krSession` and `usSession`, but preserve fallback rendering for legacy reports that only have top-level `holdings`, `watchlist`, and `strategy`.

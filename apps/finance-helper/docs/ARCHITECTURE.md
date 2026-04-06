@@ -35,7 +35,8 @@ dashboard/
 ### 1. **Data Centralization (db.js)**
 - 모든 UI 컴포넌트는 JSON 파일을 직접 `fetch`하지 않습니다.
 - `db.js`가 `fetch()` API로 `data.json`을 비동기 로드하고, 모듈 내부에 캐시합니다.
-- 선택적으로 `generated/supabase-indicators.json`을 함께 읽어 대시보드가 바로 쓸 수 있는 `indicators` 스냅샷을 최신 카드에 오버레이합니다.
+- `generated/supabase-indicators.json`을 함께 읽어 날짜별 `byDate` 스냅샷을 각 리포트의 `indicators`에 주입합니다.
+- 메인 대시보드의 indicator 영역은 `data.json`의 정적 `indicators`를 fallback으로 사용하지 않고, Supabase 스냅샷만 사용합니다.
 - 소비자(app.js, indicators-app.js 등)는 데이터 접근 전에 반드시 `await ready()`를 호출합니다.
 - 이후 `getAllReports()`, `getLatestReport()` 등 API를 통해 데이터에 접근합니다.
 
@@ -54,6 +55,8 @@ dashboard/
 - `dashboard/indicators.html` is now a dedicated indicator-check page instead of a large inline script page.
 - Indicator page logic lives in `dashboard/js/sections/indicators-page.js`.
 - Indicator page styling lives in `dashboard/css/indicators.css`.
+- `dashboard/index.html` also embeds `indicators`, `macro-check`, and `market-regime` as in-app sections so the sidebar stays persistent while the content panel changes.
+- The top `Premium Finance Report` / `Finance Wordbook` / market indicator bar is scoped to Daily Report sections only.
 - Main dashboard session switching is handled through `dashboard/js/db.js` session helpers and `dashboard/js/sections/dashboard.js`.
 - UI modules must continue to read report data through `db.js`, not by fetching `data.json` directly.
 - All entry points (`app.js`, `indicators-app.js`) call `await ready()` before any data access.

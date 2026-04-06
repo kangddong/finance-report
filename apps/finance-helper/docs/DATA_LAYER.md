@@ -20,8 +20,9 @@
 
 ### 3. **`dashboard/generated/supabase-indicators.json` (Supabase 지표 스냅샷)**
 - Supabase `macro_daily` row를 대시보드가 바로 쓰는 `indicator` 객체로 변환한 산출물입니다.
-- 기본 구조는 `{ "date": "YYYY-MM-DD", "indicators": { ... } }` 입니다.
-- `db.js`와 레거시 `load-data.js`는 이 파일을 읽어 메인 대시보드 최신 카드에 지표를 오버레이합니다.
+- 기본 구조는 `{ "date": "YYYY-MM-DD", "indicators": { ... }, "byDate": { "YYYY-MM-DD": { ... } } }` 입니다.
+- `date`와 `indicators`는 최신 스냅샷 전용이며, 메인 대시보드는 `byDate`를 사용해 각 날짜 리포트의 `indicators`를 Supabase 값으로 대체합니다.
+- 따라서 메인 대시보드 indicator 영역은 더 이상 `data.json`의 정적 indicator 값에 의존하지 않습니다.
 
 ## 🛠️ `db.js`: 데이터 접근 인터페이스 (Hub)
 
@@ -49,13 +50,16 @@ const reports = getAllReports();
 | `getReportByDate(date)` | 특정 일자의 리포트 데이터를 반환 | `Object` |
 | `getStockInfo(stockName)` | 특정 종목의 상세 섹터/테마/키워드 정보 반환 | `Object` |
 | `getLatestIndicatorsSnapshot()` | 최신 리포트의 indicators 반환 | `{ date, indicators }` |
+| `getIndicatorsSnapshotByDate(date)` | 특정 날짜의 indicators 스냅샷 반환 | `{ date, indicators }` |
+| `getAvailableIndicatorDates()` | 지표 스냅샷이 존재하는 날짜 목록 반환 | `Array<string>` |
 | `getMarketSessionData(report, market)` | 정규화된 holdings/watchlist/strategy 반환 | `Object` |
 
 ### **데이터 연동 (Data Flow)**
 
 1. **데이터 업데이트**: Python 스크립트(`scripts/`)가 `report/*.json`과 외부 수집 결과를 `dashboard/data.json`에 반영합니다.
 2. **비동기 로드**: `db.js`가 `fetch()` API로 `data.json`, `finance_word_data.json`, `generated/supabase-indicators.json`을 비동기 로드하고 모듈 내부에 캐시합니다.
-3. **UI 소비**: 각 섹션 모듈(`js/sections/*.js`)이 필요한 데이터를 `db.js`에서 `import`하여 렌더링에 사용합니다.
+3. **지표 치환**: `db.js`는 `REPORTS_HISTORY[*].date`와 `generated/supabase-indicators.json.byDate`를 매칭해, 각 날짜의 `report.indicators`를 Supabase 기반 값으로만 구성합니다.
+4. **UI 소비**: 각 섹션 모듈(`js/sections/*.js`)이 필요한 데이터를 `db.js`에서 `import`하여 렌더링에 사용합니다.
 
 ## 🚀 데이터 추가 및 수정 가이드
 - **날짜별 리포트 추가**: `report/YYYY-MM-DD.json`을 생성한 뒤 `sync_reports_to_dashboard.py`를 실행합니다.
@@ -65,6 +69,7 @@ const reports = getAllReports();
 ## 2026-03 Session Helpers
 
 - `getLatestIndicatorsSnapshot()` returns `{ date, indicators }` for the dedicated indicator page.
+- `getIndicatorsSnapshotByDate(date)` and `getAvailableIndicatorDates()` power the date selector used in both `indicators.html` and the in-app Market Monitor section.
 - `getMarketSessionData(report, market)` returns normalized `holdings`, `watchlist`, and `strategy`.
 - If a report already contains `krSession` or `usSession`, use those values first.
 - If not, split legacy arrays by market as a fallback so older reports still render in the KR/US tab UI.
